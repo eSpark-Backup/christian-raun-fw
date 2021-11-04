@@ -3,18 +3,11 @@
 #ifndef TwoWire_h
 #define TwoWire_h
 
-#include <Arduino.h>
 #include <inttypes.h>
 #include "Stream.h"
 #ifndef FLASH_H
 #define FLASH_H
 
-#include <Arduino.h>
-#include <optiboot.h>
-#ifndef OPTIBOOT_H
-#define OPTIBOOT_H
-
-#include <avr/boot.h>
 #include <avr/pgmspace.h>
 #include <stdint.h>
 
@@ -523,11 +516,6 @@ typedef void (*do_spm_t)(uint16_t address, uint8_t command, uint16_t data);
  * - have RAMPZ register :-)
  * - need larger variable to hold address (pgmspace.h uses uint32_t)
  */
-#ifdef RAMPZ
-  typedef uint32_t optiboot_addr_t;
-#else
-  typedef uint16_t optiboot_addr_t;
-#endif
 
 #if FLASHEND > 65534
   const do_spm_t do_spm = (do_spm_t)((FLASHEND-1023+2)>>1);
@@ -535,19 +523,3 @@ typedef void (*do_spm_t)(uint16_t address, uint8_t command, uint16_t data);
   const do_spm_t do_spm = (do_spm_t)((FLASHEND-511+2)>>1);
 #endif
 
-
-void do_spm_cli(optiboot_addr_t address, uint8_t command, uint16_t data);
-bool optiboot_check_writable();
-void optiboot_page_erase(optiboot_addr_t address);
-void optiboot_page_fill(optiboot_addr_t address, uint16_t data);
-void optiboot_page_write(optiboot_addr_t address);
-void optiboot_read(const uint8_t allocated_flash_space[], uint8_t storage_array[], uint16_t page_number, uint16_t start_address, uint16_t stop_address);
-void optiboot_readPage(const uint8_t allocated_flash_space[], uint8_t storage_array[], uint16_t page_number);
-void optiboot_writePage(const uint8_t allocated_flash_space[], uint8_t data_to_store[], uint16_t page_number);
-#ifdef RAMPZ
-void optiboot_read(uint32_t flash_space_address, uint8_t storage_array[], uint16_t page_number, uint16_t start_address, uint16_t stop_address);
-void optiboot_readPage(uint32_t flash_space_address, uint8_t storage_array[], uint16_t page_number);
-void optiboot_writePage(uint32_t flash_space_address, uint8_t data_to_store[], uint16_t page_number);
-#endif
-
-#endif
