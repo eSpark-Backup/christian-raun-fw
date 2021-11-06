@@ -1,12 +1,12 @@
 #include "TMCStepper.h"
 #include "SW_SPI.h"
 
-TMC2660Stepper::TMC2660Stepper(uint16_t pinCS, float RS) :
+Stepper_TMC2660::Stepper_TMC2660(uint16_t pinCS, float RS) :
   _pinCS(pinCS),
   Rsense(RS)
   {}
 
-TMC2660Stepper::TMC2660Stepper(uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
+Stepper_TMC2660::Stepper_TMC2660(uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
   _pinCS(pinCS),
   Rsense(default_RS)
   {
@@ -14,7 +14,7 @@ TMC2660Stepper::TMC2660Stepper(uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMIS
     TMC_SW_SPI = SW_SPI_Obj;
   }
 
-TMC2660Stepper::TMC2660Stepper(uint16_t pinCS, float RS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
+Stepper_TMC2660::Stepper_TMC2660(uint16_t pinCS, float RS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
   _pinCS(pinCS),
   Rsense(RS)
   {
@@ -22,12 +22,12 @@ TMC2660Stepper::TMC2660Stepper(uint16_t pinCS, float RS, uint16_t pinMOSI, uint1
     TMC_SW_SPI = SW_SPI_Obj;
   }
 
-void TMC2660Stepper::switchCSpin(bool state) {
+void Stepper_TMC2660::switchCSpin(bool state) {
   // Allows for overriding in child class to make use of fast io
   digitalWrite(_pinCS, state);
 }
 
-uint32_t TMC2660Stepper::read() {
+uint32_t Stepper_TMC2660::read() {
   uint32_t response = 0UL;
   uint32_t dummy = ((uint32_t)DRVCONF_register.address<<17) | DRVCONF_register.sr;
   if (TMC_SW_SPI != nullptr) {
@@ -51,7 +51,7 @@ uint32_t TMC2660Stepper::read() {
   return response >> 4;
 }
 
-void TMC2660Stepper::write(uint8_t addressByte, uint32_t config) {
+void Stepper_TMC2660::write(uint8_t addressByte, uint32_t config) {
   uint32_t data = (uint32_t)addressByte<<17 | config;
   if (TMC_SW_SPI != nullptr) {
     switchCSpin(LOW);
@@ -69,7 +69,7 @@ void TMC2660Stepper::write(uint8_t addressByte, uint32_t config) {
   switchCSpin(HIGH);
 }
 
-void TMC2660Stepper::begin() {
+void Stepper_TMC2660::begin() {
   //set pins
   pinMode(_pinCS, OUTPUT);
   switchCSpin(HIGH);
@@ -80,9 +80,9 @@ void TMC2660Stepper::begin() {
   tbl(1); //blank_time(24);
 }
 
-bool TMC2660Stepper::isEnabled() { return toff() > 0; }
+bool Stepper_TMC2660::isEnabled() { return toff() > 0; }
 
-uint8_t TMC2660Stepper::test_connection() {
+uint8_t Stepper_TMC2660::test_connection() {
   uint32_t drv_status = DRVSTATUS();
   switch (drv_status) {
       case 0xFFCFF: return 1;
@@ -107,14 +107,14 @@ uint8_t TMC2660Stepper::test_connection() {
   CS = 24
 */
 
-uint16_t TMC2660Stepper::cs2rms(uint8_t CS) {
+uint16_t Stepper_TMC2660::cs2rms(uint8_t CS) {
   return (float)(CS+1)/32.0 * (vsense() ? 0.165 : 0.310)/(Rsense+0.02) / 1.41421 * 1000;
 }
 
-uint16_t TMC2660Stepper::rms_current() {
+uint16_t Stepper_TMC2660::rms_current() {
   return cs2rms(cs());
 }
-void TMC2660Stepper::rms_current(uint16_t mA) {
+void Stepper_TMC2660::rms_current(uint16_t mA) {
   uint8_t CS = 32.0*1.41421*mA/1000.0*Rsense/0.310 - 1;
   // If Current Scale is too low, turn on high sensitivity R_sense and calculate again
   if (CS < 16) {
@@ -131,7 +131,7 @@ void TMC2660Stepper::rms_current(uint16_t mA) {
   //val_mA = mA;
 }
 
-void TMC2660Stepper::push() {
+void Stepper_TMC2660::push() {
   DRVCTRL( sdoff() ? DRVCTRL_1_register.sr : DRVCTRL_0_register.sr);
   CHOPCONF(CHOPCONF_register.sr);
   SMARTEN(SMARTEN_register.sr);
@@ -139,13 +139,13 @@ void TMC2660Stepper::push() {
   DRVCONF(DRVCONF_register.sr);
 }
 
-void TMC2660Stepper::hysteresis_end(int8_t value) { hend(value+3); }
-int8_t TMC2660Stepper::hysteresis_end() { return hend()-3; };
+void Stepper_TMC2660::hysteresis_end(int8_t value) { hend(value+3); }
+int8_t Stepper_TMC2660::hysteresis_end() { return hend()-3; };
 
-void TMC2660Stepper::hysteresis_start(uint8_t value) { hstrt(value-1); }
-uint8_t TMC2660Stepper::hysteresis_start() { return hstrt()+1; }
+void Stepper_TMC2660::hysteresis_start(uint8_t value) { hstrt(value-1); }
+uint8_t Stepper_TMC2660::hysteresis_start() { return hstrt()+1; }
 
-void TMC2660Stepper::microsteps(uint16_t ms) {
+void Stepper_TMC2660::microsteps(uint16_t ms) {
   switch(ms) {
     case 256: mres(0); break;
     case 128: mres(1); break;
@@ -160,7 +160,7 @@ void TMC2660Stepper::microsteps(uint16_t ms) {
   }
 }
 
-uint16_t TMC2660Stepper::microsteps() {
+uint16_t Stepper_TMC2660::microsteps() {
   switch(mres()) {
     case 0: return 256;
     case 1: return 128;
@@ -175,7 +175,7 @@ uint16_t TMC2660Stepper::microsteps() {
   return 0;
 }
 
-void TMC2660Stepper::blank_time(uint8_t value) {
+void Stepper_TMC2660::blank_time(uint8_t value) {
   switch (value) {
     case 16: tbl(0b00); break;
     case 24: tbl(0b01); break;
@@ -184,7 +184,7 @@ void TMC2660Stepper::blank_time(uint8_t value) {
   }
 }
 
-uint8_t TMC2660Stepper::blank_time() {
+uint8_t Stepper_TMC2660::blank_time() {
   switch (tbl()) {
     case 0b00: return 16;
     case 0b01: return 24;

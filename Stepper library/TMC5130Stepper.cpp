@@ -1,17 +1,17 @@
 #include "TMCStepper.h"
 #include "TMC_MACROS.h"
 
-Stepper_TMC5130::Stepper_TMC5130(uint16_t pinCS, float RS, int8_t link) : TMC2160Stepper(pinCS, RS, link)
+Stepper_TMC5130::Stepper_TMC5130(uint16_t pinCS, float RS, int8_t link) : Stepper_TMC2160(pinCS, RS, link)
   { defaults(); }
 Stepper_TMC5130::Stepper_TMC5130(uint16_t pinCS, float RS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK, int8_t link):
-  TMC2160Stepper(pinCS, RS, pinMOSI, pinMISO, pinSCK, link)
+  Stepper_TMC2160(pinCS, RS, pinMOSI, pinMISO, pinSCK, link)
   { defaults(); }
 Stepper_TMC5130::Stepper_TMC5130(uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK, int8_t link) :
-  TMC2160Stepper(pinCS, default_RS, pinMOSI, pinMISO, pinSCK, link)
+  Stepper_TMC2160(pinCS, default_RS, pinMOSI, pinMISO, pinSCK, link)
   { defaults(); }
 
 void Stepper_TMC5130::begin() {
-  TMC2160Stepper::begin();
+  Stepper_TMC2160::begin();
 
   XTARGET(0);
   XACTUAL(0);
