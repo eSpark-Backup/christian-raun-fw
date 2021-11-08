@@ -19,7 +19,7 @@ void SW_SPIClass::init() {
     sck_bm = digitalPinToBitMask(sck_pin);
   #endif
   writeSCK_H;
-}
+} 
 
 uint8_t SW_SPIClass::transfer(uint8_t ulVal) {
   uint8_t value = 0;
