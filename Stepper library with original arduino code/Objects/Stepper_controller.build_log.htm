@@ -21,48 +21,40 @@ Target DLL:      UL2CM3.DLL V1.164.0.0
 Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
-C:\Users\XPENDER\Downloads\My test projects\STM32F4\test2\Stepper_controller.uvprojx
-Project File Date:  11/15/2021
+C:\Users\XPENDER\Documents\GitHub\ChristianRaun-FirmwareDevelopment\Stepper library with original arduino code\Stepper_controller.uvprojx
+Project File Date:  11/16/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
+compiling main.cpp...
+test src/TMC2130Stepper.cpp(1): warning: In file included from...
+./test src/TMCStepper.h(41): error: 'source/SERIAL_SWITCH.h' file not found
+#include "source/SERIAL_SWITCH.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+compiling TMC2130Stepper.cpp...
+test src/TMC2160Stepper.cpp(1): warning: In file included from...
+./test src/TMCStepper.h(41): error: 'source/SERIAL_SWITCH.h' file not found
+#include "source/SERIAL_SWITCH.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+compiling TMC2160Stepper.cpp...
+test src/TMC5130Stepper.cpp(1): warning: In file included from...
+./test src/TMCStepper.h(41): error: 'source/SERIAL_SWITCH.h' file not found
+#include "source/SERIAL_SWITCH.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+compiling TMC5130Stepper.cpp...
+test src/TMC5160Stepper.cpp(1): warning: In file included from...
+./test src/TMCStepper.h(41): error: 'source/SERIAL_SWITCH.h' file not found
+#include "source/SERIAL_SWITCH.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+compiling TMC5160Stepper.cpp...
 assembling startup_stm32f407xx.s...
 compiling system_stm32f4xx.c...
-main.cpp(8): warning: In file included from...
-./src\TMCStepper.h(829): error: unknown type name 'SerialPort'
-                        TMC2208Stepper(SerialPort, RS, TMC2208_SLAVE_ADDR)
-                                       ^
-./src\TMCStepper.h(829): error: unknown type name 'RS'
-                        TMC2208Stepper(SerialPort, RS, TMC2208_SLAVE_ADDR)
-                                                   ^
-./src\TMCStepper.h(829): error: unknown type name 'TMC2208_SLAVE_ADDR'
-                        TMC2208Stepper(SerialPort, RS, TMC2208_SLAVE_ADDR)
-                                                       ^
-./src\TMCStepper.h(1001): error: unknown type name 'Stream'
-                TMC2208Stepper(Stream * SerialPort, float RS, uint8_t addr);
-                               ^
-./src\TMCStepper.h(1006): error: unknown type name 'Stream'
-                Stream * HWSerial = nullptr;
-                ^
-./src\TMCStepper.h(829): error: constructor for 'TMC2208Stepper' must explicitly initialize the base class 'TMCStepper' which does not have a default constructor
-                        TMC2208Stepper(SerialPort, RS, TMC2208_SLAVE_ADDR)
-                        ^
-./src\TMCStepper.h(66): note: 'TMCStepper' declared here
-class TMCStepper {
-      ^
-./src\TMCStepper.h(829): error: constructor for 'TMC2208Stepper' must explicitly initialize the const member 'slave_address'
-                        TMC2208Stepper(SerialPort, RS, TMC2208_SLAVE_ADDR)
-                        ^
-./src\TMCStepper.h(1023): note: declared here
-                const uint8_t slave_address;
-                              ^
-./src\TMCStepper.h(1036): error: unknown type name 'Stream'
-                TMC2209Stepper(Stream * SerialPort, float RS, uint8_t addr) :
-                               ^
-8 errors generated.
-compiling main.cpp...
-".\Objects\Stepper_controller.axf" - 8 Error(s), 0 Warning(s).
+".\Objects\Stepper_controller.axf" - 4 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -88,10 +80,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:2.6.3
-      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s
       Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
       Source file:   MDK\Device\Source\ARM\STM32F40xxx_41xxx_OPT.s
-      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
 Target not created.
 Build Time Elapsed:  00:00:01

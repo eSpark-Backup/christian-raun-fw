@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\src</IncludePath>
+              <IncludePath>.\test src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -392,6 +392,28 @@
         </Group>
         <Group>
           <GroupName>TMC</GroupName>
+          <Files>
+            <File>
+              <FileName>TMC2130Stepper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\test src\TMC2130Stepper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TMC2160Stepper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\test src\TMC2160Stepper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TMC5130Stepper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\test src\TMC5130Stepper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TMC5160Stepper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\test src\TMC5160Stepper.cpp</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
