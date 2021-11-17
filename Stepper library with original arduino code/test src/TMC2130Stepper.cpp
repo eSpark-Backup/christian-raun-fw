@@ -1,6 +1,6 @@
 #include "TMCStepper.h"
 #include "TMC_MACROS.h"
-
+#include "stdint.h"
 int8_t TMC2130Stepper::chain_length = 0;
 uint32_t TMC2130Stepper::spi_speed = 16000000/8;
 
@@ -67,13 +67,14 @@ void TMC2130Stepper::switchCSpin(bool state) {
 __attribute__((weak))
 void TMC2130Stepper::beginTransaction() {
   if (TMC_SW_SPI == nullptr) {
-    SPI.beginTransaction(SPISettings(spi_speed, MSBFIRST, SPI_MODE3));
+	//SystemClock_Config();
+    MX_SPI1_Init();   	//SPI.beginTransaction(SPISettings(spi_speed, MSBFIRST, SPI_MODE3));
   }
 }
 __attribute__((weak))
 void TMC2130Stepper::endTransaction() {
   if (TMC_SW_SPI == nullptr) {
-    SPI.endTransaction();
+    HAL_SPI_DeInit();    //SPI.endTransaction();
   }
 }
 
@@ -81,10 +82,10 @@ __attribute__((weak))
 uint8_t TMC2130Stepper::transfer(const uint8_t data) {
   uint8_t out = 0;
   if (TMC_SW_SPI != nullptr) {
-    out = TMC_SW_SPI->transfer(data);
+   out = TMC_SW_SPI->transfer(data);
   }
   else {
-    out = SPI.transfer(data);
+     out = HAL_SPI_Transmit(&hspi1, (uint8_t*)data, 1, 5000);     // out = SPI.transfer(data);
   }
   return out;
 }

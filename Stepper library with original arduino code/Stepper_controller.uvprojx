@@ -394,6 +394,11 @@
           <GroupName>TMC</GroupName>
           <Files>
             <File>
+              <FileName>SW_SPI.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\test src\SW_SPI.cpp</FilePath>
+            </File>
+            <File>
               <FileName>TMC2130Stepper.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\test src\TMC2130Stepper.cpp</FilePath>

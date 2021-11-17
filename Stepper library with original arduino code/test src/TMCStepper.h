@@ -6,7 +6,7 @@
 #pragma GCC diagnostic ignored "-Wunused-function"
 #pragma GCC diagnostic ignored "-Wunused-variable"
 
-#include <SPI.h>
+//#include <SPI.h>
 
 /*
 #if defined(ARDUINO) && ARDUINO >= 100
@@ -42,7 +42,7 @@
 	#include <SoftwareSerial.h>
 #endif
 
-#include "source/SERIAL_SWITCH.h"
+//#include "source/SERIAL_SWITCH.h"
 #include "source/SW_SPI.h"
 
 #pragma GCC diagnostic pop

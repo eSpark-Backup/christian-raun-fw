@@ -1,6 +1,6 @@
 #include "TMCStepper.h"
 #include "TMC_MACROS.h"
-
+#include "stdint.h"
 TMC5130Stepper::TMC5130Stepper(uint16_t pinCS, float RS, int8_t link) : TMC2160Stepper(pinCS, RS, link)
   { defaults(); }
 TMC5130Stepper::TMC5130Stepper(uint16_t pinCS, float RS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK, int8_t link):
