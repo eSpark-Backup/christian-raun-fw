@@ -20,6 +20,8 @@
 
 uint32_t CSR_Read = 0;
 uint32_t CSR_Read_2 = 0;
+uint32_t Ethercat_RAM_Data = 0;
+uint32_t Ethercat_RAM_Control_Status = 0;
 
 void setup() {
    
@@ -168,12 +170,52 @@ void AL_Register_Access()
    Serial4.print("PDI Register Value : ");
    Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
 }
+
+void Ethercat_Read_RAM_Access()
+{
+   //Read Ethercat RAM Data Register
+   Ethercat_RAM_Data = LAN925X_SPI_READ(0x000);
+   Serial4.print("Ethercat_RAM_Data : ");
+   Serial4.println(Ethercat_RAM_Data);
+
+   //Read Ethercat RAM Data Register
+   Ethercat_RAM_Data = LAN925X_SPI_READ(0x001);
+   Serial4.print("Ethercat_RAM_Data : ");
+   Serial4.println(Ethercat_RAM_Data);
+   
+   //Write ETHERCAT PROCESS RAM READ ADDRESS AND LENGTH REGISTER
+   LAN925X_SPI_WRITE(0x308,0x00011000);
+   delay(10);
+
+   //Write ETHERCAT PROCESS RAM READ COMMAND REGISTER
+   LAN925X_SPI_WRITE(0x30C,0x10000000);
+   delay(10);
+   
+   //Read Ethercat RAM Data Register
+   while (LAN925X_SPI_READ(0x30C) )
+   Ethercat_RAM_Data = LAN925X_SPI_READ(0x000);
+   
+   Serial4.print("Ethercat_RAM_Data : ");
+   Serial4.println(Ethercat_RAM_Data);
+   
+   delay(100);
   
+   //Ethercat_RAM_Control_Status = LAN925X_SPI_READ(0x308);
+   //if (Ethercat_RAM_Control_Status == 0)
+   //{
+   //Ethercat_RAM_Data = LAN925X_SPI_READ(0x000);
+    //Serial4.print("Ethercat_RAM_Data : ");
+    //Serial4.println(Ethercat_RAM_Control_Status);
+   //}
+}
+
 void loop() {
    
    delay(1000);
    
    digitalWrite(PE4,HIGH);
    AL_Register_Access();
+   delay(1000);
+   Ethercat_Read_RAM_Access();
    
 }
