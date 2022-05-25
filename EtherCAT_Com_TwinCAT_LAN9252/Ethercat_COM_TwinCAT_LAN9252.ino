@@ -211,38 +211,53 @@ void AL_Register_Access()
 void Ethercat_Read_RAM_Access()
 {
    //Read Ethercat RAM Data Register
-   Ethercat_RAM_Data = LAN925X_SPI_READ(0x000);
+   /*Ethercat_RAM_Data = LAN925X_SPI_READ(0x000);
    Serial4.print("Ethercat_RAM_Data : ");
    Serial4.println(Ethercat_RAM_Data);
 
    //Read Ethercat RAM Data Register
    Ethercat_RAM_Data = LAN925X_SPI_READ(0x001);
    Serial4.print("Ethercat_RAM_Data : ");
-   Serial4.println(Ethercat_RAM_Data);
+   Serial4.println(Ethercat_RAM_Data);*/
    
    //Write ETHERCAT PROCESS RAM READ ADDRESS AND LENGTH REGISTER
-   LAN925X_SPI_WRITE(0x308,0x000015F4);
+   /*LAN925X_SPI_WRITE(0x308,0x000015F4);
    delay(10);
 
    //Write ETHERCAT PROCESS RAM READ COMMAND REGISTER
    LAN925X_SPI_WRITE(0x30C,0x10000000);
-   //delay(10);
+   delay(10);*/
+
+   //Write ETHERCAT PROCESS RAM READ ADDRESS AND LENGTH REGISTER
+   LAN925X_SPI_WRITE(0x308,0x00081001);
+   delay(10);
+
+   //Write ETHERCAT PROCESS RAM READ COMMAND REGISTER
+   LAN925X_SPI_WRITE(0x30C,0x10000000);
+   delay(10);
+
+   //Write ETHERCAT PROCESS RAM READ COMMAND REGISTER
+   LAN925X_SPI_WRITE(0x304,0xC0011000);
+   delay(10);
+   
    
    //Read Ethercat RAM Data Register
-   Ethercat_RAM_Control_Status = LAN925X_SPI_READ(0x30C);
+   /*Ethercat_RAM_Control_Status = LAN925X_SPI_READ(0x30C);
    
-   /*while (Ethercat_RAM_Control_Status == 0)
+   while (Ethercat_RAM_Control_Status == 0)
    { 
      //Ethercat_RAM_Data = LAN925X_SPI_READ(0x001);
      Ethercat_RAM_Control_Status = LAN925X_SPI_READ(0x30C);
      Serial4.println(Ethercat_RAM_Control_Status);
-     delay(1000);
+     delay(100);
    }*/
+
+   Ethercat_RAM_Data = LAN925X_SPI_READ(0x001);
    
    Serial4.print("Ethercat_RAM_Data : ");
    Serial4.println(Ethercat_RAM_Data);
 
-   Ethercat_RAM_Data = LAN925X_SPI_READ(0x002);
+   /*Ethercat_RAM_Data = LAN925X_SPI_READ(0x002);
    
    Serial4.print("Ethercat_RAM_Data : ");
    Serial4.println(Ethercat_RAM_Data);
@@ -251,7 +266,7 @@ void Ethercat_Read_RAM_Access()
    
    Serial4.print("Ethercat_RAM_Data : ");
    Serial4.println(Ethercat_RAM_Data);
-   delay(100);
+   delay(100);*/
   
    //Ethercat_RAM_Control_Status = LAN925X_SPI_READ(0x308);
    //if (Ethercat_RAM_Control_Status == 0)
@@ -265,7 +280,7 @@ void Ethercat_Read_RAM_Access()
 void Ethercat_GPIO_Read()
 {
    //Write GPIO Output Register
-   LAN925X_SPI_WRITE(CSR_DATA_REGISTER,10);
+   /*LAN925X_SPI_WRITE(CSR_DATA_REGISTER,10);
    delay(10);
    
    LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0x80010F10);
@@ -276,7 +291,7 @@ void Ethercat_GPIO_Read()
    delay(10);
    
    LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0x80010F11);
-   delay(100);
+   delay(100);*/
    
    //Read GPIO Register
    LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010F18);
@@ -338,7 +353,7 @@ void Ethercat_GPIO_Read()
    Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
 
 
-   //Write GPIO Output Register
+   //Write User RAM Register
    LAN925X_SPI_WRITE(CSR_DATA_REGISTER,52221);
    delay(10);
    
@@ -355,6 +370,107 @@ void Ethercat_GPIO_Read()
 
    Serial4.print("LAN925X_GPIO_CONTROL_READ : ");
    Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));*/
+
+   //Read Sync Manager X Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010F80);
+   delay(100);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_SYNC_MANAGER x 6 : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   /*
+   //Read Sync Manager X Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010801);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_SYNC_MANAGER : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read Sync Manager X Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010802);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_SYNC_MANAGER : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read Sync Manager X Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010803);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_SYNC_MANAGER : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+
+   //Read Sync Manager X Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010807);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_SYNC_MANAGER : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));*/
+
+   //Read EEPROM Configuration Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010500);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_EEPROM : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read EEPROM Configuration Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010501);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_EEPROM : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read EEPROM Configuration Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010502);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_EEPROM : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read EEPROM Configuration Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010503);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_EEPROM : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
 }
 
 void Ethercat_Read_SyncManager()
@@ -435,6 +551,8 @@ void loop() {
    //Ethercat_Read_RAM_Access();
    delay(500);
    Ethercat_GPIO_Read();
+   delay(100);
+   Ethercat_Read_RAM_Access();
    
    //Ethercat_Read_SyncManager();
 }
