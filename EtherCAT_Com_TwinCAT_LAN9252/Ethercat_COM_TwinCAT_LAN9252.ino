@@ -45,7 +45,7 @@ void setup() {
    delay(100);
 
    //Write GPIO Output Register
-   LAN925X_SPI_WRITE_8Bit(CSR_DATA_REGISTER,0x52);
+   /*LAN925X_SPI_WRITE_8Bit(CSR_DATA_REGISTER,0x52);
    delay(10);
    
    LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0x80010040);
@@ -63,7 +63,15 @@ void setup() {
    delay(10);
    
    LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0x80010040);
-   delay(100);
+   delay(100);*/
+
+   //Write Reset Control Register
+   LAN925X_SPI_WRITE(0x1F8,0x0000008E);
+   
+   Serial4.print("LAN925X_RESET_READ : ");
+   Serial4.println(LAN925X_SPI_READ(0x1F8));
+
+   
 }
 
 uint8_t SPI_8bit_Read(void)
@@ -208,6 +216,13 @@ void AL_Register_Access()
 
    Serial4.print("PDI Register Value : ");
    Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));*/
+
+   //Write GPIO Output Register
+   LAN925X_SPI_WRITE(CSR_DATA_REGISTER,65025);
+   delay(10);
+   
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0x80010100);
+   delay(100);  
 }
 
 void Ethercat_Read_RAM_Access()
@@ -476,6 +491,87 @@ void Ethercat_GPIO_Read()
 
    Serial4.print("LAN925X_FFMU : ");
    Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read Chip Mode Configuration Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC00100007);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_CHIP_MODE : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read ESC DL Status Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010110);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_DL_STATUS 0 : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read ESC DL Status Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010111);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_DL_STATUS 2 : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read ESC DL Control 0 Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010100);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_DL_CONTROL 0 : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read ESC DL Control 1 Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010101);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_DL_CONTROL 1 : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read ESC DL Control 2 Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010102);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_DL_CONTROL 2 : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read ESC DL Control 3 Register
+   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0xC0010103);
+   delay(10);
+    
+   GPIO_Read = LAN925X_SPI_READ(CSR_COMMAND_REGISTER);
+   //Serial4.print("GPIO_Read : ");
+   //Serial4.println(GPIO_Read);
+
+   Serial4.print("LAN925X_DL_CONTROL 3 : ");
+   Serial4.println(LAN925X_SPI_READ(CSR_DATA_REGISTER));
+
+   //Read Reset Control Register
+   Serial4.print("LAN925X_RESET_READ : ");
+   Serial4.println(LAN925X_SPI_READ(0x1F8));
 }
 
 void Ethercat_Read_SyncManager()
@@ -538,12 +634,7 @@ void Ethercat_Read_SyncManager()
    LAN925X_SPI_WRITE_16Bit(CSR_COMMAND_REGISTER,0x80010802);
    delay(100);
    
-   //Write Sync Manager Status Register
-   LAN925X_SPI_WRITE_8Bit(CSR_DATA_REGISTER,36);
-   delay(100);
    
-   LAN925X_SPI_WRITE(CSR_COMMAND_REGISTER,0x80010804);
-   delay(100);
 }
 
 void loop() {
