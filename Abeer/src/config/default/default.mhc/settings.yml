@@ -1,0 +1,14 @@
+configName: default
+folderName: Project1
+format_version: v1.0
+frameworkPath: ..\..\Harmony3
+processor: ATSAME53J18A
+projectName: Project1
+settings:
+  PackageFilter: csp;dev_packs;ethercat;harmony-services;quick_docs
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  TRUSTZONE: 'false'
+  CMSISPath: .\dev_packs\arm\CMSIS\5.8.0
+  MERGE_STRATEGY: USER_ALL
+  DFPPath: .\dev_packs\Microchip\SAME53_DFP\3.5.87\atdf\ATSAME53J18A.atdf
