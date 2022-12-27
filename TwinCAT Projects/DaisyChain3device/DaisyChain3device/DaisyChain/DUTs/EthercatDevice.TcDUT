@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <DUT Name="EthercatDevice" Id="{a8098788-9be2-4931-97bb-cf49fc17e830}">
+    <Declaration><![CDATA[TYPE EthercatDevice :
+STRUCT
+	dir : BYTE ;
+	speed : WORD ;
+	dummyDataOut AT %Q*: DWORD ;
+	dummyDataIn AT %I*: DWORD ;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
