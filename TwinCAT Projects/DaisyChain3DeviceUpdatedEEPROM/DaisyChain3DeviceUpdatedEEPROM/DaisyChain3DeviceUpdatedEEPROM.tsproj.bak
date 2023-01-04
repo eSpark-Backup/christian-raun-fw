@@ -11,15 +11,18 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..3] OF BOOL</Name>
-			<BitSize>24</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
+			<BitSize>6</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
-				<LBound>1</LBound>
-				<Elements>3</Elements>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
 			</ArrayInfo>
 		</DataType>
 	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dd8020000000000003600000028000000100000000e0000000100180000000000a2020000120b0000120b000000000000000000001306e31306e3190ce42b1fe62b1fe61306e31f13e5190ce42519e51306e31306e3190ce42f24e7190ce41306e31306e31306e31306e35f56ec645ced645ced4137e91f13e5473de95f57ec3227e71306e3473de95a51ec271be61306e31306e31409ca524cc68e8ad74f48c1615cc82218d03e36bf716bce746fce453dc01307ce3931ba7d78d27671d1150cb21409ca1712801b1d1d1b1d1d1b1d1d1b1d1d120b891b1d1d1b1d1d1b1d1d1b1d1d120b891b1d1d1b1d1d1b1d1d1b1d1d1712801712807f8080d4d5d5d4d5d5383939120b89545656d4d5d5d4d5d5626464130c89292b2bd4d5d5d4d5d56264641915801712804647471b1d1daaaaaad4d5d5130e82383939292b2b717272d4d5d5151183d4d5d57f80801b1d1d7172721e1c81191580464747d4d5d5d4d5d51b1d1d19158a292b2bd4d5d5d4d5d5292b2b1b1b8ad4d5d56264641b1d1d1b1d1d2427821e1d81d4d5d54647476264643839391e208bd4d5d57f8080464747545656242a8bd4d5d59b9c9c292b2baaaaaa2d3683252882464747d4d5d5d4d5d51b1d1d272d85292b2bd4d5d5d4d5d5292b2b2e37861b1d1dd4d5d5d4d5d5464747394484323bb52324812122822426822526824554c0323883292b822a2d83353c84424cbf3238843940842e32834853865d6ebb5262eb3e43e83334e74147e94349e9535feb4d56ea5662eb484dea545deb636fed545aea5a63ec6671ed8ca0f290a5f2748aef6b7bee5d68ec6874ed788aef8397f17684ef7986ef8c9ff2818ff1818ef08e9df18a97f18791f19ba9f3b0c0f691a4f291a2f28390f192a1f29cacf3a3b3f498a6f3a4b3f4aebdf5b0bef59ea8f3a3adf4bbc7f7c4d1f8cad7f8ced9f9b4c4f6b8c8f6acb8f59aa3f3b6c1f6c5d2f8c2cdf8ccd7f9d2ddf9d5e0fad2daf9d5dcf9dfe7fbe2e9fbe5ebfbe8eefb0000</ImageData>
+	</ImageDatas>
 	<Project ProjectGUID="{320929AF-5D4F-4884-8D37-17688AB38CBB}" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
@@ -60,21 +63,52 @@
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>MAIN.mSpeed</Name>
-							<Comment><![CDATA[ Outputs]]></Comment>
-							<Type GUID="{F1067C97-5856-A0D4-F83B-3799F32AD0D1}">ARRAY [1..3] OF DWORD</Type>
+							<Name>MAIN.device[1].mDirection</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.mTime</Name>
-							<Type GUID="{F1067C97-5856-A0D4-F83B-3799F32AD0D1}">ARRAY [1..3] OF DWORD</Type>
+							<Name>MAIN.device[1].mSpeed</Name>
+							<Type>DWORD</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.mDirection</Name>
-							<Type GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}">ARRAY [1..3] OF BOOL</Type>
+							<Name>MAIN.device[1].mTime</Name>
+							<Type>DWORD</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.mMode</Name>
-							<Type GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}">ARRAY [1..3] OF BOOL</Type>
+							<Name>MAIN.device[1].mMode</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[2].mDirection</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[2].mSpeed</Name>
+							<Type>DWORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[2].mTime</Name>
+							<Type>DWORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[2].mMode</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[3].mDirection</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[3].mSpeed</Name>
+							<Type>DWORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[3].mTime</Name>
+							<Type>DWORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.device[3].mMode</Name>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -94,9 +128,212 @@
 				</Instance>
 			</Project>
 		</Plc>
-		<Io/>
+		<Io>
+			<Device Id="2" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="192.168.18.191.3.1" RemoteName="Device_1" InfoImageId="2">
+				<Name>Device_1</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>Ethernet (TwinCAT-Intel PCI Ethernet Adapter (Gigab</DeviceDesc>
+						<DeviceName>\DEVICE\{D4C0C8CB-4673-44B6-974C-F8BC024BC7D2}</DeviceName>
+						<DeviceData>40b034f20358</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="1" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 1 (LAN9255_EtherCAT_Slave)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0e82" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00006100" ProductCode="#x00009255" RevisionNo="#x00000001" InfoDataAddr="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox2="2000" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="LAN9255_EtherCAT_Slave" Desc="LAN9255_EtherCAT_Slave" PortABoxInfo="#x00ffffff">
+						<SyncMan>001080002600010001000000220000018000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000220000018000801022010000</SyncMan>
+						<SyncMan>001109006400010003000000000000000900001164010000</SyncMan>
+						<SyncMan>001414002000010004000000000000001400001420010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010800080108000</BootStrapData>
+						<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<Pdo Name="Inputs process data mapping" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="Position" Index="#x6000" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Temperature" Index="#x6000" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag1" Index="#x6000" Sub="#x03">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag2" Index="#x6000" Sub="#x04">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag3" Index="#x6000" Sub="#x05">
+								<Type>UDINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Outputs process data mapping" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Speed" Index="#x7010" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Time" Index="#x7010" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Direction" Index="#x7010" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Mode" Index="#x7010" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="5001"/>
+					</EtherCAT>
+				</Box>
+				<Box Id="2" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 2 (LAN9255_EtherCAT_Slave)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0e82" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00006100" ProductCode="#x00009255" RevisionNo="#x00000001" InfoDataAddr="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox2="2000" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="LAN9255_EtherCAT_Slave" Desc="LAN9255_EtherCAT_Slave" PortABoxInfo="#x01000001">
+						<SyncMan>001080002600010001000000220000018000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000220000018000801022010000</SyncMan>
+						<SyncMan>001109006400010003000000000000000900001164010000</SyncMan>
+						<SyncMan>001414002000010004000000000000001400001420010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010800080108000</BootStrapData>
+						<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<Pdo Name="Inputs process data mapping" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="Position" Index="#x6000" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Temperature" Index="#x6000" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag1" Index="#x6000" Sub="#x03">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag2" Index="#x6000" Sub="#x04">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag3" Index="#x6000" Sub="#x05">
+								<Type>UDINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Outputs process data mapping" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Speed" Index="#x7010" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Time" Index="#x7010" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Direction" Index="#x7010" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Mode" Index="#x7010" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="5001"/>
+					</EtherCAT>
+				</Box>
+				<Box Id="3" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 3 (LAN9255_EtherCAT_Slave)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0e82" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" FoeType="1" VendorId="#x00006100" ProductCode="#x00009255" RevisionNo="#x00000001" InfoDataAddr="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox2="2000" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="LAN9255_EtherCAT_Slave" Desc="LAN9255_EtherCAT_Slave" PortABoxInfo="#x01000002">
+						<SyncMan>001080002600010001000000220000018000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000220000018000801022010000</SyncMan>
+						<SyncMan>001109006400010003000000000000000900001164010000</SyncMan>
+						<SyncMan>001414002000010004000000000000001400001420010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010800080108000</BootStrapData>
+						<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<Pdo Name="Inputs process data mapping" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="Position" Index="#x6000" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Temperature" Index="#x6000" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag1" Index="#x6000" Sub="#x03">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag2" Index="#x6000" Sub="#x04">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Diag3" Index="#x6000" Sub="#x05">
+								<Type>UDINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Outputs process data mapping" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Speed" Index="#x7010" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Time" Index="#x7010" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Direction" Index="#x7010" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Mode" Index="#x7010" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000006}">ARRAY [0..5] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="5001"/>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
+			</Device>
+		</Io>
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^DaisyChain^DaisyChain Instance">
+			<OwnerB Name="TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)">
+				<Link VarA="PlcTask Inputs^MAIN.mDiag1[1]" VarB="Inputs process data mapping^Diag1" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mDiag2[1]" VarB="Inputs process data mapping^Diag2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mDiag3[1]" VarB="Inputs process data mapping^Diag3" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mPosition[1]" VarB="Inputs process data mapping^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mTemperature[1]" VarB="Inputs process data mapping^Temperature" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[1].mDirection" VarB="Outputs process data mapping^Direction" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[1].mMode" VarB="Outputs process data mapping^Mode" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[1].mSpeed" VarB="Outputs process data mapping^Speed" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[1].mTime" VarB="Outputs process data mapping^Time" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)">
+				<Link VarA="PlcTask Inputs^MAIN.mDiag1[2]" VarB="Inputs process data mapping^Diag1" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mDiag2[2]" VarB="Inputs process data mapping^Diag2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mDiag3[2]" VarB="Inputs process data mapping^Diag3" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mPosition[2]" VarB="Inputs process data mapping^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mTemperature[2]" VarB="Inputs process data mapping^Temperature" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[2].mDirection" VarB="Outputs process data mapping^Direction" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[2].mMode" VarB="Outputs process data mapping^Mode" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[2].mSpeed" VarB="Outputs process data mapping^Speed" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[2].mTime" VarB="Outputs process data mapping^Time" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)">
+				<Link VarA="PlcTask Inputs^MAIN.mDiag1[3]" VarB="Inputs process data mapping^Diag1" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mDiag2[3]" VarB="Inputs process data mapping^Diag2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mDiag3[3]" VarB="Inputs process data mapping^Diag3" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mPosition[3]" VarB="Inputs process data mapping^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.mTemperature[3]" VarB="Inputs process data mapping^Temperature" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[3].mDirection" VarB="Outputs process data mapping^Direction" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[3].mMode" VarB="Outputs process data mapping^Mode" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[3].mSpeed" VarB="Outputs process data mapping^Speed" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^MAIN.device[3].mTime" VarB="Outputs process data mapping^Time" AutoLink="true"/>
+			</OwnerB>
+		</OwnerA>
 	</Mappings>
 </TcSmProject>

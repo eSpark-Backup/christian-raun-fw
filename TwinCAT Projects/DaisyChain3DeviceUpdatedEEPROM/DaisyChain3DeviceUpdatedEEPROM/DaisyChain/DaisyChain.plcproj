@@ -17,6 +17,9 @@
     <LibraryReferences>{0ac6787f-7f9f-4c82-8b0e-80208e7dac85}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\EthercatDevice.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>

@@ -9,25 +9,21 @@ END_VAR
 
 VAR
 	// Outputs
-	{attribute 'TcLinkTo' := '[1]:= TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Speed;
-								[2]	:= TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Speed;
-								[3]	:= TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Speed'}
-	mSpeed AT %Q*: ARRAY [1..deviceCount] OF DWORD ;
-	
-	{attribute 'TcLinkTo' := '[1]:= TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Time;
-								[2]	:= TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Time;
-								[3]	:= TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Time'}
-	mTime AT %Q* : ARRAY [1..deviceCount] OF DWORD ;
-
-	{attribute 'TcLinkTo' := '[1]:= TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Direction;
-								[2]	:= TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Direction;
-								[3]	:= TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Direction'}
-	mDirection AT %Q*: ARRAY [1..deviceCount] OF BOOL ;
-
-	{attribute 'TcLinkTo' := '[1]:= TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Mode;
-								[2]	:= TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Mode;
-								[3]	:= TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Mode'}
-	mMode AT %Q*: ARRAY [1..deviceCount] OF BOOL ;
+	{attribute 'TcLinkTo' := '[1].mDirection := TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Direction;
+								[1].mSpeed := TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Speed;
+								[1].mTime := TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Time;
+								[1].mMode := TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Mode;
+								
+								[2].mDirection := TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Direction;
+								[2].mSpeed := TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Speed;
+								[2].mTime := TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Time;
+								[2].mMode := TIID^Device_1^Box 2 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Mode;
+								
+								[3].mDirection := TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Direction;
+								[3].mSpeed := TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Speed;
+								[3].mTime := TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Time;
+								[3].mMode := TIID^Device_1^Box 3 (LAN9255_EtherCAT_Slave)^Outputs process data mapping^Mode'}
+	device : ARRAY [1..deviceCount] OF EthercatDevice ;
 
 	// Inputs
 	{attribute 'TcLinkTo' := '[1]:= TIID^Device_1^Box 1 (LAN9255_EtherCAT_Slave)^Inputs process data mapping^Position;
