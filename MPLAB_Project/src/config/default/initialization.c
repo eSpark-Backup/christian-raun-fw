@@ -185,7 +185,7 @@ void SYS_Initialize ( void* data )
 	ECAT_Util_Initialize(0, (void *)&drvLAN9255InitData);
 
 
-
+    
     NVIC_Initialize();
 
     /* MISRAC 2012 deviation block end */

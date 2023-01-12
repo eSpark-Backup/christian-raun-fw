@@ -130,7 +130,7 @@ void APP_FlashEEPROMUpdate(uint8_t *flash_data, uint8_t checksum)
 //-----------------------------------------------------------------------------
 const uint32_t gAppBankBOffsetAddr = APP_NVM_BANKB_START_ADDRESS;
 // Bank B application need to started from this below location.
-const uint32_t gApplicationStartAddr   = (uint32_t)(APP_NVM_BANKB_START_ADDRESS + APP_BOOTLOADER_SIZE);
+const uint32_t gApplicationStartAddr   = (uint32_t)(0 + APP_BOOTLOADER_SIZE);
 
 void APP_FlashWrite(uint32_t startAddress,uint8_t *flash_data)
 {

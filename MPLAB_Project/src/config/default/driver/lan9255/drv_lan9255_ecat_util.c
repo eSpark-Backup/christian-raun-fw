@@ -1037,7 +1037,10 @@ void ECAT_Initialization()
 	
     // Ethercat QSPI Callback registration 
     ECAT_QSPI_EventHandlerSet();
-	
+	uint32_t rData;
+        MCHP_ESF_PDI_READ(0x31F8,(uint8_t*)&rData,4);
+        rData |= 0x1;
+        MCHP_ESF_PDI_WRITE(0x31F8,(uint8_t*)&rData,4);
 	uint32_t u32data;
 	do
 	{
@@ -1091,4 +1094,13 @@ static bool ECAT_QSPI_IsTransmissionBusy(void)
 static void ECAT_QSPI_EventHandlerSet(void)
 {
     gDrvLan9255UtilObj.spiPlib->spiCallbackRegister(ECAT_QSPI_Callback,0);
+}
+
+// User defined Function
+void ECAT_LAN9253_RESET(void)
+{
+    uint32_t rData;
+    MCHP_ESF_PDI_READ(RST_CTL_REG, (uint8_t*)&rData, DWORD_LENGTH);
+    rData |= 0x1;
+    MCHP_ESF_PDI_WRITE(RST_CTL_REG, (uint8_t*)&rData, DWORD_LENGTH);
 }
