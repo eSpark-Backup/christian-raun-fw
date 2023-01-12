@@ -1,9 +1,9 @@
 configName: default
-folderName: Project1
+folderName: LAN9255
 format_version: v1.0
-frameworkPath: ..\..\Harmony3
-processor: ATSAME53J18A
-projectName: Project1
+frameworkPath: C:\Users\Abeer.DESKTOP-Q8FRVD0\Harmony3
+processor: LAN9255ZMX019
+projectName: ethercat_counter_foe_app
 settings:
   PackageFilter: csp;dev_packs;ethercat;harmony-services;quick_docs
   FORCE_OPTIMIZATION: 'false'
@@ -11,4 +11,4 @@ settings:
   TRUSTZONE: 'false'
   CMSISPath: .\dev_packs\arm\CMSIS\5.8.0
   MERGE_STRATEGY: USER_ALL
-  DFPPath: .\dev_packs\Microchip\SAME53_DFP\3.5.87\atdf\ATSAME53J18A.atdf
+  DFPPath: .\dev_packs\Microchip\LAN9255_DFP\1.3.20\atdf\LAN9255ZMX019.atdf

@@ -60,6 +60,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/* MISRA C-2012 Rule 8.6 deviated below. Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
 extern uint32_t _stack;
 extern const H3DeviceVectors exception_table;
 
@@ -75,12 +76,11 @@ void __attribute__((optimize("-O1"),section(".text.Dummy_Handler"),long_call, no
     {
     }
 }
+
+/* MISRAC 2012 deviation block start */
+/* MISRA C-2012 Rule 8.6 deviated 119 times.  Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
 /* Device vectors list dummy definition*/
-extern void MemoryManagement_Handler   ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void BusFault_Handler           ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void UsageFault_Handler         ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void SVCall_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void DebugMonitor_Handler       ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PendSV_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void SysTick_Handler            ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PM_Handler                 ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -95,6 +95,8 @@ extern void SUPC_OTHER_Handler         ( void ) __attribute__((weak, alias("Dumm
 extern void SUPC_BODDET_Handler        ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void WDT_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void RTC_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
+extern void EIC_EXTINT_0_Handler       ( void ) __attribute__((weak, alias("Dummy_Handler")));
+extern void EIC_EXTINT_1_Handler       ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void EIC_EXTINT_2_Handler       ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void EIC_EXTINT_3_Handler       ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void EIC_EXTINT_4_Handler       ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -106,8 +108,6 @@ extern void EIC_EXTINT_10_Handler      ( void ) __attribute__((weak, alias("Dumm
 extern void EIC_EXTINT_11_Handler      ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void EIC_EXTINT_12_Handler      ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void EIC_EXTINT_13_Handler      ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void EIC_EXTINT_14_Handler      ( void ) __attribute__((weak, alias("Dummy_Handler")));
-extern void EIC_EXTINT_15_Handler      ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void FREQM_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void NVMCTRL_0_Handler          ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void NVMCTRL_1_Handler          ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -201,6 +201,7 @@ extern void PUKCC_Handler              ( void ) __attribute__((weak, alias("Dumm
 extern void SDHC0_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 
 
+/* MISRAC 2012 deviation block end */
 
 /* Multiple handlers for vector */
 
@@ -234,8 +235,8 @@ const H3DeviceVectors exception_table=
     .pfnSUPC_BODDET_Handler        = SUPC_BODDET_Handler,
     .pfnWDT_Handler                = WDT_Handler,
     .pfnRTC_Handler                = RTC_Handler,
-    .pfnEIC_EXTINT_0_Handler       = EIC_EXTINT_0_InterruptHandler,
-    .pfnEIC_EXTINT_1_Handler       = EIC_EXTINT_1_InterruptHandler,
+    .pfnEIC_EXTINT_0_Handler       = EIC_EXTINT_0_Handler,
+    .pfnEIC_EXTINT_1_Handler       = EIC_EXTINT_1_Handler,
     .pfnEIC_EXTINT_2_Handler       = EIC_EXTINT_2_Handler,
     .pfnEIC_EXTINT_3_Handler       = EIC_EXTINT_3_Handler,
     .pfnEIC_EXTINT_4_Handler       = EIC_EXTINT_4_Handler,
@@ -248,8 +249,8 @@ const H3DeviceVectors exception_table=
     .pfnEIC_EXTINT_11_Handler      = EIC_EXTINT_11_Handler,
     .pfnEIC_EXTINT_12_Handler      = EIC_EXTINT_12_Handler,
     .pfnEIC_EXTINT_13_Handler      = EIC_EXTINT_13_Handler,
-    .pfnEIC_EXTINT_14_Handler      = EIC_EXTINT_14_Handler,
-    .pfnEIC_EXTINT_15_Handler      = EIC_EXTINT_15_Handler,
+    .pfnEIC_EXTINT_14_Handler      = EIC_EXTINT_14_InterruptHandler,
+    .pfnEIC_EXTINT_15_Handler      = EIC_EXTINT_15_InterruptHandler,
     .pfnFREQM_Handler              = FREQM_Handler,
     .pfnNVMCTRL_0_Handler          = NVMCTRL_0_Handler,
     .pfnNVMCTRL_1_Handler          = NVMCTRL_1_Handler,

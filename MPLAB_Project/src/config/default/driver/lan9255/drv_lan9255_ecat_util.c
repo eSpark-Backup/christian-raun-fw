@@ -171,7 +171,7 @@ Summary:
 *******************************************************************************/
 void _ECAT_Sync0Callback(uintptr_t context)
 {
-	//Sync0_Isr();
+	Sync0_Isr();
 }
 
 /*******************************************************************************
@@ -183,7 +183,7 @@ Summary:
 *******************************************************************************/
 void _ECAT_Sync1Callback(uintptr_t context)
 {
-	//Sync1_Isr();
+	Sync1_Isr();
 }
 
 /*******************************************************************************
@@ -196,8 +196,8 @@ Summary:
 void ECAT_SyncInterruptsInitialization(void)
 {
 // SYNC0 and SYNC1 interrupt callback 
-    EIC_CallbackRegister(EIC_PIN_0,_ECAT_Sync0Callback, 0);
-    EIC_CallbackRegister(EIC_PIN_1,_ECAT_Sync1Callback, 0);
+    EIC_CallbackRegister(EIC_PIN_14,_ECAT_Sync0Callback, 0);
+    EIC_CallbackRegister(EIC_PIN_15,_ECAT_Sync1Callback, 0);
 	
 }
 #endif // DC_SUPPORTED
@@ -212,7 +212,7 @@ Summary:
 void _ECAT_EscInterruptRequestCallback(uintptr_t context)
 {
 	CRITICAL_SECTION_ENTER();
-//	PDI_Isr();    
+	PDI_Isr();    
 	CRITICAL_SECTION_LEAVE();
 }
 
@@ -415,12 +415,9 @@ void ECAT_Lan9255_IsPDIFunctional(uint8_t *pu8Data)
     uint8_t  u8TxData[DWORD_LENGTH]={0,0,0,0};
     uint8_t  u8RxData[DWORD_LENGTH]={0,0,0,0};
     uint8_t  u8TxLen=0,u8RxLen=0;
-    uint8_t correctionByte=0;
     
-    u8TxLen=3;
-    // Workaround Start
-    u8RxLen=4;
-    // Workaround end
+    u8TxLen=u8RxLen=3;
+    
     _ECAT_ChipSelectEnable();
 
 	u8TxData[0] = CMD_SERIAL_READ;
@@ -436,12 +433,6 @@ void ECAT_Lan9255_IsPDIFunctional(uint8_t *pu8Data)
     {        
     }
       // Update the EscALEvent value which is required for the state change
-    // Workaround Start
-    if ((u8RxData[3] != 0xff)
-         && (u8RxData[3] != 0x00)){
-        correctionByte = u8RxData[3];
-    }
-    // Workaround End
     gEscALEvent.Byte[0] = u8RxData[1];
     gEscALEvent.Byte[1] = u8RxData[2];
     
@@ -450,15 +441,6 @@ void ECAT_Lan9255_IsPDIFunctional(uint8_t *pu8Data)
     while(gDrvLan9255UtilObj.spiPlib->spiIsBusy())
     {
     }
-    // Workaround Start
-    if(correctionByte!=0)
-    {
-        u8RxData[3] = u8RxData[2];
-        u8RxData[2] = u8RxData[1];
-        u8RxData[1] = u8RxData[0];
-        u8RxData[0] = correctionByte;
-    }
-    // Workaround End
 	memcpy(pu8Data,u8RxData,u8Len);	
 	_ECAT_ChipSelectDisable();
 

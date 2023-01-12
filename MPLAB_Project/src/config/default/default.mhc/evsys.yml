@@ -453,14 +453,14 @@ children:
       - type: Dynamic
         attributes: {id: evsys, value: 'false'}
   - type: Boolean
-    attributes: {id: GENERATOR_EIC_EXTINT_0_ACTIVE}
+    attributes: {id: GENERATOR_EIC_EXTINT_14_ACTIVE}
     children:
     - type: Values
       children:
       - type: Dynamic
         attributes: {id: eic, value: 'false'}
   - type: Boolean
-    attributes: {id: GENERATOR_EIC_EXTINT_1_ACTIVE}
+    attributes: {id: GENERATOR_EIC_EXTINT_15_ACTIVE}
     children:
     - type: Values
       children:

@@ -60,9 +60,13 @@
 void Reset_Handler (void);
 void NonMaskableInt_Handler (void);
 void HardFault_Handler (void);
-void EIC_EXTINT_0_InterruptHandler (void);
-void EIC_EXTINT_1_InterruptHandler (void);
+void MemoryManagement_Handler (void);
+void BusFault_Handler (void);
+void UsageFault_Handler (void);
+void DebugMonitor_Handler (void);
 void EIC_EXTINT_7_InterruptHandler (void);
+void EIC_EXTINT_14_InterruptHandler (void);
+void EIC_EXTINT_15_InterruptHandler (void);
 void TC0_TimerInterruptHandler (void);
 void QSPI_InterruptHandler (void);
 

@@ -88,7 +88,7 @@
 #define ETHERCAT_DUMMY_READ_EN
 
 /* EEPROM Emulation Feature can be enabled by uncommenting below macro for LAN9255*/
-#define ETHERCAT_EEPROM_EMULATION_SUPPORT               1
+#define ETHERCAT_EEPROM_EMULATION_SUPPORT               0
 
 #define ETHERCAT_COMM_PROTOCOL_SPI     1
 

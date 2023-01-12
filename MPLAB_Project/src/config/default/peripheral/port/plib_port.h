@@ -65,15 +65,6 @@
 // *****************************************************************************
 // *****************************************************************************
 
-/*** Macros for STEP pin ***/
-#define STEP_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 4U))
-#define STEP_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 4U))
-#define STEP_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 4U))
-#define STEP_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 4U))
-#define STEP_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 4U))
-#define STEP_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 4U)) & 0x01U)
-#define STEP_PIN                  PORT_PIN_PB04
-
 /*** Macros for QSPI_MOSI pin ***/
 #define QSPI_MOSI_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 8U)) & 0x01U)
 #define QSPI_MOSI_PIN                  PORT_PIN_PA08
@@ -95,23 +86,17 @@
 #define SPI_CS_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 11U)) & 0x01U)
 #define SPI_CS_PIN                  PORT_PIN_PB11
 
-/*** Macros for Ethercat_error_pin pin ***/
-#define Ethercat_error_pin_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 31U))
-#define Ethercat_error_pin_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 31U))
-#define Ethercat_error_pin_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 31U))
-#define Ethercat_error_pin_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 31U))
-#define Ethercat_error_pin_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 31U))
-#define Ethercat_error_pin_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 31U)) & 0x01U)
-#define Ethercat_error_pin_PIN                  PORT_PIN_PB31
+/*** Macros for EIC_EXTINT0 pin ***/
+#define EIC_EXTINT0_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 14U)) & 0x01U)
+#define EIC_EXTINT0_PIN                  PORT_PIN_PA14
 
-/*** Macros for DIR pin ***/
-#define DIR_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 3U))
-#define DIR_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 3U))
-#define DIR_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 3U))
-#define DIR_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 3U))
-#define DIR_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 3U))
-#define DIR_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 3U)) & 0x01U)
-#define DIR_PIN                  PORT_PIN_PB03
+/*** Macros for EIC_EXTINT1 pin ***/
+#define EIC_EXTINT1_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 15U)) & 0x01U)
+#define EIC_EXTINT1_PIN                  PORT_PIN_PA15
+
+/*** Macros for EIC_EXTINT7 pin ***/
+#define EIC_EXTINT7_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 23U)) & 0x01U)
+#define EIC_EXTINT7_PIN                  PORT_PIN_PB23
 
 // *****************************************************************************
 /* PORT Group
@@ -144,7 +129,7 @@
 #define GET_PORT_GROUP(pin)  ((PORT_GROUP)(PORT_BASE_ADDRESS + (0x80U * (((uint32_t)pin) >> 5U))))
 #define GET_PIN_MASK(pin)   (((uint32_t)(0x1U)) << (((uint32_t)pin) & 0x1FU))
 
-/* Named type for port group */ 
+/* Named type for port group */
 typedef uint32_t PORT_GROUP;
 
 
@@ -353,7 +338,6 @@ typedef enum
 // Section: Generated API based on pin configurations done in Pin Manager
 // *****************************************************************************
 // *****************************************************************************
-
 // *****************************************************************************
 /* Function:
     void PORT_Initialize(void)

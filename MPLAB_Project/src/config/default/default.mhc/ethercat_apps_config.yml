@@ -10,7 +10,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'C:\Users\123\HarmonyProjects\LAN9255_Working\firmware\src\slave_stack\'}
+        attributes: {value: 'D:\Ethercat Projects\Test_Firmwares\Foe_Test\Test_Project2\firmware\src\slave_stack'}
   - type: File
     attributes: {id: SSC_LIST_FILE0}
     children:
@@ -20,6 +20,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -35,7 +39,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/applInterface.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/applInterface.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -49,6 +53,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -64,7 +72,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/bootmode.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/bootmode.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE10}
     children:
@@ -74,6 +82,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -89,7 +101,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatfoe.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatfoe.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -103,6 +115,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -118,7 +134,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatslv.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatslv.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE12}
     children:
@@ -128,6 +144,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -143,7 +163,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatslv.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatslv.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -157,6 +177,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -172,7 +196,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecat_def.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecat_def.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -186,6 +210,43 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: eeprom.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: slave_stack\}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/eeprom.h'}
+      - type: String
+        attributes: {id: type}
+        children:
+        - {type: Value, value: HEADER}
+  - type: File
+    attributes: {id: SSC_LIST_FILE15}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -201,9 +262,9 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/emcy.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/emcy.c'}
   - type: File
-    attributes: {id: SSC_LIST_FILE15}
+    attributes: {id: SSC_LIST_FILE16}
     children:
     - type: Attributes
       children:
@@ -211,6 +272,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -226,13 +291,13 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/emcy.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/emcy.h'}
       - type: String
         attributes: {id: type}
         children:
         - {type: Value, value: HEADER}
   - type: File
-    attributes: {id: SSC_LIST_FILE16}
+    attributes: {id: SSC_LIST_FILE17}
     children:
     - type: Attributes
       children:
@@ -240,6 +305,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -255,13 +324,13 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/esc.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/esc.h'}
       - type: String
         attributes: {id: type}
         children:
         - {type: Value, value: HEADER}
   - type: File
-    attributes: {id: SSC_LIST_FILE17}
+    attributes: {id: SSC_LIST_FILE18}
     children:
     - type: Attributes
       children:
@@ -269,6 +338,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -284,9 +357,9 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/foeappl.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/foeappl.c'}
   - type: File
-    attributes: {id: SSC_LIST_FILE18}
+    attributes: {id: SSC_LIST_FILE19}
     children:
     - type: Attributes
       children:
@@ -294,6 +367,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -309,36 +386,11 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/foeappl.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/foeappl.h'}
       - type: String
         attributes: {id: type}
         children:
         - {type: Value, value: HEADER}
-  - type: File
-    attributes: {id: SSC_LIST_FILE19}
-    children:
-    - type: Attributes
-      children:
-      - type: String
-        attributes: {id: dest}
-        children:
-        - {type: Value, value: ../../slave_stack}
-      - type: String
-        attributes: {id: name}
-        children:
-        - {type: Value, value: mailbox.c}
-      - type: String
-        attributes: {id: project}
-        children:
-        - {type: Value, value: slave_stack\}
-      - type: Boolean
-        attributes: {id: relative}
-        children:
-        - {type: Value, value: 'false'}
-      - type: String
-        attributes: {id: source}
-        children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/mailbox.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE2}
     children:
@@ -348,6 +400,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -363,7 +419,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/bootmode.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/bootmode.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -377,6 +433,39 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: mailbox.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: slave_stack\}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/mailbox.c'}
+  - type: File
+    attributes: {id: SSC_LIST_FILE21}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -392,13 +481,13 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/mailbox.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/mailbox.h'}
       - type: String
         attributes: {id: type}
         children:
         - {type: Value, value: HEADER}
   - type: File
-    attributes: {id: SSC_LIST_FILE21}
+    attributes: {id: SSC_LIST_FILE22}
     children:
     - type: Attributes
       children:
@@ -406,6 +495,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -421,9 +514,9 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/objdef.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/objdef.c'}
   - type: File
-    attributes: {id: SSC_LIST_FILE22}
+    attributes: {id: SSC_LIST_FILE23}
     children:
     - type: Attributes
       children:
@@ -431,6 +524,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -446,13 +543,13 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/objdef.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/objdef.h'}
       - type: String
         attributes: {id: type}
         children:
         - {type: Value, value: HEADER}
   - type: File
-    attributes: {id: SSC_LIST_FILE23}
+    attributes: {id: SSC_LIST_FILE24}
     children:
     - type: Attributes
       children:
@@ -460,6 +557,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -475,9 +576,9 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/sample_app.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/sample_app.c'}
   - type: File
-    attributes: {id: SSC_LIST_FILE24}
+    attributes: {id: SSC_LIST_FILE25}
     children:
     - type: Attributes
       children:
@@ -485,6 +586,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -500,13 +605,13 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/sample_app.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/sample_app.h'}
       - type: String
         attributes: {id: type}
         children:
         - {type: Value, value: HEADER}
   - type: File
-    attributes: {id: SSC_LIST_FILE25}
+    attributes: {id: SSC_LIST_FILE26}
     children:
     - type: Attributes
       children:
@@ -514,6 +619,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -529,13 +638,13 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/sample_appObjects.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/sample_appObjects.h'}
       - type: String
         attributes: {id: type}
         children:
         - {type: Value, value: HEADER}
   - type: File
-    attributes: {id: SSC_LIST_FILE26}
+    attributes: {id: SSC_LIST_FILE27}
     children:
     - type: Attributes
       children:
@@ -543,6 +652,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -558,9 +671,9 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/sdoserv.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/sdoserv.c'}
   - type: File
-    attributes: {id: SSC_LIST_FILE27}
+    attributes: {id: SSC_LIST_FILE28}
     children:
     - type: Attributes
       children:
@@ -568,6 +681,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -583,7 +700,40 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/sdoserv.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/sdoserv.h'}
+      - type: String
+        attributes: {id: type}
+        children:
+        - {type: Value, value: HEADER}
+  - type: File
+    attributes: {id: SSC_LIST_FILE29}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: .vscode\settings.json}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: slave_stack\.vscode\}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/.vscode/settings.json'}
       - type: String
         attributes: {id: type}
         children:
@@ -597,6 +747,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -612,7 +766,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/coeappl.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/coeappl.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE4}
     children:
@@ -622,6 +776,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -637,7 +795,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/coeappl.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/coeappl.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -651,6 +809,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -666,7 +828,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatappl.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatappl.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE6}
     children:
@@ -676,6 +838,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -691,7 +857,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatappl.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatappl.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -705,6 +871,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -720,7 +890,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatcoe.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatcoe.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE8}
     children:
@@ -730,6 +900,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -745,7 +919,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatcoe.h'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatcoe.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -759,6 +933,10 @@ children:
         attributes: {id: dest}
         children:
         - {type: Value, value: ../../slave_stack}
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
@@ -774,7 +952,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'C:/Users/123/HarmonyProjects/LAN9255_Working/firmware/src/slave_stack/Src/ecatfoe.c'}
+        - {type: Value, value: 'D:/Ethercat Projects/Test_Firmwares/Foe_Test/Test_Project2/firmware/src/slave_stack/ecatfoe.c'}
 - type: Attachments
   children:
   - type: DirectDependency
@@ -791,4 +969,4 @@ children:
         children:
         - {type: Value, value: drvEthercatLan9255}
 - type: ElementPosition
-  attributes: {x: '428', y: '186', id: ethercat_apps_config}
+  attributes: {x: '477', y: '238', id: ethercat_apps_config}

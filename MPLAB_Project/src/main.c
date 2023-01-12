@@ -26,7 +26,7 @@
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
-
+#include  "app_lan9255.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -38,16 +38,21 @@ int main ( void )
 {
     /* Initialize all modules */
     SYS_Initialize ( NULL );
+    APP_Initialize();
     
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
-       
+        APP_Tasks ( );
     }
 
     /* Execution should not come here during normal operation */
 
     return ( EXIT_FAILURE );
 }
+
+
+/*******************************************************************************
+ End of File
+*/
 

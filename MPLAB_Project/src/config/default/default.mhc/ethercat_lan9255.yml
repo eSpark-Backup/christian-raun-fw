@@ -65,12 +65,19 @@ children:
       - type: User
         attributes: {value: ETHERCAT_SPI_DIRECT_MODE_ACCESS}
   - type: KeyValueSet
+    attributes: {id: DRV_LAN9255_SYNC0_INT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '14'}
+  - type: KeyValueSet
     attributes: {id: DRV_LAN9255_SYNC1_INT}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '1'}
+        attributes: {value: '15'}
   - type: String
     attributes: {id: DRV_LAN9255_TIMER_PLIB}
     children:
@@ -129,4 +136,4 @@ children:
         children:
         - {type: Value, value: EtherCAT_LANDRV_Dependency}
 - type: ElementPosition
-  attributes: {x: '265', y: '155', id: ethercat_lan9255}
+  attributes: {x: '304', y: '238', id: ethercat_lan9255}
