@@ -1037,10 +1037,8 @@ void ECAT_Initialization()
 	
     // Ethercat QSPI Callback registration 
     ECAT_QSPI_EventHandlerSet();
-	uint32_t rData;
-        MCHP_ESF_PDI_READ(0x31F8,(uint8_t*)&rData,4);
-        rData |= 0x1;
-        MCHP_ESF_PDI_WRITE(0x31F8,(uint8_t*)&rData,4);
+    // Reset LAN9253 (added because of FoE)
+    ECAT_LAN9253_RESET();
 	uint32_t u32data;
 	do
 	{
