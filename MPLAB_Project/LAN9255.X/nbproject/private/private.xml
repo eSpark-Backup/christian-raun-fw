@@ -5,10 +5,6 @@
         <group>
             <file>file:/D:/Foe_Bin_test/Test_Project/firmware/src/main.c</file>
             <file>file:/D:/Foe_Bin_test/Test_Project/firmware/src/app_lan9255.c</file>
-            <file>file:/D:/Foe_Bin_test/Test_Project/firmware/src/config/default/initialization.c</file>
-            <file>file:/D:/Foe_Bin_test/Test_Project/firmware/src/config/default/ethercat_foe.ld</file>
-            <file>file:/D:/Foe_Bin_test/Test_Project/firmware/src/config/default/device.h</file>
-            <file>file:/D:/Foe_Bin_test/Test_Project/firmware/src/slave_stack/sample_app.c</file>
         </group>
     </open-files>
 </project-private>
