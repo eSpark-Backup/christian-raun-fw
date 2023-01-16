@@ -65,6 +65,32 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/*** Macros for DIR pin ***/
+#define DIR_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 3U))
+#define DIR_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 3U))
+#define DIR_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 3U))
+#define DIR_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 3U))
+#define DIR_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 3U))
+#define DIR_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 3U)) & 0x01U)
+#define DIR_PIN                  PORT_PIN_PB03
+
+/*** Macros for STEP pin ***/
+#define STEP_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 4U))
+#define STEP_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 4U))
+#define STEP_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 4U))
+#define STEP_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 4U))
+#define STEP_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 4U))
+#define STEP_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 4U)) & 0x01U)
+#define STEP_PIN                  PORT_PIN_PB04
+
+/*** Macros for UART_TX pin ***/
+#define UART_TX_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 4U)) & 0x01U)
+#define UART_TX_PIN                  PORT_PIN_PA04
+
+/*** Macros for UART_RX pin ***/
+#define UART_RX_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 5U)) & 0x01U)
+#define UART_RX_PIN                  PORT_PIN_PA05
+
 /*** Macros for QSPI_MOSI pin ***/
 #define QSPI_MOSI_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 8U)) & 0x01U)
 #define QSPI_MOSI_PIN                  PORT_PIN_PA08
@@ -86,6 +112,23 @@
 #define SPI_CS_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 11U)) & 0x01U)
 #define SPI_CS_PIN                  PORT_PIN_PB11
 
+/*** Macros for ENC_DATA pin ***/
+#define ENC_DATA_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 12U)) & 0x01U)
+#define ENC_DATA_PIN                  PORT_PIN_PB12
+
+/*** Macros for ENC_SCK pin ***/
+#define ENC_SCK_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 13U)) & 0x01U)
+#define ENC_SCK_PIN                  PORT_PIN_PB13
+
+/*** Macros for ENC_CS pin ***/
+#define ENC_CS_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 14U))
+#define ENC_CS_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 14U))
+#define ENC_CS_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 14U))
+#define ENC_CS_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 14U))
+#define ENC_CS_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 14U))
+#define ENC_CS_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 14U)) & 0x01U)
+#define ENC_CS_PIN                  PORT_PIN_PB14
+
 /*** Macros for EIC_EXTINT0 pin ***/
 #define EIC_EXTINT0_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 14U)) & 0x01U)
 #define EIC_EXTINT0_PIN                  PORT_PIN_PA14
@@ -97,6 +140,15 @@
 /*** Macros for EIC_EXTINT7 pin ***/
 #define EIC_EXTINT7_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 23U)) & 0x01U)
 #define EIC_EXTINT7_PIN                  PORT_PIN_PB23
+
+/*** Macros for Ethercat_error_pin pin ***/
+#define Ethercat_error_pin_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 31U)) & 0x01U)
+#define Ethercat_error_pin_PIN                  PORT_PIN_PB31
 
 // *****************************************************************************
 /* PORT Group

@@ -67,7 +67,10 @@ void DebugMonitor_Handler (void);
 void EIC_EXTINT_7_InterruptHandler (void);
 void EIC_EXTINT_14_InterruptHandler (void);
 void EIC_EXTINT_15_InterruptHandler (void);
+void SERCOM0_USART_InterruptHandler (void);
+void SERCOM4_SPI_InterruptHandler (void);
 void TC0_TimerInterruptHandler (void);
+void TC1_TimerInterruptHandler (void);
 void QSPI_InterruptHandler (void);
 
 

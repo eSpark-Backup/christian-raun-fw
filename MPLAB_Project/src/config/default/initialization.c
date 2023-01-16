@@ -173,13 +173,19 @@ void SYS_Initialize ( void* data )
 
 
 
-    QSPI_Initialize();
-
     EVSYS_Initialize();
+
+    SERCOM0_USART_Initialize();
+
+    SERCOM4_SPI_Initialize();
 
     EIC_Initialize();
 
+    TC1_TimerInitialize();
+
     TC0_TimerInitialize();
+    
+    QSPI_Initialize();
 
 
 	ECAT_Util_Initialize(0, (void *)&drvLAN9255InitData);

@@ -1,44 +1,21 @@
-/*******************************************************************************
-  Sample application source file 
+/*
+* This source file is part of the EtherCAT Slave Stack Code licensed by Beckhoff Automation GmbH & Co KG, 33415 Verl, Germany.
+* The corresponding license agreement applies. This hint shall not be removed.
+*/
 
-  Company:
-    Microchip Technology Inc.
+/**
+\addtogroup LAN9255_EtherCAT_Slave LAN9255_EtherCAT_Slave
+@{
+*/
 
-  File Name:
-    sample_app.c
+/**
+\file LAN9255_EtherCAT_Slave.c
+\brief Implementation
+ Created with SSC Tool application parser 1.6.4.0
+\version 0.0.0.1
+*/
 
-  Summary:
-    This source file is modified for PDO input and output processing
 
-  Description:
-    This source file is modified for PDO input and output processing. 
-	This file can be replaced with the generated sample file by the SSC tool.
-*******************************************************************************/
-
-/*****************************************************************************
- Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
-
-Microchip Technology Inc. and its subsidiaries.
-
-Subject to your compliance with these terms, you may use Microchip software 
-and any derivatives exclusively with Microchip products. It is your 
-responsibility to comply with third party license terms applicable to your 
-use of third party software (including open source software) that may 
-accompany Microchip software.
-
-THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
-PURPOSE.
-
-IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
-BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
-FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
-ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
-THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************/
 /*-----------------------------------------------------------------------------------------
 ------
 ------    Includes
@@ -48,9 +25,9 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 
 #include "applInterface.h"
 
-#define _SAMPLE_APP_ 1
-#include "sample_app.h"
-#undef _SAMPLE_APP_
+#define _LAN9255__ETHER_CAT__SLAVE_ 1
+#include "LAN9255_EtherCAT_Slave.h"
+#undef _LAN9255__ETHER_CAT__SLAVE_
 
 #include "bootmode.h"
 #include "ethercat_configuration.h"
@@ -90,7 +67,8 @@ UINT32			u32FileSize=0;
 volatile BOOL	gFirmwareDownload_Started = FALSE;
 volatile BOOL	gFirmwareDownload_Finished = FALSE;
 
-
+struct dataInPacket dataIn = {0,0,0,0};
+struct dataOutPacket dataOut = {0,0,0,0,0};
 
 
 
@@ -437,7 +415,6 @@ UINT16 HW_EepromReload(void)
 }
 #endif
 
-
 /////////////////////////////////////////////////////////////////////////////////////////
 /**
  \brief    The function is called when an error state was acknowledged by the master
@@ -483,7 +460,7 @@ UINT16 APPL_StopMailboxHandler(void)
 {
 #if defined(ETHERCAT_USE_FOE)
 	APP_FW_StateBOOTtoINIT();
-#endif    
+#endif
     return ALSTATUSCODE_NOERROR;
 }
 
@@ -658,8 +635,16 @@ UINT16 APPL_GenerateMapping(UINT16 *pInputSize,UINT16 *pOutputSize)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_InputMapping(UINT16* pData)
 {
-	UINT32 *pTemp = (UINT32*)pData;
-	*pTemp = Inputs0x6000.Counter;
+    UINT32 *pTemp = (UINT32*)pData;
+    *pTemp = Inputs0x6000.Position;
+    pTemp++;
+    *pTemp = Inputs0x6000.Temperature;
+    pTemp++;
+    *pTemp = Inputs0x6000.Diag1;
+    pTemp++;
+    *pTemp = Inputs0x6000.Diag2;
+    pTemp++;
+    *pTemp = Inputs0x6000.Diag3;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -671,8 +656,14 @@ void APPL_InputMapping(UINT16* pData)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_OutputMapping(UINT16* pData)
 {
-	UINT32 *pTemp = (UINT32*)pData;
-	Outputs0x7010.Trigger = *pTemp;
+    UINT32 *pTemp = (UINT32*)pData;
+	Outputs0x7010.Speed = *pTemp;
+    pTemp++;
+    Outputs0x7010.Time = *pTemp;
+    pTemp++;
+    UINT8 *pTemp8 = (UINT8*) pTemp;
+    Outputs0x7010.Direction = (*pTemp8 & 0x1);
+    Outputs0x7010.Mode = (*pTemp8 & 0x2) >> 1;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -682,19 +673,53 @@ void APPL_OutputMapping(UINT16* pData)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_Application(void)
 {
-	if(Outputs0x7010.Trigger)
+    #if 0
+    if(Outputs0x7010.Speed)
 	{
-        gTriggerCounterValMeasure += Outputs0x7010.Trigger;
-        if(gTriggerCounterValMeasure == gFOETestFrameSize)
-        {
-            Inputs0x6000.Counter += Outputs0x7010.Trigger;
-            gTriggerCounterValMeasure = 0;
-        }
-	} else
+            Inputs0x6000.Position += Outputs0x7010.Speed;
+	} 
+    else
 	{
-		Inputs0x6000.Counter = 0;
-        gTriggerCounterValMeasure = 0;
+		Inputs0x6000.Position = 0;
 	}
+    if(Outputs0x7010.Time)
+	{
+            Inputs0x6000.Temperature += Outputs0x7010.Time;
+	} 
+    else
+	{
+		Inputs0x6000.Temperature = 0;
+	}
+    if(Outputs0x7010.Direction)
+	{
+            Inputs0x6000.Diag1 += Outputs0x7010.Direction;
+	} 
+    else
+	{
+		Inputs0x6000.Diag1 = 0;
+	}
+    if(Outputs0x7010.Mode)
+	{
+            Inputs0x6000.Diag2 += Outputs0x7010.Mode;
+            Inputs0x6000.Diag3 += Outputs0x7010.Mode;
+	} 
+    else
+	{
+		Inputs0x6000.Diag2 = 0;
+		Inputs0x6000.Diag3 = 0;
+	}
+    #endif
+    // Map Outputs 
+    Inputs0x6000.Position = dataOut.position;
+    Inputs0x6000.Temperature = dataOut.temperature;
+    Inputs0x6000.Diag1 = dataOut.diag1;
+    Inputs0x6000.Diag2 = dataOut.diag2;
+    Inputs0x6000.Diag3 = dataOut.diag3;
+    // Map Inputs
+    dataIn.speed = Outputs0x7010.Speed;
+    dataIn.time = Outputs0x7010.Time;
+    dataIn.direction = Outputs0x7010.Direction;
+    dataIn.mode = Outputs0x7010.Mode;
 }
 
 #if EXPLICIT_DEVICE_ID
@@ -715,8 +740,6 @@ UINT16 APPL_GetDeviceID()
     return 0x5;
 }
 #endif
-
-
 
 #if USE_DEFAULT_MAIN
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -766,5 +789,4 @@ void main(void)
 }
 #endif //#if USE_DEFAULT_MAIN
 /** @} */
-
 
