@@ -1,22 +1,45 @@
-/*
-* This source file is part of the EtherCAT Slave Stack Code licensed by Beckhoff Automation GmbH & Co KG, 33415 Verl, Germany.
-* The corresponding license agreement applies. This hint shall not be removed.
-*/
+/*******************************************************************************
+  Sample application object header file 
 
-/**
-* \addtogroup LAN9255_EtherCAT_Slave LAN9255_EtherCAT_Slave
-* @{
-*/
+  Company:
+    Microchip Technology Inc.
 
-/**
-\file LAN9255_EtherCAT_SlaveObjects
-\author ET9300Utilities.ApplicationHandler (Version 1.6.4.0) | EthercatSSC@beckhoff.com
+  File Name:
+    sample_appObjects.h
 
-\brief LAN9255_EtherCAT_Slave specific objects<br>
-\brief NOTE : This file will be overwritten if a new object dictionary is generated!<br>
-*/
+  Summary:
+    This file will be overwritten if a new object dictionary is generated!
 
-#if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
+  Description:
+	This file will be overwritten if a new object dictionary is generated!
+	This file can be replaced with the generated sample file by the SSC tool.
+*******************************************************************************/
+
+/*****************************************************************************
+ Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+
+Microchip Technology Inc. and its subsidiaries.
+
+Subject to your compliance with these terms, you may use Microchip software 
+and any derivatives exclusively with Microchip products. It is your 
+responsibility to comply with third party license terms applicable to your 
+use of third party software (including open source software) that may 
+accompany Microchip software.
+
+THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
+EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
+WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
+PURPOSE.
+
+IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
+INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
+WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
+BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
+FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
+ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
+THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+*****************************************************************************/
+#if defined(_SAMPLE_APP_) && (_SAMPLE_APP_ == 1)
 #define PROTO
 #else
 #define PROTO extern
@@ -35,51 +58,35 @@
 * <br>
 * SubIndex 0<br>
 * SubIndex 1 - Reference to 0x7010.1<br>
-* SubIndex 2 - Reference to 0x7010.2<br>
-* SubIndex 3 - Reference to 0x7010.3<br>
-* SubIndex 4 - Reference to 0x7010.4<br>
-* SubIndex 5 - Padding entry (6Bit)<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1601[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x7010.1 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x7010.2 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x7010.3 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x7010.4 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex5 - Padding entry (6Bit) */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex1 - Reference to 0x7010.1 */
 
 /**
 * \brief Object/Entry names
 */
 OBJCONST UCHAR OBJMEM aName0x1601[] = "Outputs process data mapping\000"
-"SubIndex 001\000"
-"SubIndex 002\000"
-"SubIndex 003\000"
-"SubIndex 004\000"
-"SubIndex 005\000\377";
+"SubIndex 001\000\377";
 #endif //#ifdef _OBJD_
 
-#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#ifndef _SAMPLE_APP_OBJECTS_H_
 /**
 * \brief Object structure
 */
 typedef struct OBJ_STRUCT_PACKED_START {
 UINT16 u16SubIndex0;
 UINT32 SI1; /* Subindex1 - Reference to 0x7010.1 */
-UINT32 SI2; /* Subindex2 - Reference to 0x7010.2 */
-UINT32 SI3; /* Subindex3 - Reference to 0x7010.3 */
-UINT32 SI4; /* Subindex4 - Reference to 0x7010.4 */
-UINT32 SI5; /* Subindex5 - Padding entry (6Bit) */
 } OBJ_STRUCT_PACKED_END
 TOBJ1601;
-#endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#endif //#ifndef _SAMPLE_APP_OBJECTS_H_
 
 /**
 * \brief Object variable
 */
 PROTO TOBJ1601 OutputsProcessDataMapping0x1601
-#if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={5,0x70100120,0x70100220,0x70100301,0x70100401,0x00000006}
+#if defined(_SAMPLE_APP_) && (_SAMPLE_APP_ == 1)
+={1,0x70100120}
 #endif
 ;
 /** @}*/
@@ -100,51 +107,35 @@ PROTO TOBJ1601 OutputsProcessDataMapping0x1601
 * <br>
 * SubIndex 0<br>
 * SubIndex 1 - Reference to 0x6000.1<br>
-* SubIndex 2 - Reference to 0x6000.2<br>
-* SubIndex 3 - Reference to 0x6000.3<br>
-* SubIndex 4 - Reference to 0x6000.4<br>
-* SubIndex 5 - Reference to 0x6000.5<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1A00[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex1 - Reference to 0x6000.1 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex2 - Reference to 0x6000.2 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x6000.3 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x6000.4 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex5 - Reference to 0x6000.5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex1 - Reference to 0x6000.1 */
 
 /**
 * \brief Object/Entry names
 */
 OBJCONST UCHAR OBJMEM aName0x1A00[] = "Inputs process data mapping\000"
-"SubIndex 001\000"
-"SubIndex 002\000"
-"SubIndex 003\000"
-"SubIndex 004\000"
-"SubIndex 005\000\377";
+"SubIndex 001\000\377";
 #endif //#ifdef _OBJD_
 
-#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#ifndef _SAMPLE_APP_OBJECTS_H_
 /**
 * \brief Object structure
 */
 typedef struct OBJ_STRUCT_PACKED_START {
 UINT16 u16SubIndex0;
 UINT32 SI1; /* Subindex1 - Reference to 0x6000.1 */
-UINT32 SI2; /* Subindex2 - Reference to 0x6000.2 */
-UINT32 SI3; /* Subindex3 - Reference to 0x6000.3 */
-UINT32 SI4; /* Subindex4 - Reference to 0x6000.4 */
-UINT32 SI5; /* Subindex5 - Reference to 0x6000.5 */
 } OBJ_STRUCT_PACKED_END
 TOBJ1A00;
-#endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#endif //#ifndef _SAMPLE_APP_OBJECTS_H_
 
 /**
 * \brief Object variable
 */
 PROTO TOBJ1A00 InputsProcessDataMapping0x1A00
-#if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={5,0x60000120,0x60000220,0x60000320,0x60000420,0x60000520}
+#if defined(_SAMPLE_APP_) && (_SAMPLE_APP_ == 1)
+={1,0x60000120}
 #endif
 ;
 /** @}*/
@@ -177,7 +168,7 @@ OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1C12[] = {
 OBJCONST UCHAR OBJMEM aName0x1C12[] = "SyncManager 2 assignment\000\377";
 #endif //#ifdef _OBJD_
 
-#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#ifndef _SAMPLE_APP_OBJECTS_H_
 /**
 * \brief Object structure
 */
@@ -186,13 +177,13 @@ UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
 UINT16 aEntries[1];  /**< \brief Subindex 1 - 1 */
 } OBJ_STRUCT_PACKED_END
 TOBJ1C12;
-#endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#endif //#ifndef _SAMPLE_APP_OBJECTS_H_
 
 /**
 * \brief Object variable
 */
 PROTO TOBJ1C12 sRxPDOassign
-#if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
+#if defined(_SAMPLE_APP_) && (_SAMPLE_APP_ == 1)
 ={1,{0x1601}}
 #endif
 ;
@@ -226,7 +217,7 @@ OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1C13[] = {
 OBJCONST UCHAR OBJMEM aName0x1C13[] = "SyncManager 3 assignment\000\377";
 #endif //#ifdef _OBJD_
 
-#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#ifndef _SAMPLE_APP_OBJECTS_H_
 /**
 * \brief Object structure
 */
@@ -235,13 +226,13 @@ UINT16   u16SubIndex0;  /**< \brief Subindex 0 */
 UINT16 aEntries[1];  /**< \brief Subindex 1 - 1 */
 } OBJ_STRUCT_PACKED_END
 TOBJ1C13;
-#endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#endif //#ifndef _SAMPLE_APP_OBJECTS_H_
 
 /**
 * \brief Object variable
 */
 PROTO TOBJ1C13 sTxPDOassign
-#if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
+#if defined(_SAMPLE_APP_) && (_SAMPLE_APP_ == 1)
 ={1,{0x1A00}}
 #endif
 ;
@@ -262,52 +253,36 @@ PROTO TOBJ1C13 sTxPDOassign
 * \brief Object entry descriptions<br>
 * <br>
 * SubIndex 0<br>
-* SubIndex 1 - Position<br>
-* SubIndex 2 - Temperature<br>
-* SubIndex 3 - Diag1<br>
-* SubIndex 4 - Diag2<br>
-* SubIndex 5 - Diag3<br>
+* SubIndex 1 - Counter<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex1 - Position */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex2 - Temperature */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex3 - Diag1 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex4 - Diag2 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }}; /* Subindex5 - Diag3 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }}; /* Subindex1 - Counter */
 
 /**
 * \brief Object/Entry names
 */
 OBJCONST UCHAR OBJMEM aName0x6000[] = "Inputs\000"
-"Position\000"
-"Temperature\000"
-"Diag1\000"
-"Diag2\000"
-"Diag3\000\377";
+"Counter\000\377";
 #endif //#ifdef _OBJD_
 
-#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#ifndef _SAMPLE_APP_OBJECTS_H_
 /**
 * \brief Object structure
 */
 typedef struct OBJ_STRUCT_PACKED_START {
 UINT16 u16SubIndex0;
-UINT32 Position; /* Subindex1 - Position */
-UINT32 Temperature; /* Subindex2 - Temperature */
-UINT32 Diag1; /* Subindex3 - Diag1 */
-UINT32 Diag2; /* Subindex4 - Diag2 */
-UINT32 Diag3; /* Subindex5 - Diag3 */
+UINT32 Counter; /* Subindex1 - Counter */
 } OBJ_STRUCT_PACKED_END
 TOBJ6000;
-#endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#endif //#ifndef _SAMPLE_APP_OBJECTS_H_
 
 /**
 * \brief Object variable
 */
 PROTO TOBJ6000 Inputs0x6000
-#if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={5,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000}
+#if defined(_SAMPLE_APP_) && (_SAMPLE_APP_ == 1)
+={1,0x00000000}
 #endif
 ;
 /** @}*/
@@ -327,52 +302,36 @@ PROTO TOBJ6000 Inputs0x6000
 * \brief Object entry descriptions<br>
 * <br>
 * SubIndex 0<br>
-* SubIndex 1 - Speed<br>
-* SubIndex 2 - Time<br>
-* SubIndex 3 - Direction<br>
-* SubIndex 4 - Mode<br>
-* SubIndex 5<br>
+* SubIndex 1 - Trigger<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x7010[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex1 - Speed */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex2 - Time */
-{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex3 - Direction */
-{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex4 - Mode */
-{ DEFTYPE_NULL , 0x06 , 0x0000 }}; /* Subindex5 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }}; /* Subindex1 - Trigger */
 
 /**
 * \brief Object/Entry names
 */
 OBJCONST UCHAR OBJMEM aName0x7010[] = "Outputs\000"
-"Speed\000"
-"Time\000"
-"Direction\000"
-"Mode\000"
-"\000\377";
+"Trigger\000\377";
 #endif //#ifdef _OBJD_
 
-#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#ifndef _SAMPLE_APP_OBJECTS_H_
 /**
 * \brief Object structure
 */
 typedef struct OBJ_STRUCT_PACKED_START {
 UINT16 u16SubIndex0;
-UINT32 Speed; /* Subindex1 - Speed */
-UINT32 Time; /* Subindex2 - Time */
-BOOLEAN(Direction); /* Subindex3 - Direction */
-BOOLEAN(Mode); /* Subindex4 - Mode */
-ALIGN6(SI5) /* Subindex5 */
+UINT32 Trigger; /* Subindex1 - Trigger */
 } OBJ_STRUCT_PACKED_END
 TOBJ7010;
-#endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#endif //#ifndef _SAMPLE_APP_OBJECTS_H_
 
 /**
 * \brief Object variable
 */
 PROTO TOBJ7010 Outputs0x7010
-#if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={4,0x00000000,0x00000000,0x00,0x00,0}
+#if defined(_SAMPLE_APP_) && (_SAMPLE_APP_ == 1)
+={1,0x00000000}
 #endif
 ;
 /** @}*/
@@ -386,21 +345,21 @@ PROTO TOBJ7010 Outputs0x7010
 #ifdef _OBJD_
 TOBJECT    OBJMEM ApplicationObjDic[] = {
 /* Object 0x1601 */
-{NULL , NULL ,  0x1601 , {DEFTYPE_PDOMAPPING , 5 | (OBJCODE_REC << 8)} , asEntryDesc0x1601 , aName0x1601 , &OutputsProcessDataMapping0x1601 , NULL , NULL , 0x0000 },
+{NULL , NULL ,  0x1601 , {DEFTYPE_PDOMAPPING , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x1601 , aName0x1601 , &OutputsProcessDataMapping0x1601 , NULL , NULL , 0x0000 },
 /* Object 0x1A00 */
-{NULL , NULL ,  0x1A00 , {DEFTYPE_PDOMAPPING , 5 | (OBJCODE_REC << 8)} , asEntryDesc0x1A00 , aName0x1A00 , &InputsProcessDataMapping0x1A00 , NULL , NULL , 0x0000 },
+{NULL , NULL ,  0x1A00 , {DEFTYPE_PDOMAPPING , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x1A00 , aName0x1A00 , &InputsProcessDataMapping0x1A00 , NULL , NULL , 0x0000 },
 /* Object 0x1C12 */
 {NULL , NULL ,  0x1C12 , {DEFTYPE_UNSIGNED16 , 1 | (OBJCODE_ARR << 8)} , asEntryDesc0x1C12 , aName0x1C12 , &sRxPDOassign , NULL , NULL , 0x0000 },
 /* Object 0x1C13 */
 {NULL , NULL ,  0x1C13 , {DEFTYPE_UNSIGNED16 , 1 | (OBJCODE_ARR << 8)} , asEntryDesc0x1C13 , aName0x1C13 , &sTxPDOassign , NULL , NULL , 0x0000 },
 /* Object 0x6000 */
-{NULL , NULL ,  0x6000 , {DEFTYPE_RECORD , 5 | (OBJCODE_REC << 8)} , asEntryDesc0x6000 , aName0x6000 , &Inputs0x6000 , NULL , NULL , 0x0000 },
+{NULL , NULL ,  0x6000 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x6000 , aName0x6000 , &Inputs0x6000 , NULL , NULL , 0x0000 },
 /* Object 0x7010 */
-{NULL , NULL ,  0x7010 , {DEFTYPE_RECORD , 5 | (OBJCODE_REC << 8)} , asEntryDesc0x7010 , aName0x7010 , &Outputs0x7010 , NULL , NULL , 0x0000 },
+{NULL , NULL ,  0x7010 , {DEFTYPE_RECORD , 1 | (OBJCODE_REC << 8)} , asEntryDesc0x7010 , aName0x7010 , &Outputs0x7010 , NULL , NULL , 0x0000 },
 {NULL,NULL, 0xFFFF, {0, 0}, NULL, NULL, NULL, NULL}};
 #endif    //#ifdef _OBJD_
 
 #undef PROTO
 
 /** @}*/
-#define _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
+#define _SAMPLE_APP_OBJECTS_H_

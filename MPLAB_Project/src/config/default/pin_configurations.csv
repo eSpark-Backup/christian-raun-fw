@@ -1,17 +1,17 @@
 "Pin Number","Pin ID","Custom Name","Function","Mode", "Direction","Latch","Pull Up","Pull Down","Drive Strength"
-2,PB03,DIR,GPIO,Digital,Out,Low,,,NORMAL
+2,PB03,,Available,,,,,,NORMAL
 3,PA00,,Available,,,,,,NORMAL
 5,PA01,,Available,,,,,,NORMAL
 8,PA02,,Available,,,,,,NORMAL
 9,PA03,,Available,,,,,,NORMAL
-10,PB04,STEP,GPIO,Digital,Out,Low,,,NORMAL
+10,PB04,,Available,,,,,,NORMAL
 11,PB05,,Available,,,,,,NORMAL
 19,PB06,,Available,,,,,,NORMAL
 20,PB07,,Available,,,,,,NORMAL
 22,PB08,,Available,,,,,,NORMAL
 23,PB09,,Available,,,,,,NORMAL
-25,PA04,UART_TX,SERCOM0_PAD0,Digital,High Impedance,n/a,No,No,NORMAL
-27,PA05,UART_RX,SERCOM0_PAD1,Digital,High Impedance,n/a,No,No,NORMAL
+25,PA04,,Available,,,,,,NORMAL
+27,PA05,,Available,,,,,,NORMAL
 28,PA06,,Available,,,,,,NORMAL
 30,PA07,,Available,,,,,,NORMAL
 33,PA08,QSPI_MOSI,QSPI_DATA0,Digital,High Impedance,n/a,No,No,NORMAL
@@ -20,9 +20,9 @@
 36,PA11,,Available,,,,,,NORMAL
 40,PB10,QSPI_SCK,QSPI_SCK,Digital,High Impedance,n/a,No,No,NORMAL
 42,PB11,SPI_CS,GPIO,Digital,In/Out,Low,,,NORMAL
-43,PB12,ENC_DATA,SERCOM4_PAD0,Digital,High Impedance,n/a,No,No,NORMAL
-44,PB13,ENC_SCK,SERCOM4_PAD1,Digital,High Impedance,n/a,No,No,NORMAL
-46,PB14,ENC_CS,GPIO,Digital,Out,Low,,,NORMAL
+43,PB12,,Available,,,,,,NORMAL
+44,PB13,,Available,,,,,,NORMAL
+46,PB14,,Available,,,,,,NORMAL
 47,PB15,,Available,,,,,,NORMAL
 61,PA12,,Available,,,,,,NORMAL
 62,PA13,,Available,,,,,,NORMAL
@@ -46,7 +46,7 @@
 120,PA30,,Available,,,,,,NORMAL
 121,PA31,,Available,,,,,,NORMAL
 122,PB30,,Available,,,,,,NORMAL
-123,PB31,Ethercat_error_pin,GPIO,Digital,In/Out,Low,,,NORMAL
+123,PB31,,Available,,,,,,NORMAL
 125,PB00,,Available,,,,,,NORMAL
 126,PB01,,Available,,,,,,NORMAL
 127,PB02,,Available,,,,,,NORMAL
