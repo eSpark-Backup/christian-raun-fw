@@ -49,15 +49,18 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "peripheral/nvmctrl/plib_nvmctrl.h"
-#include "peripheral/qspi/plib_qspi_spi.h"
 #include "peripheral/evsys/plib_evsys.h"
+#include "peripheral/sercom/usart/plib_sercom0_usart.h"
 #include "peripheral/port/plib_port.h"
 #include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/cmcc/plib_cmcc.h"
+#include "peripheral/sercom/spi_master/plib_sercom4_spi_master.h"
 #include "peripheral/eic/plib_eic.h"
 #include "driver/lan9255/drv_lan9255_ecat_util.h"
+#include "peripheral/tc/plib_tc1.h"
 #include "peripheral/tc/plib_tc0.h"
+#include "peripheral/qspi/plib_qspi_spi.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

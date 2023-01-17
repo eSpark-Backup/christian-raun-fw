@@ -220,7 +220,7 @@ V4.00 ECAT 7: The return values for the AL-StatusCode were changed to UINT16
 
 
 /*ECATCHANGE_START(V5.13) CIA402 3*/
-#include "sample_app.h"
+#include "LAN9255_EtherCAT_Slave.h"
 
 /*--------------------------------------------------------------------------------------
 ------

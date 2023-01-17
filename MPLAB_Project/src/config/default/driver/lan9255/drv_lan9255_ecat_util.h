@@ -54,7 +54,7 @@
 /* This section lists the other files that are included in this file.
 */
 #include "definitions.h"
-#include "ecat_def.h"
+#include "../../../../slave_stack/ecat_def.h"
 #include "drv_lan9255_definitions.h"
 
 // DOM-IGNORE-BEGIN

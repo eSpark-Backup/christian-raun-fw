@@ -60,7 +60,7 @@
 #include "drv_lan9255.h"
 #include "drv_lan9255_ecat_util.h"
 #include "slave_stack/applInterface.h"
-#include "slave_stack/sample_app.h"
+#include "slave_stack/LAN9255_EtherCAT_Slave.h"
 
 #if (ETHERCAT_EEPROM_EMULATION_SUPPORT == true)
 #include "slave_stack/eeprom.h"
@@ -243,6 +243,8 @@ void APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;   
+    appData.app = create_App();
+    App_setup(appData.app);
 }
 
 
@@ -337,6 +339,7 @@ void APP_Tasks ( void )
                 }
 #endif                
                 MainLoop();
+                App_loop(appData.app);
                // develop_test();
 
             } while (bRunApplication == TRUE);

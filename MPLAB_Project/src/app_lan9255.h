@@ -54,6 +54,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include "../Applications/ChristianRaun/app.hpp"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -133,7 +134,7 @@ typedef struct
 {
     /* The application's current state */
     APP_STATES state;
-
+    struct App* app;
     /* TODO: Define any additional data used by the application. */
 
 } APP_DATA;
