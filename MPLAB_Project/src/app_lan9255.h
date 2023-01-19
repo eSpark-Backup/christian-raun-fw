@@ -54,7 +54,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include "../Applications/ChristianRaun/app.hpp"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -134,7 +133,6 @@ typedef struct
 {
     /* The application's current state */
     APP_STATES state;
-    struct App* app;
     /* TODO: Define any additional data used by the application. */
 
 } APP_DATA;
@@ -273,59 +271,6 @@ void APP_FlashWrite( uint32_t startAddress, uint8_t *flash_data );
  */
 
 void APP_FOEFlashWrite( uint32_t startAddress, uint8_t *flash_data );
-
-/*******************************************************************************
-  Function:
-  void APP_FlashEEPROMUpdate(uint8_t *flash_data, uint8_t checksum)
-
-  Summary:
-    MPLAB Harmony NVM write  application function
-
-  Description:
-    This routine is used to write the flash data to the specific BANK address 
-    location. This routine writes 8192 bytes at a time.
-
-  Precondition:
-    The system and application initialization ("SYS_Initialize") should be
-    called before calling this.
-
-  Parameters:
-    None.
-
-  Returns:
-    None.
-
-  Remarks:
-    This routine is called from the slave stack sample application eeprom write
-    function.
- */
-void APP_FlashEEPROMUpdate(uint8_t *flash_data, uint8_t checksum);
-
-/*******************************************************************************
-  Function:
-uint8_t CalculateCRC8(uint8_t* pData, int length)
-
-  Summary:
-    Application function
-
-  Description:
-    This routine is used to calculate checksum of eeprom configuration bytes.
-
-  Precondition:
-    The system and application initialization ("SYS_Initialize") should be
-    called before calling this.
-
-  Parameters:
-    None.
-
-  Returns:
-    None.
-
-  Remarks:
-    This routine is called from the slave stack sample application eeprom write
-    function.
- */
-uint8_t CalculateCRC8(uint8_t* pData, int length);
 
 #endif /* _APP_H */
 

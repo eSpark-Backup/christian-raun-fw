@@ -62,70 +62,6 @@
 #include "slave_stack/applInterface.h"
 #include "slave_stack/LAN9255_EtherCAT_Slave.h"
 
-#if (ETHERCAT_EEPROM_EMULATION_SUPPORT == true)
-#include "slave_stack/eeprom.h"
-const volatile uint32_t aFOEdata __attribute__((section(".config_var"))) = 1;
-uint8_t	u8readData;
-extern const volatile unsigned char aEepromData[];
-void develop_test(void);
-
-
-
-uint8_t CalculateCRC8(uint8_t* pData, int length)
-{
-    uint16_t Crc8Poly = 0x07U;    // s/b international standard for CRC-8
-                                // x^8 + x^2 + x + 1
-    uint8_t crc = 0xff;
-    uint8_t i;
-    
-    while (length--) {
-		crc ^= *pData++;
-		for (i = 0; i < 8; i++)
-            crc = crc & 0x80 ? (crc << 1) ^ Crc8Poly : crc << 1;
-    }
-	return crc & 0xff;
-}
-
-void APP_FlashEEPROMUpdate(uint8_t *flash_data, uint8_t checksum)
-{
-    uint32_t   flashStartAddress=0;
-    int        pageCnt=0;
-    uint8_t    readdata[APP_ERASE_BLOCK_SIZE];
-    
-    //to determine whether the ctrl is in bank A or bank B
-    if ((NVMCTRL_StatusGet() & NVMCTRL_AFIRST_MSK) == 0)
-    {
-        flashStartAddress=APP_EEPROM_START_ADDRESS_LOCATION_BANKB; //As per linker script - address of aEepromdata 
-    }
-    else
-    {
-        flashStartAddress=APP_EEPROM_START_ADDRESS_LOCATION_BANKA;
-    }
-    
-    while(NVMCTRL_IsBusy()){}
-    
-    NVMCTRL_Read( (uint32_t *)readdata, ESC_EEPROM_SIZE, flashStartAddress);
-    MEMCPY(&readdata[0],flash_data, ESC_EEPROM_SIZE);
-    MEMCPY(&readdata[ESC_EEPROM_CONFIG_BYTES],&checksum, 1);
-    flash_data = readdata;
-    
-    /* Erase the block */
-    NVMCTRL_BlockErase((uint32_t)flashStartAddress);
-    
-    for (pageCnt=0; pageCnt < APP_PAGES_IN_EEPROM_BLOCK; pageCnt++)
-	{
-        /* If write mode is manual, */
-        /* Program 512 byte page */
-        NVMCTRL_PageWrite((uint32_t *)flash_data, (uint32_t)flashStartAddress);
-        while(NVMCTRL_IsBusy()){}
-
-        flash_data = flash_data + APP_PAGE_SIZE;
-        flashStartAddress = flashStartAddress + APP_PAGE_SIZE;        
-	}
-}
-#endif
-
-
 #if defined(ETHERCAT_USE_FOE)  
 //-----------------------------------------------------------------------------
 const uint32_t gAppBankBOffsetAddr = APP_NVM_BANKB_START_ADDRESS;
@@ -242,9 +178,7 @@ APP_DATA appData;
 void APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
-    appData.state = APP_STATE_INIT;   
-    appData.app = create_App();
-    App_setup(appData.app);
+    appData.state = APP_STATE_INIT;
 }
 
 
@@ -269,34 +203,14 @@ void APP_Tasks ( void )
 
 
             if (appInitialized)
-            {
-#if (ETHERCAT_EEPROM_EMULATION_SUPPORT == true)
-                //After device reset, ptr(pEEPROM) is pointed to proper EEPROM configurations based on value avilable in the 0x3DFFC (FOE_VAR_ORIGIN)
-                while(NVMCTRL_IsBusy()){}
-
-                NVMCTRL_Read( (uint32_t *)&u8readData, 1, 0x3DFFC);
-
-                if(u8readData == 0x0)
-                {
-                    pEEPROM = (UINT8 *)aEepromData+APP_NVM_BANKB_START_ADDRESS; 
-                }
-                else
-                {
-                    pEEPROM = (UINT8 *)aEepromData;
-                }
-#endif                  
+            {              
                 // EtherCAT Initialization after NVIC initialization
                 ECAT_Initialization();
                 MainInit();
                 lan9255_interrupt_init();
-#if defined(ETHERCAT_USE_FOE)  
                 BL_FOE_Application();
                 
-                bRunApplication = TRUE;
-#endif            
-#if (ETHERCAT_EEPROM_EMULATION_SUPPORT == true)          
-                Emulation_Init();
-#endif  
+                bRunApplication = TRUE;        
                 appData.state = APP_STATE_SERVICE_TASKS;
             }
             break;
@@ -304,45 +218,15 @@ void APP_Tasks ( void )
 
         case APP_STATE_SERVICE_TASKS:
         {
-            do
-            {		
-#if defined(ETHERCAT_USE_FOE)                
+            if (bRunApplication == TRUE)
+            {
                 if(APP_FW_GetDownloadStateFinished() == 1)
                 {
-                    //0x3DFFC (FOE_VAR_ORIGIN) value is updated by comparing first byte of eeprom configuration.
-					uint8_t    readdata_Banka[APP_ERASE_BLOCK_SIZE];
-                    uint8_t    readdata_Bankb[APP_ERASE_BLOCK_SIZE];
-                    uint8_t    writedata = 0x00;
-                    uint8_t    *flash_data;
-                    uint32_t   flashaddress = 0x3E000;
-
-                    while(NVMCTRL_IsBusy()){}
-
-                    NVMCTRL_Read( (uint32_t *)readdata_Banka, ESC_EEPROM_SIZE, flashaddress);
-
-                    NVMCTRL_Read( (uint32_t *)readdata_Bankb, ESC_EEPROM_SIZE, (flashaddress+APP_NVM_BANKB_START_ADDRESS));
-
-                    if(readdata_Banka[0] == readdata_Bankb[0])
-                    {
-                        NVMCTRL_Read( (uint32_t *)readdata_Bankb, APP_ERASE_BLOCK_SIZE, (flashaddress-NVMCTRL_FLASH_BLOCKSIZE+APP_NVM_BANKB_START_ADDRESS));
-                        if ((NVMCTRL_StatusGet() & NVMCTRL_AFIRST_MSK) == 0)
-                        {
-                            writedata = 1;
-                        }
-                        MEMCPY(&readdata_Bankb[8184],&writedata, 1);
-                    }
-                    
-                    flash_data = readdata_Bankb;
-                    APP_FOEFlashWrite((flashaddress-NVMCTRL_FLASH_BLOCKSIZE+APP_NVM_BANKB_START_ADDRESS),flash_data);
                     APP_BankSwitch();
                     APP_RunApplication();
-                }
-#endif                
+                }             
                 MainLoop();
-                App_loop(appData.app);
-               // develop_test();
-
-            } while (bRunApplication == TRUE);
+            } 
             break;
         }
 

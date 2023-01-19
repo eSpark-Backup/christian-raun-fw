@@ -6,6 +6,4 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 
-void printUART(char* data);
-
 #endif

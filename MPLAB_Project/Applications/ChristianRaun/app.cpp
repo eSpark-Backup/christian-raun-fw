@@ -4,12 +4,16 @@ Stepper* stepper;
 Encoder* encoder; 
 uint8_t dir=antiClockWise;
 uint32_t frequency=0;
-static mainState state=eStepper;
+static appState state;
 double position;
 
 void App::setup()
 {
+    SYS_Initialize ( NULL );
+    APP_Initialize();
     TC1_TimerStart();
+    
+    state = eTasks;
 
     stepper = new Tmc2130;
     encoder = new Tle5012b;
@@ -18,10 +22,16 @@ void App::setup()
 
 void App::loop()
 {      
+
     bool status;
     switch (state)
     {                
-         case eStepper:
+        case eTasks:
+            APP_Tasks();
+            state = eStepper;
+            break;
+            
+        case eStepper:
             frequency = dataIn.speed;
             dir = dataIn.direction;
             stepper->run(frequency,dir);
@@ -35,14 +45,14 @@ void App::loop()
 
          case eSendData:
             dataOut.position = position;
-#ifdef test
-            dataOut.position = rand()%1000;
-            dataOut.temperature = rand()%1000;
-            dataOut.diag1 = rand()%1000;
-            dataOut.diag2 = rand()%1000;
-            dataOut.diag3 = rand()%1000;
-#endif 
-            state = eStepper;
+            #ifdef TEST_INPUTS
+                dataOut.position = rand()%1000;
+                dataOut.temperature = rand()%1000;
+                dataOut.diag1 = rand()%1000;
+                dataOut.diag2 = rand()%1000;
+                dataOut.diag3 = rand()%1000;
+            #endif 
+            state = eTasks;
             break;
     }     
   

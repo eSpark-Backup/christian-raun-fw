@@ -222,8 +222,8 @@
         </logicalFolder>
         <itemPath>../src/Devices/Stepper/stepper.hpp</itemPath>
       </logicalFolder>
-      <itemPath>../../../Test_Project/firmware/src/app_lan9255.h</itemPath>
       <itemPath>../src/basicDef.h</itemPath>
+      <itemPath>../src/app_lan9255.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -299,7 +299,7 @@
       </logicalFolder>
       <logicalFolder name="f5" displayName="Encoder" projectFiles="true">
         <logicalFolder name="f1" displayName="TLE5012B" projectFiles="true">
-          <itemPath>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder/TLE5012b/tle5012b.cpp</itemPath>
+          <itemPath>../src/Devices/Encoder/TLE5012b/tle5012b.cpp</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="slave_stack" projectFiles="true">
@@ -321,8 +321,8 @@
           <itemPath>../src/Devices/Stepper/TMC2130/tmc2130.cpp</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>../../../Test_Project/firmware/src/app_lan9255.c</itemPath>
       <itemPath>../src/main.cpp</itemPath>
+      <itemPath>../src/app_lan9255.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -394,7 +394,7 @@
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>${MP_CC_DIR}/xc32-objcopy -I ihex -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.hex" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin"</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
