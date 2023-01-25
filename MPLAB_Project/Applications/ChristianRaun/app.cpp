@@ -44,7 +44,7 @@ void App::loop()
             break;
 
          case eSendData:
-            dataOut.position = position;
+            dataOut.position = position*1000;
             #ifdef TEST_INPUTS
                 dataOut.position = rand()%1000;
                 dataOut.temperature = rand()%1000;

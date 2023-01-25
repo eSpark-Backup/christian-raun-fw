@@ -35,4 +35,9 @@ void Tle5012b::getAngleValue(double &angleValue)
     }
     int16_t rawAnglevalue = rawData;
     angleValue = (ANGLE_360_VAL / POW_2_15) * ((double) rawAnglevalue);
+    
+    if (angleValue<0)
+    {
+        angleValue = 360 + angleValue;
+    }
 }
