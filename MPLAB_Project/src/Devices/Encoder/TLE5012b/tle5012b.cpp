@@ -1,4 +1,5 @@
 #include "tle5012b.hpp"
+SoftSPIB SPI;
 
 void Tle5012b::setup()
 {
@@ -16,16 +17,17 @@ void Tle5012b::getAngleValue(double &angleValue)
     uint16_t command = READ_SENSOR | REG_AVAL | UPD_low | SAFE_high;
     uint16_t rawData=0;
     
-    uint8_t txbuffer[2] = { (uint8_t)(command >> 8), (uint8_t)(command & 0x00FF) }; 
-    uint8_t rxbuffer[2] = {0}; 
-    ENC_CS_Clear();
-    SERCOM4_SPI_Write(txbuffer,2);
-    while(SERCOM4_SPI_IsBusy());
+    PORT_PinOutputEnable(ENC_DATA0_PIN);
     
-    SERCOM4_SPI_Read(rxbuffer,2);
-    while(SERCOM4_SPI_IsBusy());
-    ENC_CS_Set();
-    rawData = (rxbuffer[0] << 8) | rxbuffer[1];
+    PORT_PinClear(ENC_CS_PIN); 
+
+    SPI.transfer16(command);
+
+    PORT_PinInputEnable(ENC_DATA0_PIN);
+    for(uint16_t x=0;x<50000;x++);
+    rawData = SPI.transfer16(0x0000);
+
+    PORT_PinSet(ENC_CS_PIN);
     
     rawData = (rawData & (DELETE_BIT_15));
     //check if the value received is positive or negative

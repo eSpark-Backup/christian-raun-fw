@@ -3,6 +3,7 @@
 
 #include "basicDef.h" 
 #include "../encoder.hpp"
+#include "../../../Libraries/SoftSPI/SoftSPIB.h"
 
 #define READ_SENSOR                 0x8000    //!< \brief base command for read
 #define SAFE_low                    0x0000    //!< \brief switch of safety word generation

@@ -112,11 +112,21 @@
 #define SPI_CS_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 11U)) & 0x01U)
 #define SPI_CS_PIN                  PORT_PIN_PB11
 
-/*** Macros for ENC_DATA pin ***/
-#define ENC_DATA_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 12U)) & 0x01U)
-#define ENC_DATA_PIN                  PORT_PIN_PB12
+/*** Macros for ENC_DATA0 pin ***/
+#define ENC_DATA0_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 12U))
+#define ENC_DATA0_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 12U))
+#define ENC_DATA0_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 12U))
+#define ENC_DATA0_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 12U))
+#define ENC_DATA0_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 12U))
+#define ENC_DATA0_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 12U)) & 0x01U)
+#define ENC_DATA0_PIN                  PORT_PIN_PB12
 
 /*** Macros for ENC_SCK pin ***/
+#define ENC_SCK_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 13U))
+#define ENC_SCK_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 13U))
+#define ENC_SCK_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 13U))
+#define ENC_SCK_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 13U))
+#define ENC_SCK_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 13U))
 #define ENC_SCK_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 13U)) & 0x01U)
 #define ENC_SCK_PIN                  PORT_PIN_PB13
 
@@ -128,6 +138,15 @@
 #define ENC_CS_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 14U))
 #define ENC_CS_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 14U)) & 0x01U)
 #define ENC_CS_PIN                  PORT_PIN_PB14
+
+/*** Macros for ENC_DATA1 pin ***/
+#define ENC_DATA1_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 15U))
+#define ENC_DATA1_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 15U))
+#define ENC_DATA1_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 15U))
+#define ENC_DATA1_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 15U))
+#define ENC_DATA1_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 15U))
+#define ENC_DATA1_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 15U)) & 0x01U)
+#define ENC_DATA1_PIN                  PORT_PIN_PB15
 
 /*** Macros for EIC_EXTINT0 pin ***/
 #define EIC_EXTINT0_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 14U)) & 0x01U)

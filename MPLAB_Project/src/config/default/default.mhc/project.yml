@@ -1,11 +1,11 @@
 files:
-- generatedChecksum: 03E45ACE7D290496EDB724C19503EF16
+- generatedChecksum: 3D71D301110CDE114975AF4DCFAF9109
   logicalPath: slave_stack
   name: LAN9255_EtherCAT_Slave.c
   physicalPath: ../../slave_stack
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 03E45ACE7D290496EDB724C19503EF16
+  userChecksum: 3D71D301110CDE114975AF4DCFAF9109
 - generatedChecksum: 8075D8850D95C6DA83539C964E044606
   logicalPath: slave_stack
   name: bootmode.c
@@ -167,13 +167,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 34FB45AD7077FEDCC0D3CCB8AAD95AC1
-- generatedChecksum: 47B05F5DE637C94CBD6F4C4825577685
+- generatedChecksum: AD32F9A35374BC7CC7725F874E0149AC
   logicalPath: config/default/peripheral/port
   name: plib_port.c
   physicalPath: peripheral/port
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 47B05F5DE637C94CBD6F4C4825577685
+  userChecksum: AD32F9A35374BC7CC7725F874E0149AC
 - generatedChecksum: E088F4207EC2B065E3670F67729E9BB6
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi_spi.c
@@ -237,13 +237,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 784D077EE05881F82AD425CBE87490D1
-- generatedChecksum: 49972FBD53E428F701ACACDFC2E5B814
+- generatedChecksum: 6158B38A25AFC934D694F88E2B13B6A8
   logicalPath: slave_stack
   name: LAN9255_EtherCAT_Slave.h
   physicalPath: ../../slave_stack
   security: NON_SECURE
   type: HEADER
-  userChecksum: 49972FBD53E428F701ACACDFC2E5B814
+  userChecksum: 6158B38A25AFC934D694F88E2B13B6A8
 - generatedChecksum: E09B709F5ACEB822B4C1BE0203B8B1FF
   logicalPath: slave_stack
   name: LAN9255_EtherCAT_SlaveObjects.h
@@ -874,13 +874,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: E7A11C64DEABAE738922866EE18F9A19
-- generatedChecksum: B62ECCDC054E853B3558C60955BBB03C
+- generatedChecksum: 029BA809523D8B3C37FA786796E90EE2
   logicalPath: config/default/peripheral/port
   name: plib_port.h
   physicalPath: peripheral/port
   security: NON_SECURE
   type: HEADER
-  userChecksum: B62ECCDC054E853B3558C60955BBB03C
+  userChecksum: 029BA809523D8B3C37FA786796E90EE2
 - generatedChecksum: 3F5E0C829C39E76F7F21E40A3477C64A
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi_common.h
@@ -1272,14 +1272,14 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: EDC6F156F74AC6E4A15C126A830E1037
-- generatedChecksum: 43B10AF0C05C280526E383DCF6554101
+  userChecksum: 80C4BAF4A97AD1B5A8BEC2A0858F02CE
+- generatedChecksum: 546D328BECC57A01A372F3070DFE423C
   logicalPath: ''
   name: pin_configurations.csv
   physicalPath: ''
   security: NON_SECURE
   type: IMPORTANT
-  userChecksum: 43B10AF0C05C280526E383DCF6554101
+  userChecksum: 546D328BECC57A01A372F3070DFE423C
 format_version: v1.0
 libraries: []
 settings:

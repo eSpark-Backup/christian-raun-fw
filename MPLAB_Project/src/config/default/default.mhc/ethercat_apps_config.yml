@@ -10,7 +10,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'D:\Foe_Bin_test\EtherCAT_Stack_Cpp_Stepper\firmware\src\slave_stack'}
+        attributes: {value: 'D:\eSparkConsultingGroup\Projects\ChristianRaun-EtherCAT\Foe_Bin_test\EtherCAT_Stack_Cpp_Stepper_Encoder\firmware\src\slave_stack'}
   - type: File
     attributes: {id: SSC_LIST_FILE0}
     children:
@@ -39,7 +39,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/applInterface.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/applInterface.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -72,7 +72,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/bootmode.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/bootmode.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE10}
     children:
@@ -101,7 +101,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatfoe.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatfoe.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -134,7 +134,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatslv.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatslv.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE12}
     children:
@@ -163,7 +163,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatslv.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatslv.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -196,7 +196,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecat_def.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecat_def.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -229,7 +229,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/emcy.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/emcy.c'}
       - type: String
         attributes: {id: type}
         children:
@@ -262,7 +262,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/emcy.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/emcy.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -295,7 +295,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/esc.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/esc.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -328,7 +328,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/foeappl.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/foeappl.c'}
       - type: String
         attributes: {id: type}
         children:
@@ -361,7 +361,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/foeappl.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/foeappl.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -394,7 +394,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/LAN9255_EtherCAT_Slave.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/LAN9255_EtherCAT_Slave.c'}
       - type: String
         attributes: {id: type}
         children:
@@ -427,7 +427,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/bootmode.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/bootmode.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -460,7 +460,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/LAN9255_EtherCAT_Slave.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/LAN9255_EtherCAT_Slave.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -493,7 +493,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/LAN9255_EtherCAT_SlaveObjects.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/LAN9255_EtherCAT_SlaveObjects.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -526,7 +526,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/mailbox.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/mailbox.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE23}
     children:
@@ -555,7 +555,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/mailbox.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/mailbox.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -588,7 +588,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/objdef.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/objdef.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE25}
     children:
@@ -617,7 +617,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/objdef.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/objdef.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -650,7 +650,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/sdoserv.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/sdoserv.c'}
       - type: String
         attributes: {id: type}
         children:
@@ -683,7 +683,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/sdoserv.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/sdoserv.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -716,7 +716,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/.vscode/settings.json'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/.vscode/settings.json'}
       - type: String
         attributes: {id: type}
         children:
@@ -778,7 +778,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/coeappl.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/coeappl.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE4}
     children:
@@ -807,7 +807,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/coeappl.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/coeappl.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -840,7 +840,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatappl.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatappl.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE6}
     children:
@@ -869,7 +869,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatappl.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatappl.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -902,7 +902,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatcoe.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatcoe.c'}
   - type: File
     attributes: {id: SSC_LIST_FILE8}
     children:
@@ -931,7 +931,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatcoe.h'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatcoe.h'}
       - type: String
         attributes: {id: type}
         children:
@@ -964,7 +964,7 @@ children:
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: 'D:/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper/firmware/src/slave_stack/ecatfoe.c'}
+        - {type: Value, value: 'D:/eSparkConsultingGroup/Projects/ChristianRaun-EtherCAT/Foe_Bin_test/EtherCAT_Stack_Cpp_Stepper_Encoder/firmware/src/slave_stack/ecatfoe.c'}
 - type: Attachments
   children:
   - type: DirectDependency

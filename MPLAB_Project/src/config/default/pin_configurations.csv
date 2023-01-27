@@ -20,10 +20,10 @@
 36,PA11,,Available,,,,,,NORMAL
 40,PB10,QSPI_SCK,QSPI_SCK,Digital,High Impedance,n/a,No,No,NORMAL
 42,PB11,SPI_CS,GPIO,Digital,In/Out,Low,,,NORMAL
-43,PB12,ENC_DATA,SERCOM4_PAD0,Digital,High Impedance,n/a,No,No,NORMAL
-44,PB13,ENC_SCK,SERCOM4_PAD1,Digital,High Impedance,n/a,No,No,NORMAL
+43,PB12,ENC_DATA0,GPIO,Digital,Out,Low,,,NORMAL
+44,PB13,ENC_SCK,GPIO,Digital,Out,Low,,,NORMAL
 46,PB14,ENC_CS,GPIO,Digital,Out,Low,,,NORMAL
-47,PB15,,Available,,,,,,NORMAL
+47,PB15,ENC_DATA1,GPIO,Digital,In,n/a,No,No,NORMAL
 61,PA12,,Available,,,,,,NORMAL
 62,PA13,,Available,,,,,,NORMAL
 63,PA14,EIC_EXTINT0,EIC_EXTINT14,Digital,High Impedance,n/a,No,No,NORMAL
