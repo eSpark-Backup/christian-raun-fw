@@ -32,7 +32,7 @@ void App::loop()
             break;
             
         case eStepper:
-            frequency = dataIn.speed;
+            frequency = 2*(dataIn.speed/0.01875);
             dir = dataIn.direction;
             stepper->run(frequency,dir);
             state = eStepperPosition;
@@ -56,7 +56,7 @@ void App::loop()
             break;
     }     
   
-    stepper->loop();
+//    stepper->loop();
 }
 
 extern "C" App * create_App() // wrapper function

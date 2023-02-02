@@ -24,7 +24,7 @@ void Tle5012b::getAngleValue(double &angleValue)
     SPI.transfer16(command);
 
     PORT_PinInputEnable(ENC_DATA0_PIN);
-    for(uint16_t x=0;x<50000;x++);
+//    for(uint16_t x=0;x<50000;x++);
     rawData = SPI.transfer16(0x0000);
 
     PORT_PinSet(ENC_CS_PIN);

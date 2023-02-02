@@ -47,4 +47,14 @@ extern "C" void TC1_TimerInterruptHandler( void )
     }
     
     interruptCount++;
+    
+    if (freqCount ==0 )
+    {
+        return;
+    }
+    if (interruptCount >= freqCount)
+    {
+        STEP_Toggle();
+        interruptCount=0;
+    }   
 }
