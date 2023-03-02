@@ -1,4 +1,6 @@
 #include "app.hpp"
+#define min2 2*1000*60
+#define min4 4*1000*60
 
 Stepper* stepper;
 Encoder* encoder; 
@@ -49,11 +51,11 @@ void App::loop()
                 frequency = newFreq;
             }
             currentMillis = getMillis();
-            if ((currentMillis - previousMillis) < 1000*30)
+            if ((currentMillis - previousMillis) < min2)
             {
                 stepper->run(newFreq,clockWise);
             }
-            else if ((currentMillis - previousMillis) < 1000*60)
+            else if ((currentMillis - previousMillis) < min4)
             {
                 stepper->run(newFreq,antiClockWise);
             }
