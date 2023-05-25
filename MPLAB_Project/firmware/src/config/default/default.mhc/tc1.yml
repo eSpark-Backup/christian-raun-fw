@@ -23,7 +23,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc1, value: '60'}
+        attributes: {id: tc1, value: '11220'}
   - type: Float
     attributes: {id: TC_TIMER_TIME_MS}
     children:
@@ -33,6 +33,10 @@ children:
         attributes: {id: max}
         children:
         - {type: Value, value: '1092.2667'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '187.0'}
   - type: Combo
     attributes: {id: TC_TIMER_UNIT}
     children:
