@@ -657,7 +657,9 @@ void APPL_InputMapping(UINT16* pData)
 void APPL_OutputMapping(UINT16* pData)
 {
     UINT32 *pTemp = (UINT32*)pData;
-	Outputs0x7010.Speed = *pTemp;
+	Outputs0x7010.RPM = *pTemp;
+    pTemp++;
+    Outputs0x7010.Displacement = *pTemp;
     pTemp++;
     Outputs0x7010.Time = *pTemp;
     pTemp++;
@@ -716,7 +718,8 @@ void APPL_Application(void)
     Inputs0x6000.Diag2 = dataOut.diag2;
     Inputs0x6000.Diag3 = dataOut.diag3;
     // Map Inputs
-    dataIn.speed = Outputs0x7010.Speed;
+    dataIn.rpm = Outputs0x7010.RPM;
+    dataIn.displacement = Outputs0x7010.Displacement;
     dataIn.time = Outputs0x7010.Time;
     dataIn.direction = Outputs0x7010.Direction;
     dataIn.mode = Outputs0x7010.Mode;
@@ -789,4 +792,3 @@ void main(void)
 }
 #endif //#if USE_DEFAULT_MAIN
 /** @} */
-

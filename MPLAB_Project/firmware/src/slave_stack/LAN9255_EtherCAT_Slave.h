@@ -48,7 +48,8 @@
 #endif
 
 struct dataInPacket{
-    UINT32 speed;
+    UINT32 rpm;
+    UINT32 displacement;
     UINT32 time;
     UINT8 direction;
     UINT8 mode;
@@ -103,4 +104,3 @@ PROTO void APPL_OutputMapping(UINT16* pData);
 
 #undef PROTO
 /** @}*/
-

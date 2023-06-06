@@ -70,9 +70,9 @@
       </logicalFolder>
       <logicalFolder name="f6" displayName="Encoder" projectFiles="true">
         <logicalFolder name="f1" displayName="TLE5012B" projectFiles="true">
-          <itemPath>../src/Devices/Encoder/TLE5012b/tle5012b.hpp</itemPath>
+          <itemPath>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder/TLE5012b/tle5012b.hpp</itemPath>
         </logicalFolder>
-        <itemPath>../src/Devices/Encoder/encoder.hpp</itemPath>
+        <itemPath>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder/encoder.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f7" displayName="Library" projectFiles="true">
         <logicalFolder name="f1" displayName="SoftSPI" projectFiles="true">

@@ -5,12 +5,10 @@
 Stepper* stepper;
 Encoder* encoder; 
 uint8_t dir=antiClockWise;
-uint32_t stepCount=0;
-uint32_t newStepCount=0;
-uint32_t currentMillis=0;
-uint32_t previousMillis=0;
+uint32_t frequency=0;
+uint32_t newFreq=0;
 uint32_t diagTime=0;
-extern bool runStatus;
+uint32_t steps =0;
 
 uint8_t diagErr=0;
 extern uint8_t diagErrIntr;
@@ -22,7 +20,7 @@ void App::setup()
 {
     SYS_Initialize ( NULL );
     APP_Initialize();
-//    TC1_TimerStart();
+    TC1_TimerStart();
     TC2_TimerStart();
     
     state = eTasks;
@@ -44,22 +42,10 @@ void App::loop()
             break;
             
         case eStepper:
-            newStepCount = dataIn.speed;
+            newFreq = 2*(dataIn.rpm/0.01875);
+            steps = dataIn.displacement;
             dir = dataIn.direction;
-            if(newStepCount != stepCount)
-            {
-                if (false == runStatus)
-                {
-                    stepCount = newStepCount;
-                    if (stepCount)
-                    {
-                        runStatus = true;
-                        stepper->run(stepCount,dir);
-                    }
-                    
-                }
-            }
-            
+            stepper->run(steps, newFreq, dir);
             
             state = eStepperPosition;
             break;  
@@ -92,7 +78,7 @@ void App::loop()
     {
         diagErr =0;
     }
-    stepper->loop();
+//    stepper->loop();
 }
 
 extern "C" App * create_App() // wrapper function

@@ -12,7 +12,7 @@ class Tmc2130 : public Stepper
     private:
         
     public:
-        void run(uint32_t freq, uint8_t dir) override; 
+        void run(uint32_t steps, uint32_t freq, uint8_t dir) override; 
         void setup() override;
         void loop() override;
 

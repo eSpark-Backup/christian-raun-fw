@@ -145,7 +145,7 @@ files:
   physicalPath: peripheral/eic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 16F636205AC131B1A8199C81E6B5CF1D
+  userChecksum: 90F1A4CF91669F0A5007462F3D51125A
 - generatedChecksum: C3ECDED3D6301DB0DE622293ED615D21
   logicalPath: config/default/peripheral/evsys
   name: plib_evsys.c
@@ -202,13 +202,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0188B30A35642F58206B1F44FE7C9A47
-- generatedChecksum: 3AF14187174D03275F82C2B0EEAD681D
+- generatedChecksum: 4D4A6D06A35D42B5F1AD55D6DD764DCC
   logicalPath: config/default/peripheral/tc
   name: plib_tc1.c
   physicalPath: peripheral/tc
   security: NON_SECURE
   type: SOURCE
-  userChecksum: CE3B4B601CC8BAE43B46AA728BACEFE1
+  userChecksum: 971803E9C5047BD1430B09F711D3517F
 - generatedChecksum: 4578A3894CB78591D759F65A0F5BBA57
   logicalPath: config/default/peripheral/tc
   name: plib_tc2.c
@@ -859,7 +859,7 @@ files:
   physicalPath: peripheral/eic
   security: NON_SECURE
   type: HEADER
-  userChecksum: 31427B6CC947414A0B5DE26F8A8B4132
+  userChecksum: 6AAFA3D2DC1576136EFDCEDAA3A412CA
 - generatedChecksum: CCAEF942C66AF995876DFD85CEFF611F
   logicalPath: config/default/peripheral/evsys
   name: plib_evsys.h
@@ -1286,7 +1286,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 9B672CAF9B0B8086418FA1C9BDC85B47
+  userChecksum: 80C4BAF4A97AD1B5A8BEC2A0858F02CE
 - generatedChecksum: 53FEB4A14DEF89F43ED0CE6808773838
   logicalPath: ''
   name: pin_configurations.csv
