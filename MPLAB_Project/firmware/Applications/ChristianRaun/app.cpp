@@ -6,7 +6,6 @@ Stepper* stepper;
 Encoder* encoder; 
 uint8_t dir=antiClockWise;
 uint32_t frequency=0;
-uint32_t newFreq=0;
 uint32_t diagTime=0;
 uint32_t steps =0;
 
@@ -20,7 +19,7 @@ void App::setup()
 {
     SYS_Initialize ( NULL );
     APP_Initialize();
-    TC1_TimerStart();
+
     TC2_TimerStart();
     
     state = eTasks;
@@ -28,11 +27,11 @@ void App::setup()
     stepper = new Tmc2130;
     encoder = new Tle5012b;
     encoder->setup();
+    stepper->setup();
 }
 
 void App::loop()
 {      
-
     bool status;
     switch (state)
     {                
@@ -42,10 +41,10 @@ void App::loop()
             break;
             
         case eStepper:
-            newFreq = 2*(dataIn.rpm/0.01875);
+            frequency = 2*(dataIn.rpm/0.01875);
             steps = dataIn.displacement;
             dir = dataIn.direction;
-            stepper->run(steps, newFreq, dir);
+            stepper->run(steps, frequency, dir);
             
             state = eStepperPosition;
             break;  
@@ -78,7 +77,6 @@ void App::loop()
     {
         diagErr =0;
     }
-//    stepper->loop();
 }
 
 extern "C" App * create_App() // wrapper function

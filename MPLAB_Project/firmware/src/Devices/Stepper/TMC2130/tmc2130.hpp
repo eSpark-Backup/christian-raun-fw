@@ -17,4 +17,6 @@ class Tmc2130 : public Stepper
         void loop() override;
 
 };
+
+void pwm_callback(TC_TIMER_STATUS status, uintptr_t context);
 #endif
