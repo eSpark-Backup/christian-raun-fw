@@ -67,6 +67,10 @@
 								<BitSize>1</BitSize>
 							</DataType>
 							<DataType>
+								<Name>REAL</Name>
+								<BitSize>32</BitSize>
+							</DataType>
+							<DataType>
 								<Name>DT1018</Name>
 								<BitSize>144</BitSize>
 								<SubItem>
@@ -683,7 +687,7 @@
 								<SubItem>
 									<SubIdx>1</SubIdx>
 									<Name>Position</Name>
-									<Type>UDINT</Type>
+									<Type>REAL</Type>
 									<Comment>If value is 0, it will clear the OutputCounter, else the OutputCounter value will be increamented as per InputTrigger value</Comment>
 									<BitSize>32</BitSize>
 									<BitOffs>16</BitOffs>
@@ -1337,7 +1341,7 @@
 						<SubIndex>1</SubIndex>
 						<BitLen>32</BitLen>
 						<Name>Position</Name>
-						<DataType>UDINT</DataType>
+						<DataType>REAL</DataType>
 					</Entry>
 					<Entry>
 						<Index>#x6000</Index>

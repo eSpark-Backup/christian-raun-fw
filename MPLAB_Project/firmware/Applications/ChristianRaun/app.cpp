@@ -55,7 +55,7 @@ void App::loop()
             break;
 
          case eSendData:
-            dataOut.position = position*1000;
+            dataOut.position = encoder->calculateDisplacement(position, dir);
             dataOut.diag1 = diagErr;
             #ifdef TEST_INPUTS
                 dataOut.position = rand()%1000;
@@ -77,6 +77,8 @@ void App::loop()
     {
         diagErr =0;
     }
+    
+//    stepper->loop();
 }
 
 extern "C" App * create_App() // wrapper function

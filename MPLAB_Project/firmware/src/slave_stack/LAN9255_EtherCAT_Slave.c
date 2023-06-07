@@ -635,16 +635,7 @@ UINT16 APPL_GenerateMapping(UINT16 *pInputSize,UINT16 *pOutputSize)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_InputMapping(UINT16* pData)
 {
-    UINT32 *pTemp = (UINT32*)pData;
-    *pTemp = Inputs0x6000.Position;
-    pTemp++;
-    *pTemp = Inputs0x6000.Temperature;
-    pTemp++;
-    *pTemp = Inputs0x6000.Diag1;
-    pTemp++;
-    *pTemp = Inputs0x6000.Diag2;
-    pTemp++;
-    *pTemp = Inputs0x6000.Diag3;
+    MEMCPY(pData, &(Inputs0x6000.Position), sizeof(struct dataOutPacket));   
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -675,48 +666,9 @@ void APPL_OutputMapping(UINT16* pData)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_Application(void)
 {
-    #if 0
-    if(Outputs0x7010.Speed)
-	{
-            Inputs0x6000.Position += Outputs0x7010.Speed;
-	} 
-    else
-	{
-		Inputs0x6000.Position = 0;
-	}
-    if(Outputs0x7010.Time)
-	{
-            Inputs0x6000.Temperature += Outputs0x7010.Time;
-	} 
-    else
-	{
-		Inputs0x6000.Temperature = 0;
-	}
-    if(Outputs0x7010.Direction)
-	{
-            Inputs0x6000.Diag1 += Outputs0x7010.Direction;
-	} 
-    else
-	{
-		Inputs0x6000.Diag1 = 0;
-	}
-    if(Outputs0x7010.Mode)
-	{
-            Inputs0x6000.Diag2 += Outputs0x7010.Mode;
-            Inputs0x6000.Diag3 += Outputs0x7010.Mode;
-	} 
-    else
-	{
-		Inputs0x6000.Diag2 = 0;
-		Inputs0x6000.Diag3 = 0;
-	}
-    #endif
     // Map Outputs 
-    Inputs0x6000.Position = dataOut.position;
-    Inputs0x6000.Temperature = dataOut.temperature;
-    Inputs0x6000.Diag1 = dataOut.diag1;
-    Inputs0x6000.Diag2 = dataOut.diag2;
-    Inputs0x6000.Diag3 = dataOut.diag3;
+    MEMCPY(&(Inputs0x6000.Position), &(dataOut.position), sizeof(struct dataOutPacket)); 
+    
     // Map Inputs
     dataIn.rpm = Outputs0x7010.RPM;
     dataIn.displacement = Outputs0x7010.Displacement;

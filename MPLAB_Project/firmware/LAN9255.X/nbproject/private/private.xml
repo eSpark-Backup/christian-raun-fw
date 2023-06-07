@@ -4,11 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
-            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/driver/lan9255/drv_lan9255.c</file>
-            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/tc/plib_tc1.c</file>
-            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/tc/plib_tc_common.h</file>
-            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/qspi/plib_qspi_spi.c</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Encoder/encoder.hpp</file>
             <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/main.cpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Encoder/TLE5012b/tle5012b.cpp</file>
         </group>
     </open-files>
 </project-private>

@@ -56,7 +56,7 @@ struct dataInPacket{
 };
 
 struct dataOutPacket {
-    UINT32 position; 
+    REAL32 position; 
     UINT32 temperature; 
     UINT32 diag1; 
     UINT32 diag2; 

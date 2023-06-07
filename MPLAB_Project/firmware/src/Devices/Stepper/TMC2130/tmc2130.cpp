@@ -1,6 +1,6 @@
 #include "tmc2130.hpp"
 volatile uint32_t interruptCount=0;
-volatile uint32_t freqCount=0;
+uint32_t freqCount=0;
 volatile uint32_t totalSteps=0;
 volatile uint32_t toggleCounter=0;
 

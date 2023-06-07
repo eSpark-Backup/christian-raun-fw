@@ -1,10 +1,13 @@
 #include "tle5012b.hpp"
 SoftSPIB SPI;
+float displacementCount = 0;
+bool almostCompleteCW = false;
+bool almostCompleteCCW = false;
 
 void Tle5012b::setup()
 {
-        ENC_CS_OutputEnable();
-        ENC_CS_Set();
+    ENC_CS_OutputEnable();
+    ENC_CS_Set();
 }
 
 void Tle5012b::loop()
@@ -42,4 +45,41 @@ void Tle5012b::getAngleValue(double &angleValue)
     {
         angleValue = 360 + angleValue;
     }
+}
+
+float Tle5012b::calculateDisplacement(double angle, bool dir)
+{
+    float displacement = (float)((angle/360.0) * 2);
+    if (dir)
+    {
+        if (displacement > (float)1.8)
+        {
+            almostCompleteCW =true;
+        }
+        else if (displacement < (float)0.2)
+        {
+            if(almostCompleteCW)
+            {
+                almostCompleteCW = false;
+                displacementCount += 2;
+            }
+        }
+    }
+    else
+    {
+        if (displacement < (float)0.2)
+        {
+            almostCompleteCCW =true;
+        }
+        else if (displacement > (float)1.8)
+        {
+            if(almostCompleteCCW)
+            {
+                almostCompleteCCW = false;
+                displacementCount -= 2;
+            }
+        }
+    }
+    displacement += displacementCount;
+    return displacement;
 }
