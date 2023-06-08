@@ -5,9 +5,13 @@
         <group>
             <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
             <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/qspi/plib_qspi_spi.c</file>
-            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Encoder/encoder.hpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.hpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/stepper.hpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/driver/lan9255/drv_lan9255_ecat_util.h</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/nvic/plib_nvic.c</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
             <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/main.cpp</file>
-            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Encoder/TLE5012b/tle5012b.cpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/initialization.c</file>
         </group>
     </open-files>
 </project-private>

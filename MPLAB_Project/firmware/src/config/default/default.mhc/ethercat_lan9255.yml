@@ -136,4 +136,4 @@ children:
         children:
         - {type: Value, value: EtherCAT_LANDRV_Dependency}
 - type: ElementPosition
-  attributes: {x: '304', y: '238', id: ethercat_lan9255}
+  attributes: {x: '303', y: '238', id: ethercat_lan9255}

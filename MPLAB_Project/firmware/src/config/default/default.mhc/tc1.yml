@@ -10,21 +10,21 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc1, value: TC1_Timer8bitCompareSet}
+        attributes: {id: tc1, value: TC1_Timer16bitCompareSet}
   - type: String
     attributes: {id: COUNTER_GET_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc1, value: TC1_Timer8bitCounterGet}
+        attributes: {id: tc1, value: TC1_Timer16bitCounterGet}
   - type: String
     attributes: {id: PERIOD_SET_API_NAME}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc1, value: TC1_Timer8bitPeriodSet}
+        attributes: {id: tc1, value: TC1_Timer16bitPeriodSet}
   - type: File
     attributes: {id: TC_CAPTURE_HEADER}
     children:
@@ -32,15 +32,6 @@ children:
       children:
       - type: Boolean
         attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
-  - type: Menu
-    attributes: {id: TC_CAPTURE_MENU}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
         children:
         - {type: Value, value: 'false'}
   - type: File
@@ -60,7 +51,7 @@ children:
       - type: Long
         attributes: {id: max}
         children:
-        - {type: Value, value: '255'}
+        - {type: Value, value: '65535'}
   - type: Long
     attributes: {id: TC_COMPARE_CC1}
     children:
@@ -79,15 +70,6 @@ children:
         attributes: {id: enabled}
         children:
         - {type: Value, value: 'false'}
-  - type: Menu
-    attributes: {id: TC_COMPARE_MENU}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'false'}
   - type: Long
     attributes: {id: TC_COMPARE_PERIOD}
     children:
@@ -96,7 +78,7 @@ children:
       - type: Long
         attributes: {id: max}
         children:
-        - {type: Value, value: '255'}
+        - {type: Value, value: '65535'}
   - type: Comment
     attributes: {id: TC_COMPARE_PERIOD_COMMENT}
     children:
@@ -121,7 +103,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '1'}
+        attributes: {value: '0'}
   - type: KeyValueSet
     attributes: {id: TC_CTRLA_PRESCALER}
     children:
@@ -152,6 +134,20 @@ children:
         attributes: {id: text}
         children:
         - {type: Value, value: '****Timer resolution is 16.6666666667 nS****'}
+  - type: Boolean
+    attributes: {id: TC_TIMER_EVCTRL_EV}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: TC_TIMER_EVCTRL_TCINV}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
   - type: File
     attributes: {id: TC_TIMER_HEADER}
     children:
@@ -159,15 +155,6 @@ children:
       children:
       - type: Boolean
         attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
-  - type: Menu
-    attributes: {id: TC_TIMER_MENU}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
         children:
         - {type: Value, value: 'true'}
   - type: Long
@@ -178,7 +165,7 @@ children:
       - type: Long
         attributes: {id: max}
         children:
-        - {type: Value, value: '255'}
+        - {type: Value, value: '65535'}
     - type: Values
       children:
       - type: Dynamic
@@ -200,7 +187,7 @@ children:
       - type: Float
         attributes: {id: max}
         children:
-        - {type: Value, value: '4.266667'}
+        - {type: Value, value: '1092.2667'}
     - type: Values
       children:
       - type: User
@@ -218,13 +205,13 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc1, value: '255'}
+        attributes: {id: tc1, value: '65535'}
   - type: Integer
     attributes: {id: TIMER_WIDTH}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc1, value: '8'}
+        attributes: {id: tc1, value: '16'}
 - type: ElementPosition
   attributes: {x: '401', y: '401', id: tc1}

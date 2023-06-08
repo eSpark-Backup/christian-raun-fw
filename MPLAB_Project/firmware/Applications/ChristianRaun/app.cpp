@@ -5,7 +5,7 @@
 Stepper* stepper;
 Encoder* encoder; 
 uint8_t dir=antiClockWise;
-uint32_t frequency=0;
+float frequency=0;
 uint32_t diagTime=0;
 uint32_t steps =0;
 
@@ -41,13 +41,13 @@ void App::loop()
             break;
             
         case eStepper:
-            frequency = 2*(dataIn.rpm/0.01875);
-            steps = dataIn.displacement;
+            frequency = (dataIn.rpm/60.0) * 3200;
+            steps = (dataIn.displacement/ 3200) * STEPS_PER_REVOLUTION;
             dir = dataIn.direction;
             stepper->run(steps, frequency, dir);
             
             state = eStepperPosition;
-            break;  
+            break;
 
         case eStepperPosition:
             encoder->getAngleValue(position);
