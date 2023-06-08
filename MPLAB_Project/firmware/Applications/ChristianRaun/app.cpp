@@ -42,7 +42,7 @@ void App::loop()
             
         case eStepper:
             frequency = (dataIn.rpm/60.0) * 3200;
-            steps = (dataIn.displacement/ 3200) * STEPS_PER_REVOLUTION;
+            steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
             dir = dataIn.direction;
             stepper->run(steps, frequency, dir);
             
