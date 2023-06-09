@@ -15,6 +15,9 @@ extern uint8_t diagErrIntr;
 static appState state;
 double position;
 
+float calibPosition =0;
+uint32_t calibPreviousMillis =0, calibCurrentMillis =0;
+
 void App::setup()
 {
     SYS_Initialize ( NULL );
@@ -37,7 +40,61 @@ void App::loop()
     {                
         case eTasks:
             APP_Tasks();
-            state = eStepper;
+            state = eModeSelection;
+            break;
+            
+        case eModeSelection:
+            switch(dataIn.mode) 
+            {
+                case DISPLACEMENT:
+                   state = eStepper;
+                   break;
+                   
+                case TIME:
+                    state = eStepper;
+                    break;
+                    
+                case CALIBRATION:
+                    state = eCalibration;
+                    break;
+                    
+                default:
+                    state = eStepperPosition;
+                    break;
+            }
+            
+            break;
+            
+        case eCalibration:
+            switch(dataOut.deviceStatus)
+            {
+                case None:
+                    frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
+                    dir = ANTICLOCKWISE;
+                    stepper->run(frequency, ANTICLOCKWISE);
+                    dataOut.deviceStatus = CALIBRATION_SEQUENCE_01_STARTED;
+                    calibPreviousMillis = getMillis();
+                    break;
+                    
+                case CALIBRATION_SEQUENCE_01_STARTED:
+                    calibCurrentMillis = getMillis();
+                    if ((calibCurrentMillis - calibPreviousMillis) > (1000 * 10))
+                    {
+                        if ((dataOut.position - calibPosition) > -2.0)
+                        {
+                            stepper->stop();
+                            dataOut.deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
+                        }
+                        else
+                        {
+                            calibPosition = dataOut.position;
+                        }  
+                        calibPreviousMillis = calibCurrentMillis;
+                    }
+                    
+                    break;            
+            }
+            state = eStepperPosition;
             break;
             
         case eStepper:
@@ -56,14 +113,8 @@ void App::loop()
 
          case eSendData:
             dataOut.position = encoder->calculateDisplacement(position, dir);
-            dataOut.diag1 = diagErr;
-            #ifdef TEST_INPUTS
-                dataOut.position = rand()%1000;
-                dataOut.temperature = rand()%1000;
-                dataOut.diag1 = rand()%1000;
-                dataOut.diag2 = rand()%1000;
-                dataOut.diag3 = rand()%1000;
-            #endif 
+            dataOut.motorDiagnostic = diagErr;
+
             state = eTasks;
             break;
     }     

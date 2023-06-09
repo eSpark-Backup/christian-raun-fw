@@ -10,9 +10,18 @@
 
 enum appState {
     eTasks,
+    eModeSelection,        
+    eCalibration,
     eStepper,
     eStepperPosition,
-    eSendData
+    eSendData,
+};
+
+enum applicationModes
+{
+    DISPLACEMENT,
+    TIME,
+    CALIBRATION,
 };
 
 extern struct dataInPacket dataIn;

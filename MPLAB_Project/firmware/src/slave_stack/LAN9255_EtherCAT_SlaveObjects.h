@@ -39,7 +39,7 @@
 * SubIndex 3 - Reference to 0x7010.3<br>
 * SubIndex 4 - Reference to 0x7010.4<br>
 * SubIndex 5 - Reference to 0x7010.5<br>
-* SubIndex 6 - Padding entry (6Bit)<br>
+* SubIndex 6 - Padding entry (7Bit)<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1601[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
@@ -48,7 +48,7 @@ OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1601[] = {
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x7010.3 */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x7010.4 */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x7010.5 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex6 - Padding entry (6Bit) */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex6 - Padding entry (7Bit) */
 
 /**
 * \brief Object/Entry names
@@ -73,7 +73,7 @@ UINT32 SI2; /* Subindex2 - Reference to 0x7010.2 */
 UINT32 SI3; /* Subindex3 - Reference to 0x7010.3 */
 UINT32 SI4; /* Subindex4 - Reference to 0x7010.4 */
 UINT32 SI5; /* Subindex5 - Reference to 0x7010.5 */
-UINT32 SI6; /* Subindex6 - Padding entry (6Bit) */
+UINT32 SI6; /* Subindex6 - Padding entry (7Bit) */
 } OBJ_STRUCT_PACKED_END
 TOBJ1601;
 #endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
@@ -83,7 +83,7 @@ TOBJ1601;
 */
 PROTO TOBJ1601 OutputsProcessDataMapping0x1601
 #if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={6,0x70100120,0x70100220,0x70100320,0x70100401,0x70100501,0x00000006}
+={6,0x70100120,0x70100220,0x70100320,0x70100420,0x70100501,0x00000007}
 #endif
 ;
 /** @}*/
@@ -268,16 +268,16 @@ PROTO TOBJ1C13 sTxPDOassign
 * SubIndex 0<br>
 * SubIndex 1 - Position<br>
 * SubIndex 2 - Temperature<br>
-* SubIndex 3 - Diag1<br>
-* SubIndex 4 - Diag2<br>
+* SubIndex 3 - MotorDiagnostic<br>
+* SubIndex 4 - DeviceStatus <br>
 * SubIndex 5 - Diag3<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
 { DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex1 - Position */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex2 - Temperature */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex3 - Diag1 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex4 - Diag2 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex3 - MotorDiagnostic */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex4 - DeviceStatus  */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }}; /* Subindex5 - Diag3 */
 
 /**
@@ -286,8 +286,8 @@ OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
 OBJCONST UCHAR OBJMEM aName0x6000[] = "Inputs\000"
 "Position\000"
 "Temperature\000"
-"Diag1\000"
-"Diag2\000"
+"MotorDiagnostic\000"
+"DeviceStatus \000"
 "Diag3\000\377";
 #endif //#ifdef _OBJD_
 
@@ -299,8 +299,8 @@ typedef struct OBJ_STRUCT_PACKED_START {
 UINT16 u16SubIndex0;
 REAL32 Position; /* Subindex1 - Position */
 UINT32 Temperature; /* Subindex2 - Temperature */
-UINT32 Diag1; /* Subindex3 - Diag1 */
-UINT32 Diag2; /* Subindex4 - Diag2 */
+UINT32 MotorDiagnostic; /* Subindex3 - MotorDiagnostic */
+UINT32 DeviceStatus; /* Subindex4 - DeviceStatus  */
 UINT32 Diag3; /* Subindex5 - Diag3 */
 } OBJ_STRUCT_PACKED_END
 TOBJ6000;
@@ -334,8 +334,8 @@ PROTO TOBJ6000 Inputs0x6000
 * SubIndex 1 - RPM<br>
 * SubIndex 2 - Displacement<br>
 * SubIndex 3 - Time<br>
-* SubIndex 4 - Direction<br>
-* SubIndex 5 - Mode<br>
+* SubIndex 4 - Mode<br>
+* SubIndex 5 - Direction<br>
 * SubIndex 6<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x7010[] = {
@@ -343,9 +343,9 @@ OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x7010[] = {
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex1 - RPM */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex2 - Displacement */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex3 - Time */
-{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex4 - Direction */
-{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex5 - Mode */
-{ DEFTYPE_NULL , 0x06 , 0x0000 }}; /* Subindex6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex4 - Mode */
+{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex5 - Direction */
+{ DEFTYPE_NULL , 0x07 , 0x0000 }}; /* Subindex6 */
 
 /**
 * \brief Object/Entry names
@@ -354,8 +354,8 @@ OBJCONST UCHAR OBJMEM aName0x7010[] = "Outputs\000"
 "RPM\000"
 "Displacement\000"
 "Time\000"
-"Direction\000"
 "Mode\000"
+"Direction\000"
 "\000\377";
 #endif //#ifdef _OBJD_
 
@@ -368,9 +368,9 @@ UINT16 u16SubIndex0;
 UINT32 RPM; /* Subindex1 - RPM */
 UINT32 Displacement; /* Subindex2 - Displacement */
 UINT32 Time; /* Subindex3 - Time */
-BOOLEAN(Direction); /* Subindex4 - Direction */
-BOOLEAN(Mode); /* Subindex5 - Mode */
-ALIGN6(SI6) /* Subindex6 */
+UINT32 Mode; /* Subindex4 - Mode */
+BOOLEAN(Direction); /* Subindex5 - Direction */
+ALIGN7(SI6) /* Subindex6 */
 } OBJ_STRUCT_PACKED_END
 TOBJ7010;
 #endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
@@ -380,7 +380,7 @@ TOBJ7010;
 */
 PROTO TOBJ7010 Outputs0x7010
 #if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={5,0x00000000,0x00000000,0x00000000,0x00,0x00,0}
+={5,0x00000000,0x00000000,0x00000000,0x00000000,0x00,0}
 #endif
 ;
 /** @}*/

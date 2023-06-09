@@ -22,7 +22,7 @@ void Tmc2130::loop()
     }
 }
 
-void Tmc2130::run(uint32_t steps, float freq, uint8_t dir)
+void Tmc2130::run(uint32_t steps, float freq, direction dir)
 {    
     if(steps != maxToggleCount/2)
     {
@@ -43,6 +43,20 @@ void Tmc2130::run(uint32_t steps, float freq, uint8_t dir)
             }
         }
     }    
+}
+
+void Tmc2130::run(float freq, direction dir)
+{
+    PORT_PinWrite(DIR_PIN, dir);
+    float timeSec = (1.0/freq) / 2;
+    uint16_t period = timeSec / 0.0000000166667;
+    TC1_Timer16bitPeriodSet(period);
+    TC1_TimerStart();
+}
+
+void Tmc2130::stop(void)
+{
+    TC1_TimerStop();
 }
 
 /* Timer Interrupt handler */

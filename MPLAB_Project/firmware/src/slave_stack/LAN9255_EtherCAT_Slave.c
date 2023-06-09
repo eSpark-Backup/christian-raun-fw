@@ -647,16 +647,7 @@ void APPL_InputMapping(UINT16* pData)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_OutputMapping(UINT16* pData)
 {
-    UINT32 *pTemp = (UINT32*)pData;
-	Outputs0x7010.RPM = *pTemp;
-    pTemp++;
-    Outputs0x7010.Displacement = *pTemp;
-    pTemp++;
-    Outputs0x7010.Time = *pTemp;
-    pTemp++;
-    UINT8 *pTemp8 = (UINT8*) pTemp;
-    Outputs0x7010.Direction = (*pTemp8 & 0x1);
-    Outputs0x7010.Mode = (*pTemp8 & 0x2) >> 1;
+    MEMCPY(&(Outputs0x7010.RPM), pData, sizeof(struct dataInPacket));
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -670,11 +661,7 @@ void APPL_Application(void)
     MEMCPY(&(Inputs0x6000.Position), &(dataOut.position), sizeof(struct dataOutPacket)); 
     
     // Map Inputs
-    dataIn.rpm = Outputs0x7010.RPM;
-    dataIn.displacement = Outputs0x7010.Displacement;
-    dataIn.time = Outputs0x7010.Time;
-    dataIn.direction = Outputs0x7010.Direction;
-    dataIn.mode = Outputs0x7010.Mode;
+    MEMCPY(&(dataIn.rpm), &(Outputs0x7010.RPM), sizeof(struct dataInPacket));
 }
 
 #if EXPLICIT_DEVICE_ID
