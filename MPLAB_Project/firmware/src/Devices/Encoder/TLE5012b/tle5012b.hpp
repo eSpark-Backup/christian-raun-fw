@@ -26,6 +26,6 @@ class Tle5012b : public Encoder
         void setup() override;
         void loop() override;
         void getAngleValue(double &angleValue) override;
-        float calculateDisplacement(double angle, bool dir) override;
+        float calculateDisplacement(double angle, direction dir) override;
 };
 #endif

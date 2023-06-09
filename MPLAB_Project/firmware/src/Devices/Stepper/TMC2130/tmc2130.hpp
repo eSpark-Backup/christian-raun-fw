@@ -4,9 +4,6 @@
 #include "basicDef.h"
 #include "../stepper.hpp"
 
-#define clockWise                                          0
-#define antiClockWise                                      1 
-
 class Tmc2130 : public Stepper
 {
     private:

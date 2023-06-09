@@ -1,6 +1,12 @@
 #ifndef STEPPER
 #define STEPPER
 
+enum direction
+{
+    CLOCKWISE,
+    ANTICLOCKWISE,
+};
+
 #define STEPS_PER_REVOLUTION 3115 //if error otherwise 3200
 
 class Stepper
