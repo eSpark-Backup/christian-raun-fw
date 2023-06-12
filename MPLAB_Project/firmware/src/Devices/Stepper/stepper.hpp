@@ -32,5 +32,6 @@ class Stepper
         virtual void run(uint32_t steps, float freq, direction dir) {} 
         virtual void run(float freq, direction dir) {}
         virtual void stop(void) {}
+        virtual bool isRunning(void) { return false;}
 };
 #endif

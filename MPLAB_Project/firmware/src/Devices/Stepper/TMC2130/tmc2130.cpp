@@ -56,6 +56,7 @@ void Tmc2130::run(float freq, direction dir)
 
 void Tmc2130::stop(void)
 {
+    toggleCounter =0;
     TC1_TimerStop();
 }
 
@@ -64,4 +65,9 @@ void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
 { 
     Tmc2130* stepper = (Tmc2130*)context;
     stepper->loop();
+}
+
+bool Tmc2130::isRunning(void)
+{
+    return (TC1_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
 }

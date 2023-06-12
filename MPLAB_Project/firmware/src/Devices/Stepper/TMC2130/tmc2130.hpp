@@ -14,6 +14,7 @@ class Tmc2130 : public Stepper
         void run(uint32_t steps, float freq, direction dir) override; 
         void run(float freq, direction dir) override; 
         void stop(void) override;
+        bool isRunning(void) override;
 };
 
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context);

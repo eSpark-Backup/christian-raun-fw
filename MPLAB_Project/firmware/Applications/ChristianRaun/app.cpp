@@ -54,8 +54,12 @@ void App::loop()
                     state = eStepper;
                     break;
                     
-                case CALIBRATION:
-                    state = eCalibration;
+                case CALIBRATION_SEQUENCE_01:
+                    state = eCalibration_01;
+                    break;
+                    
+                case CALIBRATION_SEQUENCE_02:
+                    state = eCalibration_02;
                     break;
                     
                 default:
@@ -65,22 +69,23 @@ void App::loop()
             
             break;
             
-        case eCalibration:
+        case eCalibration_01:
             switch(dataOut.deviceStatus)
             {
                 case None:
                     frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
                     dir = ANTICLOCKWISE;
-                    stepper->run(frequency, ANTICLOCKWISE);
-                    dataOut.deviceStatus = CALIBRATION_SEQUENCE_01_STARTED;
+                    stepper->run(frequency, dir);
                     calibPreviousMillis = getMillis();
+                    calibPosition = dataOut.position;
+                    dataOut.deviceStatus = CALIBRATION_SEQUENCE_01_STARTED;  
                     break;
                     
                 case CALIBRATION_SEQUENCE_01_STARTED:
                     calibCurrentMillis = getMillis();
-                    if ((calibCurrentMillis - calibPreviousMillis) > (1000 * 10))
+                    if ((calibCurrentMillis - calibPreviousMillis) > (1000 * 5))
                     {
-                        if ((dataOut.position - calibPosition) > -2.0)
+                        if (fabs(calibPosition - dataOut.position) < 1.0)
                         {
                             stepper->stop();
                             dataOut.deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
@@ -91,8 +96,31 @@ void App::loop()
                         }  
                         calibPreviousMillis = calibCurrentMillis;
                     }
+                    break;                 
+            }
+            state = eStepperPosition;
+            break;
+            
+        case eCalibration_02:
+            switch(dataOut.deviceStatus)
+            {
+                case CALIBRATION_SEQUENCE_01_SUCCESS:
+                    frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
+                    dir = CLOCKWISE;
+                    steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
+                    stepper->run(steps, frequency, dir);
+                    dataOut.deviceStatus = CALIBRATION_SEQUENCE_02_STARTED;
+                    break;
                     
-                    break;            
+                case CALIBRATION_SEQUENCE_02_STARTED:
+                    if (!stepper->isRunning())
+                    {
+                        dataOut.deviceStatus = CALIBRATION_SEQUENCE_02_SUCCESS;
+                    }
+                    break;
+                    
+                default:
+                    break;
             }
             state = eStepperPosition;
             break;

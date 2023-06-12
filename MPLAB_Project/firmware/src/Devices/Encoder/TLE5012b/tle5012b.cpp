@@ -65,6 +65,7 @@ float Tle5012b::calculateDisplacement(double angle, direction dir)
                     displacementCount += 2;
                 }
             }
+            
             break;
             
         case ANTICLOCKWISE:
@@ -80,6 +81,8 @@ float Tle5012b::calculateDisplacement(double angle, direction dir)
                     displacementCount -= 2;
                 }
             }
+//            displacement = 2.0 - displacement;
+//            displacement = displacementCount - displacement;
             break;
             
         default:
