@@ -53,11 +53,11 @@ float Tle5012b::calculateDisplacement(double angle, direction dir)
     switch(dir)
     {
         case CLOCKWISE:
-            if (displacement > (float)1.8)
+            if (displacement > (float)1.5)
             {
                 almostCompleteCW =true;
             }
-            else if (displacement < (float)0.2)
+            else if (displacement < (float)0.5)
             {
                 if(almostCompleteCW)
                 {
@@ -66,14 +66,15 @@ float Tle5012b::calculateDisplacement(double angle, direction dir)
                 }
             }
             
+            almostCompleteCCW = false;
             break;
             
         case ANTICLOCKWISE:
-            if (displacement < (float)0.2)
+            if (displacement < (float)0.5)
             {
                 almostCompleteCCW =true;
             }
-            else if (displacement > (float)1.8)
+            else if (displacement > (float)1.5)
             {
                 if(almostCompleteCCW)
                 {
@@ -83,6 +84,7 @@ float Tle5012b::calculateDisplacement(double angle, direction dir)
             }
 //            displacement = 2.0 - displacement;
 //            displacement = displacementCount - displacement;
+            almostCompleteCW = false;
             break;
             
         default:
