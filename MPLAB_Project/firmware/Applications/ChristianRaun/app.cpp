@@ -96,7 +96,14 @@ void App::loop()
                         }  
                         calibPreviousMillis = calibCurrentMillis;
                     }
-                    break;                 
+                    break;  
+                    
+                case CALIBRATION_SEQUENCE_01_SUCCESS:
+                    break;
+                    
+                default:
+                    dataOut.deviceStatus = None;
+                    break;
             }
             state = eStepperPosition;
             break;
@@ -115,6 +122,7 @@ void App::loop()
                 case CALIBRATION_SEQUENCE_02_STARTED:
                     if (!stepper->isRunning())
                     {
+                        stepper->resetMaxToggleCount();
                         dataOut.deviceStatus = CALIBRATION_SEQUENCE_02_SUCCESS;
                     }
                     break;

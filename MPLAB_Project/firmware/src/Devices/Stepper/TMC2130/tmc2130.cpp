@@ -60,6 +60,10 @@ void Tmc2130::stop(void)
     TC1_TimerStop();
 }
 
+void Tmc2130::resetMaxToggleCount(void)
+{
+    maxToggleCount =0;
+}
 /* Timer Interrupt handler */
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
 { 

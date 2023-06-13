@@ -33,5 +33,6 @@ class Stepper
         virtual void run(float freq, direction dir) {}
         virtual void stop(void) {}
         virtual bool isRunning(void) { return false;}
+        virtual void resetMaxToggleCount(void) {}
 };
 #endif
