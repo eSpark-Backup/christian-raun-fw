@@ -269,7 +269,7 @@ PROTO TOBJ1C13 sTxPDOassign
 * SubIndex 1 - Position<br>
 * SubIndex 2 - Temperature<br>
 * SubIndex 3 - MotorDiagnostic<br>
-* SubIndex 4 - DeviceStatus <br>
+* SubIndex 4 - DeviceStatus<br>
 * SubIndex 5 - Diag3<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
@@ -277,7 +277,7 @@ OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
 { DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex1 - Position */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex2 - Temperature */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex3 - MotorDiagnostic */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex4 - DeviceStatus  */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex4 - DeviceStatus */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }}; /* Subindex5 - Diag3 */
 
 /**
@@ -287,7 +287,7 @@ OBJCONST UCHAR OBJMEM aName0x6000[] = "Inputs\000"
 "Position\000"
 "Temperature\000"
 "MotorDiagnostic\000"
-"DeviceStatus \000"
+"DeviceStatus\000"
 "Diag3\000\377";
 #endif //#ifdef _OBJD_
 
@@ -300,7 +300,7 @@ UINT16 u16SubIndex0;
 REAL32 Position; /* Subindex1 - Position */
 UINT32 Temperature; /* Subindex2 - Temperature */
 UINT32 MotorDiagnostic; /* Subindex3 - MotorDiagnostic */
-UINT32 DeviceStatus; /* Subindex4 - DeviceStatus  */
+UINT32 DeviceStatus; /* Subindex4 - DeviceStatus */
 UINT32 Diag3; /* Subindex5 - Diag3 */
 } OBJ_STRUCT_PACKED_END
 TOBJ6000;

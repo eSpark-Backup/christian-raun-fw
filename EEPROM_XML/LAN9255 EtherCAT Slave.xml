@@ -720,7 +720,7 @@
 								</SubItem>
 								<SubItem>
 									<SubIdx>4</SubIdx>
-									<Name>DeviceStatus </Name>
+									<Name>DeviceStatus</Name>
 									<Type>UDINT</Type>
 									<BitSize>32</BitSize>
 									<BitOffs>112</BitOffs>
@@ -1218,7 +1218,7 @@
 										</Info>
 									</SubItem>
 									<SubItem>
-										<Name>DeviceStatus </Name>
+										<Name>DeviceStatus</Name>
 										<Info>
 											<MaxData>FFFFFFFF</MaxData>
 											<DefaultData>00000000</DefaultData>
@@ -1361,7 +1361,7 @@
 						<Index>#x6000</Index>
 						<SubIndex>4</SubIndex>
 						<BitLen>32</BitLen>
-						<Name>DeviceStatus </Name>
+						<Name>DeviceStatus</Name>
 						<DataType>UDINT</DataType>
 					</Entry>
 					<Entry>
