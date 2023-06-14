@@ -112,7 +112,7 @@ void TC2_TimerCallbackRegister( TC_TIMER_CALLBACK callback, uintptr_t context );
 
 void TC2_TimerCommandSet(TC_COMMAND command);
 
-uint32_t getMillis(void);
+
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
 

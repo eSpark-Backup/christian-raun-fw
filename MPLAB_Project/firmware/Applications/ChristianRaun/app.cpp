@@ -1,6 +1,4 @@
 #include "app.hpp"
-#define min2 2*1000*60
-#define min4 4*1000*60
 
 Stepper* stepper;
 Encoder* encoder; 
@@ -15,14 +13,14 @@ extern uint8_t diagErrIntr;
 static appState state;
 double position;
 
-float calibPosition =0;
-uint32_t calibPreviousMillis =0, calibCurrentMillis =0;
+uint32_t ms_count =0;
 
 void App::setup()
 {
     SYS_Initialize ( NULL );
     APP_Initialize();
 
+    TC2_TimerCallbackRegister(msCounter, (uintptr_t)NULL);
     TC2_TimerStart();
     
     state = eTasks;
@@ -47,6 +45,7 @@ void App::loop()
             switch(dataIn.mode) 
             {
                 case DISPLACEMENT:
+                   dataOut.deviceStatus = None;
                    state = eStepper;
                    break;
                    
@@ -70,71 +69,18 @@ void App::loop()
             break;
             
         case eCalibration_01:
-            switch(dataOut.deviceStatus)
-            {
-                case None:
-                    frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
-                    dir = ANTICLOCKWISE;
-                    stepper->run(frequency, dir);
-                    calibPreviousMillis = getMillis();
-                    calibPosition = dataOut.position;
-                    dataOut.deviceStatus = CALIBRATION_SEQUENCE_01_STARTED;  
-                    break;
-                    
-                case CALIBRATION_SEQUENCE_01_STARTED:
-                    calibCurrentMillis = getMillis();
-                    if ((calibCurrentMillis - calibPreviousMillis) > (1000 * 5))
-                    {
-                        if (fabs(calibPosition - dataOut.position) < 1.0)
-                        {
-                            stepper->stop();
-                            dataOut.deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
-                        }
-                        else
-                        {
-                            calibPosition = dataOut.position;
-                        }  
-                        calibPreviousMillis = calibCurrentMillis;
-                    }
-                    break;  
-                    
-                case CALIBRATION_SEQUENCE_01_SUCCESS:
-                    break;
-                    
-                default:
-                    dataOut.deviceStatus = None;
-                    break;
-            }
+            dir=ANTICLOCKWISE;
+            stepper->calibrate(CALIBRATION_SEQUENCE_01, &dataOut);
             state = eStepperPosition;
             break;
             
         case eCalibration_02:
-            switch(dataOut.deviceStatus)
-            {
-                case CALIBRATION_SEQUENCE_01_SUCCESS:
-                    frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
-                    dir = CLOCKWISE;
-                    steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-                    stepper->run(steps, frequency, dir);
-                    dataOut.deviceStatus = CALIBRATION_SEQUENCE_02_STARTED;
-                    break;
-                    
-                case CALIBRATION_SEQUENCE_02_STARTED:
-                    if (!stepper->isRunning())
-                    {
-                        stepper->resetMaxToggleCount();
-                        dataOut.deviceStatus = CALIBRATION_SEQUENCE_02_SUCCESS;
-                    }
-                    break;
-                    
-                default:
-                    break;
-            }
+            stepper->calibrate(CALIBRATION_SEQUENCE_02, &dataOut, dataIn.displacement);
             state = eStepperPosition;
             break;
             
         case eStepper:
-            frequency = (dataIn.rpm/60.0) * STEPS_PER_REVOLUTION;
+            frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
             steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
             dir = (direction) dataIn.direction;
             stepper->run(steps, frequency, dir);
@@ -157,10 +103,10 @@ void App::loop()
     if (getDiagErr())
     {
         diagErrIntr=0;
-        diagTime = getMillis();
+        diagTime = millis();
         diagErr=1;
     }
-    if(getMillis() - diagTime > 1000*60)
+    if(millis() - diagTime > TO_MS(60))
     {
         diagErr =0;
     }
@@ -168,18 +114,30 @@ void App::loop()
 //    stepper->loop();
 }
 
-extern "C" App * create_App() // wrapper function
+extern "C" 
 {
-    return new App;
-}
+    /* Timer Interrupt handler */
+    void msCounter(TC_TIMER_STATUS status, uintptr_t context)
+    { 
+        ms_count++;
+    }
 
-extern "C" void App_setup(App* pApp) // wrapper function
-{
-    return pApp->setup();
-}
+    uint32_t millis(void)
+    {
+        return ms_count;
+    }
+    App * create_App() // wrapper function
+    {
+        return new App;
+    }
 
-extern "C" void App_loop(App* pApp) // wrapper function
-{
-    return pApp->loop();
-}
+    void App_setup(App* pApp) // wrapper function
+    {
+        return pApp->setup();
+    }
 
+    void App_loop(App* pApp) // wrapper function
+    {
+        return pApp->loop();
+    }
+}

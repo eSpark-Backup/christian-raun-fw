@@ -197,8 +197,6 @@ void TC2_TimerCallbackRegister( TC_TIMER_CALLBACK callback, uintptr_t context )
 }
 
 /* Timer Interrupt handler */ 
-// Timer interrupts after every 1 milliseconds
-uint32_t millis=0;
 void TC2_TimerInterruptHandler( void )
 {
     if (TC2_REGS->COUNT16.TC_INTENSET != 0U)
@@ -212,10 +210,5 @@ void TC2_TimerInterruptHandler( void )
             TC2_CallbackObject.callback(status, TC2_CallbackObject.context);
         }
     }
-    millis++;
 }
 
-uint32_t getMillis(void)
-{
-    return millis;
-}

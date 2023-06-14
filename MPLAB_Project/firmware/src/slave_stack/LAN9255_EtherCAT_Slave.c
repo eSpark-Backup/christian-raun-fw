@@ -67,6 +67,9 @@ UINT32			u32FileSize=0;
 volatile BOOL	gFirmwareDownload_Started = FALSE;
 volatile BOOL	gFirmwareDownload_Finished = FALSE;
 
+
+
+
 struct dataInPacket dataIn = {0,0,0,0};
 struct dataOutPacket dataOut = {0,0,0,0,0};
 

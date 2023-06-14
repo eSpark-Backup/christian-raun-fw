@@ -1,6 +1,8 @@
 #ifndef STEPPER
 #define STEPPER
 
+#include "../../slave_stack/LAN9255_EtherCAT_Slave.h"
+#include "math.h"
 enum direction
 {
     CLOCKWISE,
@@ -10,6 +12,7 @@ enum direction
 #define STEPS_PER_REVOLUTION 3115 //if error otherwise 3200
 #define CALIBRATION_RPM 30
 #define ROTATIONS_PER_SEC(rpm) (rpm/60.0)
+#define TO_MS(seconds)  (seconds * 1000)
 
 enum deviceStatus 
 {
@@ -20,6 +23,14 @@ enum deviceStatus
     CALIBRATION_SEQUENCE_02_STARTED,
     CALIBRATION_SEQUENCE_02_FAILED,
     CALIBRATION_SEQUENCE_02_SUCCESS,
+};
+
+enum stepperAppModes
+{
+    DISPLACEMENT,
+    TIME,
+    CALIBRATION_SEQUENCE_01,
+    CALIBRATION_SEQUENCE_02,
 };
 
 class Stepper
@@ -34,5 +45,14 @@ class Stepper
         virtual void stop(void) {}
         virtual bool isRunning(void) { return false;}
         virtual void resetMaxToggleCount(void) {}
+        virtual void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement = 0) {}
 };
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+uint32_t millis(void);
+#ifdef __cplusplus
+}
+#endif
 #endif
