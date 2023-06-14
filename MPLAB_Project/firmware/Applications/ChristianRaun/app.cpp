@@ -69,12 +69,13 @@ void App::loop()
             break;
             
         case eCalibration_01:
-            dir=ANTICLOCKWISE;
+            dir = ANTICLOCKWISE;
             stepper->calibrate(CALIBRATION_SEQUENCE_01, &dataOut);
             state = eStepperPosition;
             break;
             
         case eCalibration_02:
+            dir = CLOCKWISE;
             stepper->calibrate(CALIBRATION_SEQUENCE_02, &dataOut, dataIn.displacement);
             state = eStepperPosition;
             break;
