@@ -9,6 +9,9 @@ class Tmc2130 : public Stepper
     private:
         
     public:
+        static direction dir;
+        static direction getDirection(void);
+        
         void setup(void) override;
         void loop(void) override;
         void run(uint32_t steps, float freq, direction dir) override; 

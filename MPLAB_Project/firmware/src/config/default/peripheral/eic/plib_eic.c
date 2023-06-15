@@ -155,7 +155,6 @@ void EIC_CallbackRegister(EIC_PIN pin, EIC_CALLBACK callback, uintptr_t context)
     }
 }
 
-uint8_t diagErrIntr=0;
 void EIC_EXTINT_5_InterruptHandler(void)
 {
     /* Clear interrupt flag */
@@ -165,7 +164,7 @@ void EIC_EXTINT_5_InterruptHandler(void)
     {
         eicCallbackObject[5].callback(eicCallbackObject[5].context);
     }
-    diagErrIntr =1;
+
 }
 void EIC_EXTINT_7_InterruptHandler(void)
 {
@@ -199,10 +198,5 @@ void EIC_EXTINT_15_InterruptHandler(void)
         eicCallbackObject[15].callback(eicCallbackObject[15].context);
     }
 
-}
-
-uint8_t getDiagErr(void)
-{
-    return diagErrIntr;
 }
 

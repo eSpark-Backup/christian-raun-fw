@@ -1,4 +1,7 @@
 #include "tmc2130.hpp"
+
+direction Tmc2130::dir = CLOCKWISE;
+
 volatile uint32_t interruptCount=0;
 uint32_t freqCount=0;
 volatile uint32_t maxToggleCount=0;
@@ -24,6 +27,7 @@ void Tmc2130::loop()
 
 void Tmc2130::run(uint32_t steps, float freq, direction dir)
 {    
+    this->dir = dir;
     if(steps != maxToggleCount/2)
     {
         if (0 == toggleCounter)
@@ -35,11 +39,7 @@ void Tmc2130::run(uint32_t steps, float freq, direction dir)
             maxToggleCount = steps * 2;
             if (maxToggleCount)
             {
-                PORT_PinWrite(DIR_PIN, dir);
-                float timeSec = (1.0/freq) / 2;
-                uint16_t period = timeSec / 0.0000000166667;
-                TC1_Timer16bitPeriodSet(period);
-                TC1_TimerStart();
+                run(freq, dir);
             }
         }
     }    
@@ -47,6 +47,7 @@ void Tmc2130::run(uint32_t steps, float freq, direction dir)
 
 void Tmc2130::run(float freq, direction dir)
 {
+    this->dir = dir;
     PORT_PinWrite(DIR_PIN, dir);
     float timeSec = (1.0/freq) / 2;
     uint16_t period = timeSec / 0.0000000166667;

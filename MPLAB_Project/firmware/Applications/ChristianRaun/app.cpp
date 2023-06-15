@@ -2,7 +2,6 @@
 
 Stepper* stepper;
 Encoder* encoder; 
-direction dir=ANTICLOCKWISE;
 float frequency=0;
 uint32_t diagTime=0;
 uint32_t steps =0;
@@ -22,6 +21,9 @@ void App::setup()
 
     TC2_TimerCallbackRegister(msCounter, (uintptr_t)NULL);
     TC2_TimerStart();
+    
+    EIC_CallbackRegister(DIAG0_INTERRUPT_PIN, temperatureError, (uintptr_t)&dataOut);
+    EIC_InterruptEnable(DIAG0_INTERRUPT_PIN);
     
     state = eTasks;
 
@@ -61,57 +63,54 @@ void App::loop()
                     state = eCalibration_02;
                     break;
                     
+                case ABORT_OPERATION:
+                    dataOut.motorDiagnostic = NO_ERROR;
+                    stepper->stop();
+                    stepper->resetMaxToggleCount();
+                    break;
+                    
                 default:
-                    state = eStepperPosition;
+                    state = eSendData;
                     break;
             }
             
             break;
             
         case eCalibration_01:
-            dir = ANTICLOCKWISE;
             stepper->calibrate(CALIBRATION_SEQUENCE_01, &dataOut);
-            state = eStepperPosition;
+            state = eSendData;
             break;
             
         case eCalibration_02:
-            dir = CLOCKWISE;
             stepper->calibrate(CALIBRATION_SEQUENCE_02, &dataOut, dataIn.displacement);
-            state = eStepperPosition;
+            state = eSendData;
             break;
             
         case eStepper:
             frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
             steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-            dir = (direction) dataIn.direction;
-            stepper->run(steps, frequency, dir);
+            stepper->run(steps, frequency, (direction) dataIn.direction);
             
-            state = eStepperPosition;
-            break;
-
-        case eStepperPosition:
-            encoder->getAngleValue(position);
             state = eSendData;
             break;
 
          case eSendData:
-            dataOut.position = encoder->calculateDisplacement(position, dir);
-            dataOut.motorDiagnostic = diagErr;
+            dataOut.position = encoder->calculateDisplacement();
 
             state = eTasks;
             break;
-    }     
-    if (getDiagErr())
-    {
-        diagErrIntr=0;
-        diagTime = millis();
-        diagErr=1;
-    }
-    if(millis() - diagTime > TO_MS(60))
-    {
-        diagErr =0;
     }
     
+    if(CALIBRATION_SEQUENCE_01_STARTED != dataOut.deviceStatus)
+    {
+        if(stepper->isRunning())
+        {
+            if(encoder->isMotorStalled())
+            {
+                dataOut.motorDiagnostic = MOTOR_STALLED;
+            }
+        }
+    }
 //    stepper->loop();
 }
 
@@ -121,6 +120,13 @@ extern "C"
     void msCounter(TC_TIMER_STATUS status, uintptr_t context)
     { 
         ms_count++;
+    }
+    
+    /* Diag0 Interrupt handler */
+    void temperatureError(uintptr_t context)
+    {
+        dataOutPacket* out = (dataOutPacket*)context;
+        out->motorDiagnostic = TEMPERATURE_LIMIT_EXCEEDED;
     }
 
     uint32_t millis(void)

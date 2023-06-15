@@ -981,4 +981,4 @@ children:
         children:
         - {type: Value, value: drvEthercatLan9255}
 - type: ElementPosition
-  attributes: {x: '477', y: '238', id: ethercat_apps_config}
+  attributes: {x: '477', y: '239', id: ethercat_apps_config}

@@ -326,7 +326,7 @@ void EIC_InterruptDisable (EIC_PIN pin);
 void EIC_CallbackRegister(EIC_PIN pin, EIC_CALLBACK callback, uintptr_t context);
 
 
-uint8_t getDiagErr(void);
+
 #ifdef __cplusplus // Provide C++ Compatibility
 }
 #endif

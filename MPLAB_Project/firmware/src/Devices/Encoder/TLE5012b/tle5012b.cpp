@@ -47,8 +47,12 @@ void Tle5012b::getAngleValue(double &angleValue)
     }
 }
 
-float Tle5012b::calculateDisplacement(double angle, direction dir)
+float Tle5012b::calculateDisplacement(void)
 {
+    double angle;
+    getAngleValue(angle);
+    direction dir = Tmc2130::dir;
+    
     float displacement = (float)((angle/360.0) * 2);
     switch(dir)
     {
@@ -82,8 +86,6 @@ float Tle5012b::calculateDisplacement(double angle, direction dir)
                     displacementCount -= 2;
                 }
             }
-//            displacement = 2.0 - displacement;
-//            displacement = displacementCount - displacement;
             almostCompleteCW = false;
             break;
             
@@ -93,4 +95,28 @@ float Tle5012b::calculateDisplacement(double angle, direction dir)
 
     displacement += displacementCount;
     return displacement;
+}
+
+bool Tle5012b::isMotorStalled(void)
+{
+    float currentPosition = calculateDisplacement();
+    static float previousPosition = calculateDisplacement();
+    
+    static uint32_t currentMillis=0, previousMillis = millis();
+    currentMillis = millis();
+    
+    if ((currentMillis - previousMillis) > TO_MS(5))
+    {
+        previousMillis = currentMillis;
+        if (fabs(previousPosition - currentPosition) < 1.0)
+        {
+            return true;
+        }
+        else
+        {
+            previousPosition = currentPosition;
+        }    
+    }
+    
+    return false;
 }

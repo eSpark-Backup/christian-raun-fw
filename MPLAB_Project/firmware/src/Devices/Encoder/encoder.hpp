@@ -1,7 +1,7 @@
 #ifndef ENCODER
 #define ENCODER
 
-#include "../Stepper/stepper.hpp"
+#include "../Stepper/TMC2130/tmc2130.hpp"
 class Encoder
 {
     private:
@@ -10,6 +10,7 @@ class Encoder
         virtual void setup() {}
         virtual void loop() {}
         virtual void getAngleValue(double &angleValue) {}
-        virtual float calculateDisplacement(double angle, direction dir) { return 0;}
+        virtual float calculateDisplacement(void) { return 0;}
+        virtual bool isMotorStalled(void) { return false;}
 };
 #endif

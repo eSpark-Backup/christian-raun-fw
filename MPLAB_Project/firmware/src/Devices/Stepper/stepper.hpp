@@ -3,10 +3,20 @@
 
 #include "../../slave_stack/LAN9255_EtherCAT_Slave.h"
 #include "math.h"
+
+#define DIAG0_INTERRUPT_PIN EIC_PIN_5
+
 enum direction
 {
     CLOCKWISE,
     ANTICLOCKWISE,
+};
+
+enum motorDiagnostic
+{
+    NO_ERROR,
+    TEMPERATURE_LIMIT_EXCEEDED,
+    MOTOR_STALLED,
 };
 
 #define STEPS_PER_REVOLUTION 3115 //if error otherwise 3200
@@ -31,13 +41,14 @@ enum stepperAppModes
     TIME,
     CALIBRATION_SEQUENCE_01,
     CALIBRATION_SEQUENCE_02,
+    ABORT_OPERATION,
 };
 
 class Stepper
 {
     private:
         
-    public:
+    public:        
         virtual void setup(void) {}
         virtual void loop(void) {}
         virtual void run(uint32_t steps, float freq, direction dir) {} 
