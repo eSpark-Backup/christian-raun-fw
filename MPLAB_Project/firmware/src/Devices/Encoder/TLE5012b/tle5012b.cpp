@@ -1,4 +1,7 @@
 #include "tle5012b.hpp"
+#include "../../../Libraries/SoftSPI/SoftSPIB.h"
+#include "../../Stepper/TMC2130/tmc2130.hpp"
+
 SoftSPIB SPI;
 float displacementCount = 0;
 bool almostCompleteCW = false;
@@ -93,7 +96,7 @@ float Tle5012b::calculateDisplacement(void)
             break;
     }
 
-    displacement += displacementCount;
+    displacement += (displacementCount - ZeroOffset);
     return displacement;
 }
 
@@ -103,12 +106,17 @@ bool Tle5012b::isMotorStalled(void)
     static float previousPosition = calculateDisplacement();
     
     static uint32_t currentMillis=0, previousMillis = millis();
+    if (operationEnd)
+    {
+        previousMillis = millis();
+        previousPosition = calculateDisplacement();
+    }
     currentMillis = millis();
     
-    if ((currentMillis - previousMillis) > TO_MS(5))
+    if ((currentMillis - previousMillis) > TO_MS(0.4))
     {
         previousMillis = currentMillis;
-        if (fabs(previousPosition - currentPosition) < 1.0)
+        if (fabs(previousPosition - currentPosition) < 0.3)
         {
             return true;
         }
@@ -117,6 +125,13 @@ bool Tle5012b::isMotorStalled(void)
             previousPosition = currentPosition;
         }    
     }
+    operationEnd = false;
     
     return false;
+}
+
+void Tle5012b::setZeroOffset()
+{  
+    float position = calculateDisplacement();
+    ZeroOffset += position;
 }

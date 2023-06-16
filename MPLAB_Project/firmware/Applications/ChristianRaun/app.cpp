@@ -30,7 +30,7 @@ void App::setup()
     stepper = new Tmc2130;
     encoder = new Tle5012b;
     encoder->setup();
-    stepper->setup();
+    stepper->setup(encoder);
 }
 
 void App::loop()
@@ -107,8 +107,14 @@ void App::loop()
         {
             if(encoder->isMotorStalled())
             {
+                stepper->stop();
+                stepper->resetMaxToggleCount();
                 dataOut.motorDiagnostic = MOTOR_STALLED;
             }
+        }
+        else
+        {
+            encoder->operationEnd = true;
         }
     }
 //    stepper->loop();

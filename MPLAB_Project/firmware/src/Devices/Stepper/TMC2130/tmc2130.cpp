@@ -9,9 +9,10 @@ volatile uint32_t toggleCounter=0;
 
 bool runStatus = false;
 
-void Tmc2130::setup()
+void Tmc2130::setup(Encoder* encoder)
 {
     TC1_TimerCallbackRegister(pwm_callback, (uintptr_t) this);
+    this->encoder = encoder;
 }
 
 void Tmc2130::loop()
@@ -58,6 +59,7 @@ void Tmc2130::run(float freq, direction dir)
 void Tmc2130::stop(void)
 {
     toggleCounter =0;
+    encoder->operationEnd = true;
     TC1_TimerStop();
 }
 
@@ -68,8 +70,6 @@ void Tmc2130::resetMaxToggleCount(void)
 
 void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement)
 {
-    static float calibPosition =0;
-    static uint32_t calibPreviousMillis =0, calibCurrentMillis =0;
     uint32_t steps, frequency = 0;
     
     switch (mode)
@@ -80,25 +80,15 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                 case None:
                     frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
                     run(frequency, ANTICLOCKWISE);
-                    calibPreviousMillis = millis();
-                    calibPosition = out->position;
                     out->deviceStatus = CALIBRATION_SEQUENCE_01_STARTED;  
                     break;
 
                 case CALIBRATION_SEQUENCE_01_STARTED:
-                    calibCurrentMillis = millis();
-                    if ((calibCurrentMillis - calibPreviousMillis) > TO_MS(5))
+                    if (encoder->isMotorStalled())
                     {
-                        if (fabs(calibPosition - out->position) < 1.0)
-                        {
-                            stop();
-                            out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
-                        }
-                        else
-                        {
-                            calibPosition = out->position;
-                        }  
-                        calibPreviousMillis = calibCurrentMillis;
+                        stop();
+                        out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
+                        encoder->setZeroOffset();
                     }
                     break;  
 
@@ -122,7 +112,11 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     break;
                     
                 case CALIBRATION_SEQUENCE_02_STARTED:
-                    if (!isRunning())
+                    if (MOTOR_STALLED == out->motorDiagnostic)
+                    {
+                        out->deviceStatus = CALIBRATION_SEQUENCE_02_FAILED;
+                    }  
+                    else if (!isRunning())
                     {
                         resetMaxToggleCount();
                         out->deviceStatus = CALIBRATION_SEQUENCE_02_SUCCESS;

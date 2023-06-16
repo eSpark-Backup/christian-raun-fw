@@ -2,6 +2,7 @@
 #define STEPPER
 
 #include "../../slave_stack/LAN9255_EtherCAT_Slave.h"
+#include "../Encoder/TLE5012b/tle5012b.hpp"
 #include "math.h"
 
 #define DIAG0_INTERRUPT_PIN EIC_PIN_5
@@ -49,7 +50,7 @@ class Stepper
     private:
         
     public:        
-        virtual void setup(void) {}
+        virtual void setup(Encoder* encoder) {}
         virtual void loop(void) {}
         virtual void run(uint32_t steps, float freq, direction dir) {} 
         virtual void run(float freq, direction dir) {}

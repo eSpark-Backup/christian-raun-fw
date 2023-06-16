@@ -1,9 +1,8 @@
 #ifndef TLE5012B
 #define TLE5012B
 
-#include "basicDef.h" 
+
 #include "../encoder.hpp"
-#include "../../../Libraries/SoftSPI/SoftSPIB.h"
 
 #define READ_SENSOR                 0x8000    //!< \brief base command for read
 #define SAFE_low                    0x0000    //!< \brief switch of safety word generation
@@ -21,6 +20,7 @@
 class Tle5012b : public Encoder
 {
     private:
+        float ZeroOffset =0;
         
     public:
         void setup() override;
@@ -28,5 +28,6 @@ class Tle5012b : public Encoder
         void getAngleValue(double &angleValue) override;
         float calculateDisplacement(void) override;
         bool isMotorStalled(void) override;
+        void setZeroOffset(void) override;
 };
 #endif
