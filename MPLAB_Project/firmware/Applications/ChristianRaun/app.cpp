@@ -2,6 +2,7 @@
 
 Stepper* stepper;
 Encoder* encoder; 
+Ethercat* ethercat;
 float frequency=0;
 uint32_t diagTime=0;
 uint32_t steps =0;
@@ -13,6 +14,8 @@ static appState state;
 double position;
 
 uint32_t ms_count =0;
+uint32_t previousMillis = 0;
+uint32_t previousCount = 0;
 
 void App::setup()
 {
@@ -29,6 +32,7 @@ void App::setup()
 
     stepper = new Tmc2130;
     encoder = new Tle5012b;
+    ethercat = new Lan9255;
     encoder->setup();
     stepper->setup(encoder);
 }
@@ -96,9 +100,30 @@ void App::loop()
 
          case eSendData:
             dataOut.position = encoder->calculateDisplacement();
-
-            state = eTasks;
+            state = eErrorHandling;
             break;
+            
+        case eErrorHandling:
+            if ((millis() - previousMillis) > TO_MS(1))
+            {
+                previousMillis = millis();
+//                if (ethercat->isLinkDown(0))
+//                {
+//                    stepper->stop();
+//                    stepper->resetMaxToggleCount();
+//                }
+                if (getConnectionCounter() == previousCount)
+                {    
+                    stepper->stop();
+                    stepper->resetMaxToggleCount();
+                }
+                else
+                {
+                    previousCount = getConnectionCounter();
+                }
+            }
+            state = eTasks;
+            break;        
     }
     
     if(CALIBRATION_SEQUENCE_01_STARTED != dataOut.deviceStatus)
@@ -117,6 +142,7 @@ void App::loop()
             encoder->operationEnd = true;
         }
     }
+    
 //    stepper->loop();
 }
 

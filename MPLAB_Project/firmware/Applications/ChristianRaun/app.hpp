@@ -5,6 +5,7 @@
 #include "app_lan9255.h"
 #include "../../src/Devices/Stepper/TMC2130/tmc2130.hpp"
 #include "../../src/Devices/Encoder/TLE5012b/tle5012b.hpp"
+#include "../../src/Devices/Ethercat/Lan9255/Lan9255.hpp"
 #include "../../src/slave_stack/LAN9255_EtherCAT_Slave.h"
 
 enum appState {
@@ -14,6 +15,7 @@ enum appState {
     eCalibration_02,
     eStepper,
     eSendData,
+    eErrorHandling,
 };
 
 extern struct dataInPacket dataIn;

@@ -74,6 +74,11 @@
         </logicalFolder>
         <itemPath>../src/Devices/Encoder/encoder.hpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="Ethercat" displayName="Ethercat" projectFiles="true">
+        <logicalFolder name="Lan9255" displayName="Lan9255" projectFiles="true">
+          <itemPath>../src/Devices/Ethercat/ethercat.hpp</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="f7" displayName="Library" projectFiles="true">
         <logicalFolder name="f1" displayName="SoftSPI" projectFiles="true">
           <itemPath>../src/Libraries/SoftSPI/SoftSPIB.h</itemPath>
@@ -307,6 +312,11 @@
       <logicalFolder name="f5" displayName="Encoder" projectFiles="true">
         <logicalFolder name="f1" displayName="TLE5012B" projectFiles="true">
           <itemPath>../src/Devices/Encoder/TLE5012b/tle5012b.cpp</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="Ethercat" displayName="Ethercat" projectFiles="true">
+        <logicalFolder name="Lan9255" displayName="Lan9255" projectFiles="true">
+          <itemPath>../src/Devices/Ethercat/Lan9255/Lan9255.cpp</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f6" displayName="Library" projectFiles="true">

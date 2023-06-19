@@ -5,7 +5,10 @@
         <group>
             <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/main.cpp</file>
             <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
-            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.hpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Ethercat/ethercat.hpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Ethercat/Lan9255/Lan9255.cpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Ethercat/Lan9255/Lan9255.hpp</file>
         </group>
     </open-files>
 </project-private>
