@@ -16,6 +16,7 @@
 #define POW_2_15                    32768.0   //!< \brief values used to for final calculations of angle speed, revolutions, range and value
 #define POW_2_7                     128.0     //!< \brief
 #define ANGLE_360_VAL               360.0     //!< \brief
+#define STALL_DETECTION_MAX_TIME    0.4
 
 class Tle5012b : public Encoder
 {
@@ -27,7 +28,7 @@ class Tle5012b : public Encoder
         void loop() override;
         void getAngleValue(double &angleValue) override;
         float calculateDisplacement(void) override;
-        bool isMotorStalled(void) override;
+        bool isMotorStalled(float rpm) override;
         void setZeroOffset(void) override;
 };
 #endif

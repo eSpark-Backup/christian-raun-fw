@@ -1,6 +1,7 @@
 #include "tmc2130.hpp"
 
 direction Tmc2130::dir = CLOCKWISE;
+float Tmc2130::rpm = 0;
 
 volatile uint32_t interruptCount=0;
 uint32_t freqCount=0;
@@ -24,6 +25,15 @@ void Tmc2130::loop()
         toggleCounter =0;
         TC1_TimerStop();
     }
+}
+
+void Tmc2130::run(float rpm, uint32_t steps, float freq, direction dir)
+{
+    if(!isRunning())
+    {
+        this->rpm = rpm;
+    }
+    run(steps, freq, dir);
 }
 
 void Tmc2130::run(uint32_t steps, float freq, direction dir)
@@ -84,7 +94,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     break;
 
                 case CALIBRATION_SEQUENCE_01_STARTED:
-                    if (encoder->isMotorStalled())
+                    if (encoder->isMotorStalled(30))
                     {
                         stop();
                         out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
@@ -107,7 +117,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                 case CALIBRATION_SEQUENCE_01_SUCCESS:
                     frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
                     steps = (displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-                    run(steps, frequency, CLOCKWISE);
+                    run(CALIBRATION_RPM, steps, frequency, CLOCKWISE);
                     out->deviceStatus = CALIBRATION_SEQUENCE_02_STARTED;
                     break;
                     

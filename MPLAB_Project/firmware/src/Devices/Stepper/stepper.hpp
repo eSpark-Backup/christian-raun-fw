@@ -53,6 +53,7 @@ class Stepper
     public:        
         virtual void setup(Encoder* encoder) {}
         virtual void loop(void) {}
+        virtual void run(float rpm, uint32_t steps, float freq, direction dir) {}
         virtual void run(uint32_t steps, float freq, direction dir) {} 
         virtual void run(float freq, direction dir) {}
         virtual void stop(void) {}

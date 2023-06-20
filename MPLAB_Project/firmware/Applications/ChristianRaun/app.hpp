@@ -28,6 +28,7 @@ class App
     public:
        App() {}
        void setup();
+       appState selectMode();
        void loop();
    
     

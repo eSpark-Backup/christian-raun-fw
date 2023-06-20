@@ -8,7 +8,6 @@ uint32_t diagTime=0;
 uint32_t steps =0;
 
 uint8_t diagErr=0;
-extern uint8_t diagErrIntr;
 
 static appState state;
 double position;
@@ -48,36 +47,7 @@ void App::loop()
             break;
             
         case eModeSelection:
-            switch(dataIn.mode) 
-            {
-                case DISPLACEMENT:
-                   dataOut.deviceStatus = None;
-                   state = eStepper;
-                   break;
-                   
-                case TIME:
-                    state = eStepper;
-                    break;
-                    
-                case CALIBRATION_SEQUENCE_01:
-                    state = eCalibration_01;
-                    break;
-                    
-                case CALIBRATION_SEQUENCE_02:
-                    state = eCalibration_02;
-                    break;
-                    
-                case ABORT_OPERATION:
-                    dataOut.motorDiagnostic = NO_ERROR;
-                    stepper->stop();
-                    stepper->resetMaxToggleCount();
-                    break;
-                    
-                default:
-                    state = eSendData;
-                    break;
-            }
-            
+            state = selectMode();
             break;
             
         case eCalibration_01:
@@ -93,7 +63,7 @@ void App::loop()
         case eStepper:
             frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
             steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-            stepper->run(steps, frequency, (direction) dataIn.direction);
+            stepper->run(dataIn.rpm, steps, frequency, (direction) dataIn.direction);
             
             state = eSendData;
             break;
@@ -122,28 +92,64 @@ void App::loop()
                     previousCount = getConnectionCounter();
                 }
             }
+            
+            if(CALIBRATION_SEQUENCE_01_STARTED != dataOut.deviceStatus)
+            {
+                if(stepper->isRunning())
+                {
+                    if(encoder->isMotorStalled(Tmc2130::rpm))
+                    {
+                        stepper->stop();
+                        stepper->resetMaxToggleCount();
+                        dataOut.motorDiagnostic = MOTOR_STALLED;
+                    }
+                }
+                else
+                {
+                    encoder->operationEnd = true;
+                }
+            }
             state = eTasks;
             break;        
     }
     
-    if(CALIBRATION_SEQUENCE_01_STARTED != dataOut.deviceStatus)
-    {
-        if(stepper->isRunning())
-        {
-            if(encoder->isMotorStalled())
-            {
-                stepper->stop();
-                stepper->resetMaxToggleCount();
-                dataOut.motorDiagnostic = MOTOR_STALLED;
-            }
-        }
-        else
-        {
-            encoder->operationEnd = true;
-        }
-    }
-    
 //    stepper->loop();
+}
+
+appState App::selectMode()
+{
+    appState state;
+    switch(dataIn.mode) 
+    {
+        case DISPLACEMENT:
+           dataOut.deviceStatus = None;
+           state = eStepper;
+           break;
+
+        case TIME:
+            state = eStepper;
+            break;
+
+        case CALIBRATION_SEQUENCE_01:
+            state = eCalibration_01;
+            break;
+
+        case CALIBRATION_SEQUENCE_02:
+            state = eCalibration_02;
+            break;
+
+        case ABORT_OPERATION:
+            dataOut.motorDiagnostic = NO_ERROR;
+            stepper->stop();
+            stepper->resetMaxToggleCount();
+            state = eSendData;
+            break;
+
+        default:
+            state = eSendData;
+            break;
+    }
+    return state;
 }
 
 extern "C" 

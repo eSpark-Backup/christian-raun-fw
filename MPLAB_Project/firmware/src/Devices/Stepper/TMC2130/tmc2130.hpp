@@ -11,10 +11,11 @@ class Tmc2130 : public Stepper
         
     public:
         static direction dir;
-        static direction getDirection(void);
+        static float rpm;
         
         void setup(Encoder* encoder) override;
         void loop(void) override;
+        void run(float rpm, uint32_t steps, float freq, direction dir) override;
         void run(uint32_t steps, float freq, direction dir) override; 
         void run(float freq, direction dir) override; 
         void stop(void) override;

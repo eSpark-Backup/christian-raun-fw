@@ -11,7 +11,7 @@ class Encoder
         virtual void loop() {}
         virtual void getAngleValue(double &angleValue) {}
         virtual float calculateDisplacement(void) { return 0;}
-        virtual bool isMotorStalled(void) { return false;}
+        virtual bool isMotorStalled(float rpm) { return false;}
         virtual void setZeroOffset(void) {}
 };
 #endif
