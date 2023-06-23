@@ -89,7 +89,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 5926934618E399FB0F55BB108F7E5150
+  userChecksum: D23F147EEAB442A1963A348FEB2B089B
 - generatedChecksum: E076CD275E066517AC6895BC2A9AEFD6
   logicalPath: config/default
   name: interrupts.c
@@ -145,7 +145,7 @@ files:
   physicalPath: peripheral/eic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 90F1A4CF91669F0A5007462F3D51125A
+  userChecksum: 89DBA19A3D2CA7637EFE2F71E7622503
 - generatedChecksum: C3ECDED3D6301DB0DE622293ED615D21
   logicalPath: config/default/peripheral/evsys
   name: plib_evsys.c
@@ -259,51 +259,51 @@ files:
   type: HEADER
   userChecksum: 56BE1EF63C96839590E43E89F3A70434
 - generatedChecksum: C76684C571AED1F71AF5682CA7385B2C
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: ac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: C76684C571AED1F71AF5682CA7385B2C
 - generatedChecksum: 180E105C2580352C22332FEBE221A509
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: ac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 180E105C2580352C22332FEBE221A509
 - generatedChecksum: 3ABA9B782005E7EC44AFFA50A91BECB2
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: adc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 3ABA9B782005E7EC44AFFA50A91BECB2
 - generatedChecksum: E04ABE8C2BBEC64B64EB6B2F0F427B8D
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: adc0.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: E04ABE8C2BBEC64B64EB6B2F0F427B8D
 - generatedChecksum: A8D554CADFC7C5BC7C618FA0749D55DC
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: adc1.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: A8D554CADFC7C5BC7C618FA0749D55DC
 - generatedChecksum: 669719C19A5D1880386DCD136195D8C7
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: aes.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 669719C19A5D1880386DCD136195D8C7
 - generatedChecksum: 91A182D5F1E292171EBC957FF1DFCDA5
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: aes.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 91A182D5F1E292171EBC957FF1DFCDA5
@@ -329,30 +329,30 @@ files:
   type: HEADER
   userChecksum: 14F1AD56D242EFD0AF76849C6ADFECC4
 - generatedChecksum: 6B8B1B6178149459CC9344750E3BEEB0
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: ccl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 6B8B1B6178149459CC9344750E3BEEB0
 - generatedChecksum: 18EA78B0242797F4A2BE33B8F985A809
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: ccl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 18EA78B0242797F4A2BE33B8F985A809
 - generatedChecksum: 94BB2F9A53CF789D037A0E10B37C6F85
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: cmcc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 94BB2F9A53CF789D037A0E10B37C6F85
 - generatedChecksum: 92287952CAA858B2E622DAFF3796E682
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: cmcc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 92287952CAA858B2E622DAFF3796E682
@@ -420,16 +420,16 @@ files:
   type: HEADER
   userChecksum: 7EF1FAD7778FEEAC9467270306D7F7C0
 - generatedChecksum: 4D45B35059DE4384F15A37F6B14D0227
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: dac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 4D45B35059DE4384F15A37F6B14D0227
 - generatedChecksum: 78EF29316A6B31EC662D0A4B43D763D2
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: dac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 78EF29316A6B31EC662D0A4B43D763D2
@@ -440,13 +440,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: BD6B9890745CE3C509DF140EE7811DA5
-- generatedChecksum: EAB4D52458733EB2F62CECEB5DA28842
+- generatedChecksum: E530FDF0CF650037FE59631385F880F9
   logicalPath: config/default
   name: device.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: EAB4D52458733EB2F62CECEB5DA28842
+  userChecksum: E530FDF0CF650037FE59631385F880F9
 - generatedChecksum: 85D3482D395C59BDFF268B01940CDDDE
   logicalPath: config/default
   name: device_cache.h
@@ -462,16 +462,16 @@ files:
   type: HEADER
   userChecksum: CD3C3F29296C0F7ABD7CCFBCC532B55B
 - generatedChecksum: 5DC0922E3153DC2615DF8B758BFF25B2
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: dmac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 5DC0922E3153DC2615DF8B758BFF25B2
 - generatedChecksum: BB0E213F8FF302CFF49987E3AFE58093
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: dmac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: BB0E213F8FF302CFF49987E3AFE58093
@@ -497,16 +497,16 @@ files:
   type: HEADER
   userChecksum: 57CFB19507C2684FC8BF2BB94057A0B6
 - generatedChecksum: F6824210B4F2372C144196A303FE946F
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: dsu.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: F6824210B4F2372C144196A303FE946F
 - generatedChecksum: 2D522A530F35659AC375A89CD7A5B9FB
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: dsu.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 2D522A530F35659AC375A89CD7A5B9FB
@@ -546,16 +546,16 @@ files:
   type: HEADER
   userChecksum: 71F724BA54589D5323DF659BB5284469
 - generatedChecksum: DE81A87A634C7B7A6F98FDCCF17FD68C
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: eic.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: DE81A87A634C7B7A6F98FDCCF17FD68C
 - generatedChecksum: 484DE3D9AB2CEDFE11DECBD84DC00489
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: eic.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 484DE3D9AB2CEDFE11DECBD84DC00489
@@ -581,16 +581,16 @@ files:
   type: HEADER
   userChecksum: D2DCAAB45EABC4B40AAC16BAB12783BF
 - generatedChecksum: 896BACE4CFD926B305BB498521C7B22C
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: evsys.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 896BACE4CFD926B305BB498521C7B22C
 - generatedChecksum: 9774EFE895B158D52BE88D6181D0B0CB
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: evsys.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 9774EFE895B158D52BE88D6181D0B0CB
@@ -602,100 +602,100 @@ files:
   type: HEADER
   userChecksum: 78749477E0867254797E3675CF1FDFF6
 - generatedChecksum: 5D8A2EE512E5056F055807363AAA029D
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: freqm.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 5D8A2EE512E5056F055807363AAA029D
 - generatedChecksum: 5AF88456AF630EA5811FC779984F35F1
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: freqm.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 5AF88456AF630EA5811FC779984F35F1
 - generatedChecksum: 73C31E8A5CA982485197BE4CF0476C48
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: fuses.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 73C31E8A5CA982485197BE4CF0476C48
 - generatedChecksum: F087A1F8B5ED5D384276AE2207BDF78F
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: fuses.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: F087A1F8B5ED5D384276AE2207BDF78F
 - generatedChecksum: FDD0900B55FF8429A77D03613DA66DB2
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: gclk.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: FDD0900B55FF8429A77D03613DA66DB2
 - generatedChecksum: 7E4A5E6A1A2F6EA3399BA4D7F8B54FC7
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: gclk.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 7E4A5E6A1A2F6EA3399BA4D7F8B54FC7
 - generatedChecksum: 8BEFFE832DBF396F9511F254D83A2901
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: gmac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 8BEFFE832DBF396F9511F254D83A2901
 - generatedChecksum: 68DC85554909A94E8065330639C4084D
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: gmac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 68DC85554909A94E8065330639C4084D
 - generatedChecksum: 68ACFE066F4A10D320B74F3443D16499
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: hmatrix.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 68ACFE066F4A10D320B74F3443D16499
 - generatedChecksum: 813B0468F703EEE66629BFB1DD92DF4D
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: hmatrixb.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 813B0468F703EEE66629BFB1DD92DF4D
 - generatedChecksum: 04690817F6FC5437E0CB733FEABD8750
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: i2s.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 04690817F6FC5437E0CB733FEABD8750
 - generatedChecksum: BA2A429E2B3AD3DAD86209EDF5D2075D
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: i2s.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: BA2A429E2B3AD3DAD86209EDF5D2075D
 - generatedChecksum: 40BF68E1D31180E44D718CA458911466
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: icm.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 40BF68E1D31180E44D718CA458911466
 - generatedChecksum: 7B04640AA353F348E7347B2F2649E6F9
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: icm.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 7B04640AA353F348E7347B2F2649E6F9
@@ -706,20 +706,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 402B7B0ADA5ACA8B4A6662DEF9926D63
-- generatedChecksum: 46E2BB9D69D0CF6C1A5A289FCE20A49F
-  logicalPath: packs/LAN9255ZMX019_DFP
-  name: lan9255zmx019.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP
+- generatedChecksum: D10AEFDA1A5F0F85A0B7DABC111AA198
+  logicalPath: packs/LAN9255ZMX018_DFP
+  name: lan9255zmx018.h
+  physicalPath: ../../packs/LAN9255ZMX018_DFP
   security: NON_SECURE
   type: HEADER
-  userChecksum: 46E2BB9D69D0CF6C1A5A289FCE20A49F
-- generatedChecksum: 86C20DFFCCD4D8D485F17C1154C78855
-  logicalPath: packs/LAN9255ZMX019_DFP/pio
-  name: lan9255zmx019.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/pio
+  userChecksum: D10AEFDA1A5F0F85A0B7DABC111AA198
+- generatedChecksum: B138133E1C9B191545757094BB792335
+  logicalPath: packs/LAN9255ZMX018_DFP/pio
+  name: lan9255zmx018.h
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/pio
   security: NON_SECURE
   type: HEADER
-  userChecksum: 86C20DFFCCD4D8D485F17C1154C78855
+  userChecksum: B138133E1C9B191545757094BB792335
 - generatedChecksum: 86F53560774E9222CE87257EF61E101E
   logicalPath: slave_stack
   name: mailbox.h
@@ -728,16 +728,16 @@ files:
   type: HEADER
   userChecksum: 86F53560774E9222CE87257EF61E101E
 - generatedChecksum: EEA7436D5ADA7735A13F6EB681F013F6
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: mclk.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: EEA7436D5ADA7735A13F6EB681F013F6
 - generatedChecksum: 7BF1D05E44ED16ED03ED9595B7E290AF
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: mclk.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 7BF1D05E44ED16ED03ED9595B7E290AF
@@ -749,16 +749,16 @@ files:
   type: HEADER
   userChecksum: 47E760D36E42A7B436306A9CB4E72A0E
 - generatedChecksum: A71560490D776A33B0FA14AF509D9483
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: nvmctrl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: A71560490D776A33B0FA14AF509D9483
 - generatedChecksum: B9F0587D8A7DF91FE1587C9A380B6020
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: nvmctrl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: B9F0587D8A7DF91FE1587C9A380B6020
@@ -770,72 +770,72 @@ files:
   type: HEADER
   userChecksum: 7E36B90784E5A9EC288A3B6695B7901E
 - generatedChecksum: 83AF4C674288C7749969E4A940166637
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: osc32kctrl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 83AF4C674288C7749969E4A940166637
 - generatedChecksum: EDD3A0CE9A13ABBC17C4A29E07B4FE29
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: osc32kctrl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: EDD3A0CE9A13ABBC17C4A29E07B4FE29
 - generatedChecksum: FB09ABC59CF2E07A0F9A924809EF72FA
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: oscctrl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: FB09ABC59CF2E07A0F9A924809EF72FA
 - generatedChecksum: 81D9371755BC13389F734FC7CAD4A9D7
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: oscctrl.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 81D9371755BC13389F734FC7CAD4A9D7
 - generatedChecksum: F73B106CC11C77BC013696C95573E42B
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: pac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: F73B106CC11C77BC013696C95573E42B
 - generatedChecksum: BD01A93B0D9B8334EC89347C6DF1639C
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: pac.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: BD01A93B0D9B8334EC89347C6DF1639C
 - generatedChecksum: 3FFD098138EE4273006FFD9CAC2E323F
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: pcc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 3FFD098138EE4273006FFD9CAC2E323F
 - generatedChecksum: 757DBB9654B4DBCD1A21D78C9E096BF3
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: pcc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 757DBB9654B4DBCD1A21D78C9E096BF3
 - generatedChecksum: ECD9225834531E0BDE59612EA33D7A0C
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: pdec.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: ECD9225834531E0BDE59612EA33D7A0C
 - generatedChecksum: 85008754A20B80D2CD8DCAE38C812706
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: pdec.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 85008754A20B80D2CD8DCAE38C812706
@@ -859,7 +859,7 @@ files:
   physicalPath: peripheral/eic
   security: NON_SECURE
   type: HEADER
-  userChecksum: 6AAFA3D2DC1576136EFDCEDAA3A412CA
+  userChecksum: B7D95C8537EF0679BD144018D8E5DE69
 - generatedChecksum: CCAEF942C66AF995876DFD85CEFF611F
   logicalPath: config/default/peripheral/evsys
   name: plib_evsys.h
@@ -959,107 +959,107 @@ files:
   type: HEADER
   userChecksum: C0A6E5B99D379FC08247B5FA465A54B3
 - generatedChecksum: 64F005AF14F02EB1D75563D22F6CDEA3
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: pm.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 64F005AF14F02EB1D75563D22F6CDEA3
 - generatedChecksum: EA9F1CC23023C87821EC317BF778B74E
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: pm.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: EA9F1CC23023C87821EC317BF778B74E
 - generatedChecksum: 46E44E8F066BC5B23DC6F8BE28E6B4C1
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: port.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 46E44E8F066BC5B23DC6F8BE28E6B4C1
 - generatedChecksum: 1F854519E054E14CEA9FF5AEE3327E0C
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: port.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 1F854519E054E14CEA9FF5AEE3327E0C
 - generatedChecksum: BA314AE4B5AA7CB7CB1A6E501B9A3033
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: pukcc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: BA314AE4B5AA7CB7CB1A6E501B9A3033
 - generatedChecksum: 772E89FE1C8A20A5F237640E6F7FA84A
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: qspi.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 772E89FE1C8A20A5F237640E6F7FA84A
 - generatedChecksum: BDD26A2DF7E338EDD1A2F2A9FA285883
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: qspi.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: BDD26A2DF7E338EDD1A2F2A9FA285883
 - generatedChecksum: 44A21CA56854D3A59CD4DAF173CDA107
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: ramecc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 44A21CA56854D3A59CD4DAF173CDA107
 - generatedChecksum: C619F556D19124A81FB19CAC378EF057
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: ramecc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: C619F556D19124A81FB19CAC378EF057
 - generatedChecksum: DD8DE04F76F1B9498191CCD6FBC955F0
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: rstc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: DD8DE04F76F1B9498191CCD6FBC955F0
 - generatedChecksum: E127FA6A284AE23694EB74E24688B4F7
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: rstc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: E127FA6A284AE23694EB74E24688B4F7
 - generatedChecksum: FA7A003E117C50A4EDDC0674E7B69CDA
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: rtc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: FA7A003E117C50A4EDDC0674E7B69CDA
 - generatedChecksum: D6CAF74F14A200038209F0BACAEB79B1
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: rtc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: D6CAF74F14A200038209F0BACAEB79B1
 - generatedChecksum: C7653BEF8A13C76AD302C872960FE97C
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: sdhc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: C7653BEF8A13C76AD302C872960FE97C
 - generatedChecksum: 1B52642CDBD0920BB88AB8230540E88F
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: sdhc0.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 1B52642CDBD0920BB88AB8230540E88F
@@ -1071,156 +1071,156 @@ files:
   type: HEADER
   userChecksum: D254BDCCB94D12762E2203EF3D54FDD7
 - generatedChecksum: E3383FACC11F067582A3D3796B6664D8
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: sercom.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: E3383FACC11F067582A3D3796B6664D8
 - generatedChecksum: 2812CC6520F0BBA66520CF56B8647035
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: sercom0.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 2812CC6520F0BBA66520CF56B8647035
 - generatedChecksum: DE9FE8AD3EA8111C50F0F3FA89F82FFF
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: sercom1.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: DE9FE8AD3EA8111C50F0F3FA89F82FFF
 - generatedChecksum: C48557A71B4E91FE94AA26EAE7C7BA4D
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: sercom2.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: C48557A71B4E91FE94AA26EAE7C7BA4D
 - generatedChecksum: 108D15DBDF28EED04D92D2637DFD2950
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: sercom3.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 108D15DBDF28EED04D92D2637DFD2950
 - generatedChecksum: A79E8FDE6F7EAA2EED73DD75C4411EEB
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: sercom4.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: A79E8FDE6F7EAA2EED73DD75C4411EEB
 - generatedChecksum: 46E0C992322CCF0C7A31002BCA4CCC11
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: sercom5.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 46E0C992322CCF0C7A31002BCA4CCC11
 - generatedChecksum: C41D134E524C0B6240222DCC702533F4
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: supc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: C41D134E524C0B6240222DCC702533F4
 - generatedChecksum: 7FBC838FF3FB6238FC7861A48E8DF6A9
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: supc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 7FBC838FF3FB6238FC7861A48E8DF6A9
 - generatedChecksum: 42979D5E8F32F08975F7EE32E531C248
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: tc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 42979D5E8F32F08975F7EE32E531C248
 - generatedChecksum: 8CFFABE861A9A15EBCCF30E7064765DD
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tc0.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 8CFFABE861A9A15EBCCF30E7064765DD
 - generatedChecksum: E12EFD2DF6154DD3EE76023B772EF029
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tc1.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: E12EFD2DF6154DD3EE76023B772EF029
 - generatedChecksum: 6759797390ABB39F54A978EEF71E03ED
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tc2.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 6759797390ABB39F54A978EEF71E03ED
 - generatedChecksum: 6A3942400957E5E6F9A64009E9865DCA
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tc3.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 6A3942400957E5E6F9A64009E9865DCA
 - generatedChecksum: AA8D9BC0C10828137E25F0D0F2FA07A1
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tc4.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: AA8D9BC0C10828137E25F0D0F2FA07A1
 - generatedChecksum: 0BE9B5B811962150ACA1D18E08DC63FD
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tc5.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 0BE9B5B811962150ACA1D18E08DC63FD
 - generatedChecksum: 56B2B21FA73FB3FAF6283BA940F355F6
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: tcc.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 56B2B21FA73FB3FAF6283BA940F355F6
 - generatedChecksum: 6AFCFC6A6C1154F06E44B23F31EF4424
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tcc0.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 6AFCFC6A6C1154F06E44B23F31EF4424
 - generatedChecksum: 5424C5FD1C4485F03982EB919CA1F730
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tcc1.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 5424C5FD1C4485F03982EB919CA1F730
 - generatedChecksum: 252B503010C00298234724E41C55D5FB
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tcc2.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 252B503010C00298234724E41C55D5FB
 - generatedChecksum: 8B485C85C2FC2F3092435F6F8A36D1FD
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tcc3.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 8B485C85C2FC2F3092435F6F8A36D1FD
 - generatedChecksum: 190FCCC220AB36403E23EFC06903AD04
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: tcc4.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 190FCCC220AB36403E23EFC06903AD04
@@ -1232,54 +1232,54 @@ files:
   type: HEADER
   userChecksum: 267E11FBC03D0FD88E7330DDB79B19FC
 - generatedChecksum: 52BF6E3516190EABD5D20B55691DA898
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: trng.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 52BF6E3516190EABD5D20B55691DA898
 - generatedChecksum: 2103B3B05CF15DEB98E3C27D76C4AFBC
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: trng.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 2103B3B05CF15DEB98E3C27D76C4AFBC
 - generatedChecksum: D1FBFC3F3B8309834B08144BDF329A42
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: usb.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: D1FBFC3F3B8309834B08144BDF329A42
 - generatedChecksum: 6965C7B40EA5F348D3BDF9D17EDF9BEC
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: usb.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: 6965C7B40EA5F348D3BDF9D17EDF9BEC
 - generatedChecksum: 8F9CF8F6AE3C400AB11B142BC17FCDB4
-  logicalPath: packs/LAN9255ZMX019_DFP/component
+  logicalPath: packs/LAN9255ZMX018_DFP/component
   name: wdt.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/component
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/component
   security: NON_SECURE
   type: HEADER
   userChecksum: 8F9CF8F6AE3C400AB11B142BC17FCDB4
 - generatedChecksum: FF39073463A389964981CB8A90728EE1
-  logicalPath: packs/LAN9255ZMX019_DFP/instance
+  logicalPath: packs/LAN9255ZMX018_DFP/instance
   name: wdt.h
-  physicalPath: ../../packs/LAN9255ZMX019_DFP/instance
+  physicalPath: ../../packs/LAN9255ZMX018_DFP/instance
   security: NON_SECURE
   type: HEADER
   userChecksum: FF39073463A389964981CB8A90728EE1
-- generatedChecksum: 7265B7B287D8DEAA136148BFAB7316B7
+- generatedChecksum: 1DA9FFA2E0F06D38A8DD685946414207
   logicalPath: config/default
-  name: LAN9255ZMX019.ld
+  name: LAN9255ZMX018.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 7265B7B287D8DEAA136148BFAB7316B7
+  userChecksum: 1DA9FFA2E0F06D38A8DD685946414207
 - generatedChecksum: 84D0647C4604B25739F0820D94351E59
   logicalPath: ''
   name: ethercat_foe.ld
@@ -1314,7 +1314,7 @@ settings:
   delimiter: ;
   key: extra-include-directories
   security: NON_SECURE
-  value: ../src;../src/config/default;../src/packs/LAN9255ZMX019_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/
+  value: ../src;../src/config/default;../src/packs/LAN9255ZMX018_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/
 - append: false
   category: C32-LD
   delimiter: ''
@@ -1338,7 +1338,7 @@ settings:
   delimiter: ;
   key: extra-include-directories
   security: NON_SECURE
-  value: ../src;../src/config/default;../src/packs/LAN9255ZMX019_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/
+  value: ../src;../src/config/default;../src/packs/LAN9255ZMX018_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/
 - append: false
   category: C32Global
   delimiter: ''

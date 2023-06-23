@@ -64,9 +64,9 @@
 
 #if defined(ETHERCAT_USE_FOE)  
 //-----------------------------------------------------------------------------
-const uint32_t gAppBankBOffsetAddr = APP_NVM_BANKB_START_ADDRESS;
+uint32_t gAppBankBOffsetAddr = LAN9255_ZMX018_APP_NVM_BANKB_START_ADDRESS;
 // Bank B application need to started from this below location.
-const uint32_t gApplicationStartAddr   = (uint32_t)(APP_NVM_BANKB_START_ADDRESS + APP_BOOTLOADER_SIZE);
+uint32_t gApplicationStartAddr = (uint32_t)(LAN9255_ZMX018_APP_NVM_BANKB_START_ADDRESS + APP_BOOTLOADER_SIZE);
 
 void APP_FlashWrite(uint32_t startAddress,uint8_t *flash_data)
 {
@@ -179,6 +179,27 @@ void APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
+    
+    uint32_t partID = DSU_REGS->DSU_DID;
+    switch (partID)
+    {
+        case LAN9255_ZMX018:
+            gAppBankBOffsetAddr = LAN9255_ZMX018_APP_NVM_BANKB_START_ADDRESS;
+            break;
+            
+        case LAN9255_ZMX019:
+            gAppBankBOffsetAddr = LAN9255_ZMX019_APP_NVM_BANKB_START_ADDRESS;
+            break;
+
+        case LAN9255_ZMX020:
+            gAppBankBOffsetAddr = LAN9255_ZMX020_APP_NVM_BANKB_START_ADDRESS;
+            break;
+            
+        default:
+            break;
+    }
+    
+    gApplicationStartAddr = (uint32_t)(gAppBankBOffsetAddr + APP_BOOTLOADER_SIZE);
 }
 
 

@@ -70,6 +70,7 @@ void App::loop()
 
          case eSendData:
             dataOut.position = encoder->calculateDisplacement();
+            dataOut.temperature = 350; // For Testing
             state = eErrorHandling;
             break;
             

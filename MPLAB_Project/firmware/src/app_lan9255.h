@@ -69,14 +69,16 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
 // ATSAME53 BANK B start address 
-#define APP_NVM_BANKB_START_ADDRESS     0x40000
+#define LAN9255_ZMX018_APP_NVM_BANKB_START_ADDRESS     0x20000 // For LAN9255-I/ZMX018
+#define LAN9255_ZMX019_APP_NVM_BANKB_START_ADDRESS     0x40000 // For LAN9255-I/ZMX019
+#define LAN9255_ZMX020_APP_NVM_BANKB_START_ADDRESS     0x80000 // For LAN9255-I/ZMX0120
 // Number of pages for BANK B for the device ATSAM E53    
 #define APP_FLASH_PAGES_BANKB           FLASH_PAGE_SIZE/2
 
 #define NVMCTRL_AFIRST_MSK              NVMCTRL_STATUS_AFIRST_Msk
     
 // Total size for the BANK B 
-#define APP_MAX_NVM_BANK_SIZE           0x40000
+#define APP_MAX_NVM_BANK_SIZE           0x20000
     
 // Start of EEPROM address location for E53 device    
 #define APP_EEPROM_START_ADDRESS_LOCATION_BANKB 0x7E000
@@ -137,6 +139,15 @@ typedef struct
 
 } APP_DATA;
 
+
+typedef enum
+{
+    /* LAN9255 Part ID's */
+    LAN9255_ZMX020 = 0x61830355,
+    LAN9255_ZMX019 = 0x61830356,
+    LAN9255_ZMX018 = 0x61830357
+
+} LAN9255_PART_ID;
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Routines

@@ -181,12 +181,12 @@ void SYS_Initialize ( void* data )
 
     EIC_Initialize();
 
-    TC2_TimerInitialize();
-    
     TC1_TimerInitialize();
 
     TC0_TimerInitialize();
     
+    TC2_TimerInitialize();
+
     QSPI_Initialize();
 
 

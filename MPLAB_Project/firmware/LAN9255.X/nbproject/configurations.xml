@@ -103,107 +103,107 @@
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>
-        <logicalFolder name="f1" displayName="LAN9255ZMX019_DFP" projectFiles="true">
+        <logicalFolder name="f1" displayName="LAN9255ZMX018_DFP" projectFiles="true">
           <logicalFolder name="f1" displayName="component" projectFiles="true">
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/ac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/adc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/aes.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/ccl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/cmcc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/dac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/dmac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/dsu.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/eic.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/evsys.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/freqm.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/fuses.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/gclk.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/gmac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/hmatrixb.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/i2s.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/icm.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/mclk.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/nvmctrl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/osc32kctrl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/oscctrl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/pac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/pcc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/pdec.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/pm.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/port.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/pukcc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/qspi.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/ramecc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/rstc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/rtc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/sdhc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/sercom.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/supc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/tc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/tcc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/trng.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/usb.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/component/wdt.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/ac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/adc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/aes.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/ccl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/cmcc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/dac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/dmac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/dsu.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/eic.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/evsys.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/freqm.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/fuses.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/gclk.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/gmac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/hmatrixb.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/i2s.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/icm.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/mclk.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/nvmctrl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/osc32kctrl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/oscctrl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/pac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/pcc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/pdec.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/pm.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/port.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/pukcc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/qspi.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/ramecc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/rstc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/rtc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/sdhc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/sercom.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/supc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/tc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/tcc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/trng.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/usb.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/component/wdt.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="instance" projectFiles="true">
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/ac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/adc0.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/adc1.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/aes.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/ccl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/cmcc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/dac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/dmac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/dsu.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/eic.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/evsys.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/freqm.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/fuses.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/gclk.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/gmac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/hmatrix.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/i2s.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/icm.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/mclk.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/nvmctrl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/osc32kctrl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/oscctrl.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/pac.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/pcc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/pdec.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/pm.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/port.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/qspi.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/ramecc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/rstc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/rtc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/sdhc0.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/sercom0.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/sercom1.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/sercom2.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/sercom3.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/sercom4.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/sercom5.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/supc.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tc0.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tc1.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tc2.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tc3.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tc4.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tc5.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tcc0.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tcc1.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tcc2.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tcc3.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/tcc4.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/trng.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/usb.h</itemPath>
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/instance/wdt.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/ac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/adc0.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/adc1.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/aes.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/ccl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/cmcc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/dac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/dmac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/dsu.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/eic.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/evsys.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/freqm.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/fuses.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/gclk.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/gmac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/hmatrix.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/i2s.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/icm.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/mclk.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/nvmctrl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/osc32kctrl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/oscctrl.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/pac.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/pcc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/pdec.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/pm.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/port.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/qspi.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/ramecc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/rstc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/rtc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/sdhc0.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/sercom0.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/sercom1.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/sercom2.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/sercom3.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/sercom4.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/sercom5.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/supc.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tc0.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tc1.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tc2.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tc3.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tc4.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tc5.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tcc0.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tcc1.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tcc2.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tcc3.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/tcc4.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/trng.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/usb.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/instance/wdt.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="pio" projectFiles="true">
-            <itemPath>../src/packs/LAN9255ZMX019_DFP/pio/lan9255zmx019.h</itemPath>
+            <itemPath>../src/packs/LAN9255ZMX018_DFP/pio/lan9255zmx018.h</itemPath>
           </logicalFolder>
-          <itemPath>../src/packs/LAN9255ZMX019_DFP/lan9255zmx019.h</itemPath>
+          <itemPath>../src/packs/LAN9255ZMX018_DFP/lan9255zmx018.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="slave_stack" projectFiles="true">
@@ -241,7 +241,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="default" projectFiles="true">
-          <itemPath>../src/config/default/LAN9255ZMX019.ld</itemPath>
+          <itemPath>../src/config/default/LAN9255ZMX018.ld</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/config/default/ethercat_foe.ld</itemPath>
@@ -384,7 +384,7 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>LAN9255ZMX019</targetDevice>
+        <targetDevice>LAN9255ZMX018</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>jlink</platformTool>
@@ -393,8 +393,8 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
         <pack name="LAN9255_DFP" vendor="Microchip" version="1.1.7"/>
+        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -423,24 +423,6 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
-      <item path="../src/config/default/LAN9255ZMX019.ld"
-            ex="true"
-            overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-CO>
-        </C32-CO>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
       <AtmelIceTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="communication.interface" value="swd"/>
@@ -474,7 +456,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/default;../src/config/default/driver/lan9255;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/LAN9255ZMX019_DFP;../src/slave_stack"/>
+                  value="../src;../src/config/default;../src/config/default/driver/lan9255;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/LAN9255ZMX018_DFP;../src/slave_stack"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -572,7 +554,7 @@
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/default;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/LAN9255ZMX019_DFP"/>
+                  value="../src;../src/config/default;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/LAN9255ZMX018_DFP"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
