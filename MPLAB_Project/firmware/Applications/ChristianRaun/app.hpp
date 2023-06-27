@@ -16,6 +16,7 @@ enum appState {
     eStepper,
     eSendData,
     eErrorHandling,
+    eRunRPM
 };
 
 extern struct dataInPacket dataIn;

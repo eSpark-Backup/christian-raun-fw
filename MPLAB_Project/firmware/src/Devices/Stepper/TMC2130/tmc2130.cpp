@@ -10,6 +10,9 @@ volatile uint32_t toggleCounter=0;
 
 bool runStatus = false;
 
+float displacementRamp[rampSteps+1];
+float rampRPMArr[rampSteps+1];
+
 void Tmc2130::setup(Encoder* encoder)
 {
     TC1_TimerCallbackRegister(pwm_callback, (uintptr_t) this);
@@ -152,4 +155,31 @@ void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
 bool Tmc2130::isRunning(void)
 {
     return (TC1_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
+}
+
+void Tmc2130::calculateRamp(float rampDelay, float time, float displacement)
+{  
+    float requiredRotations = displacement / displacementFactor;
+    float requiredRPM = (requiredRotations / time) * 60;
+    float rampRPM = requiredRPM / rampSteps;
+    float timePerStep = rampDelay / rampSteps;
+    float displacementPerStep = timePerStep * (rampRPM / 60) * displacementFactor;
+    float totalDisplacementPerRamp = 0;
+    for (int j = 1; j <= rampSteps; j++)
+    {
+        totalDisplacementPerRamp += displacementPerStep * j;
+        displacementRamp[j-1] = rampRPM * j;
+        rampRPMArr[j-1] = rampRPM *j;
+    }
+    float requiredDisplacementWithoutRamps = displacement - (totalDisplacementPerRamp * 2);
+    displacementRamp[rampSteps] = requiredDisplacementWithoutRamps;
+    float timeWithoutRamps = time - (rampDelay * 2);
+    float requiredRotationsWithoutRamps = requiredDisplacementWithoutRamps / displacementFactor;
+    float requiredRPMAfterWithoutRamps = (requiredRotationsWithoutRamps / timeWithoutRamps) * 60;
+    rampRPMArr[rampSteps] = requiredRPMAfterWithoutRamps;
+}
+
+void Tmc2130::run(void)
+{
+    
 }

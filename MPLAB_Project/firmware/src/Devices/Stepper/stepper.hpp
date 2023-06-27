@@ -56,10 +56,12 @@ class Stepper
         virtual void run(float rpm, uint32_t steps, float freq, direction dir) {}
         virtual void run(uint32_t steps, float freq, direction dir) {} 
         virtual void run(float freq, direction dir) {}
+        virtual void run(void) {}
         virtual void stop(void) {}
         virtual bool isRunning(void) { return false;}
         virtual void resetMaxToggleCount(void) {}
         virtual void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement = 0) {}
+        virtual void calculateRamp(float rampDelay, float time, float displacement) {}
 };
 
 #ifdef __cplusplus

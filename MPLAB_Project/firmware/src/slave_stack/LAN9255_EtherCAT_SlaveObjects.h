@@ -39,7 +39,8 @@
 * SubIndex 3 - Reference to 0x7010.3<br>
 * SubIndex 4 - Reference to 0x7010.4<br>
 * SubIndex 5 - Reference to 0x7010.5<br>
-* SubIndex 6 - Padding entry (7Bit)<br>
+* SubIndex 6 - Reference to 0x7010.6<br>
+* SubIndex 7 - Padding entry (7Bit)<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1601[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
@@ -48,7 +49,8 @@ OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1601[] = {
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex3 - Reference to 0x7010.3 */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex4 - Reference to 0x7010.4 */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex5 - Reference to 0x7010.5 */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex6 - Padding entry (7Bit) */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }, /* Subindex6 - Reference to 0x7010.6 */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ }}; /* Subindex7 - Padding entry (7Bit) */
 
 /**
 * \brief Object/Entry names
@@ -59,7 +61,8 @@ OBJCONST UCHAR OBJMEM aName0x1601[] = "Outputs process data mapping\000"
 "SubIndex 003\000"
 "SubIndex 004\000"
 "SubIndex 005\000"
-"SubIndex 006\000\377";
+"SubIndex 006\000"
+"SubIndex 007\000\377";
 #endif //#ifdef _OBJD_
 
 #ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
@@ -73,7 +76,8 @@ UINT32 SI2; /* Subindex2 - Reference to 0x7010.2 */
 UINT32 SI3; /* Subindex3 - Reference to 0x7010.3 */
 UINT32 SI4; /* Subindex4 - Reference to 0x7010.4 */
 UINT32 SI5; /* Subindex5 - Reference to 0x7010.5 */
-UINT32 SI6; /* Subindex6 - Padding entry (7Bit) */
+UINT32 SI6; /* Subindex6 - Reference to 0x7010.6 */
+UINT32 SI7; /* Subindex7 - Padding entry (7Bit) */
 } OBJ_STRUCT_PACKED_END
 TOBJ1601;
 #endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
@@ -83,7 +87,7 @@ TOBJ1601;
 */
 PROTO TOBJ1601 OutputsProcessDataMapping0x1601
 #if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={6,0x70100120,0x70100220,0x70100320,0x70100420,0x70100501,0x00000007}
+={7,0x70100120,0x70100220,0x70100320,0x70100420,0x70100520,0x70100601,0x00000007}
 #endif
 ;
 /** @}*/
@@ -275,7 +279,7 @@ PROTO TOBJ1C13 sTxPDOassign
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x6000[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
 { DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex1 - Position */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex2 - Temperature */
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex2 - Temperature */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex3 - MotorDiagnostic */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }, /* Subindex4 - DeviceStatus */
 { DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READ | OBJACCESS_TXPDOMAPPING }}; /* Subindex5 - Diag3 */
@@ -298,7 +302,7 @@ OBJCONST UCHAR OBJMEM aName0x6000[] = "Inputs\000"
 typedef struct OBJ_STRUCT_PACKED_START {
 UINT16 u16SubIndex0;
 REAL32 Position; /* Subindex1 - Position */
-UINT32 Temperature; /* Subindex2 - Temperature */
+REAL32 Temperature; /* Subindex2 - Temperature */
 UINT32 MotorDiagnostic; /* Subindex3 - MotorDiagnostic */
 UINT32 DeviceStatus; /* Subindex4 - DeviceStatus */
 UINT32 Diag3; /* Subindex5 - Diag3 */
@@ -311,7 +315,7 @@ TOBJ6000;
 */
 PROTO TOBJ6000 Inputs0x6000
 #if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={5,0,0x00000000,0x00000000,0x00000000,0x00000000}
+={5,0,0,0x00000000,0x00000000,0x00000000}
 #endif
 ;
 /** @}*/
@@ -334,18 +338,20 @@ PROTO TOBJ6000 Inputs0x6000
 * SubIndex 1 - RPM<br>
 * SubIndex 2 - Displacement<br>
 * SubIndex 3 - Time<br>
-* SubIndex 4 - Mode<br>
-* SubIndex 5 - Direction<br>
-* SubIndex 6<br>
+* SubIndex 4 - RampDelay<br>
+* SubIndex 5 - Mode<br>
+* SubIndex 6 - Direction<br>
+* SubIndex 7<br>
 */
 OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x7010[] = {
 { DEFTYPE_UNSIGNED8 , 0x8 , ACCESS_READ },
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex1 - RPM */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex2 - Displacement */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex3 - Time */
-{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex4 - Mode */
-{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex5 - Direction */
-{ DEFTYPE_NULL , 0x07 , 0x0000 }}; /* Subindex6 */
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex1 - RPM */
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex2 - Displacement */
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex3 - Time */
+{ DEFTYPE_REAL32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex4 - RampDelay */
+{ DEFTYPE_UNSIGNED32 , 0x20 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex5 - Mode */
+{ DEFTYPE_BOOLEAN , 0x01 , ACCESS_READWRITE | OBJACCESS_RXPDOMAPPING }, /* Subindex6 - Direction */
+{ DEFTYPE_NULL , 0x07 , 0x0000 }}; /* Subindex7 */
 
 /**
 * \brief Object/Entry names
@@ -354,6 +360,7 @@ OBJCONST UCHAR OBJMEM aName0x7010[] = "Outputs\000"
 "RPM\000"
 "Displacement\000"
 "Time\000"
+"RampDelay\000"
 "Mode\000"
 "Direction\000"
 "\000\377";
@@ -365,12 +372,13 @@ OBJCONST UCHAR OBJMEM aName0x7010[] = "Outputs\000"
 */
 typedef struct OBJ_STRUCT_PACKED_START {
 UINT16 u16SubIndex0;
-UINT32 RPM; /* Subindex1 - RPM */
-UINT32 Displacement; /* Subindex2 - Displacement */
-UINT32 Time; /* Subindex3 - Time */
-UINT32 Mode; /* Subindex4 - Mode */
-BOOLEAN(Direction); /* Subindex5 - Direction */
-ALIGN7(SI6) /* Subindex6 */
+REAL32 RPM; /* Subindex1 - RPM */
+REAL32 Displacement; /* Subindex2 - Displacement */
+REAL32 Time; /* Subindex3 - Time */
+REAL32 RampDelay; /* Subindex4 - RampDelay */
+UINT32 Mode; /* Subindex5 - Mode */
+BOOLEAN(Direction); /* Subindex6 - Direction */
+ALIGN7(SI7) /* Subindex7 */
 } OBJ_STRUCT_PACKED_END
 TOBJ7010;
 #endif //#ifndef _LAN9255__ETHER_CAT__SLAVE_OBJECTS_H_
@@ -380,7 +388,7 @@ TOBJ7010;
 */
 PROTO TOBJ7010 Outputs0x7010
 #if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
-={5,0x00000000,0x00000000,0x00000000,0x00000000,0x00,0}
+={6,0,0,0,0,0x00000000,0x00,0}
 #endif
 ;
 /** @}*/
@@ -394,7 +402,7 @@ PROTO TOBJ7010 Outputs0x7010
 #ifdef _OBJD_
 TOBJECT    OBJMEM ApplicationObjDic[] = {
 /* Object 0x1601 */
-{NULL , NULL ,  0x1601 , {DEFTYPE_PDOMAPPING , 6 | (OBJCODE_REC << 8)} , asEntryDesc0x1601 , aName0x1601 , &OutputsProcessDataMapping0x1601 , NULL , NULL , 0x0000 },
+{NULL , NULL ,  0x1601 , {DEFTYPE_PDOMAPPING , 7 | (OBJCODE_REC << 8)} , asEntryDesc0x1601 , aName0x1601 , &OutputsProcessDataMapping0x1601 , NULL , NULL , 0x0000 },
 /* Object 0x1A00 */
 {NULL , NULL ,  0x1A00 , {DEFTYPE_PDOMAPPING , 5 | (OBJCODE_REC << 8)} , asEntryDesc0x1A00 , aName0x1A00 , &InputsProcessDataMapping0x1A00 , NULL , NULL , 0x0000 },
 /* Object 0x1C12 */
@@ -404,7 +412,7 @@ TOBJECT    OBJMEM ApplicationObjDic[] = {
 /* Object 0x6000 */
 {NULL , NULL ,  0x6000 , {DEFTYPE_RECORD , 5 | (OBJCODE_REC << 8)} , asEntryDesc0x6000 , aName0x6000 , &Inputs0x6000 , NULL , NULL , 0x0000 },
 /* Object 0x7010 */
-{NULL , NULL ,  0x7010 , {DEFTYPE_RECORD , 6 | (OBJCODE_REC << 8)} , asEntryDesc0x7010 , aName0x7010 , &Outputs0x7010 , NULL , NULL , 0x0000 },
+{NULL , NULL ,  0x7010 , {DEFTYPE_RECORD , 7 | (OBJCODE_REC << 8)} , asEntryDesc0x7010 , aName0x7010 , &Outputs0x7010 , NULL , NULL , 0x0000 },
 {NULL,NULL, 0xFFFF, {0, 0}, NULL, NULL, NULL, NULL}};
 #endif    //#ifdef _OBJD_
 

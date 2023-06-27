@@ -35,16 +35,17 @@
 ------
 -----------------------------------------------------------------------------------------*/
 struct dataInPacket{
-    UINT32 rpm;
-    UINT32 displacement;
-    UINT32 time;
+    REAL32 rpm;
+    REAL32 displacement;
+    REAL32 time;
+    REAL32 rampDelay;
     UINT32 mode;
     UINT8 direction;   
 };
 
 struct dataOutPacket {
     REAL32 position; 
-    UINT32 temperature; 
+    REAL32 temperature; 
     UINT32 motorDiagnostic; 
     UINT32 deviceStatus; 
     UINT32 diag3; 

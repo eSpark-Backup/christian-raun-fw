@@ -60,6 +60,19 @@ void App::loop()
             state = eSendData;
             break;
             
+        case eRunRPM:
+//            frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
+//            steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
+            stepper->calculateRamp(dataIn.time, dataIn.rampDelay, dataIn.displacement);
+            if (!stepper->isRunning())
+            {
+                stepper->run();
+            }
+//            stepper->run(dataIn.rpm, steps, frequency, (direction) dataIn.direction);
+            
+            state = eSendData;
+            break;
+            
         case eStepper:
             frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
             steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
