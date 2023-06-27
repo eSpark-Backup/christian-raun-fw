@@ -71,7 +71,7 @@ void App::loop()
          case eSendData:
             dataOut.position = encoder->calculateDisplacement();
             dataOut.temperature = 350; // For Testing
-            state = eErrorHandling;
+            state = eTasks;
             break;
             
         case eErrorHandling:
@@ -140,9 +140,9 @@ appState App::selectMode()
             break;
 
         case ABORT_OPERATION:
-            dataOut.motorDiagnostic = NO_ERROR;
-            stepper->stop();
-            stepper->resetMaxToggleCount();
+//            dataOut.motorDiagnostic = NO_ERROR;
+//            stepper->stop();
+//            stepper->resetMaxToggleCount();
             state = eSendData;
             break;
 
