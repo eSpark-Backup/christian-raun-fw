@@ -61,15 +61,7 @@ void App::loop()
             break;
             
         case eRunRPM:
-//            frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
-//            steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-            stepper->calculateRamp(dataIn.time, dataIn.rampDelay, dataIn.displacement);
-            if (!stepper->isRunning())
-            {
-                stepper->run();
-            }
-//            stepper->run(dataIn.rpm, steps, frequency, (direction) dataIn.direction);
-            
+            stepper->runRamp(dataIn.rampDelay, dataIn.time, dataIn.displacement, (direction) dataIn.direction);
             state = eSendData;
             break;
             
@@ -140,8 +132,8 @@ appState App::selectMode()
            state = eStepper;
            break;
 
-        case TIME:
-            state = eStepper;
+        case RAMP:
+            state = eRunRPM;
             break;
 
         case CALIBRATION_SEQUENCE_01:

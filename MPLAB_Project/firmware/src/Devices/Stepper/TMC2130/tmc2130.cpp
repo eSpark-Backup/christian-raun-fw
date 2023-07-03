@@ -9,9 +9,10 @@ volatile uint32_t maxToggleCount=0;
 volatile uint32_t toggleCounter=0;
 
 bool runStatus = false;
+bool runningRPMSequence = false;
 
-float displacementRamp[rampSteps+1];
-float rampRPMArr[rampSteps+1];
+float displacementRamp[rampSteps+1] = {0};
+float rampRPMArr[rampSteps+1] = {0};
 
 void Tmc2130::setup(Encoder* encoder)
 {
@@ -148,8 +149,23 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
 /* Timer Interrupt handler */
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
 { 
+    static uint32_t rampStepsCount = 0;
     Tmc2130* stepper = (Tmc2130*)context;
     stepper->loop();
+    
+    if(runningRPMSequence)
+    {
+        if (!stepper->isRunning())
+        {
+            stepper->run();
+            rampStepsCount++;
+            if(((rampSteps * 2)) == rampStepsCount )
+            {
+                rampStepsCount = 0;
+                runningRPMSequence = false;
+            }
+        }
+    }
 }
 
 bool Tmc2130::isRunning(void)
@@ -157,8 +173,25 @@ bool Tmc2130::isRunning(void)
     return (TC1_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
 }
 
-void Tmc2130::calculateRamp(float rampDelay, float time, float displacement)
+void Tmc2130::runRamp(float rampDelay, float time, float displacement, direction dir)
 {  
+    if (isRunning())
+        return;
+    
+    if( (0 == rampDelay) | (0 == time))
+        return;
+    
+    static float disp = 0;
+    
+    if (disp == displacement)
+        return; 
+    
+    disp = displacement;
+    
+    if (0 == displacement)
+        return;
+    
+    
     float requiredRotations = displacement / displacementFactor;
     float requiredRPM = (requiredRotations / time) * 60;
     float rampRPM = requiredRPM / rampSteps;
@@ -167,8 +200,8 @@ void Tmc2130::calculateRamp(float rampDelay, float time, float displacement)
     float totalDisplacementPerRamp = 0;
     for (int j = 1; j <= rampSteps; j++)
     {
-        totalDisplacementPerRamp += displacementPerStep * j;
-        displacementRamp[j-1] = rampRPM * j;
+        displacementRamp[j-1] = displacementPerStep * j;
+        totalDisplacementPerRamp += displacementRamp[j-1];
         rampRPMArr[j-1] = rampRPM *j;
     }
     float requiredDisplacementWithoutRamps = displacement - (totalDisplacementPerRamp * 2);
@@ -177,9 +210,36 @@ void Tmc2130::calculateRamp(float rampDelay, float time, float displacement)
     float requiredRotationsWithoutRamps = requiredDisplacementWithoutRamps / displacementFactor;
     float requiredRPMAfterWithoutRamps = (requiredRotationsWithoutRamps / timeWithoutRamps) * 60;
     rampRPMArr[rampSteps] = requiredRPMAfterWithoutRamps;
+    
+    this->dir = dir;
+    run(true);
 }
 
-void Tmc2130::run(void)
+void Tmc2130::run(bool operationStart)
 {
+    runningRPMSequence =true;
+    static uint32_t n;
+    if (operationStart)
+    {
+        n = 0;
+    }
+    maxToggleCount =0;
+    static bool downCount = false;
+    float frequency = ROTATIONS_PER_SEC(rampRPMArr[n]) * STEPS_PER_REVOLUTION;
+    uint32_t steps = displacementRamp[n] * STEPS_PER_MM;
     
+    run(rampRPMArr[n], steps, frequency, this->dir);
+    if(rampSteps == n)
+    {
+        downCount = true;
+    }
+    else if(0 == n)
+    {
+        downCount = false;
+    }
+    
+    if(downCount)
+        n--;
+    else 
+        n++;
 }

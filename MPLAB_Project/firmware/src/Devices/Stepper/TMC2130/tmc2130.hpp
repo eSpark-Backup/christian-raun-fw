@@ -24,12 +24,12 @@ class Tmc2130 : public Stepper
         void run(float rpm, uint32_t steps, float freq, direction dir) override;
         void run(uint32_t steps, float freq, direction dir) override; 
         void run(float freq, direction dir) override; 
-        void run(void) override;
+        void run(bool operationStart = false) override;
         void stop(void) override;
         bool isRunning(void) override;
         void resetMaxToggleCount(void) override;
         void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement= 0) override;
-        void calculateRamp(float rampDelay, float time, float displacement) override;
+        void runRamp(float rampDelay, float time, float displacement, direction dir) override;
 };
 
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context);
