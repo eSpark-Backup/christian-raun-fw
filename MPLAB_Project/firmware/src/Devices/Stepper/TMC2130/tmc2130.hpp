@@ -21,6 +21,7 @@ class Tmc2130 : public Stepper
         
         void setup(Encoder* encoder) override;
         void loop(void) override;
+        void run(rampSettings* rs) override;
         void run(float rpm, uint32_t steps, float freq, direction dir) override;
         void run(uint32_t steps, float freq, direction dir) override; 
         void run(float freq, direction dir) override; 
@@ -29,7 +30,8 @@ class Tmc2130 : public Stepper
         bool isRunning(void) override;
         void resetMaxToggleCount(void) override;
         void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement= 0) override;
-        void runRamp(float rampDelay, float time, float displacement, direction dir) override;
+        void calculateRamp(rampSettings* rs) override;
+        
 };
 
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context);

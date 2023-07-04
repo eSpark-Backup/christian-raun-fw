@@ -61,7 +61,14 @@ void App::loop()
             break;
             
         case eRunRPM:
-            stepper->runRamp(dataIn.rampDelay, dataIn.time, dataIn.displacement, (direction) dataIn.direction);
+            {
+                rampSettings rs;
+                rs.rampDelay = dataIn.rampDelay;
+                rs.time = dataIn.time;
+                rs.displacement = dataIn.displacement;
+                rs.dir = (direction) dataIn.direction;
+                stepper->run(&rs);
+            }
             state = eSendData;
             break;
             

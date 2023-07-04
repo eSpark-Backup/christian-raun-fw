@@ -20,6 +20,14 @@ enum motorDiagnostic
     MOTOR_STALLED,
 };
 
+struct rampSettings
+{
+    float rampDelay;
+    float time;
+    float displacement;
+    direction dir;
+};
+
 #define STEPS_PER_REVOLUTION 3115 //if error otherwise 3200
 #define STEPS_PER_MM (STEPS_PER_REVOLUTION / 2)
 #define CALIBRATION_RPM 30
@@ -55,6 +63,7 @@ class Stepper
     public:        
         virtual void setup(Encoder* encoder) {}
         virtual void loop(void) {}
+        virtual void run(rampSettings* rs) {}
         virtual void run(float rpm, uint32_t steps, float freq, direction dir) {}
         virtual void run(uint32_t steps, float freq, direction dir) {} 
         virtual void run(float freq, direction dir) {}
@@ -63,7 +72,8 @@ class Stepper
         virtual bool isRunning(void) { return false;}
         virtual void resetMaxToggleCount(void) {}
         virtual void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement = 0) {}
-        virtual void runRamp(float rampDelay, float time, float displacement, direction dir) {}
+        virtual void calculateRamp(rampSettings* rs) {}
+        
 };
 
 #ifdef __cplusplus

@@ -173,29 +173,12 @@ bool Tmc2130::isRunning(void)
     return (TC1_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
 }
 
-void Tmc2130::runRamp(float rampDelay, float time, float displacement, direction dir)
-{  
-    if (isRunning())
-        return;
-    
-    if( (0 == rampDelay) | (0 == time))
-        return;
-    
-    static float disp = 0;
-    
-    if (disp == displacement)
-        return; 
-    
-    disp = displacement;
-    
-    if (0 == displacement)
-        return;
-    
-    
-    float requiredRotations = displacement / displacementFactor;
-    float requiredRPM = (requiredRotations / time) * 60;
+void Tmc2130::calculateRamp(rampSettings* rs)
+{
+    float requiredRotations = rs->displacement / displacementFactor;
+    float requiredRPM = (requiredRotations / rs->time) * 60;
     float rampRPM = requiredRPM / rampSteps;
-    float timePerStep = rampDelay / rampSteps;
+    float timePerStep = rs->rampDelay / rampSteps;
     float displacementPerStep = timePerStep * (rampRPM / 60) * displacementFactor;
     float totalDisplacementPerRamp = 0;
     for (int j = 1; j <= rampSteps; j++)
@@ -204,14 +187,32 @@ void Tmc2130::runRamp(float rampDelay, float time, float displacement, direction
         totalDisplacementPerRamp += displacementRamp[j-1];
         rampRPMArr[j-1] = rampRPM *j;
     }
-    float requiredDisplacementWithoutRamps = displacement - (totalDisplacementPerRamp * 2);
+    float requiredDisplacementWithoutRamps = rs->displacement - (totalDisplacementPerRamp * 2);
     displacementRamp[rampSteps] = requiredDisplacementWithoutRamps;
-    float timeWithoutRamps = time - (rampDelay * 2);
+    float timeWithoutRamps = rs->time - (rs->rampDelay * 2);
     float requiredRotationsWithoutRamps = requiredDisplacementWithoutRamps / displacementFactor;
     float requiredRPMAfterWithoutRamps = (requiredRotationsWithoutRamps / timeWithoutRamps) * 60;
     rampRPMArr[rampSteps] = requiredRPMAfterWithoutRamps;
+}
+
+void Tmc2130::run(rampSettings* rs)
+{  
+    if (isRunning())
+        return;
     
-    this->dir = dir;
+    if( (0 == rs->rampDelay) | (0 == rs->time))
+        return;
+    
+    static float disp = 0;   
+    if (disp == rs->displacement)
+        return;  
+    disp = rs->displacement;
+    
+    if (0 == rs->displacement)
+        return;
+    
+    calculateRamp(rs);
+    this->dir = rs->dir;
     run(true);
 }
 
