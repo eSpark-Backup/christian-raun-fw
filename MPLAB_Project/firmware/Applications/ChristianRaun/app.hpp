@@ -48,7 +48,6 @@ extern "C" {
 void msCounter(TC_TIMER_STATUS status, uintptr_t context);
 /* Diag0 Interrupt handler */
 void temperatureError(uintptr_t context);
-uint32_t millis(void);
 #ifdef __cplusplus 
 }
 #endif

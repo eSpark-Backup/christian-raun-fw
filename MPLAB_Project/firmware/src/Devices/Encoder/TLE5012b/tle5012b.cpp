@@ -1,6 +1,7 @@
 #include "tle5012b.hpp"
 #include "../../../Libraries/SoftSPI/SoftSPIB.h"
 #include "../../Stepper/TMC2130/tmc2130.hpp"
+#include "../../Timer/timer.hpp"
 
 SoftSPIB SPI;
 float displacementCount = 0;
@@ -102,6 +103,7 @@ float Tle5012b::calculateDisplacement(void)
 
 bool Tle5012b::isMotorStalled(float rpm)
 {
+    bool tester = false;
     float minimumCoveredDistance = (rpm / 60.0) * 2 * STALL_DETECTION_MAX_TIME ;
     minimumCoveredDistance -= 0.1; 
     float currentPosition = calculateDisplacement();
@@ -112,6 +114,8 @@ bool Tle5012b::isMotorStalled(float rpm)
     {
         previousMillis = millis();
         previousPosition = calculateDisplacement();
+        operationEnd = false;
+        tester = true;
     }
     currentMillis = millis();
     
@@ -127,7 +131,6 @@ bool Tle5012b::isMotorStalled(float rpm)
             previousPosition = currentPosition;
         }    
     }
-    operationEnd = false;
     
     return false;
 }

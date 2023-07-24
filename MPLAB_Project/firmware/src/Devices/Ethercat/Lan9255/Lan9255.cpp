@@ -1,15 +1,10 @@
 #include "Lan9255.hpp"
-#define MII_MANAGEMENT_CONTROL 0x0510
-#define PHY_ADDRESS_REGISTER 0x0512
-#define PHY_REGISTER_ADDRESS_REGISTER 0x0513
-#define PHY_DATA_REGISTER 0x0514
-#define HBI_INDEXED_INDEX0_REG              0x00
-#define HBI_INDEXED_DATA0_REG               0x04
-
+#include "../../../../Applications/ChristianRaun/app.hpp"
+#include "../../Timer/timer.hpp"
 
 void Lan9255::setup()
 {
-  
+    
 }
 
 void Lan9255::loop()
@@ -62,4 +57,22 @@ void Lan9255::isMMIBusy(void)
         MCHP_ESF_PDI_READ(MII_MANAGEMENT_CONTROL, (uint8_t*)&busyFlag, Word_Size);
         for(uint8_t x =0; x < 200; x++);
     } while (busyFlag&0x8000);
+}
+
+bool Lan9255::isLinkDown()
+{  
+    static uint32_t previousMillis = 0, previousCount = 0;
+    if ((millis() - previousMillis) > TO_MS(1))
+    {
+        previousMillis = millis();
+        if (getInterruptCount() == previousCount)
+        {    
+            return true;
+        }
+        else
+        {
+            previousCount = getInterruptCount();
+        }
+    }
+    return false;
 }

@@ -76,8 +76,9 @@
       </logicalFolder>
       <logicalFolder name="Ethercat" displayName="Ethercat" projectFiles="true">
         <logicalFolder name="Lan9255" displayName="Lan9255" projectFiles="true">
-          <itemPath>../src/Devices/Ethercat/ethercat.hpp</itemPath>
+          <itemPath>../src/Devices/Ethercat/Lan9255/Lan9255.hpp</itemPath>
         </logicalFolder>
+        <itemPath>../src/Devices/Ethercat/ethercat.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f7" displayName="Library" projectFiles="true">
         <logicalFolder name="f1" displayName="SoftSPI" projectFiles="true">
@@ -233,6 +234,9 @@
         </logicalFolder>
         <itemPath>../src/Devices/Stepper/stepper.hpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f8" displayName="Timer" projectFiles="true">
+        <itemPath>../src/Devices/Timer/timer.hpp</itemPath>
+      </logicalFolder>
       <itemPath>../src/basicDef.h</itemPath>
       <itemPath>../src/app_lan9255.h</itemPath>
     </logicalFolder>
@@ -343,6 +347,9 @@
           <itemPath>../src/Devices/Stepper/TMC2130/tmc2130.cpp</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="f7" displayName="Timer" projectFiles="true">
+        <itemPath>../src/Devices/Timer/timer.cpp</itemPath>
+      </logicalFolder>
       <itemPath>../src/main.cpp</itemPath>
       <itemPath>../src/app_lan9255.c</itemPath>
     </logicalFolder>
@@ -417,7 +424,7 @@
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>${MP_CC_DIR}/xc32-objcopy -I ihex -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.hex" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin"</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>

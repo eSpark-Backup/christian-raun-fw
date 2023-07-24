@@ -26,8 +26,7 @@ void Tmc2130::loop()
     toggleCounter++;
     if(toggleCounter == maxToggleCount)
     {
-        toggleCounter =0;
-        TC1_TimerStop();
+        stop();
     }
 }
 
@@ -61,7 +60,7 @@ void Tmc2130::run(uint32_t steps, float freq, direction dir)
 }
 
 void Tmc2130::run(float freq, direction dir)
-{
+ {
     this->dir = dir;
     PORT_PinWrite(DIR_PIN, dir);
     float timeSec = (1.0/freq) / 2;

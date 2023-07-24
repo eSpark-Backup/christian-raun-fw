@@ -166,7 +166,9 @@ void EIC_EXTINT_5_InterruptHandler(void)
     }
 
 }
-uint32_t connectionCounter = 0;
+
+static uint32_t interruptCounter = 0;
+
 void EIC_EXTINT_7_InterruptHandler(void)
 {
     /* Clear interrupt flag */
@@ -176,13 +178,14 @@ void EIC_EXTINT_7_InterruptHandler(void)
     {
         eicCallbackObject[7].callback(eicCallbackObject[7].context);
     }
-    connectionCounter++;
+    interruptCounter++;
 }
 
-uint32_t getConnectionCounter(void)
+uint32_t getInterruptCount(void)
 {
-    return connectionCounter;
+    return interruptCounter;
 }
+
 void EIC_EXTINT_14_InterruptHandler(void)
 {
     /* Clear interrupt flag */
