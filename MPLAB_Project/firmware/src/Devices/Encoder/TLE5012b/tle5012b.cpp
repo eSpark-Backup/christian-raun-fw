@@ -55,6 +55,7 @@ float Tle5012b::calculateDisplacement(void)
 {
     double angle;
     getAngleValue(angle);
+    angle = 360 - angle; // For testing. Reversed value is observed
     direction dir = Tmc2130::dir;
     
     float displacement = (float)((angle/360.0) * 2);
@@ -103,7 +104,6 @@ float Tle5012b::calculateDisplacement(void)
 
 bool Tle5012b::isMotorStalled(float rpm)
 {
-    static uint8_t tester = false; // For Debugging
     static float previousPosition = 0;
     static uint32_t previousMillis = millis();
     
@@ -112,7 +112,6 @@ bool Tle5012b::isMotorStalled(float rpm)
         previousMillis = millis();
         previousPosition = calculateDisplacement();
         operationEnd = false;
-        tester++;
     }
     
     float minimumCoveredDistance = (rpm / 60.0) * 2 * STALL_DETECTION_MAX_TIME;
@@ -121,7 +120,6 @@ bool Tle5012b::isMotorStalled(float rpm)
     
     if ((currentMillis - previousMillis) > TO_MS(STALL_DETECTION_MAX_TIME))
     {
-        uint32_t millisTester = previousMillis; // For Debugging
         previousMillis = currentMillis;
         float currentPosition = calculateDisplacement();
         if (fabs(previousPosition - currentPosition) < minimumCoveredDistance)

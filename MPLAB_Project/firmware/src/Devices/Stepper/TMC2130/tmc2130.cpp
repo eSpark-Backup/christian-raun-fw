@@ -1,7 +1,6 @@
 #include "tmc2130.hpp"
-static uint8_t stopCounter =0; // For Debugging
 direction Tmc2130::dir = CLOCKWISE;
-//float Tmc2130::rpm = 0;
+float Tmc2130::rpm = 0;
 
 volatile uint32_t interruptCount=0;
 uint32_t freqCount=0;
@@ -41,7 +40,6 @@ void Tmc2130::run(float rpm, uint32_t steps, float freq, direction dir)
 
 void Tmc2130::run(uint32_t steps, float freq, direction dir)
 {    
-//    this->dir = dir;
     if(steps != maxToggleCount/2)
     {
         if (0 == toggleCounter)
@@ -73,7 +71,6 @@ void Tmc2130::stop(void)
 {
     toggleCounter =0;
     encoder->operationEnd = true;
-    stopCounter++;
     TC1_TimerStop();
 }
 

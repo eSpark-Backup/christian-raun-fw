@@ -96,7 +96,7 @@ void App::loop()
                 {
                     if(stepper->isRunning())
                     {
-                        if(encoder->isMotorStalled(stepper->rpm))
+                        if(encoder->isMotorStalled(Tmc2130::rpm))
                         {
                             stepper->stop();
 //                            stepper->resetMaxToggleCount();
@@ -136,9 +136,9 @@ appState App::selectMode()
             break;
 
         case ABORT_OPERATION:
-//            dataOut.motorDiagnostic = NO_ERROR;
-//            stepper->stop();
-//            stepper->resetMaxToggleCount();
+            dataOut.motorDiagnostic = NO_ERROR;
+            stepper->stop();
+            stepper->resetMaxToggleCount();
             state = eSendData;
             break;
 

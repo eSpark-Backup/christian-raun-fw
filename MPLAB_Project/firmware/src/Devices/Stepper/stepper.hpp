@@ -60,9 +60,7 @@ class Stepper
 {
     private:
         
-    public:
-        float rpm;   
-        
+    public: 
         virtual void setup(Encoder* encoder) {}
         virtual void loop(void) {}
         virtual void run(rampSettings* rs) {}
