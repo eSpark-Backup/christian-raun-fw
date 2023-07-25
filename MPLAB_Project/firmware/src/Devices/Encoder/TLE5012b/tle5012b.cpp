@@ -103,25 +103,27 @@ float Tle5012b::calculateDisplacement(void)
 
 bool Tle5012b::isMotorStalled(float rpm)
 {
-    bool tester = false;
-    float minimumCoveredDistance = (rpm / 60.0) * 2 * STALL_DETECTION_MAX_TIME ;
-    minimumCoveredDistance -= 0.1; 
-    float currentPosition = calculateDisplacement();
-    static float previousPosition = calculateDisplacement();
+    static uint8_t tester = false; // For Debugging
+    static float previousPosition = 0;
+    static uint32_t previousMillis = millis();
     
-    static uint32_t currentMillis=0, previousMillis = millis();
     if (operationEnd)
     {
         previousMillis = millis();
         previousPosition = calculateDisplacement();
         operationEnd = false;
-        tester = true;
+        tester++;
     }
-    currentMillis = millis();
+    
+    float minimumCoveredDistance = (rpm / 60.0) * 2 * STALL_DETECTION_MAX_TIME;
+    minimumCoveredDistance -= 0.1; 
+    uint32_t currentMillis = millis();
     
     if ((currentMillis - previousMillis) > TO_MS(STALL_DETECTION_MAX_TIME))
     {
+        uint32_t millisTester = previousMillis; // For Debugging
         previousMillis = currentMillis;
+        float currentPosition = calculateDisplacement();
         if (fabs(previousPosition - currentPosition) < minimumCoveredDistance)
         {
             return true;
