@@ -1,17 +1,22 @@
 #ifndef STEPPER
 #define STEPPER
 
+#include<stdint.h>
 #include "../../slave_stack/LAN9255_EtherCAT_Slave.h"
-#include "../Encoder/TLE5012b/tle5012b.hpp"
+#include "../Observer/observer.h"
 #include "math.h"
+#include <vector>
+#include <algorithm>
+
+class Encoder;
 
 #define DIAG0_INTERRUPT_PIN EIC_PIN_5
 
-enum direction
+typedef enum
 {
     CLOCKWISE,
     ANTICLOCKWISE,
-};
+} direction_t;
 
 enum motorDiagnostic
 {
@@ -25,7 +30,7 @@ struct rampSettings
     float rampDelay;
     float time;
     float displacement;
-    direction dir;
+    direction_t dir;
 };
 
 #define STEPS_PER_REVOLUTION 3115 //if error otherwise 3200
@@ -59,21 +64,39 @@ enum stepperAppModes
 class Stepper
 {
     private:
+        std::vector<Observer*> observers;
         
+    protected:
+        void notifyObservers(float rpm, bool dir)
+        {
+            for (Observer* observer : observers)
+            {
+                observer->update(rpm, dir);
+            }
+        }
+    
     public: 
         virtual void setup(Encoder* encoder) {}
         virtual void loop(void) {}
         virtual void run(rampSettings* rs) {}
-        virtual void run(float rpm, uint32_t steps, float freq, direction dir) {}
-        virtual void run(uint32_t steps, float freq, direction dir) {} 
-        virtual void run(float freq, direction dir) {}
+        virtual void run(uint32_t steps, float freq, direction_t dir) {} 
+        virtual void run(float freq, direction_t dir) {}
         virtual void run(bool operationStart = false) {}
         virtual void stop(void) {}
         virtual bool isRunning(void) { return false;}
         virtual void resetMaxToggleCount(void) {}
         virtual void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement = 0) {}
         virtual void calculateRamp(rampSettings* rs) {}
+        void addObserver(Observer* observer)
+        {
+            observers.push_back(observer);
+        }
         
+        void removeObserver(Observer* observer)
+        {
+            // Remove the observer from the vector
+            observers.erase(std::remove(observers.begin(), observers.end(), observer), observers.end());
+        }
 };
 
 #endif

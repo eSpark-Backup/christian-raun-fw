@@ -56,7 +56,7 @@ float Tle5012b::calculateDisplacement(void)
     double angle;
     getAngleValue(angle);
     angle = 360 - angle; // For testing. Reversed value is observed
-    direction dir = Tmc2130::dir;
+    direction_t dir = Tmc2130::dir;
     
     float displacement = (float)((angle/360.0) * 2);
     switch(dir)
@@ -102,7 +102,7 @@ float Tle5012b::calculateDisplacement(void)
     return displacement;
 }
 
-bool Tle5012b::isMotorStalled(float rpm)
+bool Tle5012b::isMotorStalled()
 {
     static float previousPosition = 0;
     static uint32_t previousMillis = millis();

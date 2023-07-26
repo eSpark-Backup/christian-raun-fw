@@ -16,15 +16,14 @@ class Tmc2130 : public Stepper
         Encoder* encoder;
         
     public:
-        static direction dir;
+        static direction_t dir;
         static float rpm;
         
         void setup(Encoder* encoder) override;
         void loop(void) override;
         void run(rampSettings* rs) override;
-        void run(float rpm, uint32_t steps, float freq, direction dir) override;
-        void run(uint32_t steps, float freq, direction dir) override; 
-        void run(float freq, direction dir) override; 
+        void run(uint32_t steps, float freq, direction_t dir) override; 
+        void run(float freq, direction_t dir) override; 
         void run(bool operationStart = false) override;
         void stop(void) override;
         bool isRunning(void) override;

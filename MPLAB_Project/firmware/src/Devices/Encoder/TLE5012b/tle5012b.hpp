@@ -28,7 +28,7 @@ class Tle5012b : public Encoder
         void loop() override;
         void getAngleValue(double &angleValue) override;
         float calculateDisplacement(void) override;
-        bool isMotorStalled(float rpm) override;
+        bool isMotorStalled() override;
         void setZeroOffset(void) override;
 };
 #endif

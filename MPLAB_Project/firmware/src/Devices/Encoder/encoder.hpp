@@ -1,9 +1,13 @@
 #ifndef ENCODER
 #define ENCODER
 
-class Encoder
+#include "../Observer/observer.h"
+
+class Encoder : public Observer
 {
-    private:
+    protected:
+        float rpm;
+        bool dir;
         
     public:
         bool operationEnd = true;
@@ -11,7 +15,14 @@ class Encoder
         virtual void loop() {}
         virtual void getAngleValue(double &angleValue) {}
         virtual float calculateDisplacement(void) { return 0;}
-        virtual bool isMotorStalled(float rpm) { return false;}
+        virtual bool isMotorStalled() { return false;}
         virtual void setZeroOffset(void) {}
+        void update(float rpm, bool dir) override
+        {
+            // Update the stored rpm and direction when notified by the Stepper
+            this->rpm = rpm;
+            this->dir = dir;
+        }
 };
+
 #endif

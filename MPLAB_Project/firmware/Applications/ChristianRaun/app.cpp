@@ -32,6 +32,7 @@ void App::setup()
     timer->setup();
     encoder->setup();
     stepper->setup(encoder);
+    stepper->addObserver(encoder);
 }
 
 void App::loop()
@@ -64,7 +65,7 @@ void App::loop()
                 rs.rampDelay = dataIn.rampDelay;
                 rs.time = dataIn.time;
                 rs.displacement = dataIn.displacement;
-                rs.dir = (direction) dataIn.direction;
+                rs.dir = (direction_t) dataIn.direction;
                 stepper->run(&rs);
             }
             state = eSendData;
@@ -73,7 +74,7 @@ void App::loop()
         case eStepper:
             frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
             steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-            stepper->run(dataIn.rpm, steps, frequency, (direction) dataIn.direction);
+            stepper->run(steps, frequency, (direction_t) dataIn.direction);
             
             state = eSendData;
             break;
@@ -96,7 +97,7 @@ void App::loop()
                 {
                     if(stepper->isRunning())
                     {
-                        if(encoder->isMotorStalled(Tmc2130::rpm))
+                        if(encoder->isMotorStalled())
                         {
                             stepper->stop();
                             dataOut.motorDiagnostic = MOTOR_STALLED;
