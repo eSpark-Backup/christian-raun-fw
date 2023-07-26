@@ -99,7 +99,6 @@ void App::loop()
                         if(encoder->isMotorStalled(Tmc2130::rpm))
                         {
                             stepper->stop();
-//                            stepper->resetMaxToggleCount();
                             dataOut.motorDiagnostic = MOTOR_STALLED;
                         }
                     }

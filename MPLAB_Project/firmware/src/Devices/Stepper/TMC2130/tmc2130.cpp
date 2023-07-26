@@ -130,6 +130,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     else if (!isRunning())
                     {
                         resetMaxToggleCount();
+                        encoder->setZeroOffset();
                         out->deviceStatus = CALIBRATION_SEQUENCE_02_SUCCESS;
                     }
                     break;
