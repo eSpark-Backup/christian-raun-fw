@@ -1,9 +1,6 @@
 #include "tmc2130.hpp"
 #include "../../Encoder/TLE5012b/tle5012b.hpp"
 
-direction_t Tmc2130::dir = CLOCKWISE;
-float Tmc2130::rpm = 0;
-
 volatile uint32_t interruptCount=0;
 uint32_t freqCount=0;
 volatile uint32_t maxToggleCount=0;
@@ -52,7 +49,6 @@ void Tmc2130::run(uint32_t steps, float freq, direction_t dir)
 
 void Tmc2130::run(float freq, direction_t dir)
  {
-    this->dir = dir;
     PORT_PinWrite(DIR_PIN, dir);
     float timeSec = (1.0/freq) / 2;
     uint16_t period = timeSec / 0.0000000166667;
@@ -122,7 +118,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     if (MOTOR_STALLED == out->motorDiagnostic)
                     {
                         out->deviceStatus = CALIBRATION_SEQUENCE_02_FAILED;
-                    }  
+                    }
                     else if (!isRunning())
                     {
                         resetMaxToggleCount();
@@ -212,7 +208,7 @@ void Tmc2130::run(rampSettings* rs)
 
 void Tmc2130::run(bool operationStart)
 {
-    runningRPMSequence =true;
+    runningRPMSequence = true;
     static uint32_t n;
     if (operationStart)
     {

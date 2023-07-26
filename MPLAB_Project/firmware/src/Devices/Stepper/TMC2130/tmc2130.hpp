@@ -15,10 +15,7 @@ class Tmc2130 : public Stepper
     private:
         Encoder* encoder;
         
-    public:
-        static direction_t dir;
-        static float rpm;
-        
+    public:       
         void setup(Encoder* encoder) override;
         void loop(void) override;
         void run(rampSettings* rs) override;

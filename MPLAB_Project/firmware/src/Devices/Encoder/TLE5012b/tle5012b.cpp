@@ -56,10 +56,10 @@ float Tle5012b::calculateDisplacement(void)
     double angle;
     getAngleValue(angle);
     angle = 360 - angle; // For testing. Reversed value is observed
-    direction_t dir = Tmc2130::dir;
+    direction_t direction = (direction_t)dir;
     
     float displacement = (float)((angle/360.0) * 2);
-    switch(dir)
+    switch(direction)
     {
         case CLOCKWISE:
             if (displacement > (float)1.5)

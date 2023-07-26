@@ -67,6 +67,7 @@ class Stepper
         std::vector<Observer*> observers;
         
     protected:
+        direction_t dir;
         void notifyObservers(float rpm, bool dir)
         {
             for (Observer* observer : observers)
