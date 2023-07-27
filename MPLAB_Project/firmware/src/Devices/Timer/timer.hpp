@@ -3,6 +3,8 @@
 
 #include "basicDef.h"
 
+#define TO_MS(seconds)  (seconds * 1000)
+
 class Timer
 {       
     private: 

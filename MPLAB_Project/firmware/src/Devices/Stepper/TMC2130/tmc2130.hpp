@@ -3,6 +3,7 @@
 
 #include "basicDef.h"
 #include "../stepper.hpp"
+#include "../../Encoder/Interface/IEncoder.hpp"
 
 // Fixed Params
 #define displacementFactor 2
@@ -13,14 +14,16 @@
 class Tmc2130 : public Stepper
 {
     private:
-        Encoder* encoder;
+        IEncoder* encoder;
+        float displacementRamp[rampSteps+1] = {0};
+        float rampRPMArr[rampSteps+1] = {0};
         
     public:       
-        void setup(Encoder* encoder) override;
+        void setup(IEncoder* encoder) override;
         void loop(void) override;
         void run(rampSettings* rs) override;
-        void run(uint32_t steps, float freq, direction_t dir) override; 
-        void run(float freq, direction_t dir) override; 
+        void run(float rpm, direction_t dir, uint32_t steps) override; 
+        void run(float rpm, direction_t dir) override; 
         void run(bool operationStart = false) override;
         void stop(void) override;
         bool isRunning(void) override;

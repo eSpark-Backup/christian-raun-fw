@@ -4,9 +4,6 @@
 #include "../../Timer/timer.hpp"
 
 SoftSPIB SPI;
-float displacementCount = 0;
-bool almostCompleteCW = false;
-bool almostCompleteCCW = false;
 
 void Tle5012b::setup()
 {
@@ -105,13 +102,13 @@ float Tle5012b::calculateDisplacement(void)
 bool Tle5012b::isMotorStalled()
 {
     static float previousPosition = 0;
-    static uint32_t previousMillis = millis();
+    static uint32_t previousMillis = 0;
     
-    if (operationEnd)
+    if (STOPPED == mStatus)
     {
         previousMillis = millis();
         previousPosition = calculateDisplacement();
-        operationEnd = false;
+        mStatus = RUNNING;
     }
     
     float minimumCoveredDistance = (rpm / 60.0) * 2 * STALL_DETECTION_MAX_TIME;

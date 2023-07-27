@@ -4,6 +4,7 @@
 #include<stdint.h>
 #include "../../slave_stack/LAN9255_EtherCAT_Slave.h"
 #include "../Observer/observer.h"
+#include "../Encoder/Interface/IEncoder.hpp"
 #include "math.h"
 #include <vector>
 #include <algorithm>
@@ -35,9 +36,8 @@ struct rampSettings
 
 #define STEPS_PER_REVOLUTION 3115 //if error otherwise 3200
 #define STEPS_PER_MM (STEPS_PER_REVOLUTION / 2)
-#define CALIBRATION_RPM 30
-#define ROTATIONS_PER_SEC(rpm) (rpm/60.0)
-#define TO_MS(seconds)  (seconds * 1000)
+#define CALIBRATION_RPM 30.0f
+#define ROTATIONS_PER_SEC(rpm) (rpm/60.0f)
 
 enum deviceStatus 
 {
@@ -77,11 +77,11 @@ class Stepper
         }
     
     public: 
-        virtual void setup(Encoder* encoder) {}
+        virtual void setup(IEncoder* encoder) {}
         virtual void loop(void) {}
         virtual void run(rampSettings* rs) {}
-        virtual void run(uint32_t steps, float freq, direction_t dir) {} 
-        virtual void run(float freq, direction_t dir) {}
+        virtual void run(float rpm, direction_t dir, uint32_t steps) {} 
+        virtual void run(float rpm, direction_t dir) {}
         virtual void run(bool operationStart = false) {}
         virtual void stop(void) {}
         virtual bool isRunning(void) { return false;}
@@ -97,6 +97,11 @@ class Stepper
         {
             // Remove the observer from the vector
             observers.erase(std::remove(observers.begin(), observers.end(), observer), observers.end());
+        }
+        
+        float toFrequency(float rpm)
+        {
+            return (ROTATIONS_PER_SEC(rpm) * STEPS_PER_REVOLUTION);
         }
 };
 

@@ -1,18 +1,12 @@
 #include "tmc2130.hpp"
 #include "../../Encoder/TLE5012b/tle5012b.hpp"
 
-volatile uint32_t interruptCount=0;
-uint32_t freqCount=0;
 volatile uint32_t maxToggleCount=0;
 volatile uint32_t toggleCounter=0;
 
-bool runStatus = false;
 bool runningRPMSequence = false;
 
-float displacementRamp[rampSteps+1] = {0};
-float rampRPMArr[rampSteps+1] = {0};
-
-void Tmc2130::setup(Encoder* encoder)
+void Tmc2130::setup(IEncoder* encoder)
 {
     TC1_TimerCallbackRegister(pwm_callback, (uintptr_t) this);
     this->encoder = encoder;
@@ -28,41 +22,41 @@ void Tmc2130::loop()
     }
 }
 
-void Tmc2130::run(uint32_t steps, float freq, direction_t dir)
+void Tmc2130::run(float rpm, direction_t dir, uint32_t steps)
 {    
     if(steps != maxToggleCount/2)
     {
         if (0 == toggleCounter)
         {
-            if (!freq)
+            if (!rpm)
             {
                 return;
             }
             maxToggleCount = steps * 2;
             if (maxToggleCount)
             {
-                run(freq, dir);
+                run(rpm, dir);
             }
         }
     }    
 }
 
-void Tmc2130::run(float freq, direction_t dir)
+void Tmc2130::run(float rpm, direction_t dir)
  {
     PORT_PinWrite(DIR_PIN, dir);
-    float timeSec = (1.0/freq) / 2;
+    float frequency = toFrequency(rpm);
+    float timeSec = (1.0/frequency) / 2;
     uint16_t period = timeSec / 0.0000000166667;
     TC1_Timer16bitPeriodSet(period);
     TC1_TimerStart();
     
-    float rpm = freq * 60 / STEPS_PER_REVOLUTION;
     notifyObservers(rpm, dir);
 }
 
 void Tmc2130::stop(void)
 {
     toggleCounter =0;
-    encoder->operationEnd = true;
+    encoder->motorStopped();
     TC1_TimerStop();
 }
 
@@ -73,7 +67,7 @@ void Tmc2130::resetMaxToggleCount(void)
 
 void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement)
 {
-    uint32_t steps, frequency = 0;
+    uint32_t steps = 0;
     
     switch (mode)
     {      
@@ -81,8 +75,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
             switch(out->deviceStatus)
             {
                 case None:
-                    frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
-                    run(frequency, ANTICLOCKWISE);
+                    run(CALIBRATION_RPM, ANTICLOCKWISE);
                     out->deviceStatus = CALIBRATION_SEQUENCE_01_STARTED;  
                     break;
 
@@ -108,9 +101,8 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
             switch(out->deviceStatus)
             {
                 case CALIBRATION_SEQUENCE_01_SUCCESS:
-                    frequency = ROTATIONS_PER_SEC(CALIBRATION_RPM) * STEPS_PER_REVOLUTION;
-                    steps = (displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-                    run(steps, frequency, CLOCKWISE);
+                    steps = displacement * STEPS_PER_MM;
+                    run(CALIBRATION_RPM, CLOCKWISE, steps);
                     out->deviceStatus = CALIBRATION_SEQUENCE_02_STARTED;
                     break;
                     
@@ -216,10 +208,9 @@ void Tmc2130::run(bool operationStart)
     }
     maxToggleCount =0;
     static bool downCount = false;
-    float frequency = ROTATIONS_PER_SEC(rampRPMArr[n]) * STEPS_PER_REVOLUTION;
     uint32_t steps = displacementRamp[n] * STEPS_PER_MM;
     
-    run(steps, frequency, this->dir);
+    run(rampRPMArr[n], this->dir, steps);
     if(rampSteps == n)
     {
         downCount = true;

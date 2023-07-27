@@ -1,4 +1,7 @@
 #include "app.hpp"
+#include "../../src/Devices/Stepper/TMC2130/tmc2130.hpp"
+#include "../../src/Devices/Encoder/TLE5012b/tle5012b.hpp"
+#include "../../src/Devices/Ethercat/Lan9255/Lan9255.hpp"
 #include "../../src/Devices/Timer/timer.hpp"
 
 Stepper* stepper;
@@ -62,20 +65,18 @@ void App::loop()
         case eRunRPM:
             {
                 rampSettings rs;
-                rs.rampDelay = dataIn.rampDelay;
-                rs.time = dataIn.time;
+                rs.rampDelay    = dataIn.rampDelay;
+                rs.time         = dataIn.time;
                 rs.displacement = dataIn.displacement;
-                rs.dir = (direction_t) dataIn.direction;
+                rs.dir          = (direction_t) dataIn.direction;
                 stepper->run(&rs);
             }
             state = eSendData;
             break;
             
         case eStepper:
-            frequency = ROTATIONS_PER_SEC(dataIn.rpm) * STEPS_PER_REVOLUTION;
-            steps = (dataIn.displacement/ 3200.0) * STEPS_PER_REVOLUTION;
-            stepper->run(steps, frequency, (direction_t) dataIn.direction);
-            
+            steps = dataIn.displacement * STEPS_PER_MM;
+            stepper->run(dataIn.rpm, (direction_t) dataIn.direction, steps);
             state = eSendData;
             break;
 

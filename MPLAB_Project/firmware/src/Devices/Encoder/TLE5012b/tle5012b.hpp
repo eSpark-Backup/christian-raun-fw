@@ -1,7 +1,6 @@
 #ifndef TLE5012B
 #define TLE5012B
 
-
 #include "../encoder.hpp"
 
 #define READ_SENSOR                 0x8000    //!< \brief base command for read
@@ -22,6 +21,9 @@ class Tle5012b : public Encoder
 {
     private:
         float ZeroOffset =0;
+        float displacementCount = 0;
+        bool almostCompleteCW = false;
+        bool almostCompleteCCW = false;
         
     public:
         void setup() override;
