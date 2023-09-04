@@ -55,8 +55,8 @@
             <logicalFolder name="f9" displayName="tc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tc/plib_tc_common.h</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc0.h</itemPath>
-              <itemPath>../src/config/default/peripheral/tc/plib_tc1.h</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc2.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc4.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <itemPath>../src/config/default/ethercat_configuration.h</itemPath>
@@ -305,8 +305,8 @@
             </logicalFolder>
             <logicalFolder name="f9" displayName="tc" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tc/plib_tc0.c</itemPath>
-              <itemPath>../src/config/default/peripheral/tc/plib_tc1.c</itemPath>
               <itemPath>../src/config/default/peripheral/tc/plib_tc2.c</itemPath>
+              <itemPath>../src/config/default/peripheral/tc/plib_tc4.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f2" displayName="stdio" projectFiles="true">
@@ -378,8 +378,8 @@
         <itemPath>../src/config/default/default.mhc/sercom4.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/tc0.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tc1.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/tc2.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/tc4.yml</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/default/pin_configurations.csv</itemPath>
@@ -400,14 +400,14 @@
         <targetDevice>LAN9255ZMX018</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>jlink</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
         <pack name="LAN9255_DFP" vendor="Microchip" version="1.1.7"/>
+        <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -430,7 +430,7 @@
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>${MP_CC_DIR}/xc32-objcopy -I ihex -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.hex" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin"</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>

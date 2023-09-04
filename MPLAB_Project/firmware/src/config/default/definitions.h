@@ -58,9 +58,9 @@
 #include "peripheral/sercom/spi_master/plib_sercom4_spi_master.h"
 #include "peripheral/eic/plib_eic.h"
 #include "driver/lan9255/drv_lan9255_ecat_util.h"
-#include "peripheral/tc/plib_tc1.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "peripheral/tc/plib_tc2.h"
+#include "peripheral/tc/plib_tc4.h"
 #include "peripheral/qspi/plib_qspi_spi.h"
 
 // DOM-IGNORE-BEGIN

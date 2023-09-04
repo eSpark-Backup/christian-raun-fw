@@ -181,7 +181,7 @@ void SYS_Initialize ( void* data )
 
     EIC_Initialize();
 
-    TC1_TimerInitialize();
+    TC4_TimerInitialize();
 
     TC0_TimerInitialize();
     

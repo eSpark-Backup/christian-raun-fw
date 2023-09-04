@@ -8,7 +8,7 @@ bool runningRPMSequence = false;
 
 void Tmc2130::setup(IEncoder* encoder)
 {
-    TC1_TimerCallbackRegister(pwm_callback, (uintptr_t) this);
+    TC4_TimerCallbackRegister(pwm_callback, (uintptr_t) this);
     this->encoder = encoder;
 }
 
@@ -46,9 +46,9 @@ void Tmc2130::run(float rpm, direction_t dir)
     PORT_PinWrite(DIR_PIN, dir);
     float frequency = toFrequency(rpm);
     float timeSec = (1.0/frequency) / 2;
-    uint16_t period = timeSec / 0.0000000166667;
-    TC1_Timer16bitPeriodSet(period);
-    TC1_TimerStart();
+    uint32_t period = timeSec / 0.0000000166667;
+    TC4_Timer32bitPeriodSet(period);
+    TC4_TimerStart();
     
     notifyObservers(rpm, dir);
 }
@@ -57,7 +57,7 @@ void Tmc2130::stop(void)
 {
     toggleCounter =0;
     encoder->motorStopped();
-    TC1_TimerStop();
+    TC4_TimerStop();
 }
 
 void Tmc2130::resetMaxToggleCount(void)
@@ -152,7 +152,7 @@ void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
 
 bool Tmc2130::isRunning(void)
 {
-    return (TC1_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
+    return (TC4_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
 }
 
 void Tmc2130::calculateRamp(rampSettings* rs)

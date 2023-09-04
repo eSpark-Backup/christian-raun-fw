@@ -480,12 +480,5 @@ children:
       children:
       - type: Dynamic
         attributes: {id: eic, value: 'false'}
-  - type: Boolean
-    attributes: {id: USER_TC1_EVU_READY}
-    children:
-    - type: Values
-      children:
-      - type: Dynamic
-        attributes: {id: tc1, value: 'false'}
 - type: ElementPosition
   attributes: {x: '180', y: '20', id: evsys}
