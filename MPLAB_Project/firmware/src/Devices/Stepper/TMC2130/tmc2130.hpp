@@ -17,8 +17,11 @@ class Tmc2130 : public Stepper
         IEncoder* encoder;
         float displacementRamp[rampSteps+1] = {0};
         float rampRPMArr[rampSteps+1] = {0};
-        
+        bool rpmSequenceStatus = false;
+         
     public:       
+        bool isRPMSequenceRunning(void) override;
+        void setRPMSequenceStatus(bool status) override;
         void setup(IEncoder* encoder) override;
         void loop(void) override;
         void run(rampSettings* rs) override;

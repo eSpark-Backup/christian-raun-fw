@@ -5,7 +5,7 @@ frameworkPath: C:\Users\Abeer.DESKTOP-Q8FRVD0\Harmony3
 processor: LAN9255ZMX018
 projectName: ethercat_counter_foe_app
 settings:
-  PackageFilter: csp;dev_packs;ethercat;harmony-services;quick_docs
+  PackageFilter: bootloader;bsp;core;csp;dev_packs;ethercat;harmony-services;net;quick_docs;usb
   FORCE_OPTIMIZATION: 'false'
   GENERATE_BACKUP: 'true'
   TRUSTZONE: 'false'

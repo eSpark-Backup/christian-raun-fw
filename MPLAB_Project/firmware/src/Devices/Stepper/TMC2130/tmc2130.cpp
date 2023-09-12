@@ -4,12 +4,20 @@
 volatile uint32_t maxToggleCount=0;
 volatile uint32_t toggleCounter=0;
 
-bool runningRPMSequence = false;
+ 
 
 void Tmc2130::setup(IEncoder* encoder)
 {
     TC4_TimerCallbackRegister(pwm_callback, (uintptr_t) this);
     this->encoder = encoder;
+}
+
+bool Tmc2130::isRPMSequenceRunning() {
+    return rpmSequenceStatus;             
+}
+
+void Tmc2130::setRPMSequenceStatus(bool status) {
+    this->rpmSequenceStatus = status;            
 }
 
 void Tmc2130::loop()
@@ -26,19 +34,19 @@ void Tmc2130::run(float rpm, direction_t dir, uint32_t steps)
 {    
     if(steps != maxToggleCount/2)
     {
-        if (0 == toggleCounter)
-        {
-            if (!rpm)
+        if (!isRunning())
+        {   
+           if (!rpm)
             {
                 return;
-            }
+            }       
             maxToggleCount = steps * 2;
             if (maxToggleCount)
             {
                 run(rpm, dir);
             }
         }
-    }    
+     } 
 }
 
 void Tmc2130::run(float rpm, direction_t dir)
@@ -62,7 +70,7 @@ void Tmc2130::stop(void)
 
 void Tmc2130::resetMaxToggleCount(void)
 {
-    maxToggleCount =0;
+    maxToggleCount = 0;
 }
 
 void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement)
@@ -135,16 +143,16 @@ void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
     Tmc2130* stepper = (Tmc2130*)context;
     stepper->loop();
     
-    if(runningRPMSequence)
+    if(stepper->isRPMSequenceRunning())
     {
         if (!stepper->isRunning())
-        {
+        {    
             stepper->run();
             rampStepsCount++;
             if(((rampSteps * 2)) == rampStepsCount )
             {
                 rampStepsCount = 0;
-                runningRPMSequence = false;
+                stepper->setRPMSequenceStatus(false);
             }
         }
     }
@@ -199,8 +207,8 @@ void Tmc2130::run(rampSettings* rs)
 }
 
 void Tmc2130::run(bool operationStart)
-{
-    runningRPMSequence = true;
+{   
+    setRPMSequenceStatus(true);
     static uint32_t n;
     if (operationStart)
     {

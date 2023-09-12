@@ -107,7 +107,7 @@ uint8_t SoftSPIB::transfer(uint8_t val) {
     for (uint8_t bit = 0; bit < 8; bit++) {
         PORT_PinWrite(_sck, _ckp ? LOW : HIGH);
 
-        for (uint8_t i = 0; i < del; i++) {
+         for (uint8_t i = 0; i < del; i++) {
             __NOP();
         }
 

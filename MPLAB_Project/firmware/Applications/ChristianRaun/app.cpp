@@ -9,6 +9,7 @@ Encoder* encoder;
 Ethercat* ethercat;
 Timer* timer;
 
+
 float frequency=0;
 uint32_t steps =0;
 
@@ -74,7 +75,7 @@ void App::loop()
             state = eSendData;
             break;
             
-        case eStepper:
+        case eStepper:  
             steps = dataIn.displacement * STEPS_PER_MM;
             stepper->run(dataIn.rpm, (direction_t) dataIn.direction, steps);
             state = eSendData;
@@ -84,7 +85,7 @@ void App::loop()
             dataOut.position = encoder->calculateDisplacement();
             dataOut.temperature = 350; // For Testing
             state = eErrorHandling;
-            break;
+            break;  
             
         case eErrorHandling:
             if (stepper->isRunning())
@@ -140,6 +141,7 @@ appState App::selectMode()
             dataOut.motorDiagnostic = NO_ERROR;
             stepper->stop();
             stepper->resetMaxToggleCount();
+            stepper->setRPMSequenceStatus(false);
             state = eSendData;
             break;
 
