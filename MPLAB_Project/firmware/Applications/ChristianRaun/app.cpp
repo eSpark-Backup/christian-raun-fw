@@ -102,6 +102,7 @@ void App::loop()
                         if(encoder->isMotorStalled())
                         {
                             stepper->stop();
+                            stepper->setRPMSequenceStatus(false);
                             dataOut.motorDiagnostic = MOTOR_STALLED;
                         }
                     }
