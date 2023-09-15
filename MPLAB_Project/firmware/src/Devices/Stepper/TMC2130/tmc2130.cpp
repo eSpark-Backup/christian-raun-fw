@@ -192,12 +192,7 @@ void Tmc2130::run(rampSettings* rs)
     
     if( (0 == rs->rampDelay) | (0 == rs->time))
         return;
-    
-    static float disp = 0;   
-    if (disp == rs->displacement)
-        return;  
-    disp = rs->displacement;
-    
+        
     if (0 == rs->displacement)
         return;
     
