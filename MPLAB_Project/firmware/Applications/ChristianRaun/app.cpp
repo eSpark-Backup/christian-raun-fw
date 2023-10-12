@@ -93,6 +93,7 @@ void App::loop()
                 if(ethercat->isLinkDown())
                 {
                     stepper->stop();
+                    stepper->setRPMSequenceStatus(false);
                 }
                 
                 if(CALIBRATION_SEQUENCE_01_STARTED != dataOut.deviceStatus)
