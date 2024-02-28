@@ -70,8 +70,8 @@ volatile BOOL	gFirmwareDownload_Finished = FALSE;
 
 
 
-struct dataInPacket dataIn = {0,0,0,0};
-struct dataOutPacket dataOut = {0,0,0,0,0};
+dataInPacket dataIn = {0,0,0,0};
+dataOutPacket dataOut = {0,0,0,0,0};
 
 
 
@@ -638,7 +638,7 @@ UINT16 APPL_GenerateMapping(UINT16 *pInputSize,UINT16 *pOutputSize)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_InputMapping(UINT16* pData)
 {
-    MEMCPY(pData, &(Inputs0x6000.Position), sizeof(struct dataOutPacket));   
+    MEMCPY(pData, &(Inputs0x6000.Position), sizeof(dataOutPacket));   
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -650,7 +650,7 @@ void APPL_InputMapping(UINT16* pData)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_OutputMapping(UINT16* pData)
 {
-    MEMCPY(&(Outputs0x7010.RPM), pData, sizeof(struct dataInPacket));
+    MEMCPY(&(Outputs0x7010.RPM), pData, sizeof(dataInPacket));
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -661,10 +661,10 @@ void APPL_OutputMapping(UINT16* pData)
 void APPL_Application(void)
 {
     // Map Outputs 
-    MEMCPY(&(Inputs0x6000.Position), &(dataOut.position), sizeof(struct dataOutPacket)); 
+    MEMCPY(&(Inputs0x6000.Position), &(dataOut.position), sizeof(dataOutPacket)); 
     
     // Map Inputs
-    MEMCPY(&(dataIn.rpm), &(Outputs0x7010.RPM), sizeof(struct dataInPacket));
+    MEMCPY(&(dataIn.rpm), &(Outputs0x7010.RPM), sizeof(dataInPacket));
 }
 
 #if EXPLICIT_DEVICE_ID

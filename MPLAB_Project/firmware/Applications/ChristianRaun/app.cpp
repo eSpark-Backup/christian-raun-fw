@@ -35,7 +35,7 @@ void App::setup()
     
     timer->setup();
     encoder->setup();
-    stepper->setup(encoder);
+    stepper->setup(encoder, &dataOut);
     stepper->addObserver(encoder);
 }
 
@@ -82,7 +82,10 @@ void App::loop()
             break;
 
          case eSendData:
-            dataOut.position = encoder->calculateDisplacement();
+            if (stepper->isRunning())
+            {
+                dataOut.position = encoder->calculateDisplacement();
+            }
             dataOut.temperature = 350; // For Testing
             state = eErrorHandling;
             break;  

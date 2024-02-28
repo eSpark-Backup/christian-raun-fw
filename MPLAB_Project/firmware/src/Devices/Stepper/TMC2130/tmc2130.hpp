@@ -22,7 +22,7 @@ class Tmc2130 : public Stepper
     public:       
         bool isRPMSequenceRunning(void) override;
         void setRPMSequenceStatus(bool status) override;
-        void setup(IEncoder* encoder) override;
+        void setup(IEncoder* encoder, dataOutPacket* dataOut) override;
         void loop(void) override;
         void run(rampSettings* rs) override;
         void run(float rpm, direction_t dir, uint32_t steps) override; 
@@ -35,6 +35,11 @@ class Tmc2130 : public Stepper
         void calculateRamp(rampSettings* rs) override;
         
 };
+
+typedef struct {
+    Tmc2130* stepper;
+    dataOutPacket* dataOut;
+} PWMCallbackArgs;
 
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context);
 #endif

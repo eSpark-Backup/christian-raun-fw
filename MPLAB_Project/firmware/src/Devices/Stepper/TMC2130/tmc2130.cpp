@@ -2,13 +2,15 @@
 #include "../../Encoder/TLE5012b/tle5012b.hpp"
 
 volatile uint32_t maxToggleCount=0;
-volatile uint32_t toggleCounter=0;
+volatile uint32_t toggleCounter=0; 
 
- 
-
-void Tmc2130::setup(IEncoder* encoder)
+void Tmc2130::setup(IEncoder* encoder, dataOutPacket* dataOut)
 {
-    TC4_TimerCallbackRegister(pwm_callback, (uintptr_t) this);
+    PWMCallbackArgs* args = new PWMCallbackArgs;
+    args->stepper = this;
+    args->dataOut = dataOut;
+
+    TC4_TimerCallbackRegister(pwm_callback, (uintptr_t) args);
     this->encoder = encoder;
 }
 
@@ -140,7 +142,9 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
 { 
     static uint32_t rampStepsCount = 0;
-    Tmc2130* stepper = (Tmc2130*)context;
+    PWMCallbackArgs* args = (PWMCallbackArgs*)context;
+    Tmc2130* stepper = args->stepper;
+    dataOutPacket* dataOut = args->dataOut;
     stepper->loop();
     
     if(stepper->isRPMSequenceRunning())
@@ -153,6 +157,7 @@ void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
             {
                 rampStepsCount = 0;
                 stepper->setRPMSequenceStatus(false);
+                dataOut->deviceStatus = RAMP_SEQUENCE_COMPLETED;
             }
         }
     }

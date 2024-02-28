@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/main.cpp</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.hpp</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/LAN9255_EtherCAT_Slave.h</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/LAN9255_EtherCAT_SlaveObjects.h</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/qspi/plib_qspi_spi.c</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/stepper.hpp</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/driver/lan9255/drv_lan9255_ecat_util.c</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/tc/plib_tc4.c</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
-            <file>file:/C:/Users/classic/Github_Clone/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/port/plib_port.c</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/main.cpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/eic/plib_eic.h</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/eic/plib_eic.c</file>
+            <file>file:/D:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
         </group>
     </open-files>
 </project-private>

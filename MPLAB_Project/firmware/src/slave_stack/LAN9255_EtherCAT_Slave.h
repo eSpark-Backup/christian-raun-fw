@@ -34,22 +34,22 @@
 ------    Defines and Types
 ------
 -----------------------------------------------------------------------------------------*/
-struct dataInPacket{
+typedef struct {
     REAL32 rpm;
     REAL32 displacement;
     REAL32 time;
     REAL32 rampDelay;
     UINT32 mode;
     UINT8 direction;   
-};
+} dataInPacket;
 
-struct dataOutPacket {
+typedef struct {
     REAL32 position; 
     REAL32 temperature; 
     UINT32 motorDiagnostic; 
     UINT32 deviceStatus; 
     UINT32 diag3; 
-};
+} dataOutPacket;
 
 #endif //_LAN9255__ETHER_CAT__SLAVE_H_
 

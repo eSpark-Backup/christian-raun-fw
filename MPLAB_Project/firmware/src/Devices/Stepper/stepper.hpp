@@ -48,7 +48,7 @@ enum deviceStatus
     CALIBRATION_SEQUENCE_02_STARTED,
     CALIBRATION_SEQUENCE_02_FAILED,
     CALIBRATION_SEQUENCE_02_SUCCESS,
-    ETHERCAT_LINK_DOWN,
+    RAMP_SEQUENCE_COMPLETED,
 };
 
 enum stepperAppModes
@@ -77,7 +77,7 @@ class Stepper
         }
     
     public: 
-        virtual void setup(IEncoder* encoder) {}
+        virtual void setup(IEncoder* encoder, dataOutPacket* dataOut) {}
         virtual void setRPMSequenceStatus(bool status) {}
         virtual bool isRPMSequenceRunning(void) { return false; }
         virtual void loop(void) {}

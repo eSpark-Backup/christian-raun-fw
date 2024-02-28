@@ -16,8 +16,8 @@ enum appState {
     eRunRPM
 };
 
-extern struct dataInPacket dataIn;
-extern struct dataOutPacket dataOut;
+extern dataInPacket dataIn;
+extern dataOutPacket dataOut;
 
 #ifdef __cplusplus 
 class App
