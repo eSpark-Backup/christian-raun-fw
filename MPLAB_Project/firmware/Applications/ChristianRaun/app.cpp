@@ -37,6 +37,7 @@ void App::setup()
     encoder->setup();
     stepper->setup(encoder, &dataOut);
     stepper->addObserver(encoder);
+    encoder->setZeroOffset();
 }
 
 void App::loop()

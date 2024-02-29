@@ -34,7 +34,7 @@ struct rampSettings
     direction_t dir;
 };
 
-#define STEPS_PER_REVOLUTION 3115 //if error otherwise 3200
+#define STEPS_PER_REVOLUTION 3200 //if error otherwise 3200
 #define STEPS_PER_MM (STEPS_PER_REVOLUTION / 2)
 #define CALIBRATION_RPM 30.0f
 #define ROTATIONS_PER_SEC(rpm) (rpm/60.0f)

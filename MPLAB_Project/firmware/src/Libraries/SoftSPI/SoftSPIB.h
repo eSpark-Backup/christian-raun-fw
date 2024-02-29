@@ -65,6 +65,14 @@
 #define SPI_CLOCK_MASK 0x03  // SPR1 = bit 1, SPR0 = bit 0 on SPCR
 #define SPI_2XCLOCK_MASK 0x01  // SPI2X = bit 0 on SPS
 
+#define IRQ_TYPE TC4_IRQn // IRQ to be disabled
+
+#define GUARD_STATEMENT(statement) do { \
+                                        NVIC_DisableIRQ(IRQ_TYPE); \
+                                        statement; \
+                                        NVIC_EnableIRQ(IRQ_TYPE); \
+                                      } while(0)
+
 //#if (ARDUINO >= 100) 
 //# include <Arduino.h>
 //#else

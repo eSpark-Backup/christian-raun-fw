@@ -105,7 +105,7 @@ uint8_t SoftSPIB::transfer(uint8_t val) {
 
     uint8_t bval = 0;
     for (uint8_t bit = 0; bit < 8; bit++) {
-        PORT_PinWrite(_sck, _ckp ? LOW : HIGH);
+        GUARD_STATEMENT(PORT_PinWrite(_sck, _ckp ? LOW : HIGH));
 
          for (uint8_t i = 0; i < del; i++) {
             __NOP();
@@ -121,21 +121,21 @@ uint8_t SoftSPIB::transfer(uint8_t val) {
                 out |= bval << 7;
             }
         } else {
-            PORT_PinWrite(_mosi, val & (1<<bit) ? HIGH : LOW);
+            GUARD_STATEMENT(PORT_PinWrite(_mosi, val & (1<<bit) ? HIGH : LOW));
         }
 
         for (uint8_t i = 0; i < del; i++) {
             __NOP();
         }
             
-        PORT_PinWrite(_sck, _ckp ? HIGH : LOW);
+        GUARD_STATEMENT(PORT_PinWrite(_sck, _ckp ? HIGH : LOW));
 
         for (uint8_t i = 0; i < del; i++) {
             __NOP();
         }
 
         if (_cke) {
-            PORT_PinWrite(_mosi, val & (1<<bit) ? HIGH : LOW);
+            GUARD_STATEMENT(PORT_PinWrite(_mosi, val & (1<<bit) ? HIGH : LOW));
         } else {
             bval = PORT_PinRead(_miso);
             if (_order == MSBFIRST) {
@@ -191,7 +191,7 @@ uint16_t SoftSPIB::transferBits(uint16_t val, uint8_t bits) {
 
     uint16_t bval = 0;
     for (uint8_t bit = 0; bit < bits; bit++) {
-        PORT_PinWrite(_sck, _ckp ? LOW : HIGH);
+        GUARD_STATEMENT(PORT_PinWrite(_sck, _ckp ? LOW : HIGH));
 
         for (uint8_t i = 0; i < del; i++) {
             __NOP();
@@ -207,21 +207,21 @@ uint16_t SoftSPIB::transferBits(uint16_t val, uint8_t bits) {
                 out |= bval << (bits - 1);
             }
         } else {
-            PORT_PinWrite(_mosi, (val >> bit) & 1 ? HIGH : LOW);
+            GUARD_STATEMENT(PORT_PinWrite(_mosi, (val >> bit) & 1 ? HIGH : LOW));
         }
 
         for (uint8_t i = 0; i < del; i++) {
             __NOP();
         }
             
-        PORT_PinWrite(_sck, _ckp ? HIGH : LOW);
+        GUARD_STATEMENT(PORT_PinWrite(_sck, _ckp ? HIGH : LOW));
 
         for (uint8_t i = 0; i < del; i++) {
             __NOP();
         }
 
         if (_cke) {
-            PORT_PinWrite(_mosi, (val >> bit) & 1 ? HIGH : LOW);
+            GUARD_STATEMENT(PORT_PinWrite(_mosi, (val >> bit) & 1 ? HIGH : LOW));
         } else {
             bval = PORT_PinRead(_miso);
             if (_order == MSBFIRST) {

@@ -87,7 +87,6 @@ void NVIC_Initialize( void )
     NVIC_EnableIRQ(TC0_IRQn);
     NVIC_SetPriority(TC2_IRQn, 7);
     NVIC_EnableIRQ(TC2_IRQn);
-    NVIC_SetPriority(TC4_IRQn, 7);
     NVIC_EnableIRQ(TC4_IRQn);
     NVIC_SetPriority(QSPI_IRQn, 2);
     NVIC_EnableIRQ(QSPI_IRQn);
