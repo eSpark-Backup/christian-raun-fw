@@ -356,6 +356,9 @@
       <logicalFolder name="f7" displayName="Timer" projectFiles="true">
         <itemPath>../src/Devices/Timer/timer.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="Version" displayName="Version" projectFiles="true">
+        <itemPath>../src/Version/firmware_version.h</itemPath>
+      </logicalFolder>
       <itemPath>../src/main.cpp</itemPath>
       <itemPath>../src/app_lan9255.c</itemPath>
     </logicalFolder>
@@ -400,7 +403,7 @@
         <targetDevice>LAN9255ZMX018</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>jlink</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
         <platform>3</platform>
@@ -427,9 +430,9 @@
         </subordinates>
       </compileType>
       <makeCustomizationType>
-        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
-        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPreStep>"../src/Version/fw_version_gen.sh" || exit 1</makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>${MP_CC_DIR}/xc32-objcopy -I ihex -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.hex" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin"</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>

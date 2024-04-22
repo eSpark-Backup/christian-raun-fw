@@ -3,6 +3,7 @@
 #include "../../src/Devices/Encoder/TLE5012b/tle5012b.hpp"
 #include "../../src/Devices/Ethercat/Lan9255/Lan9255.hpp"
 #include "../../src/Devices/Timer/timer.hpp"
+#include "../../src/Version/firmware_version.h"
 
 Stepper* stepper;
 Encoder* encoder; 
@@ -38,6 +39,7 @@ void App::setup()
     stepper->setup(encoder, &dataOut);
     stepper->addObserver(encoder);
     encoder->setZeroOffset();
+    dataOut.diag3 = FIRMWARE_VERSION;
 }
 
 void App::loop()

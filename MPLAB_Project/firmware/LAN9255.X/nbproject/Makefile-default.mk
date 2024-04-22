@@ -91,7 +91,7 @@ FIXDEPS=fixDeps
 _/_=\\
 ShExtension=.bat
 Device=LAN9255ZMX018
-ProjectDir="D:\GitHub\ChristianRaun-FirmwareDevelopment\MPLAB_Project\firmware\LAN9255.X"
+ProjectDir="E:\GitHub\ChristianRaun-FirmwareDevelopment\MPLAB_Project\firmware\LAN9255.X"
 ProjectName=ethercat_counter_foe_app
 ConfName=default
 ImagePath="${DISTDIR}\LAN9255.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
@@ -103,7 +103,7 @@ else
 IsDebug="false"
 endif
 
-.build-conf:  ${BUILD_SUBPROJECTS}
+.build-conf:  .pre ${BUILD_SUBPROJECTS}
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
@@ -130,410 +130,410 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/118108884/drv_lan9255.o: ../src/config/default/driver/lan9255/drv_lan9255.c  .generated_files/flags/default/e6aec27692f7ad5ade1bcbb1d2f913a2a9aa2d5b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/118108884/drv_lan9255.o: ../src/config/default/driver/lan9255/drv_lan9255.c  .generated_files/flags/default/47187a8416663aafdd70bb374d3c769fb88438d9 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/118108884" 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255.o.d 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/118108884/drv_lan9255.o.d" -o ${OBJECTDIR}/_ext/118108884/drv_lan9255.o ../src/config/default/driver/lan9255/drv_lan9255.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o: ../src/config/default/driver/lan9255/drv_lan9255_ecat_util.c  .generated_files/flags/default/5d49f64af44d5743711346409674b19ac8fef259 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o: ../src/config/default/driver/lan9255/drv_lan9255_ecat_util.c  .generated_files/flags/default/38b9c8a9ca2ad480c3503b3058f57c11d991565 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/118108884" 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o.d 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o.d" -o ${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o ../src/config/default/driver/lan9255/drv_lan9255_ecat_util.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1984496892/plib_clock.o: ../src/config/default/peripheral/clock/plib_clock.c  .generated_files/flags/default/2451ddb2dfe7b887b5ac2e0851f664d676d180e4 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1984496892/plib_clock.o: ../src/config/default/peripheral/clock/plib_clock.c  .generated_files/flags/default/360e6f20bc3d336d379f383ac306add8f59f56d2 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1984496892" 
 	@${RM} ${OBJECTDIR}/_ext/1984496892/plib_clock.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1984496892/plib_clock.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1984496892/plib_clock.o.d" -o ${OBJECTDIR}/_ext/1984496892/plib_clock.o ../src/config/default/peripheral/clock/plib_clock.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865131932/plib_cmcc.o: ../src/config/default/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/default/8c584565f479171e693d1b4dabc4d2f6b387f098 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865131932/plib_cmcc.o: ../src/config/default/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/default/e8d7cd02d4c9983761d2a2141021be8f9072656 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865131932" 
 	@${RM} ${OBJECTDIR}/_ext/1865131932/plib_cmcc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865131932/plib_cmcc.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865131932/plib_cmcc.o.d" -o ${OBJECTDIR}/_ext/1865131932/plib_cmcc.o ../src/config/default/peripheral/cmcc/plib_cmcc.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/60167341/plib_eic.o: ../src/config/default/peripheral/eic/plib_eic.c  .generated_files/flags/default/eb039a0be5a3928f8652354018318950926969e9 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/60167341/plib_eic.o: ../src/config/default/peripheral/eic/plib_eic.c  .generated_files/flags/default/7a27d4bb309cc50def3c8b1c29da5a95794b85f7 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/60167341" 
 	@${RM} ${OBJECTDIR}/_ext/60167341/plib_eic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/60167341/plib_eic.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/60167341/plib_eic.o.d" -o ${OBJECTDIR}/_ext/60167341/plib_eic.o ../src/config/default/peripheral/eic/plib_eic.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1986646378/plib_evsys.o: ../src/config/default/peripheral/evsys/plib_evsys.c  .generated_files/flags/default/bd49e7e6855b32a97ca5cc61849f8a8c3b9ecfc8 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1986646378/plib_evsys.o: ../src/config/default/peripheral/evsys/plib_evsys.c  .generated_files/flags/default/e64ad197d97c03acd8a5243b989ccaa0e6e70cd0 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1986646378" 
 	@${RM} ${OBJECTDIR}/_ext/1986646378/plib_evsys.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1986646378/plib_evsys.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1986646378/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/1986646378/plib_evsys.o ../src/config/default/peripheral/evsys/plib_evsys.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865468468/plib_nvic.o: ../src/config/default/peripheral/nvic/plib_nvic.c  .generated_files/flags/default/ab693d2278e133f98ed57f766b3e74f38f9398e3 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865468468/plib_nvic.o: ../src/config/default/peripheral/nvic/plib_nvic.c  .generated_files/flags/default/334aaac636e2ee315fea4ae75ef2a366cd6731a .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865468468" 
 	@${RM} ${OBJECTDIR}/_ext/1865468468/plib_nvic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865468468/plib_nvic.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865468468/plib_nvic.o.d" -o ${OBJECTDIR}/_ext/1865468468/plib_nvic.o ../src/config/default/peripheral/nvic/plib_nvic.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o: ../src/config/default/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/default/e97f1accaf0935f93dbb3c59f470c30ac8fe58f9 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o: ../src/config/default/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/default/b2454a5d1efac5bafb6d7ee4067eb90bfa8808ac .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1593096446" 
 	@${RM} ${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o ../src/config/default/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865521619/plib_port.o: ../src/config/default/peripheral/port/plib_port.c  .generated_files/flags/default/93ec73f5d41ca9b54ec90aed33aabfeabce7bc28 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865521619/plib_port.o: ../src/config/default/peripheral/port/plib_port.c  .generated_files/flags/default/647255f33b8a7a377f9e9c0a6e6d35bfbc5b1645 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865521619" 
 	@${RM} ${OBJECTDIR}/_ext/1865521619/plib_port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865521619/plib_port.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865521619/plib_port.o.d" -o ${OBJECTDIR}/_ext/1865521619/plib_port.o ../src/config/default/peripheral/port/plib_port.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o: ../src/config/default/peripheral/qspi/plib_qspi_spi.c  .generated_files/flags/default/fb6ee913d851563bf0efcace532383c8c0e4fdc2 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o: ../src/config/default/peripheral/qspi/plib_qspi_spi.c  .generated_files/flags/default/ee0922e332850be7163decee9a490ea8da2eeca .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865555181" 
 	@${RM} ${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o.d" -o ${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o ../src/config/default/peripheral/qspi/plib_qspi_spi.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o: ../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.c  .generated_files/flags/default/ad8186fd47aed96f38efe58632ce5c2d638039d9 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o: ../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.c  .generated_files/flags/default/2a55aa986835de8a385f9d9649914c8485063a74 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/17022449" 
 	@${RM} ${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o.d 
 	@${RM} ${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o.d" -o ${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o ../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o: ../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c  .generated_files/flags/default/b535f40de1a17743755aa5d9d7c3e81cddef9f97 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o: ../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c  .generated_files/flags/default/63374e5796f57030300b0f6da1e21670a2e60d7 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/504274921" 
 	@${RM} ${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o.d" -o ${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o ../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/829342655/plib_tc0.o: ../src/config/default/peripheral/tc/plib_tc0.c  .generated_files/flags/default/77c9f685f03e0dd38efac09a9592ea68f773864e .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/829342655/plib_tc0.o: ../src/config/default/peripheral/tc/plib_tc0.c  .generated_files/flags/default/ef3eac536f237a4ee26050ac2c3bc2762a1801cb .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/829342655" 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc0.o.d 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc0.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/829342655/plib_tc0.o.d" -o ${OBJECTDIR}/_ext/829342655/plib_tc0.o ../src/config/default/peripheral/tc/plib_tc0.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/829342655/plib_tc2.o: ../src/config/default/peripheral/tc/plib_tc2.c  .generated_files/flags/default/b297dd07b825b08a4c7af773b40be147c006e1b4 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/829342655/plib_tc2.o: ../src/config/default/peripheral/tc/plib_tc2.c  .generated_files/flags/default/81ba1007a70576e49f5ca23ff33ad9b572ce4749 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/829342655" 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc2.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/829342655/plib_tc2.o.d" -o ${OBJECTDIR}/_ext/829342655/plib_tc2.o ../src/config/default/peripheral/tc/plib_tc2.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/829342655/plib_tc4.o: ../src/config/default/peripheral/tc/plib_tc4.c  .generated_files/flags/default/592b7c8896c365629023a64b483fa200cf83585b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/829342655/plib_tc4.o: ../src/config/default/peripheral/tc/plib_tc4.c  .generated_files/flags/default/97528f064c78250bc0981898733d19fc9beb2112 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/829342655" 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc4.o.d 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc4.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/829342655/plib_tc4.o.d" -o ${OBJECTDIR}/_ext/829342655/plib_tc4.o ../src/config/default/peripheral/tc/plib_tc4.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/163028504/xc32_monitor.o: ../src/config/default/stdio/xc32_monitor.c  .generated_files/flags/default/c129606f698fd294175620714b8f92ae0fd6c0d4 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/163028504/xc32_monitor.o: ../src/config/default/stdio/xc32_monitor.c  .generated_files/flags/default/acdf3c3764f560a3ced7f33f90720cb461f19d35 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/163028504" 
 	@${RM} ${OBJECTDIR}/_ext/163028504/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/163028504/xc32_monitor.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/163028504/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/163028504/xc32_monitor.o ../src/config/default/stdio/xc32_monitor.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/initialization.o: ../src/config/default/initialization.c  .generated_files/flags/default/5d94c93d7e311d168f7b81482eb1c4c11ad1e912 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/initialization.o: ../src/config/default/initialization.c  .generated_files/flags/default/9760100c6347fd16589c28739afcfd9e6e8645a2 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/initialization.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/initialization.o.d" -o ${OBJECTDIR}/_ext/1171490990/initialization.o ../src/config/default/initialization.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/interrupts.o: ../src/config/default/interrupts.c  .generated_files/flags/default/77b34fd1abd5e905791e457f184361dbd62ac7b4 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/interrupts.o: ../src/config/default/interrupts.c  .generated_files/flags/default/90f5115854dcd9835a0fa23ea4c4a89f38029465 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/interrupts.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/interrupts.o.d" -o ${OBJECTDIR}/_ext/1171490990/interrupts.o ../src/config/default/interrupts.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/exceptions.o: ../src/config/default/exceptions.c  .generated_files/flags/default/a5f550f223570b1b1d8d51cbe29bd931fee0c97d .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/exceptions.o: ../src/config/default/exceptions.c  .generated_files/flags/default/eebff83b757cfa152afc97d2ed3f88f70686bd63 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/exceptions.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/exceptions.o.d" -o ${OBJECTDIR}/_ext/1171490990/exceptions.o ../src/config/default/exceptions.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/startup_xc32.o: ../src/config/default/startup_xc32.c  .generated_files/flags/default/c6218a9faf13c7aaecc8018da97001d44b4009d7 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/startup_xc32.o: ../src/config/default/startup_xc32.c  .generated_files/flags/default/442e84ae2ed2bb5b60440f5c633ca3eefb1fd11f .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/startup_xc32.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/startup_xc32.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/startup_xc32.o.d" -o ${OBJECTDIR}/_ext/1171490990/startup_xc32.o ../src/config/default/startup_xc32.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/libc_syscalls.o: ../src/config/default/libc_syscalls.c  .generated_files/flags/default/3df2fc95278f9314f5e953204d6aab09d89092bc .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/libc_syscalls.o: ../src/config/default/libc_syscalls.c  .generated_files/flags/default/f847ddf4136d08416923aea1e2753cb9eb8f0dc0 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/libc_syscalls.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/libc_syscalls.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/libc_syscalls.o.d" -o ${OBJECTDIR}/_ext/1171490990/libc_syscalls.o ../src/config/default/libc_syscalls.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/bootmode.o: ../src/slave_stack/bootmode.c  .generated_files/flags/default/957de994ce9675e68a4fecec6309525072e7683b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/bootmode.o: ../src/slave_stack/bootmode.c  .generated_files/flags/default/dfd6cbf71ed002743f3eee2e076ac1a1e69e0eab .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/bootmode.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/bootmode.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/bootmode.o.d" -o ${OBJECTDIR}/_ext/1544482854/bootmode.o ../src/slave_stack/bootmode.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/coeappl.o: ../src/slave_stack/coeappl.c  .generated_files/flags/default/a924a36cd031184aa9229e99d3c12b81eedbc862 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/coeappl.o: ../src/slave_stack/coeappl.c  .generated_files/flags/default/a82ec28de78f565ec50cd88b8af04124987401cf .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/coeappl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/coeappl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/coeappl.o.d" -o ${OBJECTDIR}/_ext/1544482854/coeappl.o ../src/slave_stack/coeappl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatappl.o: ../src/slave_stack/ecatappl.c  .generated_files/flags/default/9e32bb571b51d3bcb24bc7a9817e4769d008109a .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatappl.o: ../src/slave_stack/ecatappl.c  .generated_files/flags/default/2b77dbf6722202660f66639d8205a65ac8a7c3c1 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatappl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatappl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatappl.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatappl.o ../src/slave_stack/ecatappl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatcoe.o: ../src/slave_stack/ecatcoe.c  .generated_files/flags/default/8e0ac184beb5da68c5d9c23d0969136b76d61edb .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatcoe.o: ../src/slave_stack/ecatcoe.c  .generated_files/flags/default/f8fe2b30506ad9e40ed94feee80a962ac9df0b09 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatcoe.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatcoe.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatcoe.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatcoe.o ../src/slave_stack/ecatcoe.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatfoe.o: ../src/slave_stack/ecatfoe.c  .generated_files/flags/default/fde31f7a5b6410f2e09845d79afb1c4e7913af68 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatfoe.o: ../src/slave_stack/ecatfoe.c  .generated_files/flags/default/b9bf852bd436ca7f4cfb51ad647cf99949cf460e .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatfoe.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatfoe.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatfoe.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatfoe.o ../src/slave_stack/ecatfoe.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatslv.o: ../src/slave_stack/ecatslv.c  .generated_files/flags/default/2b03ce769b3e2cc410e454dbb32026510098211c .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatslv.o: ../src/slave_stack/ecatslv.c  .generated_files/flags/default/3747acb1666f109df29ba96596fd13ea2083de0d .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatslv.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatslv.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatslv.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatslv.o ../src/slave_stack/ecatslv.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/emcy.o: ../src/slave_stack/emcy.c  .generated_files/flags/default/8c31bcb58eaa5c15d87091c04a0977d89655124b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/emcy.o: ../src/slave_stack/emcy.c  .generated_files/flags/default/4a6bd9118423bd8809a178ae8f74b010e598b554 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/emcy.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/emcy.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/emcy.o.d" -o ${OBJECTDIR}/_ext/1544482854/emcy.o ../src/slave_stack/emcy.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/foeappl.o: ../src/slave_stack/foeappl.c  .generated_files/flags/default/44a32514c61195ff9139c6714eff6204694c3649 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/foeappl.o: ../src/slave_stack/foeappl.c  .generated_files/flags/default/1ff551aadaef9e04f8eb3ade391a44974f403aac .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/foeappl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/foeappl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/foeappl.o.d" -o ${OBJECTDIR}/_ext/1544482854/foeappl.o ../src/slave_stack/foeappl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/mailbox.o: ../src/slave_stack/mailbox.c  .generated_files/flags/default/a46e2cf3ff21fdf178ae9d7926dd24600e883f7 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/mailbox.o: ../src/slave_stack/mailbox.c  .generated_files/flags/default/7538696c113f9b05b50485bfd251831dc55d568e .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/mailbox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/mailbox.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/mailbox.o.d" -o ${OBJECTDIR}/_ext/1544482854/mailbox.o ../src/slave_stack/mailbox.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/objdef.o: ../src/slave_stack/objdef.c  .generated_files/flags/default/2f88778e2e622c07e83aaac0a95e65e06f2a0ee4 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/objdef.o: ../src/slave_stack/objdef.c  .generated_files/flags/default/bcd77b96691248873a931446a8e699b4a3aa9ee5 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/objdef.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/objdef.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/objdef.o.d" -o ${OBJECTDIR}/_ext/1544482854/objdef.o ../src/slave_stack/objdef.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/sdoserv.o: ../src/slave_stack/sdoserv.c  .generated_files/flags/default/2166b44eda1390a7fb597d4c7d36a9f9d1d3c670 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/sdoserv.o: ../src/slave_stack/sdoserv.c  .generated_files/flags/default/d52f708b7c5f7ad96501131a6be717da46dcd603 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/sdoserv.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/sdoserv.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/sdoserv.o.d" -o ${OBJECTDIR}/_ext/1544482854/sdoserv.o ../src/slave_stack/sdoserv.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o: ../src/slave_stack/LAN9255_EtherCAT_Slave.c  .generated_files/flags/default/49a8c76c7b3d8003c2bcb49e3774914b6c8c8398 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o: ../src/slave_stack/LAN9255_EtherCAT_Slave.c  .generated_files/flags/default/eb226b4d5bdcd0b24db9c83d7e0dafd6751cd787 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o.d" -o ${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o ../src/slave_stack/LAN9255_EtherCAT_Slave.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/app_lan9255.o: ../src/app_lan9255.c  .generated_files/flags/default/8321bace87dbef68f1475d0ab6834ac2ea3b9f4b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1360937237/app_lan9255.o: ../src/app_lan9255.c  .generated_files/flags/default/d51900db88b8e4371c27d115237c65d50d621428 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/app_lan9255.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/app_lan9255.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/app_lan9255.o.d" -o ${OBJECTDIR}/_ext/1360937237/app_lan9255.o ../src/app_lan9255.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
 else
-${OBJECTDIR}/_ext/118108884/drv_lan9255.o: ../src/config/default/driver/lan9255/drv_lan9255.c  .generated_files/flags/default/b81bc2e6a076d0ef05fdb40ca6fcb7dca0dcd8e2 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/118108884/drv_lan9255.o: ../src/config/default/driver/lan9255/drv_lan9255.c  .generated_files/flags/default/b82babb685b08efff99ba2151c176d0aec4f5b59 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/118108884" 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255.o.d 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/118108884/drv_lan9255.o.d" -o ${OBJECTDIR}/_ext/118108884/drv_lan9255.o ../src/config/default/driver/lan9255/drv_lan9255.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o: ../src/config/default/driver/lan9255/drv_lan9255_ecat_util.c  .generated_files/flags/default/55e01254dc8be9d334f28321db340cfa1f19ac29 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o: ../src/config/default/driver/lan9255/drv_lan9255_ecat_util.c  .generated_files/flags/default/30625bfc40d708e628d16079fe6aa6e7694bc7af .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/118108884" 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o.d 
 	@${RM} ${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o.d" -o ${OBJECTDIR}/_ext/118108884/drv_lan9255_ecat_util.o ../src/config/default/driver/lan9255/drv_lan9255_ecat_util.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1984496892/plib_clock.o: ../src/config/default/peripheral/clock/plib_clock.c  .generated_files/flags/default/392735334205504cfd631dcfcd5612eb3bf1f350 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1984496892/plib_clock.o: ../src/config/default/peripheral/clock/plib_clock.c  .generated_files/flags/default/29fb57d2e53cdfb26b5776d38fdcf737ea7362e4 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1984496892" 
 	@${RM} ${OBJECTDIR}/_ext/1984496892/plib_clock.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1984496892/plib_clock.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1984496892/plib_clock.o.d" -o ${OBJECTDIR}/_ext/1984496892/plib_clock.o ../src/config/default/peripheral/clock/plib_clock.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865131932/plib_cmcc.o: ../src/config/default/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/default/fb0590ee0c1efc15ac5626b6a6b142b996bcffee .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865131932/plib_cmcc.o: ../src/config/default/peripheral/cmcc/plib_cmcc.c  .generated_files/flags/default/d33ee0903be5cc3df8f8eee8b1c17caabb7562c9 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865131932" 
 	@${RM} ${OBJECTDIR}/_ext/1865131932/plib_cmcc.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865131932/plib_cmcc.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865131932/plib_cmcc.o.d" -o ${OBJECTDIR}/_ext/1865131932/plib_cmcc.o ../src/config/default/peripheral/cmcc/plib_cmcc.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/60167341/plib_eic.o: ../src/config/default/peripheral/eic/plib_eic.c  .generated_files/flags/default/683cf80cf3e67d010cc840fefd5a2216c2dc154a .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/60167341/plib_eic.o: ../src/config/default/peripheral/eic/plib_eic.c  .generated_files/flags/default/b15b270a73a5bdc5eed599aab8c682483445f306 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/60167341" 
 	@${RM} ${OBJECTDIR}/_ext/60167341/plib_eic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/60167341/plib_eic.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/60167341/plib_eic.o.d" -o ${OBJECTDIR}/_ext/60167341/plib_eic.o ../src/config/default/peripheral/eic/plib_eic.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1986646378/plib_evsys.o: ../src/config/default/peripheral/evsys/plib_evsys.c  .generated_files/flags/default/17c55eea8a5f8f92d82aaf3301c8807d71ee5ebd .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1986646378/plib_evsys.o: ../src/config/default/peripheral/evsys/plib_evsys.c  .generated_files/flags/default/552d2b8908490db755d86b90161712f2e959ae6d .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1986646378" 
 	@${RM} ${OBJECTDIR}/_ext/1986646378/plib_evsys.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1986646378/plib_evsys.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1986646378/plib_evsys.o.d" -o ${OBJECTDIR}/_ext/1986646378/plib_evsys.o ../src/config/default/peripheral/evsys/plib_evsys.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865468468/plib_nvic.o: ../src/config/default/peripheral/nvic/plib_nvic.c  .generated_files/flags/default/ffc7747f363cd92b38b732f90a99bdea0fd9ffe5 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865468468/plib_nvic.o: ../src/config/default/peripheral/nvic/plib_nvic.c  .generated_files/flags/default/f1dff58dd4729d72a893c6cfbe87a1c259653423 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865468468" 
 	@${RM} ${OBJECTDIR}/_ext/1865468468/plib_nvic.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865468468/plib_nvic.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865468468/plib_nvic.o.d" -o ${OBJECTDIR}/_ext/1865468468/plib_nvic.o ../src/config/default/peripheral/nvic/plib_nvic.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o: ../src/config/default/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/default/5ae0f9083abe5a41945c1ed9ae98476952356511 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o: ../src/config/default/peripheral/nvmctrl/plib_nvmctrl.c  .generated_files/flags/default/cc94c0266e1fd95a3c4c93eff93b6625d65a714c .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1593096446" 
 	@${RM} ${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o.d" -o ${OBJECTDIR}/_ext/1593096446/plib_nvmctrl.o ../src/config/default/peripheral/nvmctrl/plib_nvmctrl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865521619/plib_port.o: ../src/config/default/peripheral/port/plib_port.c  .generated_files/flags/default/936a25e33b326f0ba54fa6bd49240af2d985132 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865521619/plib_port.o: ../src/config/default/peripheral/port/plib_port.c  .generated_files/flags/default/81c3d8768bd9d1b2ff53d2fd40b1e0ec96126200 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865521619" 
 	@${RM} ${OBJECTDIR}/_ext/1865521619/plib_port.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865521619/plib_port.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865521619/plib_port.o.d" -o ${OBJECTDIR}/_ext/1865521619/plib_port.o ../src/config/default/peripheral/port/plib_port.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o: ../src/config/default/peripheral/qspi/plib_qspi_spi.c  .generated_files/flags/default/a71ae0313286071f88ab7ea8681d796f16910120 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o: ../src/config/default/peripheral/qspi/plib_qspi_spi.c  .generated_files/flags/default/65b250d5cf96f4eddaa4464ae93254bb3d67f95 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1865555181" 
 	@${RM} ${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o.d" -o ${OBJECTDIR}/_ext/1865555181/plib_qspi_spi.o ../src/config/default/peripheral/qspi/plib_qspi_spi.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o: ../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.c  .generated_files/flags/default/507a24838a516ba2f8530bd4c35573c5d9627dcd .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o: ../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.c  .generated_files/flags/default/5688727b39019d1dfa17cc7dbfe228d1b6ca567e .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/17022449" 
 	@${RM} ${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o.d 
 	@${RM} ${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o.d" -o ${OBJECTDIR}/_ext/17022449/plib_sercom4_spi_master.o ../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o: ../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c  .generated_files/flags/default/57e4c704db0dcb3ec6ff2bd5667396b5f608049 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o: ../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c  .generated_files/flags/default/8227c6eb04c3d193e0589afc43ca26c296c7eab9 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/504274921" 
 	@${RM} ${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o.d" -o ${OBJECTDIR}/_ext/504274921/plib_sercom0_usart.o ../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/829342655/plib_tc0.o: ../src/config/default/peripheral/tc/plib_tc0.c  .generated_files/flags/default/3104ba1321f0cd194fec19ff5cb24f1a5c5ed018 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/829342655/plib_tc0.o: ../src/config/default/peripheral/tc/plib_tc0.c  .generated_files/flags/default/42e31ae770999b75aa9bc4ba87813569359259f6 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/829342655" 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc0.o.d 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc0.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/829342655/plib_tc0.o.d" -o ${OBJECTDIR}/_ext/829342655/plib_tc0.o ../src/config/default/peripheral/tc/plib_tc0.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/829342655/plib_tc2.o: ../src/config/default/peripheral/tc/plib_tc2.c  .generated_files/flags/default/aa4e6926d3779ecf3bf6871dc7ac5a6af827ea16 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/829342655/plib_tc2.o: ../src/config/default/peripheral/tc/plib_tc2.c  .generated_files/flags/default/d5d0aa7cdff2f292fa207e52041f22ad956f0f41 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/829342655" 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc2.o.d 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc2.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/829342655/plib_tc2.o.d" -o ${OBJECTDIR}/_ext/829342655/plib_tc2.o ../src/config/default/peripheral/tc/plib_tc2.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/829342655/plib_tc4.o: ../src/config/default/peripheral/tc/plib_tc4.c  .generated_files/flags/default/734b43a5fdafadfcffdb90848a5880e1fb0ddfd1 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/829342655/plib_tc4.o: ../src/config/default/peripheral/tc/plib_tc4.c  .generated_files/flags/default/eebdd6b29d2d158c52ee309f5cdf6404005735c5 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/829342655" 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc4.o.d 
 	@${RM} ${OBJECTDIR}/_ext/829342655/plib_tc4.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/829342655/plib_tc4.o.d" -o ${OBJECTDIR}/_ext/829342655/plib_tc4.o ../src/config/default/peripheral/tc/plib_tc4.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/163028504/xc32_monitor.o: ../src/config/default/stdio/xc32_monitor.c  .generated_files/flags/default/508658617808e9ef65bcc1ecd888cecff42bd299 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/163028504/xc32_monitor.o: ../src/config/default/stdio/xc32_monitor.c  .generated_files/flags/default/81a7d01dd9830e94127c122e4109dd88a799571d .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/163028504" 
 	@${RM} ${OBJECTDIR}/_ext/163028504/xc32_monitor.o.d 
 	@${RM} ${OBJECTDIR}/_ext/163028504/xc32_monitor.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/163028504/xc32_monitor.o.d" -o ${OBJECTDIR}/_ext/163028504/xc32_monitor.o ../src/config/default/stdio/xc32_monitor.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/initialization.o: ../src/config/default/initialization.c  .generated_files/flags/default/d042741dac7a16c17625be36a9c0a3d0bfd3a5c9 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/initialization.o: ../src/config/default/initialization.c  .generated_files/flags/default/937f84f9c49fe7830e97859803249265db69d08b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/initialization.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/initialization.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/initialization.o.d" -o ${OBJECTDIR}/_ext/1171490990/initialization.o ../src/config/default/initialization.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/interrupts.o: ../src/config/default/interrupts.c  .generated_files/flags/default/512cbea50ef0494fb4a43554d9b704b9aff23ffa .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/interrupts.o: ../src/config/default/interrupts.c  .generated_files/flags/default/26fa647ce54a8d8d6d6d1f302803d65517312815 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/interrupts.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/interrupts.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/interrupts.o.d" -o ${OBJECTDIR}/_ext/1171490990/interrupts.o ../src/config/default/interrupts.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/exceptions.o: ../src/config/default/exceptions.c  .generated_files/flags/default/9edf27f5b46f3bbc4c00f433fe15d2450f7d37f8 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/exceptions.o: ../src/config/default/exceptions.c  .generated_files/flags/default/f86b88de204c873d8f7ebebeb6a5e3cd602d266f .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/exceptions.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/exceptions.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/exceptions.o.d" -o ${OBJECTDIR}/_ext/1171490990/exceptions.o ../src/config/default/exceptions.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/startup_xc32.o: ../src/config/default/startup_xc32.c  .generated_files/flags/default/98fb63dce74a3d923b3be72bf958352332306413 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/startup_xc32.o: ../src/config/default/startup_xc32.c  .generated_files/flags/default/cadf690afc1319a67b33ef6742f66ccfcdd396fc .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/startup_xc32.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/startup_xc32.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/startup_xc32.o.d" -o ${OBJECTDIR}/_ext/1171490990/startup_xc32.o ../src/config/default/startup_xc32.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1171490990/libc_syscalls.o: ../src/config/default/libc_syscalls.c  .generated_files/flags/default/ca6fe5f67f8d6a4f617393b227615adaac727278 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1171490990/libc_syscalls.o: ../src/config/default/libc_syscalls.c  .generated_files/flags/default/10bd9195f468f13cdce95590ef6db857690c1d81 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1171490990" 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/libc_syscalls.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1171490990/libc_syscalls.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1171490990/libc_syscalls.o.d" -o ${OBJECTDIR}/_ext/1171490990/libc_syscalls.o ../src/config/default/libc_syscalls.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/bootmode.o: ../src/slave_stack/bootmode.c  .generated_files/flags/default/797869f31366cbfaa4db3056dfe7013bba8eb264 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/bootmode.o: ../src/slave_stack/bootmode.c  .generated_files/flags/default/908f2be3b1f1e63fb30f4a85973860947f94ef9c .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/bootmode.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/bootmode.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/bootmode.o.d" -o ${OBJECTDIR}/_ext/1544482854/bootmode.o ../src/slave_stack/bootmode.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/coeappl.o: ../src/slave_stack/coeappl.c  .generated_files/flags/default/f67b4713ff03e038478ef73ec65168ba6311e5fa .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/coeappl.o: ../src/slave_stack/coeappl.c  .generated_files/flags/default/a6511d03395dffbb769754637601c7478cc7517a .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/coeappl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/coeappl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/coeappl.o.d" -o ${OBJECTDIR}/_ext/1544482854/coeappl.o ../src/slave_stack/coeappl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatappl.o: ../src/slave_stack/ecatappl.c  .generated_files/flags/default/81676f4e60a8ce737019b56b3530db09a0af9e95 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatappl.o: ../src/slave_stack/ecatappl.c  .generated_files/flags/default/2f12c5c51d0c7da95dc4bd7aac18577b99004fb7 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatappl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatappl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatappl.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatappl.o ../src/slave_stack/ecatappl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatcoe.o: ../src/slave_stack/ecatcoe.c  .generated_files/flags/default/3599e6c7b1ba1e354645ec2362c08fe1dd67b40 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatcoe.o: ../src/slave_stack/ecatcoe.c  .generated_files/flags/default/ef88c5fca3a7e78c8a4d081c9d082264d11bc4bc .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatcoe.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatcoe.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatcoe.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatcoe.o ../src/slave_stack/ecatcoe.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatfoe.o: ../src/slave_stack/ecatfoe.c  .generated_files/flags/default/ce532bfaf2929481f2a329e0e9aae1fea711e1ae .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatfoe.o: ../src/slave_stack/ecatfoe.c  .generated_files/flags/default/2b48c8d7751555d08c2ed99f23bac680793c01e8 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatfoe.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatfoe.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatfoe.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatfoe.o ../src/slave_stack/ecatfoe.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/ecatslv.o: ../src/slave_stack/ecatslv.c  .generated_files/flags/default/cdcddf0e0987b4520a8de087921f6f731ae2c5fe .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/ecatslv.o: ../src/slave_stack/ecatslv.c  .generated_files/flags/default/889d27b932504561fed4fa601be7250eee00f52a .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatslv.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/ecatslv.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/ecatslv.o.d" -o ${OBJECTDIR}/_ext/1544482854/ecatslv.o ../src/slave_stack/ecatslv.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/emcy.o: ../src/slave_stack/emcy.c  .generated_files/flags/default/69a588186f690bf02ef0c030a26d35f6aa904fa5 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/emcy.o: ../src/slave_stack/emcy.c  .generated_files/flags/default/b8790c11242142e1f9e9cd5602d6d38e3ee6ec .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/emcy.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/emcy.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/emcy.o.d" -o ${OBJECTDIR}/_ext/1544482854/emcy.o ../src/slave_stack/emcy.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/foeappl.o: ../src/slave_stack/foeappl.c  .generated_files/flags/default/70d56798183bcbcb59bf70637ecd378154814ced .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/foeappl.o: ../src/slave_stack/foeappl.c  .generated_files/flags/default/2d52130f7c985ec7b88db576978bf106fa4bbef4 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/foeappl.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/foeappl.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/foeappl.o.d" -o ${OBJECTDIR}/_ext/1544482854/foeappl.o ../src/slave_stack/foeappl.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/mailbox.o: ../src/slave_stack/mailbox.c  .generated_files/flags/default/ee1c079762bcb1b6f4925c366917d72a2bed8ee .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/mailbox.o: ../src/slave_stack/mailbox.c  .generated_files/flags/default/912ab58d8f86b88d78f4509f28e91448e97014de .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/mailbox.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/mailbox.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/mailbox.o.d" -o ${OBJECTDIR}/_ext/1544482854/mailbox.o ../src/slave_stack/mailbox.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/objdef.o: ../src/slave_stack/objdef.c  .generated_files/flags/default/1f49d478b0cf21c3e067cd168b32f4701a0d399d .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/objdef.o: ../src/slave_stack/objdef.c  .generated_files/flags/default/8b297ac2cd8b4455b7991f94805c2392e9e16d8b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/objdef.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/objdef.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/objdef.o.d" -o ${OBJECTDIR}/_ext/1544482854/objdef.o ../src/slave_stack/objdef.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/sdoserv.o: ../src/slave_stack/sdoserv.c  .generated_files/flags/default/563c992fe5310ffd0ef22234baeabccd2e3d1001 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/sdoserv.o: ../src/slave_stack/sdoserv.c  .generated_files/flags/default/a936fe37feb2bfcca4c5e929881bbe51909af5c3 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/sdoserv.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/sdoserv.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/sdoserv.o.d" -o ${OBJECTDIR}/_ext/1544482854/sdoserv.o ../src/slave_stack/sdoserv.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o: ../src/slave_stack/LAN9255_EtherCAT_Slave.c  .generated_files/flags/default/e852030b63c355f42015665d48af7249e6cae6ad .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o: ../src/slave_stack/LAN9255_EtherCAT_Slave.c  .generated_files/flags/default/302be635f064bd4b4ed2688846f172e70da8e849 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1544482854" 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o 
 	${MP_CPPC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -fdata-sections -fno-common -I"../src" -I"../src/config/default" -I"../src/config/default/driver/lan9255" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -I"../src/slave_stack" -Werror -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o.d" -o ${OBJECTDIR}/_ext/1544482854/LAN9255_EtherCAT_Slave.o ../src/slave_stack/LAN9255_EtherCAT_Slave.c    -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/app_lan9255.o: ../src/app_lan9255.c  .generated_files/flags/default/a425c6de4acb97c98476c6f8e5285397f9713e59 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1360937237/app_lan9255.o: ../src/app_lan9255.c  .generated_files/flags/default/646b104d5008d32f7464da49a5f64f5c9aa230fd .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/app_lan9255.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/app_lan9255.o 
@@ -544,86 +544,86 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compileCPP
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/2029137180/app.o: ../Applications/ChristianRaun/app.cpp  .generated_files/flags/default/944df71fcea274abae45b5d1bf82b5e3addd8cf0 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/2029137180/app.o: ../Applications/ChristianRaun/app.cpp  .generated_files/flags/default/d875f2a2b231217522a9853fe9a721283515cf11 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/2029137180" 
 	@${RM} ${OBJECTDIR}/_ext/2029137180/app.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2029137180/app.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/2029137180/app.o.d" -o ${OBJECTDIR}/_ext/2029137180/app.o ../Applications/ChristianRaun/app.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1923152968/tle5012b.o: ../src/Devices/Encoder/TLE5012b/tle5012b.cpp  .generated_files/flags/default/3aed7d9af2c753f6332de64a3795fae9af867471 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1923152968/tle5012b.o: ../src/Devices/Encoder/TLE5012b/tle5012b.cpp  .generated_files/flags/default/c9cb5a9d281a46c07f75ec5688c41e40241be2b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1923152968" 
 	@${RM} ${OBJECTDIR}/_ext/1923152968/tle5012b.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1923152968/tle5012b.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/1923152968/tle5012b.o.d" -o ${OBJECTDIR}/_ext/1923152968/tle5012b.o ../src/Devices/Encoder/TLE5012b/tle5012b.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/274937249/Lan9255.o: ../src/Devices/Ethercat/Lan9255/Lan9255.cpp  .generated_files/flags/default/9e8d6b561d9245f51952ea6415aaf83b27582fde .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/274937249/Lan9255.o: ../src/Devices/Ethercat/Lan9255/Lan9255.cpp  .generated_files/flags/default/fbc0192f12f3211ac6e6fb72f4f269819f339d2b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/274937249" 
 	@${RM} ${OBJECTDIR}/_ext/274937249/Lan9255.o.d 
 	@${RM} ${OBJECTDIR}/_ext/274937249/Lan9255.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/274937249/Lan9255.o.d" -o ${OBJECTDIR}/_ext/274937249/Lan9255.o ../src/Devices/Ethercat/Lan9255/Lan9255.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/112626930/SoftSPIB.o: ../src/Libraries/SoftSPI/SoftSPIB.cpp  .generated_files/flags/default/add0a9db21b6e77d952cc31e7f8f868de82a7969 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/112626930/SoftSPIB.o: ../src/Libraries/SoftSPI/SoftSPIB.cpp  .generated_files/flags/default/bb19d7d4b008f4a3b0641ab2a8b6a619db7210ab .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/112626930" 
 	@${RM} ${OBJECTDIR}/_ext/112626930/SoftSPIB.o.d 
 	@${RM} ${OBJECTDIR}/_ext/112626930/SoftSPIB.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/112626930/SoftSPIB.o.d" -o ${OBJECTDIR}/_ext/112626930/SoftSPIB.o ../src/Libraries/SoftSPI/SoftSPIB.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/2111973148/tmc2130.o: ../src/Devices/Stepper/TMC2130/tmc2130.cpp  .generated_files/flags/default/57a98066043e04bd63a9658340ddfc8350fd75b .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/2111973148/tmc2130.o: ../src/Devices/Stepper/TMC2130/tmc2130.cpp  .generated_files/flags/default/281f739f2bcde135293953b04e4f1537744ee983 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/2111973148" 
 	@${RM} ${OBJECTDIR}/_ext/2111973148/tmc2130.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2111973148/tmc2130.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/2111973148/tmc2130.o.d" -o ${OBJECTDIR}/_ext/2111973148/tmc2130.o ../src/Devices/Stepper/TMC2130/tmc2130.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/863837145/timer.o: ../src/Devices/Timer/timer.cpp  .generated_files/flags/default/ff66cedeadd31d8e5975355507d052b336a1133e .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/863837145/timer.o: ../src/Devices/Timer/timer.cpp  .generated_files/flags/default/5e740ef59e3489038dd161e4f46d7ea12539e740 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/863837145" 
 	@${RM} ${OBJECTDIR}/_ext/863837145/timer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/863837145/timer.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/863837145/timer.o.d" -o ${OBJECTDIR}/_ext/863837145/timer.o ../src/Devices/Timer/timer.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.cpp  .generated_files/flags/default/29d6e2b555ab4828610c5db261e603b992c14f0e .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.cpp  .generated_files/flags/default/ec7e37d1af025d2319ef95bb33ee093aa98d1474 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
 else
-${OBJECTDIR}/_ext/2029137180/app.o: ../Applications/ChristianRaun/app.cpp  .generated_files/flags/default/929e64e154b2b51c6a7455451ee9e1be9fdec459 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/2029137180/app.o: ../Applications/ChristianRaun/app.cpp  .generated_files/flags/default/9b0744d778fcf6cf2709f7e7378aeae885dfb230 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/2029137180" 
 	@${RM} ${OBJECTDIR}/_ext/2029137180/app.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2029137180/app.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/2029137180/app.o.d" -o ${OBJECTDIR}/_ext/2029137180/app.o ../Applications/ChristianRaun/app.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1923152968/tle5012b.o: ../src/Devices/Encoder/TLE5012b/tle5012b.cpp  .generated_files/flags/default/e2cde4d44c46c2826a418558b45de05d5a202bb5 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1923152968/tle5012b.o: ../src/Devices/Encoder/TLE5012b/tle5012b.cpp  .generated_files/flags/default/a9e3766709434cc89432935ba9ed6a3fa2e3a6a6 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1923152968" 
 	@${RM} ${OBJECTDIR}/_ext/1923152968/tle5012b.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1923152968/tle5012b.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/1923152968/tle5012b.o.d" -o ${OBJECTDIR}/_ext/1923152968/tle5012b.o ../src/Devices/Encoder/TLE5012b/tle5012b.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/274937249/Lan9255.o: ../src/Devices/Ethercat/Lan9255/Lan9255.cpp  .generated_files/flags/default/cf94547a6a5d4f52cd2a88eff0913a3ac6702dd .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/274937249/Lan9255.o: ../src/Devices/Ethercat/Lan9255/Lan9255.cpp  .generated_files/flags/default/2536ad95004ceaab068ad6e4e5c1958737e745d8 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/274937249" 
 	@${RM} ${OBJECTDIR}/_ext/274937249/Lan9255.o.d 
 	@${RM} ${OBJECTDIR}/_ext/274937249/Lan9255.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/274937249/Lan9255.o.d" -o ${OBJECTDIR}/_ext/274937249/Lan9255.o ../src/Devices/Ethercat/Lan9255/Lan9255.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/112626930/SoftSPIB.o: ../src/Libraries/SoftSPI/SoftSPIB.cpp  .generated_files/flags/default/b70ec46dadb372e955c9fafd21d5769ead48904d .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/112626930/SoftSPIB.o: ../src/Libraries/SoftSPI/SoftSPIB.cpp  .generated_files/flags/default/a31ff4f04d5038129102ba645ac17259677d3cdf .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/112626930" 
 	@${RM} ${OBJECTDIR}/_ext/112626930/SoftSPIB.o.d 
 	@${RM} ${OBJECTDIR}/_ext/112626930/SoftSPIB.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/112626930/SoftSPIB.o.d" -o ${OBJECTDIR}/_ext/112626930/SoftSPIB.o ../src/Libraries/SoftSPI/SoftSPIB.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/2111973148/tmc2130.o: ../src/Devices/Stepper/TMC2130/tmc2130.cpp  .generated_files/flags/default/f7437926fb142586a7ce0865ded85fa992d5458e .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/2111973148/tmc2130.o: ../src/Devices/Stepper/TMC2130/tmc2130.cpp  .generated_files/flags/default/df2ca5adc130c6d0498013d981c57a07da751fcc .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/2111973148" 
 	@${RM} ${OBJECTDIR}/_ext/2111973148/tmc2130.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2111973148/tmc2130.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/2111973148/tmc2130.o.d" -o ${OBJECTDIR}/_ext/2111973148/tmc2130.o ../src/Devices/Stepper/TMC2130/tmc2130.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/863837145/timer.o: ../src/Devices/Timer/timer.cpp  .generated_files/flags/default/b817e942e56c043be2076fac95e4328ddc102d1c .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/863837145/timer.o: ../src/Devices/Timer/timer.cpp  .generated_files/flags/default/c4ed286d7951ffb109b947f23a2baf7443dca3c6 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/863837145" 
 	@${RM} ${OBJECTDIR}/_ext/863837145/timer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/863837145/timer.o 
 	${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -ffunction-sections -I"../src" -I"../src/config/default" -I"../src/packs/CMSIS/" -I"../src/packs/CMSIS/CMSIS/Core/Include" -I"../src/packs/LAN9255ZMX018_DFP" -MP -MMD -MF "${OBJECTDIR}/_ext/863837145/timer.o.d" -o ${OBJECTDIR}/_ext/863837145/timer.o ../src/Devices/Timer/timer.cpp   -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}" ${PACK_COMMON_OPTIONS} 
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.cpp  .generated_files/flags/default/897ce455a43b5291d09d47b2127b2171480c9905 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.cpp  .generated_files/flags/default/6e33156593a408ceca91cc1575b5358cd4077f03 .generated_files/flags/default/f77cdbf9080ba6664933e85c281090e8f0f1360d
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
@@ -645,6 +645,11 @@ ${DISTDIR}/LAN9255.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/M
 	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/LAN9255.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
+.pre:
+	@echo "--------------------------------------"
+	@echo "User defined pre-build step: ["../src/Version/fw_version_gen.sh" || exit 1]"
+	@"../src/Version/fw_version_gen.sh" || exit 1
+	@echo "--------------------------------------"
 
 # Subprojects
 .build-subprojects:
