@@ -11,13 +11,11 @@ Ethercat* ethercat;
 Timer* timer;
 
 
-float frequency=0;
-uint32_t steps =0;
+uint32_t steps = 0;
+uint32_t stopTime = 0;
 
 static appState state;
 double position;
-
-uint32_t ms_count =0;
 
 void App::setup()
 {
@@ -40,6 +38,8 @@ void App::setup()
     stepper->addObserver(encoder);
     encoder->setZeroOffset();
     dataOut.diag3 = FIRMWARE_VERSION;
+    dataOut.temperature = 350; // For Testing
+
 }
 
 void App::loop()
@@ -88,8 +88,16 @@ void App::loop()
             if (stepper->isRunning())
             {
                 dataOut.position = encoder->calculateDisplacement();
+                stopTime = millis();
             }
-            dataOut.temperature = 350; // For Testing
+            else
+            {
+                uint32_t elapsedTime = millis() - stopTime;
+                if (elapsedTime <= 2000U) {
+                    // Calculate displacement for 5 seconds after motor stopped
+                    dataOut.position = encoder->calculateDisplacement();
+                }
+            }
             state = eErrorHandling;
             break;  
             

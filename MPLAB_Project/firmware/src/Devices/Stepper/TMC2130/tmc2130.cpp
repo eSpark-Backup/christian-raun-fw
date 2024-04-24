@@ -38,7 +38,7 @@ void Tmc2130::run(float rpm, direction_t dir, uint32_t steps)
     {
         if (!isRunning())
         {   
-           if (!rpm)
+            if (!rpm)
             {
                 return;
             }       
@@ -48,7 +48,7 @@ void Tmc2130::run(float rpm, direction_t dir, uint32_t steps)
                 run(rpm, dir);
             }
         }
-     } 
+    } 
 }
 
 void Tmc2130::run(float rpm, direction_t dir)
@@ -57,6 +57,7 @@ void Tmc2130::run(float rpm, direction_t dir)
     float frequency = toFrequency(rpm);
     float timeSec = (1.0/frequency) / 2;
     uint32_t period = timeSec / 0.0000000166667;
+    TC4_TimerStop();
     TC4_Timer32bitPeriodSet(period);
     TC4_TimerStart();
     
@@ -85,6 +86,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
             switch(out->deviceStatus)
             {
                 case None:
+                    resetMaxToggleCount();
                     run(CALIBRATION_RPM, ANTICLOCKWISE);
                     out->deviceStatus = CALIBRATION_SEQUENCE_01_STARTED;  
                     break;
@@ -94,7 +96,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     {
                         stop();
                         out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
-                        encoder->setZeroOffset();
+//                        encoder->setZeroOffset();
                     }
                     break;  
 
@@ -110,7 +112,8 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
         case CALIBRATION_SEQUENCE_02:
             switch(out->deviceStatus)
             {
-                case CALIBRATION_SEQUENCE_01_SUCCESS:
+                case None:
+                    resetMaxToggleCount();
                     steps = displacement * STEPS_PER_MM;
                     run(CALIBRATION_RPM, CLOCKWISE, steps);
                     out->deviceStatus = CALIBRATION_SEQUENCE_02_STARTED;
@@ -128,8 +131,12 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                         out->deviceStatus = CALIBRATION_SEQUENCE_02_SUCCESS;
                     }
                     break;
+                   
+                case CALIBRATION_SEQUENCE_02_SUCCESS:
+                    break;
                     
                 default:
+                    out->deviceStatus = None;
                     break;
             }
             break;
