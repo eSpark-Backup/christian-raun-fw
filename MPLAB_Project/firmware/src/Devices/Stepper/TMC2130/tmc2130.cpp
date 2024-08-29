@@ -4,7 +4,9 @@
 volatile uint32_t maxToggleCount=0;
 volatile uint32_t toggleCounter=0; 
 
-void Tmc2130::setup(IEncoder* encoder, dataOutPacket* dataOut)
+#define EN_PIN           DRV_EN_PIN // Enable
+
+void Tmc2130::setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut)
 {
     PWMCallbackArgs* args = new PWMCallbackArgs;
     args->stepper = this;
@@ -12,6 +14,16 @@ void Tmc2130::setup(IEncoder* encoder, dataOutPacket* dataOut)
 
     TC4_TimerCallbackRegister(pwm_callback, (uintptr_t) args);
     this->encoder = encoder;
+    this->driver = driver;
+
+    DRV_EN_Clear();
+    
+    driver->begin();
+    driver->toff(5);
+    driver->rms_current(600);
+    driver->microsteps(16);
+    driver->en_pwm_mode(true);
+    driver->pwm_autoscale(true);
 }
 
 bool Tmc2130::isRPMSequenceRunning() {

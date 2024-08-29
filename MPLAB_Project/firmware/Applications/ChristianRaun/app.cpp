@@ -1,10 +1,20 @@
 #include "app.hpp"
 #include "../../src/Devices/Stepper/TMC2130/tmc2130.hpp"
+#include "../../src/Devices/Stepper/TMCStepper/TMCStepper.hpp"
 #include "../../src/Devices/Encoder/TLE5012b/tle5012b.hpp"
 #include "../../src/Devices/Ethercat/Lan9255/Lan9255.hpp"
 #include "../../src/Devices/Timer/timer.hpp"
 #include "../../src/Version/firmware_version.h"
 
+
+#define R_SENSE 0.075f // Match to your driver
+                      // SilentStepStick series use 0.11
+                      // UltiMachine Einsy and Archim2 boards use 0.2
+                      // Panucatt BSD2660 uses 0.1
+                      // Watterott TMC5160 uses 0.075
+#define CS_PIN           DRV_CS_PIN // Chip select
+
+TMC2160Stepper* stepperDriver;
 Stepper* stepper;
 Encoder* encoder; 
 Ethercat* ethercat;
@@ -27,6 +37,7 @@ void App::setup()
     
     state = eTasks;
 
+    stepperDriver = new TMC2160Stepper(CS_PIN, R_SENSE);
     stepper = new Tmc2130;
     encoder = new Tle5012b;
     ethercat = new Lan9255;
@@ -34,7 +45,7 @@ void App::setup()
     
     timer->setup();
     encoder->setup();
-    stepper->setup(encoder, &dataOut);
+    stepper->setup(stepperDriver, encoder, &dataOut);
     stepper->addObserver(encoder);
     encoder->setZeroOffset();
     dataOut.diag3 = FIRMWARE_VERSION;

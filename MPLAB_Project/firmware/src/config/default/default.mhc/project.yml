@@ -1,11 +1,11 @@
 files:
-- generatedChecksum: 98ADBF091EECE9E1987945462E57C2D4
+- generatedChecksum: EC229149F13563BC91D9213F17C7D69E
   logicalPath: slave_stack
   name: LAN9255_EtherCAT_Slave.c
   physicalPath: ../../slave_stack
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 98ADBF091EECE9E1987945462E57C2D4
+  userChecksum: EC229149F13563BC91D9213F17C7D69E
 - generatedChecksum: 8075D8850D95C6DA83539C964E044606
   logicalPath: slave_stack
   name: bootmode.c
@@ -83,20 +83,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: BAD1F7EEBC0E6827F468E6D62FC07989
-- generatedChecksum: D99E595D29C66ACE0598CC220B89697F
+- generatedChecksum: 75BE701F8C634035910615ADB549C1C6
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: D23F147EEAB442A1963A348FEB2B089B
-- generatedChecksum: 24AEE889EEAB5A3CB665A6F478BF3F65
+  userChecksum: 6D6F3D74342785F65D8F602E0A1BE174
+- generatedChecksum: 07899CCB9E66543C86844E9CC04F7CA0
   logicalPath: config/default
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 24AEE889EEAB5A3CB665A6F478BF3F65
+  userChecksum: 07899CCB9E66543C86844E9CC04F7CA0
 - generatedChecksum: 2CDCA8CDF135BDEB85FDFC0A2A991C0B
   logicalPath: config/default
   name: libc_syscalls.c
@@ -125,13 +125,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 78010ADA15685E57B2AA1453A34FA354
-- generatedChecksum: 0E3E93773346B523786DB2AEFC856141
+- generatedChecksum: 2D78E9FE6C178E00F1540AA248EC6BDD
   logicalPath: config/default/peripheral/clock
   name: plib_clock.c
   physicalPath: peripheral/clock
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0E3E93773346B523786DB2AEFC856141
+  userChecksum: 2D78E9FE6C178E00F1540AA248EC6BDD
 - generatedChecksum: D903E8D9DCBC4107D0AA841E07F653BA
   logicalPath: config/default/peripheral/cmcc
   name: plib_cmcc.c
@@ -153,13 +153,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: C3ECDED3D6301DB0DE622293ED615D21
-- generatedChecksum: BD3640789860F4C15BE1A014288748B8
+- generatedChecksum: 239D5FCFD4FBA4CD9FCF62F88B7BB397
   logicalPath: config/default/peripheral/nvic
   name: plib_nvic.c
   physicalPath: peripheral/nvic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: BD3640789860F4C15BE1A014288748B8
+  userChecksum: 239D5FCFD4FBA4CD9FCF62F88B7BB397
 - generatedChecksum: 34FB45AD7077FEDCC0D3CCB8AAD95AC1
   logicalPath: config/default/peripheral/nvmctrl
   name: plib_nvmctrl.c
@@ -167,13 +167,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 34FB45AD7077FEDCC0D3CCB8AAD95AC1
-- generatedChecksum: 585550935464CEC503B1E8A481ED07C1
+- generatedChecksum: 17D660CF70D3607065286CC70AF735AE
   logicalPath: config/default/peripheral/port
   name: plib_port.c
   physicalPath: peripheral/port
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 585550935464CEC503B1E8A481ED07C1
+  userChecksum: 17D660CF70D3607065286CC70AF735AE
 - generatedChecksum: E088F4207EC2B065E3670F67729E9BB6
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi_spi.c
@@ -188,6 +188,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 47A49321ED05F4427A13D340293F26F2
+- generatedChecksum: 8790C3785164CC3F593FE85A155D9C5B
+  logicalPath: config/default/peripheral/sercom/spi_master
+  name: plib_sercom1_spi_master.c
+  physicalPath: peripheral/sercom/spi_master
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 8790C3785164CC3F593FE85A155D9C5B
 - generatedChecksum: DAD42003325ECEA869294403F1BCE4A0
   logicalPath: config/default/peripheral/sercom/spi_master
   name: plib_sercom4_spi_master.c
@@ -244,13 +251,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 784D077EE05881F82AD425CBE87490D1
-- generatedChecksum: AAF3FA777B9655478E981491E0D76F25
+- generatedChecksum: B2BE9A6BFD980274BB40FC53EFFB29FD
   logicalPath: slave_stack
   name: LAN9255_EtherCAT_Slave.h
   physicalPath: ../../slave_stack
   security: NON_SECURE
   type: HEADER
-  userChecksum: AAF3FA777B9655478E981491E0D76F25
+  userChecksum: B2BE9A6BFD980274BB40FC53EFFB29FD
 - generatedChecksum: E120EA2A571003907F72FC45E721CC12
   logicalPath: slave_stack
   name: LAN9255_EtherCAT_SlaveObjects.h
@@ -433,13 +440,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 78EF29316A6B31EC662D0A4B43D763D2
-- generatedChecksum: 7D61ED9B4C02BC699C8ADB8710B153B6
+- generatedChecksum: 0102CCB0E9B169D28E9EF0B6BE96CCB1
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 7D61ED9B4C02BC699C8ADB8710B153B6
+  userChecksum: 0102CCB0E9B169D28E9EF0B6BE96CCB1
 - generatedChecksum: E530FDF0CF650037FE59631385F880F9
   logicalPath: config/default
   name: device.h
@@ -699,13 +706,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7B04640AA353F348E7347B2F2649E6F9
-- generatedChecksum: 60B42EA7954699FE18E0EFB773ED09EE
+- generatedChecksum: D3E10CDD064B78B480CBB03AA48E3EDB
   logicalPath: config/default
   name: interrupts.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 60B42EA7954699FE18E0EFB773ED09EE
+  userChecksum: D3E10CDD064B78B480CBB03AA48E3EDB
 - generatedChecksum: D10AEFDA1A5F0F85A0B7DABC111AA198
   logicalPath: packs/LAN9255ZMX018_DFP
   name: lan9255zmx018.h
@@ -881,13 +888,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: E7A11C64DEABAE738922866EE18F9A19
-- generatedChecksum: 8C94B424CEB31AA6FDCD796632FE0D3D
+- generatedChecksum: E8020A9470087C2DC1D43C329E25C001
   logicalPath: config/default/peripheral/port
   name: plib_port.h
   physicalPath: peripheral/port
   security: NON_SECURE
   type: HEADER
-  userChecksum: 8C94B424CEB31AA6FDCD796632FE0D3D
+  userChecksum: E8020A9470087C2DC1D43C329E25C001
 - generatedChecksum: 3F5E0C829C39E76F7F21E40A3477C64A
   logicalPath: config/default/peripheral/qspi
   name: plib_qspi_common.h
@@ -909,6 +916,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 01B06D56328D9917F8AC09457152F344
+- generatedChecksum: 1335F2FC9F96C231AC58802D79E9EDFA
+  logicalPath: config/default/peripheral/sercom/spi_master
+  name: plib_sercom1_spi_master.h
+  physicalPath: peripheral/sercom/spi_master
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 1335F2FC9F96C231AC58802D79E9EDFA
 - generatedChecksum: B52814DC7BAE1CF093CE995F988246E7
   logicalPath: config/default/peripheral/sercom/spi_master
   name: plib_sercom4_spi_master.h
@@ -1287,13 +1301,13 @@ files:
   security: NON_SECURE
   type: LINKER
   userChecksum: 9B672CAF9B0B8086418FA1C9BDC85B47
-- generatedChecksum: 53FEB4A14DEF89F43ED0CE6808773838
+- generatedChecksum: 117962014440B1710CB9988866856DA6
   logicalPath: ''
   name: pin_configurations.csv
   physicalPath: ''
   security: NON_SECURE
   type: IMPORTANT
-  userChecksum: 53FEB4A14DEF89F43ED0CE6808773838
+  userChecksum: 117962014440B1710CB9988866856DA6
 format_version: v1.0
 libraries: []
 settings:

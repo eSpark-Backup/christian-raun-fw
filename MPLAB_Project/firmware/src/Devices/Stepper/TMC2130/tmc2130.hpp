@@ -3,6 +3,7 @@
 
 #include "basicDef.h"
 #include "../stepper.hpp"
+#include "../TMCStepper/TMCStepper.hpp"
 #include "../../Encoder/Interface/IEncoder.hpp"
 
 // Fixed Params
@@ -18,11 +19,13 @@ class Tmc2130 : public Stepper
         float displacementRamp[rampSteps+1] = {0};
         float rampRPMArr[rampSteps+1] = {0};
         bool rpmSequenceStatus = false;
+
+        TMC2160Stepper* driver;
          
     public:       
         bool isRPMSequenceRunning(void) override;
         void setRPMSequenceStatus(bool status) override;
-        void setup(IEncoder* encoder, dataOutPacket* dataOut) override;
+        void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut) override;
         void loop(void) override;
         void run(rampSettings* rs) override;
         void run(float rpm, direction_t dir, uint32_t steps) override; 

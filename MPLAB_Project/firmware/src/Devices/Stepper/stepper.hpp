@@ -8,6 +8,7 @@
 #include "math.h"
 #include <vector>
 #include <algorithm>
+#include "TMCStepper/TMCStepper.hpp"
 
 class Encoder;
 
@@ -77,7 +78,7 @@ class Stepper
         }
     
     public: 
-        virtual void setup(IEncoder* encoder, dataOutPacket* dataOut) {}
+        virtual void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut) {}
         virtual void setRPMSequenceStatus(bool status) {}
         virtual bool isRPMSequenceRunning(void) { return false; }
         virtual void loop(void) {}

@@ -46,6 +46,7 @@
               <logicalFolder name="f2" displayName="spi_master" projectFiles="true">
                 <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.h</itemPath>
                 <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom_spi_master_common.h</itemPath>
+                <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom1_spi_master.h</itemPath>
               </logicalFolder>
               <logicalFolder name="f1" displayName="usart" projectFiles="true">
                 <itemPath>../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.h</itemPath>
@@ -243,6 +244,18 @@
       <logicalFolder name="f8" displayName="Timer" projectFiles="true">
         <itemPath>../src/Devices/Timer/timer.hpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f10" displayName="TMCStepper" projectFiles="true">
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/SW_SPI.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2130_bitfields.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2160_bitfields.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2208_bitfields.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2209_bitfields.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2660_bitfields.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC5130_bitfields.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC5160_bitfields.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMCStepper.hpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC_MACROS.hpp</itemPath>
+      </logicalFolder>
       <itemPath>../src/basicDef.h</itemPath>
       <itemPath>../src/app_lan9255.h</itemPath>
     </logicalFolder>
@@ -298,6 +311,7 @@
             <logicalFolder name="f10" displayName="sercom" projectFiles="true">
               <logicalFolder name="f2" displayName="spi_master" projectFiles="true">
                 <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom4_spi_master.c</itemPath>
+                <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom1_spi_master.c</itemPath>
               </logicalFolder>
               <logicalFolder name="f1" displayName="usart" projectFiles="true">
                 <itemPath>../src/config/default/peripheral/sercom/usart/plib_sercom0_usart.c</itemPath>
@@ -356,6 +370,27 @@
       <logicalFolder name="f7" displayName="Timer" projectFiles="true">
         <itemPath>../src/Devices/Timer/timer.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f8" displayName="TMCStepper" projectFiles="true">
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/CHOPCONF.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/COOLCONF.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/DRVCONF.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/DRVCTRL.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/DRVSTATUS.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/DRV_CONF.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/DRV_STATUS.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/ENCMODE.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/GCONF.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/IHOLD_IRUN.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/Motor_Driver.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/PWMCONF.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/RAMP_STAT.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/SHORT_CONF.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/SMARTEN.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/SW_SPI.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2130Stepper.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2160Stepper.cpp</itemPath>
+        <itemPath>E:/GitHub/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMCStepper.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="Version" displayName="Version" projectFiles="true">
         <itemPath>../src/Version/firmware_version.h</itemPath>
       </logicalFolder>
@@ -378,6 +413,7 @@
         <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/qspi.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/sercom0.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/sercom1.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/sercom4.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/tc0.yml</itemPath>
@@ -403,14 +439,14 @@
         <targetDevice>LAN9255ZMX018</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>jlink</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="LAN9255_DFP" vendor="Microchip" version="1.1.7"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
+        <pack name="LAN9255_DFP" vendor="Microchip" version="1.1.7"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -433,7 +469,7 @@
         <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep>"../src/Version/fw_version_gen.sh" || exit 1</makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>${MP_CC_DIR}/xc32-objcopy -I ihex -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.hex" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin"</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>

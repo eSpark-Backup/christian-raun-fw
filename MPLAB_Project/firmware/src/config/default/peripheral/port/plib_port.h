@@ -65,23 +65,14 @@
 // *****************************************************************************
 // *****************************************************************************
 
-/*** Macros for DIR pin ***/
-#define DIR_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 3U))
-#define DIR_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 3U))
-#define DIR_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 3U))
-#define DIR_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 3U))
-#define DIR_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 3U))
-#define DIR_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 3U)) & 0x01U)
-#define DIR_PIN                  PORT_PIN_PB03
-
-/*** Macros for STEP pin ***/
-#define STEP_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 4U))
-#define STEP_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 4U))
-#define STEP_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 4U))
-#define STEP_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 4U))
-#define STEP_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 4U))
-#define STEP_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 4U)) & 0x01U)
-#define STEP_PIN                  PORT_PIN_PB04
+/*** Macros for DRV_EN pin ***/
+#define DRV_EN_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 4U))
+#define DRV_EN_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 4U))
+#define DRV_EN_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 4U))
+#define DRV_EN_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 4U))
+#define DRV_EN_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 4U))
+#define DRV_EN_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 4U)) & 0x01U)
+#define DRV_EN_PIN                  PORT_PIN_PB04
 
 /*** Macros for DIAG0 pin ***/
 #define DIAG0_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 5U)) & 0x01U)
@@ -152,6 +143,24 @@
 #define ENC_DATA1_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 15U)) & 0x01U)
 #define ENC_DATA1_PIN                  PORT_PIN_PB15
 
+/*** Macros for STEP pin ***/
+#define STEP_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = ((uint32_t)1U << 12U))
+#define STEP_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = ((uint32_t)1U << 12U))
+#define STEP_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = ((uint32_t)1U << 12U))
+#define STEP_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = ((uint32_t)1U << 12U))
+#define STEP_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = ((uint32_t)1U << 12U))
+#define STEP_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 12U)) & 0x01U)
+#define STEP_PIN                  PORT_PIN_PA12
+
+/*** Macros for DIR pin ***/
+#define DIR_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = ((uint32_t)1U << 13U))
+#define DIR_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = ((uint32_t)1U << 13U))
+#define DIR_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = ((uint32_t)1U << 13U))
+#define DIR_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = ((uint32_t)1U << 13U))
+#define DIR_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = ((uint32_t)1U << 13U))
+#define DIR_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 13U)) & 0x01U)
+#define DIR_PIN                  PORT_PIN_PA13
+
 /*** Macros for EIC_EXTINT0 pin ***/
 #define EIC_EXTINT0_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 14U)) & 0x01U)
 #define EIC_EXTINT0_PIN                  PORT_PIN_PA14
@@ -159,6 +168,27 @@
 /*** Macros for EIC_EXTINT1 pin ***/
 #define EIC_EXTINT1_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 15U)) & 0x01U)
 #define EIC_EXTINT1_PIN                  PORT_PIN_PA15
+
+/*** Macros for DRV_MOSI pin ***/
+#define DRV_MOSI_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 16U)) & 0x01U)
+#define DRV_MOSI_PIN                  PORT_PIN_PA16
+
+/*** Macros for DRV_SCK pin ***/
+#define DRV_SCK_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 17U)) & 0x01U)
+#define DRV_SCK_PIN                  PORT_PIN_PA17
+
+/*** Macros for DRV_CS pin ***/
+#define DRV_CS_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = ((uint32_t)1U << 18U))
+#define DRV_CS_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = ((uint32_t)1U << 18U))
+#define DRV_CS_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = ((uint32_t)1U << 18U))
+#define DRV_CS_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = ((uint32_t)1U << 18U))
+#define DRV_CS_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = ((uint32_t)1U << 18U))
+#define DRV_CS_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 18U)) & 0x01U)
+#define DRV_CS_PIN                  PORT_PIN_PA18
+
+/*** Macros for DRV_MISO pin ***/
+#define DRV_MISO_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 19U)) & 0x01U)
+#define DRV_MISO_PIN                  PORT_PIN_PA19
 
 /*** Macros for EIC_EXTINT7 pin ***/
 #define EIC_EXTINT7_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 23U)) & 0x01U)

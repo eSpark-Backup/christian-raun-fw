@@ -176,16 +176,18 @@ void SYS_Initialize ( void* data )
     EVSYS_Initialize();
 
     SERCOM0_USART_Initialize();
+    
+    SERCOM1_SPI_Initialize();
 
     SERCOM4_SPI_Initialize();
 
     EIC_Initialize();
 
-    TC4_TimerInitialize();
-
     TC0_TimerInitialize();
     
     TC2_TimerInitialize();
+
+    TC4_TimerInitialize();
 
     QSPI_Initialize();
 
