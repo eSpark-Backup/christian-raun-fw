@@ -47,7 +47,6 @@
 #include "device.h"
 
 
-
 // ****************************************************************************
 // ****************************************************************************
 // Section: Configuration Bits
@@ -77,6 +76,10 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
+/* Following MISRA-C rules are deviated in the below code block */
+/* MISRA C-2012 Rule 11.1 */
+/* MISRA C-2012 Rule 11.3 */
+/* MISRA C-2012 Rule 11.8 */
 // <editor-fold defaultstate="collapsed" desc="EtherCAT Main Initialization Data">
 
 /* SQI PLIB Interface Initialization for ethercat LAN driver */
@@ -119,6 +122,7 @@ const DRV_LAN9255_UTIL_INIT drvLAN9255InitData = {
 // </editor-fold>
 
 
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: System Data
@@ -146,7 +150,7 @@ const DRV_LAN9255_UTIL_INIT drvLAN9255InitData = {
 // *****************************************************************************
 // *****************************************************************************
 
-
+/* MISRAC 2012 deviation block end */
 
 /*******************************************************************************
   Function:
@@ -160,6 +164,7 @@ const DRV_LAN9255_UTIL_INIT drvLAN9255InitData = {
 
 void SYS_Initialize ( void* data )
 {
+
     /* MISRAC 2012 deviation block start */
     /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
@@ -173,18 +178,18 @@ void SYS_Initialize ( void* data )
 
 
 
+    SERCOM1_SPI_Initialize();
+
     EVSYS_Initialize();
 
     SERCOM0_USART_Initialize();
-    
-    SERCOM1_SPI_Initialize();
 
     SERCOM4_SPI_Initialize();
 
     EIC_Initialize();
 
     TC0_TimerInitialize();
-    
+
     TC2_TimerInitialize();
 
     TC4_TimerInitialize();
@@ -192,15 +197,22 @@ void SYS_Initialize ( void* data )
     QSPI_Initialize();
 
 
+
+    /* MISRAC 2012 deviation block start */
+    /* Following MISRA-C rules deviated in this block  */
+    /* MISRA C-2012 Rule 11.3 - Deviation record ID - H3_MISRAC_2012_R_11_3_DR_1 */
+    /* MISRA C-2012 Rule 11.8 - Deviation record ID - H3_MISRAC_2012_R_11_8_DR_1 */
+
 	ECAT_Util_Initialize(0, (void *)&drvLAN9255InitData);
 
 
-    
+
+    /* MISRAC 2012 deviation block end */
     NVIC_Initialize();
+
 
     /* MISRAC 2012 deviation block end */
 }
-
 
 /*******************************************************************************
  End of File

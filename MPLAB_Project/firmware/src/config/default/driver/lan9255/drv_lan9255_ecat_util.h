@@ -54,6 +54,8 @@
 /* This section lists the other files that are included in this file.
 */
 #include "definitions.h"
+//#include "ecat_def.h"
+//#include "slave_stack/ecat_def.h"
 #include "../../../../slave_stack/ecat_def.h"
 #include "drv_lan9255_definitions.h"
 
@@ -408,10 +410,11 @@ void ECAT_Util_Initialize(const unsigned short int drvIndex,  const void * const
 	void ECAT_Lan9255_SPIWrite(uint16_t wAddr, uint8_t *pbyData, uint32_t dwLength);
 	void ECAT_Lan9255_SPIRead(uint16_t wAddr, uint8_t *pbydata, uint32_t dwLength);
 	void ECAT_Lan9255_SPIFastRead(uint16_t wAddr, uint8_t *pbyData, uint32_t dwLength);
-    
+
 // User defined Function
 #define RST_CTL_REG 0x31F8
 void ECAT_LAN9253_RESET(void);
+
 #ifdef __cplusplus
 }
 #endif

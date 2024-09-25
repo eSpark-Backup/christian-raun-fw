@@ -1,12 +1,12 @@
-"Pin Number","Pin ID","Custom Name","Function","Mode", "Direction","Latch","Pull Up","Pull Down","Drive Strength"
+Pin Number,Pin ID,Custom Name,Function,Mode, Direction,Latch,Pull Up,Pull Down,Drive Strength
 2,PB03,,Available,,,,,,NORMAL
 3,PA00,,Available,,,,,,NORMAL
 5,PA01,,Available,,,,,,NORMAL
 8,PA02,,Available,,,,,,NORMAL
 9,PA03,,Available,,,,,,NORMAL
-10,PB04,DRV_EN,GPIO,Digital,Out,Low,,,NORMAL
+10,PB04,DRV_EN,GPIO,Digital,Out,High,,,NORMAL
 11,PB05,DIAG0,EIC_EXTINT5,Digital,High Impedance,n/a,No,No,NORMAL
-19,PB06,,Available,,,,,,NORMAL
+19,PB06,DIAG1,EIC_EXTINT6,Digital,In/Out,Low,,,NORMAL
 20,PB07,,Available,,,,,,NORMAL
 22,PB08,,Available,,,,,,NORMAL
 23,PB09,,Available,,,,,,NORMAL
@@ -24,20 +24,20 @@
 44,PB13,ENC_SCK,GPIO,Digital,Out,Low,,,NORMAL
 46,PB14,ENC_CS,GPIO,Digital,Out,Low,,,NORMAL
 47,PB15,ENC_DATA1,GPIO,Digital,In,n/a,No,No,NORMAL
-61,PA12,STEP,GPIO,Digital,In/Out,Low,,,NORMAL
-62,PA13,DIR,GPIO,Digital,In/Out,Low,,,NORMAL
+61,PA12,STEP,GPIO,Digital,Out,Low,,,NORMAL
+62,PA13,DIR,GPIO,Digital,Out,Low,,,NORMAL
 63,PA14,EIC_EXTINT0,EIC_EXTINT14,Digital,High Impedance,n/a,No,No,NORMAL
 64,PA15,EIC_EXTINT1,EIC_EXTINT15,Digital,High Impedance,n/a,No,No,NORMAL
 67,PA16,DRV_MOSI,SERCOM1_PAD0,Digital,High Impedance,n/a,No,No,NORMAL
 68,PA17,DRV_SCK,SERCOM1_PAD1,Digital,High Impedance,n/a,No,No,NORMAL
-69,PA18,DRV_CS,GPIO,Digital,In/Out,Low,,,NORMAL
+69,PA18,DRV_CS,GPIO,Digital,Out,Low,,,NORMAL
 73,PA19,DRV_MISO,SERCOM1_PAD3,Digital,High Impedance,n/a,No,No,NORMAL
 77,PB16,,Available,,,,,,NORMAL
 79,PB17,,Available,,,,,,NORMAL
 84,PA20,,Available,,,,,,NORMAL
 87,PA21,,Available,,,,,,NORMAL
 91,PA22,,Available,,,,,,NORMAL
-92,PA23,,Available,,,,,,NORMAL
+92,PA23,PUMP,GPIO,Digital,Out,Low,,,NORMAL
 93,PA24,,Available,,,,,,NORMAL
 96,PA25,,Available,,,,,,NORMAL
 98,PB22,,Available,,,,,,NORMAL

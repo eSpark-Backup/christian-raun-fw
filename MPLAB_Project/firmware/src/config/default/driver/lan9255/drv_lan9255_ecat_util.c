@@ -1037,7 +1037,7 @@ void ECAT_Initialization()
 	
     // Ethercat QSPI Callback registration 
     ECAT_QSPI_EventHandlerSet();
-    // Reset LAN9253 (added because of FoE)
+	// Reset LAN9253 (added because of FoE)
     ECAT_LAN9253_RESET();
 	uint32_t u32data;
 	do
@@ -1093,7 +1093,6 @@ static void ECAT_QSPI_EventHandlerSet(void)
 {
     gDrvLan9255UtilObj.spiPlib->spiCallbackRegister(ECAT_QSPI_Callback,0);
 }
-
 // User defined Function
 void ECAT_LAN9253_RESET(void)
 {

@@ -62,7 +62,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-static TC_TIMER_CALLBACK_OBJ TC4_CallbackObject;
+volatile static TC_TIMER_CALLBACK_OBJ TC4_CallbackObject;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -89,7 +89,7 @@ void TC4_TimerInitialize( void )
     TC4_REGS->COUNT32.TC_WAVE = (uint8_t)TC_WAVE_WAVEGEN_MPWM;
 
     /* Configure timer period */
-    TC4_REGS->COUNT32.TC_CC[0U] = 60000U;
+    TC4_REGS->COUNT32.TC_CC[0U] = 59999U;
 
     /* Clear all interrupt flags */
     TC4_REGS->COUNT32.TC_INTFLAG = (uint8_t)TC_INTFLAG_Msk;
@@ -136,7 +136,7 @@ void TC4_TimerCommandSet(TC_COMMAND command)
     while((TC4_REGS->COUNT32.TC_SYNCBUSY) != 0U)
     {
         /* Wait for Write Synchronization */
-    }    
+    }
 }
 
 /* Get the current timer counter value */
@@ -154,7 +154,7 @@ uint32_t TC4_Timer32bitCounterGet( void )
     {
         /* Wait for CMD to become zero */
     }
-    
+
     /* Read current count value */
     return TC4_REGS->COUNT32.TC_COUNT;
 
@@ -198,7 +198,7 @@ void TC4_TimerCallbackRegister( TC_TIMER_CALLBACK callback, uintptr_t context )
 }
 
 /* Timer Interrupt handler */
-void TC4_TimerInterruptHandler( void )
+void __attribute__((used)) TC4_TimerInterruptHandler( void )
 {
     if (TC4_REGS->COUNT32.TC_INTENSET != 0U)
     {
@@ -206,9 +206,10 @@ void TC4_TimerInterruptHandler( void )
         status = (TC_TIMER_STATUS) TC4_REGS->COUNT32.TC_INTFLAG;
         /* Clear interrupt flags */
         TC4_REGS->COUNT32.TC_INTFLAG = (uint8_t)TC_INTFLAG_Msk;
-        if((status != TC_TIMER_STATUS_NONE) && (TC4_CallbackObject.callback != NULL))
+        if((TC4_CallbackObject.callback != NULL) && (status != TC_TIMER_STATUS_NONE))
         {
-            TC4_CallbackObject.callback(status, TC4_CallbackObject.context);
+            uintptr_t context = TC4_CallbackObject.context;
+            TC4_CallbackObject.callback(status, context);
         }
     }
 }
