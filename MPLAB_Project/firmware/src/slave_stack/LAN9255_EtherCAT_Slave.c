@@ -73,24 +73,6 @@ volatile BOOL	gFirmwareDownload_Finished = FALSE;
 dataInPacket dataIn = {0,0,0,0};
 dataOutPacket dataOut = {0,0,0,0,0};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*-----------------------------------------------------------------------------------------
 ------
 ------    application specific functions

@@ -73,7 +73,7 @@ extern "C" {
 // DOM-IGNORE-END
 
 /* Device Information */
-#define DEVICE_NAME			 "LAN9255ZMX019"
+//#define DEVICE_NAME			 "LAN9255ZMX019"
 #define DEVICE_ARCH			 "CORTEX-M4"
 #define DEVICE_FAMILY		 "LAN9255"
 #define DEVICE_SERIES		 "LAN9255ZMX"

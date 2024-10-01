@@ -207,6 +207,15 @@
 #define EIC_EXTINT7_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 23U)) & 0x01U)
 #define EIC_EXTINT7_PIN                  PORT_PIN_PB23
 
+/*** Macros for Ethercat_error_pin pin ***/
+#define Ethercat_error_pin_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 31U))
+#define Ethercat_error_pin_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 31U)) & 0x01U)
+#define Ethercat_error_pin_PIN                  PORT_PIN_PB31
+
 // *****************************************************************************
 /* PORT Group
 

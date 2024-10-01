@@ -24,6 +24,7 @@ void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacke
     driver->microsteps(16);
     driver->en_pwm_mode(true);
     driver->pwm_autoscale(true);
+    uint32_t value1 = driver->DRV_STATUS();
 }
 
 bool Tmc2130::isRPMSequenceRunning() {
