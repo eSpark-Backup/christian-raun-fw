@@ -4,8 +4,6 @@
 volatile uint32_t maxToggleCount=0;
 volatile uint32_t toggleCounter=0; 
 
-#define EN_PIN           DRV_EN_PIN // Enable
-
 void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacket* dataOut)
 {
     PWMCallbackArgs* args = new PWMCallbackArgs;
@@ -15,9 +13,8 @@ void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacke
     TC4_TimerCallbackRegister(pwm_callback, (uintptr_t) args);
     this->encoder = encoder;
     this->driver = motorDriver;
-
-    DRV_EN_Clear();
     
+    driver->enable();
     driver->begin();
     driver->toff(5);
     driver->rms_current(1100);

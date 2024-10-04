@@ -13,6 +13,7 @@
                       // Panucatt BSD2660 uses 0.1
                       // Watterott TMC5160 uses 0.075
 #define CS_PIN           DRV_CS_PIN // Chip select
+#define EN_PIN           DRV_EN_PIN // Chip select
 
 TMC2160Stepper* stepperDriver;
 Stepper* stepper;
@@ -37,7 +38,7 @@ void App::setup()
     
     state = eTasks;
 
-    stepperDriver = new TMC2160Stepper(CS_PIN, R_SENSE);
+    stepperDriver = new TMC2160Stepper(EN_PIN, CS_PIN, R_SENSE);
     stepper = new Tmc2130;
     encoder = new Tle5012b;
     ethercat = new Lan9255;

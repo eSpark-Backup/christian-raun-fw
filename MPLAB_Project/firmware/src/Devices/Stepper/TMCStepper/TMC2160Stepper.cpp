@@ -5,19 +5,24 @@
 #include <stddef.h>
 #include <xc.h>
 
-TMC2160Stepper::TMC2160Stepper(PORT_PIN pinCS, float RS, int8_t link) : TMC2130Stepper(pinCS, RS, link)
+TMC2160Stepper::TMC2160Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS, int8_t link) : TMC2130Stepper(pinEN, pinCS, RS, link)
   { defaults(); }
-TMC2160Stepper::TMC2160Stepper(PORT_PIN pinCS, float RS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link) :
-  TMC2130Stepper(pinCS, RS, pinMOSI, pinMISO, pinSCK, link)
+TMC2160Stepper::TMC2160Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link) :
+  TMC2130Stepper(pinEN, pinCS, RS, pinMOSI, pinMISO, pinSCK, link)
   { defaults(); }
-TMC2160Stepper::TMC2160Stepper(PORT_PIN pinCS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link) :
-  TMC2130Stepper(pinCS, default_RS, pinMOSI, pinMISO, pinSCK, link)
+TMC2160Stepper::TMC2160Stepper(PORT_PIN pinEN, PORT_PIN pinCS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link) :
+  TMC2130Stepper(pinEN, pinCS, default_RS, pinMOSI, pinMISO, pinSCK, link)
   { defaults(); }
 
+void TMC2160Stepper::enable() {
+  PORT_PinClear(_pinEN);      // enable the driver
+}
+
+void TMC2160Stepper::disable() {
+  PORT_PinSet(_pinEN);      // enable the driver
+}
+
 void TMC2160Stepper::begin() {
-  //set pins
-//  pinMode(_pinCS, OUTPUT);
-  switchCSpin(1);
 
   if (TMC_SW_SPI != nullptr) TMC_SW_SPI->init();
 

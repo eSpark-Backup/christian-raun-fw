@@ -120,9 +120,9 @@ class TMCStepper
 
 class TMC2130Stepper : public TMCStepper {
 	public:
-		TMC2130Stepper(PORT_PIN pinCS, float RS = default_RS, int8_t link_index = -1);
-		TMC2130Stepper(PORT_PIN pinCS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
-		TMC2130Stepper(PORT_PIN pinCS, float RS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
+		TMC2130Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS = default_RS, int8_t link_index = -1);
+		TMC2130Stepper(PORT_PIN pinEN, PORT_PIN pinCS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
+		TMC2130Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
 		void begin();
 		void defaults();
 		void setSPISpeed(uint32_t speed);
@@ -340,6 +340,7 @@ class TMC2130Stepper : public TMCStepper {
 
 		static uint32_t spi_speed; // Default 2MHz
 		const PORT_PIN _pinCS;
+		const PORT_PIN _pinEN;
 		SW_SPIClass * TMC_SW_SPI = nullptr;
 		static constexpr float default_RS = 0.11;
 
@@ -349,9 +350,11 @@ class TMC2130Stepper : public TMCStepper {
 
 class TMC2160Stepper : public TMC2130Stepper {
 	public:
-		TMC2160Stepper(PORT_PIN pinCS, float RS = default_RS, int8_t link_index = -1);
-		TMC2160Stepper(PORT_PIN pinCS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
-		TMC2160Stepper(PORT_PIN pinCS, float RS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
+		TMC2160Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS = default_RS, int8_t link_index = -1);
+		TMC2160Stepper(PORT_PIN pinEN, PORT_PIN pinCS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
+		TMC2160Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS, PORT_PIN pinMOSI, PORT_PIN pinMISO, PORT_PIN pinSCK, int8_t link_index = -1);
+		void enable();
+		void disable();
 		void begin();
 		void defaults();
 		void push();
