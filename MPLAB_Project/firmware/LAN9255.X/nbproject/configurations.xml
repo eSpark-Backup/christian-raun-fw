@@ -110,11 +110,6 @@
           <itemPath>../src/Devices/Timer/timer.hpp</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="Libraries" displayName="Libraries" projectFiles="true">
-        <logicalFolder name="SoftSPI" displayName="SoftSPI" projectFiles="true">
-          <itemPath>../src/Libraries/SoftSPI/SoftSPIB.h</itemPath>
-        </logicalFolder>
-      </logicalFolder>
       <logicalFolder name="packs" displayName="packs" projectFiles="true">
         <logicalFolder name="CMSIS" displayName="CMSIS" projectFiles="true">
           <logicalFolder name="CMSIS" displayName="CMSIS" projectFiles="true">
@@ -372,11 +367,6 @@
         </logicalFolder>
         <logicalFolder name="Timer" displayName="Timer" projectFiles="true">
           <itemPath>../src/Devices/Timer/timer.cpp</itemPath>
-        </logicalFolder>
-      </logicalFolder>
-      <logicalFolder name="Libraries" displayName="Libraries" projectFiles="true">
-        <logicalFolder name="SoftSPI" displayName="SoftSPI" projectFiles="true">
-          <itemPath>../src/Libraries/SoftSPI/SoftSPIB.cpp</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="slave_stack" displayName="slave_stack" projectFiles="true">

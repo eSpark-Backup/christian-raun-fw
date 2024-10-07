@@ -32,5 +32,7 @@ class Tle5012b : public Encoder
         float calculateDisplacement(void) override;
         bool isMotorStalled() override;
         void setZeroOffset(void) override;
+        void update(float rpm, bool dir) override;
+        
 };
 #endif

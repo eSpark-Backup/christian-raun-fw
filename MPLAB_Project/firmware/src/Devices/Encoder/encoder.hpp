@@ -17,12 +17,12 @@ class Encoder : public Observer, public IEncoder
         virtual float calculateDisplacement(void) { return 0;}
         bool isMotorStalled() override { return false;}
         void setZeroOffset(void) override {}
-        void update(float rpm, bool dir) override
-        {
-            // Update the stored rpm and direction when notified by the Stepper
-            this->rpm = rpm;
-            this->dir = dir;
-        }
+        void update(float rpm, bool dir) override {}
+//        {
+//            // Update the stored rpm and direction when notified by the Stepper
+//            this->rpm = rpm;
+//            this->dir = dir;
+//        }
 };
 
 #endif
