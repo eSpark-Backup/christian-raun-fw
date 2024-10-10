@@ -6,6 +6,11 @@ void Tle5012b::setup()
 {
     ENC_CS_OutputEnable();
     ENC_CS_Set();
+
+    float ZeroOffset = 0;
+    float displacementCount = 0;
+    bool almostCompleteCW = false;
+    bool almostCompleteCCW = false;
 }
 
 void Tle5012b::loop()

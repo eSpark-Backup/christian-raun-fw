@@ -15,8 +15,8 @@
 		</Groups>
 		<Devices>
 			<Device Physics="YY">
-				<Type ProductCode="#x00009255" RevisionNo="#x1">LAN9255_EtherCAT_MotorDriver</Type>
-				<Name>LAN9255_EtherCAT_MotorDriver</Name>
+				<Type ProductCode="#x00009255" RevisionNo="#x1">LAN9255_EtherCAT_Slave</Type>
+				<Name>LAN9255_EtherCAT_Slave</Name>
 				<Info>
 					<StateMachine>
 						<Timeout>
@@ -43,8 +43,8 @@
 								<BitSize>24</BitSize>
 							</DataType>
 							<DataType>
-								<Name>STRING(28)</Name>
-								<BitSize>224</BitSize>
+								<Name>STRING(22)</Name>
+								<BitSize>176</BitSize>
 							</DataType>
 							<DataType>
 								<Name>USINT</Name>
@@ -860,10 +860,10 @@
 							<Object>
 								<Index>#x1008</Index>
 								<Name>Device name</Name>
-								<Type>STRING(28)</Type>
-								<BitSize>224</BitSize>
+								<Type>STRING(22)</Type>
+								<BitSize>176</BitSize>
 								<Info>
-									<DefaultData>4C414E393235355F45746865724341545F4D6F746F72447269766572</DefaultData>
+									<DefaultData>4C414E393235355F45746865724341545F536C617665</DefaultData>
 								</Info>
 								<Flags>
 									<Access>ro</Access>

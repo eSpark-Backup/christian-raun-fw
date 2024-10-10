@@ -921,13 +921,13 @@ DEVICE_PROFILE_TYPE: Slave device type (Object 0x1000)  */
 /** 
 DEVICE_NAME: Name of the slave device (Object 0x1008) */
 #ifndef DEVICE_NAME
-#define DEVICE_NAME                               "LAN9255_EtherCAT_MotorDriver"
+#define DEVICE_NAME                               "LAN9255_EtherCAT_Slave"
 #endif
 
 /** 
 DEVICE_NAME_LEN: Length of 'DEVICE_NAME' without '\0' */
 #ifndef DEVICE_NAME_LEN
-#define DEVICE_NAME_LEN                           0x1C
+#define DEVICE_NAME_LEN                           0x16
 #endif
 
 /** 

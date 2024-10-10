@@ -20,7 +20,7 @@
 class Tle5012b : public Encoder
 {
     private:
-        float ZeroOffset =0;
+        float ZeroOffset = 0;
         float displacementCount = 0;
         bool almostCompleteCW = false;
         bool almostCompleteCCW = false;
