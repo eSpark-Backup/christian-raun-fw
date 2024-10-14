@@ -122,7 +122,7 @@ bool Tle5012b::isMotorStalled()
     
     // Logic triggering at high RPMs
     float minimumCoveredDistance = (rpm / 60.0) * 2 * STALL_DETECTION_MAX_TIME;
-    minimumCoveredDistance -= 0.2; 
+    minimumCoveredDistance -= 0.15;
     uint32_t currentMillis = millis();
     
     if ((currentMillis - previousMillis) > TO_MS(STALL_DETECTION_MAX_TIME))
@@ -131,7 +131,7 @@ bool Tle5012b::isMotorStalled()
         float currentPosition = calculateDisplacement();
         if (fabs(previousPosition - currentPosition) < minimumCoveredDistance)
         {
-            return true;
+            // return true;
         }
         else
         {

@@ -61,6 +61,8 @@ void NVIC_Initialize( void )
      * from within the "Interrupt Manager" of MHC. */
     NVIC_SetPriority(EIC_EXTINT_5_IRQn, 7);
     NVIC_EnableIRQ(EIC_EXTINT_5_IRQn);
+    NVIC_SetPriority(EIC_EXTINT_6_IRQn, 7);
+    NVIC_EnableIRQ(EIC_EXTINT_6_IRQn);
     NVIC_SetPriority(EIC_EXTINT_7_IRQn, 7);
     NVIC_EnableIRQ(EIC_EXTINT_7_IRQn);
     NVIC_SetPriority(EIC_EXTINT_14_IRQn, 7);
@@ -91,6 +93,10 @@ void NVIC_Initialize( void )
     NVIC_EnableIRQ(SERCOM4_2_IRQn);
     NVIC_SetPriority(SERCOM4_OTHER_IRQn, 7);
     NVIC_EnableIRQ(SERCOM4_OTHER_IRQn);
+    NVIC_SetPriority(TCC1_OTHER_IRQn, 7);
+    NVIC_EnableIRQ(TCC1_OTHER_IRQn);
+    NVIC_SetPriority(TCC1_MC2_IRQn, 7);
+    NVIC_EnableIRQ(TCC1_MC2_IRQn);
     NVIC_SetPriority(TC0_IRQn, 7);
     NVIC_EnableIRQ(TC0_IRQn);
     NVIC_SetPriority(TC2_IRQn, 7);

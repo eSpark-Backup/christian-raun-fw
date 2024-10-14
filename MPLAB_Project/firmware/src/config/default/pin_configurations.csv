@@ -24,7 +24,7 @@ Pin Number,Pin ID,Custom Name,Function,Mode, Direction,Latch,Pull Up,Pull Down,D
 44,PB13,ENC_SCK,SERCOM4_PAD1,Digital,Out,Low,,,NORMAL
 46,PB14,ENC_CS,GPIO,Digital,Out,Low,,,NORMAL
 47,PB15,ENC_DATA1,SERCOM4_PAD3,Digital,In,n/a,No,No,NORMAL
-61,PA12,STEP,GPIO,Digital,Out,Low,,,NORMAL
+61,PA12,STEP,TCC1_WO2,Digital,Out,Low,,,NORMAL
 62,PA13,DIR,GPIO,Digital,Out,Low,,,NORMAL
 63,PA14,EIC_EXTINT0,EIC_EXTINT14,Digital,High Impedance,n/a,No,No,NORMAL
 64,PA15,EIC_EXTINT1,EIC_EXTINT15,Digital,High Impedance,n/a,No,No,NORMAL

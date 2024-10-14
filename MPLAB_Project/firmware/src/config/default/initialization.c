@@ -194,6 +194,8 @@ void SYS_Initialize ( void* data )
 
     TC4_TimerInitialize();
 
+    TCC1_PWMInitialize();
+
     QSPI_Initialize();
 
 

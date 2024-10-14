@@ -197,8 +197,6 @@ void TMC2130Stepper::write(uint8_t addressByte, uint32_t config) {
 }
 
 void TMC2130Stepper::begin() {
-  //set pins
-  // switchCSpin(1);
 
 //  if (TMC_SW_SPI != nullptr) TMC_SW_SPI->init();
 

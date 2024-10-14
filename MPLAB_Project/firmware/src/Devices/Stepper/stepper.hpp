@@ -13,6 +13,7 @@
 class Encoder;
 
 #define DIAG0_INTERRUPT_PIN EIC_PIN_5
+#define DIAG1_INTERRUPT_PIN EIC_PIN_6
 
 typedef enum
 {

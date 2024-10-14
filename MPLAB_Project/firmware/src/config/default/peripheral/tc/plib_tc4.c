@@ -89,7 +89,7 @@ void TC4_TimerInitialize( void )
     TC4_REGS->COUNT32.TC_WAVE = (uint8_t)TC_WAVE_WAVEGEN_MPWM;
 
     /* Configure timer period */
-    TC4_REGS->COUNT32.TC_CC[0U] = 59999U;
+    TC4_REGS->COUNT32.TC_CC[0U] = 0U;
 
     /* Clear all interrupt flags */
     TC4_REGS->COUNT32.TC_INTFLAG = (uint8_t)TC_INTFLAG_Msk;

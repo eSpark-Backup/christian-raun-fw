@@ -35,6 +35,8 @@ void App::setup()
     
     EIC_CallbackRegister(DIAG0_INTERRUPT_PIN, temperatureError, (uintptr_t)&dataOut);
     EIC_InterruptEnable(DIAG0_INTERRUPT_PIN);
+    EIC_CallbackRegister(DIAG1_INTERRUPT_PIN, stallError, (uintptr_t)&dataOut);
+    EIC_InterruptEnable(DIAG1_INTERRUPT_PIN);
     
     state = eTasks;
 
@@ -106,7 +108,7 @@ void App::loop()
             {
                 uint32_t elapsedTime = millis() - stopTime;
                 if (elapsedTime <= 2000U) {
-                    // Calculate displacement for 5 seconds after motor stopped
+                    // Calculate displacement for 2 seconds after motor stopped
                     dataOut.position = encoder->calculateDisplacement();
                 }
             }
@@ -126,7 +128,7 @@ void App::loop()
                 {
                     if(stepper->isRunning())
                     {
-                        if(encoder->isMotorStalled())
+                        if(encoder->isMotorStalled())           // add motor driver based stall check here? or in ISR for DIAG0/1
                         {
                             stepper->stop();
                             stepper->setRPMSequenceStatus(false);
@@ -187,6 +189,12 @@ extern "C"
     {
         dataOutPacket* out = (dataOutPacket*)context;
         out->motorDiagnostic = TEMPERATURE_LIMIT_EXCEEDED;
+    }
+    /* Diag1 Interrupt handler */
+    void stallError(uintptr_t context)
+    {
+        dataOutPacket* out = (dataOutPacket*)context;
+        out->motorDiagnostic = MOTOR_STALLED;
     }
 
     App * create_App() // wrapper function

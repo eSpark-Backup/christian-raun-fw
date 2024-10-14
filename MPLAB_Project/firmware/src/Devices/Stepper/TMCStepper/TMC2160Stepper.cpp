@@ -19,7 +19,7 @@ void TMC2160Stepper::enable() {
 }
 
 void TMC2160Stepper::disable() {
-  PORT_PinSet(_pinEN);      // enable the driver
+  PORT_PinSet(_pinEN);        // disable the driver
 }
 
 void TMC2160Stepper::begin() {

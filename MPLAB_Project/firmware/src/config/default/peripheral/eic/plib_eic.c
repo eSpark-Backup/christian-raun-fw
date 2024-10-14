@@ -88,7 +88,7 @@ void EIC_Initialize (void)
                               EIC_CONFIG_SENSE3_NONE  |
                               EIC_CONFIG_SENSE4_NONE  |
                               EIC_CONFIG_SENSE5_FALL  |
-                              EIC_CONFIG_SENSE6_NONE  |
+                              EIC_CONFIG_SENSE6_FALL  |
                               EIC_CONFIG_SENSE7_FALL  ;
 
     /* Interrupt sense type and filter control for EXTINT channels 8 to 15 */
@@ -107,7 +107,7 @@ void EIC_Initialize (void)
 
 
     /* External Interrupt enable*/
-    EIC_REGS->EIC_INTENSET = 0xc0a0U;
+    EIC_REGS->EIC_INTENSET = 0xc0e0U;
 
     /* Callbacks for enabled interrupts */
     eicCallbackObject[0].eicPinNo = EIC_PIN_MAX;
@@ -116,7 +116,7 @@ void EIC_Initialize (void)
     eicCallbackObject[3].eicPinNo = EIC_PIN_MAX;
     eicCallbackObject[4].eicPinNo = EIC_PIN_MAX;
     eicCallbackObject[5].eicPinNo = EIC_PIN_5;
-    eicCallbackObject[6].eicPinNo = EIC_PIN_MAX;
+    eicCallbackObject[6].eicPinNo = EIC_PIN_6;
     eicCallbackObject[7].eicPinNo = EIC_PIN_7;
     eicCallbackObject[8].eicPinNo = EIC_PIN_MAX;
     eicCallbackObject[9].eicPinNo = EIC_PIN_MAX;
@@ -164,6 +164,18 @@ void __attribute__((used)) EIC_EXTINT_5_InterruptHandler(void)
     {
         uintptr_t context = eicCallbackObject[5].context;
         eicCallbackObject[5].callback(context);
+    }
+
+}
+void __attribute__((used)) EIC_EXTINT_6_InterruptHandler(void)
+{
+    /* Clear interrupt flag */
+    EIC_REGS->EIC_INTFLAG = (1UL << 6);
+    /* Find any associated callback entries in the callback table */
+    if ((eicCallbackObject[6].callback != NULL))
+    {
+        uintptr_t context = eicCallbackObject[6].context;
+        eicCallbackObject[6].callback(context);
     }
 
 }
