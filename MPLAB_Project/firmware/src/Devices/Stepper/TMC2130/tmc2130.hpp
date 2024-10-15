@@ -22,20 +22,9 @@ class Tmc2130 : public Stepper
         bool rpmSequenceStatus;
 
         TMC2160Stepper* driver;
-        // static Tmc2130* instance;
-         
-        // Tmc2130()
-        // {        }
 
     public:
-        // static Tmc2130* getInstance() {
-        //     if (instance == nullptr) {
-        //         instance = new Tmc2130();  // Create the instance if it doesn't exist
-        //     }
-        //     return instance;
-        // }
-        // ~Tmc2130()
-        // {        }
+
         bool isRPMSequenceRunning(void) override;
         void setRPMSequenceStatus(bool status) override;
         void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut) override;

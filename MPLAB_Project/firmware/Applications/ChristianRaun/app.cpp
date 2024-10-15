@@ -112,6 +112,8 @@ void App::loop()
                     dataOut.position = encoder->calculateDisplacement();
                 }
             }
+            if(RAMP == dataIn.mode)
+                dataOut.deviceStatus = (stepper->isRPMSequenceRunning()) ? RAMP_SEQUENCE_RUNNING : dataOut.deviceStatus;
             state = eErrorHandling;
             break;  
             

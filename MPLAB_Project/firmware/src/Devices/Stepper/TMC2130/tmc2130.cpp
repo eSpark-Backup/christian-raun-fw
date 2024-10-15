@@ -4,7 +4,7 @@
 #define TIMER_RESOLUTION_NS 16.666666667e-9
 
 volatile uint32_t maxToggleCount=0;
-volatile uint32_t toggleCounter=0; 
+volatile uint32_t toggleCounter=0;
 
 void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacket* dataOut)
 {
@@ -14,7 +14,7 @@ void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacke
     this->rpmSequenceStatus = false;
 
     TC4_TimerCallbackRegister(tc4Callback, (uintptr_t) args);
-    TCC1_PWMCallbackRegister(pwmCallback, (uintptr_t) args);
+    // TCC1_PWMCallbackRegister(pwmCallback, (uintptr_t) args);         // ISR getting triggerred wrong number of times
     this->encoder = encoder;
     this->driver = motorDriver;
     
@@ -247,15 +247,15 @@ void tc4Callback(TC_TIMER_STATUS status, uintptr_t context)
 void pwmCallback(TC_TIMER_STATUS status, uintptr_t context)
 {
     // static uint32_t rampStepsCount = 0;
-    PWMCallbackArgs* args = (PWMCallbackArgs*)context;
-    Tmc2130* stepper = args->stepper;
-    dataOutPacket* dataOut = args->dataOut;
+    // PWMCallbackArgs* args = (PWMCallbackArgs*)context;
+    // Tmc2130* stepper = args->stepper;
+    // dataOutPacket* dataOut = args->dataOut;
 
     // TC_TIMER_STATUS intFlag = (status & TCC_INTFLAG_OVF_Msk);
     // if(TCC_INTFLAG_OVF_Msk == intFlag)      // if callback is from OVF interrupt
     if(TCC_INTFLAG_MC2_Msk == status)      // if callback is from MC2 interrupt
     {
-        stepper->loop();
+        // stepper->loop();
         // if(stepper->isRPMSequenceRunning())
         // {
         //     if (!stepper->isRunning())

@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/main.cpp</file>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/tcc/plib_tcc1.c</file>
             <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/clock/plib_clock.c</file>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/tc/plib_tc4.c</file>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/ecatslv.c</file>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.hpp</file>
+            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
+            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Encoder/TLE5012b/tle5012b.cpp</file>
         </group>
     </open-files>
 </project-private>

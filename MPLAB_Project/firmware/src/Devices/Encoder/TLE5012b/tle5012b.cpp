@@ -7,10 +7,10 @@ void Tle5012b::setup()
     ENC_CS_OutputEnable();
     ENC_CS_Set();
 
-    float ZeroOffset = 0;
-    float displacementCount = 0;
-    bool almostCompleteCW = false;
-    bool almostCompleteCCW = false;
+    // float ZeroOffset = 0;
+    // float displacementCount = 0;
+    // bool almostCompleteCW = false;
+    // bool almostCompleteCCW = false;
 }
 
 void Tle5012b::loop()
@@ -62,7 +62,7 @@ float Tle5012b::calculateDisplacement(void)
     double angle;
     getAngleValue(angle);
     angle = 360 - angle; // For testing. Reversed value is observed
-    direction_t direction = (direction_t)dir;
+    direction_t direction = (direction_t)this->dir;
     
     float displacement = (float)((angle/360.0) * 2);
     switch(direction)
@@ -131,7 +131,7 @@ bool Tle5012b::isMotorStalled()
         float currentPosition = calculateDisplacement();
         if (fabs(previousPosition - currentPosition) < minimumCoveredDistance)
         {
-            // return true;
+            return true;
         }
         else
         {
