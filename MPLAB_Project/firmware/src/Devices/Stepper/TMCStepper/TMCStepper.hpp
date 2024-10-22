@@ -346,6 +346,7 @@ class TMC2130Stepper : public TMCStepper {
 
 		int8_t link_index;
 		static int8_t chain_length;
+		static uint32_t spi_status_register;
 };
 
 class TMC2160Stepper : public TMC2130Stepper {

@@ -24,7 +24,7 @@ void TMC2160Stepper::disable() {
 
 void TMC2160Stepper::begin() {
 
-  if (TMC_SW_SPI != nullptr) TMC_SW_SPI->init();
+  // if (TMC_SW_SPI != nullptr) TMC_SW_SPI->init();
 
   GCONF(GCONF_register.sr);
   CHOPCONF(CHOPCONF_register.sr);
@@ -43,8 +43,9 @@ void TMC2160Stepper::defaults() {
   SHORT_CONF_register.shortdelay = 0;
   DRV_CONF_register.bbmtime = 0;
   DRV_CONF_register.bbmclks = 4;
-  DRV_CONF_register.otselect = 0b00;
-  DRV_CONF_register.drvstrength = 0b10;
+  // DRV_CONF_register.otselect = 0b00;
+  DRV_CONF_register.otselect = 0b11;
+  DRV_CONF_register.drvstrength = 0b00;
   DRV_CONF_register.filt_isense = 0b00;
   TPOWERDOWN_register.sr = 10;
   //MSLUT0_register.sr = ???;
@@ -60,6 +61,7 @@ void TMC2160Stepper::defaults() {
   //MSLUTSTART_register.start_sin90 = 247;
   CHOPCONF_register.sr = 0x10410150;
   PWMCONF_register.sr = 0xC40C001E;
+  COOLCONF_register.sr = 0x001E8F04;
 }
 
 /*

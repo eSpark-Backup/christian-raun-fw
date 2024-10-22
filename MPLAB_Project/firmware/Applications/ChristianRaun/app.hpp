@@ -46,6 +46,7 @@ void msCounter(TC_TIMER_STATUS status, uintptr_t context);
 /* Diag0 Interrupt handler */
 void stallError(uintptr_t context);
 void temperatureError(uintptr_t context);
+void ITM_Printf(uint8_t port, const char *format, ...);
 #ifdef __cplusplus 
 }
 #endif

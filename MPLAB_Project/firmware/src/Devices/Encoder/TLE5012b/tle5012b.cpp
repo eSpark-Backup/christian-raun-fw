@@ -59,53 +59,77 @@ void Tle5012b::getAngleValue(double &angleValue)
 
 float Tle5012b::calculateDisplacement(void)
 {
-    double angle;
-    getAngleValue(angle);
-    angle = 360 - angle; // For testing. Reversed value is observed
-    direction_t direction = (direction_t)this->dir;
+    // double angle;
+    // getAngleValue(angle);
+    // angle = 360 - angle; // For testing. Reversed value is observed
+    // direction_t direction = (direction_t)this->dir;
     
-    float displacement = (float)((angle/360.0) * 2);
-    switch(direction)
-    {
-        case CLOCKWISE:
-            if (displacement > (float)1.5)
-            {
-                almostCompleteCW =true;
-            }
-            else if (displacement < (float)0.5)
-            {
-                if(almostCompleteCW)
-                {
-                    almostCompleteCW = false;
-                    displacementCount += 2;
-                }
-            }
+    // float displacement = (float)((angle/360.0) * 2);
+    // switch(direction)
+    // {
+    //     case CLOCKWISE:
+    //         if (displacement > (float)1.5)
+    //         {
+    //             almostCompleteCW =true;
+    //         }
+    //         else if (displacement < (float)0.5)
+    //         {
+    //             if(almostCompleteCW)
+    //             {
+    //                 almostCompleteCW = false;
+    //                 displacementCount += 2;
+    //             }
+    //         }
             
-            almostCompleteCCW = false;
-            break;
+    //         almostCompleteCCW = false;
+    //         break;
             
-        case ANTICLOCKWISE:
-            if (displacement < (float)0.5)
-            {
-                almostCompleteCCW =true;
-            }
-            else if (displacement > (float)1.5)
-            {
-                if(almostCompleteCCW)
-                {
-                    almostCompleteCCW = false;
-                    displacementCount -= 2;
-                }
-            }
-            almostCompleteCW = false;
-            break;
+    //     case ANTICLOCKWISE:
+    //         if (displacement < (float)0.5)
+    //         {
+    //             almostCompleteCCW =true;
+    //         }
+    //         else if (displacement > (float)1.5)
+    //         {
+    //             if(almostCompleteCCW)
+    //             {
+    //                 almostCompleteCCW = false;
+    //                 displacementCount -= 2;
+    //             }
+    //         }
+    //         almostCompleteCW = false;
+    //         break;
             
-        default:
-            break;
+    //     default:
+    //         break;
+    // }
+
+    // displacement += (displacementCount - ZeroOffset);
+    // return displacement;
+
+    static float lastAngle = 0.0f;
+    static float totalDisplacement = 0.0f;
+
+    double currentAngle = 0.0f;
+    getAngleValue(currentAngle);
+
+    float deltaAngle = currentAngle - lastAngle;
+
+    // Handle crossing the 0-degree point (when transitioning between 359 -> 0 or 0 -> 359)
+    if (deltaAngle > 180.0f) {
+        deltaAngle -= 360.0f;  // Correct for the wraparound in CW direction
+    } else if (deltaAngle < -180.0f) {
+        deltaAngle += 360.0f;  // Correct for the wraparound in CCW direction
     }
 
-    displacement += (displacementCount - ZeroOffset);
-    return displacement;
+    // Apply factor of 2 to full rotations
+    totalDisplacement += (deltaAngle / 360.0f) * 2.0f;  // Increment displacement with factor of 2
+
+    // Update the last angle for the next call
+    lastAngle = currentAngle;
+
+    // Return the total displacement with decimal values included
+    return totalDisplacement;
 }
 
 bool Tle5012b::isMotorStalled()

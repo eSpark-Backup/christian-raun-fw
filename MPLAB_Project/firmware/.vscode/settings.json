@@ -2,6 +2,8 @@
     "files.associations": {
         "lan9255_ethercat_slave.h": "c",
         "plib_tcc1.h": "c",
-        "runtimeclockfreq.h": "c"
+        "runtimeclockfreq.h": "c",
+        "basicdef.h": "c",
+        "print.h": "c"
     }
 }

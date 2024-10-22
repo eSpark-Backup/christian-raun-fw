@@ -5,7 +5,6 @@
         <group>
             <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
             <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
-            <file>file:/C:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Encoder/TLE5012b/tle5012b.cpp</file>
         </group>
     </open-files>
 </project-private>

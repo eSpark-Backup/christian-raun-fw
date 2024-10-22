@@ -1,12 +1,22 @@
 #include "tmc2130.hpp"
 #include "../../Encoder/TLE5012b/tle5012b.hpp"
+#include "../../../Libraries/print/print.h"
 
 #define TIMER_RESOLUTION_NS 16.666666667e-9
+#define STALL_VALUE         -55              // A lower value gives a higher sensitivity,  range (-64  to  +64)
+// #define STALL_VALUE         10
+
+#define FULLSTEP        256
+#define MICROSTEP       16
+#define VMAX(rpm)       (((rpm)/60.0) * (MICROSTEP * (360.0/1.8)) * (16777216.0/12000000.0))     // 2^24 = 16777216
+#define TSTEP_CALC(rpm) (((16777216.0/VMAX(rpm)) * (MICROSTEP/(double)FULLSTEP)))
 
 volatile uint32_t maxToggleCount=0;
 volatile uint32_t toggleCounter=0;
 
-void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacket* dataOut)
+volatile ErrorFlags motorErrors;
+
+void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacket* dataOut, WorkerThread* thread)
 {
     PWMCallbackArgs* args = new PWMCallbackArgs;
     args->stepper = this;
@@ -17,17 +27,27 @@ void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacke
     // TCC1_PWMCallbackRegister(pwmCallback, (uintptr_t) args);         // ISR getting triggerred wrong number of times
     this->encoder = encoder;
     this->driver = motorDriver;
+    this->worker = thread;
+
+    motorErrors.error = 0;
     
     driver->enable();
     driver->begin();
     driver->toff(5);
-    driver->rms_current(1100);
+    driver->blank_time(24);
     driver->microsteps(16);
+    driver->rms_current(1100);
     driver->en_pwm_mode(true);
-    driver->diag0_otpw(true);
-    driver->diag1_stall(true);
     driver->pwm_autoscale(true);
-    // uint32_t value1 = driver->DRV_STATUS();
+    // driver->TCOOLTHRS(0xFFFFF);
+    driver->THIGH(0);
+    driver->semin(10);
+    driver->semax(1);
+    driver->sedn(0b01);
+    driver->sgt(STALL_VALUE);
+    driver->diag0_otpw(true);
+    // driver->diag1_stall(true);
+//    uint32_t value1 = driver->DRV_STATUS();
 }
 
 bool Tmc2130::isRPMSequenceRunning() {
@@ -96,15 +116,16 @@ void calculatePrescaler(float time, uint32_t* scaler, uint32_t* period)
 void Tmc2130::run(float rpm, direction_t dir)
  {
     PORT_PinWrite(DIR_PIN, dir);
-    TCC1_PWMStop();
-    TC4_TimerStop();
+    // TCC1_PWMStop();
+    // TC4_TimerStop();
 
     uint32_t preScaler, tc4Period;
+    uint32_t tStep = TSTEP_CALC(rpm);
     float frequency = toFrequency(rpm);
     // calculate TCC1 period for PWM generation
     // Prescaler (period+1) = (Timer clock freq)/(required freq)
     // (Timer clock freq) is the clock freq assigned by MCC, TCC0/1 is assigned GCLK0 which taking its source from FDPLL0
-    uint32_t periodPWM = ((TCC1_BASE_CLK_FREQ)/(frequency)) - 1;         // Need to remove the magic number and retrieve TCC1 peripheral clock freq from registers
+    uint32_t periodPWM = ((tcc1BaseClkFreq)/(frequency)) - 1;         // Need to remove the magic number and retrieve TCC1 peripheral clock freq from registers
     
     float completeTime = (maxToggleCount/frequency);
     calculatePrescaler(completeTime, &preScaler, &tc4Period);
@@ -119,6 +140,15 @@ void Tmc2130::run(float rpm, direction_t dir)
     TCC1_PWMStart();
     
     notifyObservers(rpm, dir);
+
+    worker->addTask([driver = this->driver, arg = (tStep)] {
+        uint32_t val = ((arg+10)>0xFFFFF) ? 0xFFFFF : (arg+10);
+        driver->TCOOLTHRS(val); 
+        val = ((arg-10)<0) ? 0 : (arg-10);
+        driver->TPWMTHRS(val);
+        driver->diag1_stall(true);
+    });
+    // worker->addTask([driver = this->driver, arg = true] { driver->diag1_stall(arg); });
 }
 
 void Tmc2130::stop(void)
@@ -133,6 +163,9 @@ void Tmc2130::stop(void)
     TCC1_PWMStop();
     TC4_TimerStop();
     TC4_Timer32bitPeriodSet(0);
+
+    worker->addTask([driver = this->driver, arg = false] { driver->diag1_stall(arg); });
+
 }
 
 void Tmc2130::resetMaxToggleCount(void)
@@ -231,7 +264,7 @@ void tc4Callback(TC_TIMER_STATUS status, uintptr_t context)
     if(stepper->isRPMSequenceRunning())
     {
         if (!stepper->isRunning())
-        {    
+        {
             stepper->run();
             rampStepsCount++;
             if(((rampSteps * 2)) == rampStepsCount )
@@ -276,8 +309,35 @@ void pwmCallback(TC_TIMER_STATUS status, uintptr_t context)
 bool Tmc2130::isRunning(void)
 {
     // return (TC4_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
-    // uint32_t state  = TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk;
-    return (TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk);
+    uint32_t state  = TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk;
+    if(state)
+    {
+        motorErrors.flag.encoderStallFlag = encoder->isMotorStalled();
+    }
+    // return (TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk);
+    return state;
+}
+
+void Tmc2130::setStallFlag(uint8_t flag)
+{   
+    motorErrors.flag.driverStallFlag = flag & 0x01;
+}
+
+void Tmc2130::setOvertempFlag(uint8_t flag)
+{   
+    motorErrors.flag.motorOvertempFlag = flag & 0x01;
+}
+
+uint8_t Tmc2130::isErrorPresent(void)
+{   
+    uint8_t currentStatus = motorErrors.error;
+    if(currentStatus)
+    {
+        setOvertempFlag(0);
+        setStallFlag(0);
+    }
+    return currentStatus;
+    // return errors.error;
 }
 
 void Tmc2130::calculateRamp(rampSettings* rs)

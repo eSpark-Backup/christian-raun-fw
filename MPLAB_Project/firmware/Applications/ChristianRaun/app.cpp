@@ -5,7 +5,8 @@
 #include "../../src/Devices/Ethercat/Lan9255/Lan9255.hpp"
 #include "../../src/Devices/Timer/timer.hpp"
 #include "../../src/Version/firmware_version.h"
-
+#include "../../src/Libraries/print/print.h"
+//#include "../../src/Libraries/Worker_thread/workerThread.hpp"
 
 #define R_SENSE 0.075f // Match to your driver
                       // SilentStepStick series use 0.11
@@ -20,7 +21,7 @@ Stepper* stepper;
 Encoder* encoder; 
 Ethercat* ethercat;
 Timer* timer;
-
+WorkerThread* worker;
 
 uint32_t steps = 0;
 uint32_t stopTime = 0;
@@ -32,28 +33,28 @@ void App::setup()
 {
     SYS_Initialize ( NULL );
     APP_Initialize();
-    
-    EIC_CallbackRegister(DIAG0_INTERRUPT_PIN, temperatureError, (uintptr_t)&dataOut);
-    EIC_InterruptEnable(DIAG0_INTERRUPT_PIN);
-    EIC_CallbackRegister(DIAG1_INTERRUPT_PIN, stallError, (uintptr_t)&dataOut);
-    EIC_InterruptEnable(DIAG1_INTERRUPT_PIN);
-    
     state = eTasks;
 
     stepperDriver = new TMC2160Stepper(EN_PIN, CS_PIN, R_SENSE);
     stepper = new Tmc2130;
     encoder = new Tle5012b;
     ethercat = new Lan9255;
-    timer = new Timer;
+    worker = new WorkerThread;
+    // timer = new Timer;
     
     timer->setup();
     encoder->setup();
-    stepper->setup(stepperDriver, encoder, &dataOut);
+    stepper->setup(stepperDriver, encoder, &dataOut, worker);
     stepper->addObserver(encoder);
     encoder->setZeroOffset();
     dataOut.diag3 = FIRMWARE_VERSION;
     dataOut.temperature = 350; // For Testing
 
+    EIC_CallbackRegister(DIAG0_INTERRUPT_PIN, temperatureError, (uintptr_t)stepper);
+    EIC_InterruptEnable(DIAG0_INTERRUPT_PIN);
+    EIC_CallbackRegister(DIAG1_INTERRUPT_PIN, stallError, (uintptr_t)stepper);
+    EIC_InterruptEnable(DIAG1_INTERRUPT_PIN);
+    
 }
 
 void App::loop()
@@ -92,7 +93,7 @@ void App::loop()
             state = eSendData;
             break;
             
-        case eStepper:  
+        case eStepper:
             steps = dataIn.displacement * STEPS_PER_MM;
             stepper->run(dataIn.rpm, (direction_t) dataIn.direction, steps);
             state = eSendData;
@@ -120,6 +121,9 @@ void App::loop()
         case eErrorHandling:
             if (stepper->isRunning())
             {
+                // if(!stepperDriver->diag1_stall())
+                //     stepperDriver->diag1_stall(true);
+
                 if(ethercat->isLinkDown())
                 {
                     stepper->stop();
@@ -130,20 +134,32 @@ void App::loop()
                 {
                     if(stepper->isRunning())
                     {
-                        if(encoder->isMotorStalled())           // add motor driver based stall check here? or in ISR for DIAG0/1
+                        ErrorFlags error;
+                        error.error = stepper->isErrorPresent();
+                        // if(encoder->isMotorStalled())              // add motor driver based stall check here? or in ISR for DIAG0/1
+                        if(error.flag.encoderStallFlag || error.flag.driverStallFlag || error.flag.motorOvertempFlag)           // add motor driver based stall check here? or in ISR for DIAG0/1
                         {
                             stepper->stop();
                             stepper->setRPMSequenceStatus(false);
-                            dataOut.motorDiagnostic = MOTOR_STALLED;
+                            if(error.flag.encoderStallFlag || error.flag.driverStallFlag)
+                                dataOut.motorDiagnostic = MOTOR_STALLED;
+                            else if(error.flag.motorOvertempFlag)
+                                dataOut.motorDiagnostic = TEMPERATURE_LIMIT_EXCEEDED;
                         }
                     }
                 }
             }
-            
+            // else
+            // {
+            //     if(stepperDriver->diag1_stall())
+            //         stepperDriver->diag1_stall(false);
+            // }
             
             state = eTasks;
             break;        
     }
+
+     worker->run();
     
 }
 
@@ -189,14 +205,14 @@ extern "C"
     /* Diag0 Interrupt handler */
     void temperatureError(uintptr_t context)
     {
-        dataOutPacket* out = (dataOutPacket*)context;
-        out->motorDiagnostic = TEMPERATURE_LIMIT_EXCEEDED;
+        Tmc2130* driver = (Tmc2130*)context;
+        driver->setOvertempFlag(true);
     }
     /* Diag1 Interrupt handler */
     void stallError(uintptr_t context)
     {
-        dataOutPacket* out = (dataOutPacket*)context;
-        out->motorDiagnostic = MOTOR_STALLED;
+        Tmc2130* driver = (Tmc2130*)context;
+        driver->setStallFlag(true);
     }
 
     App * create_App() // wrapper function
@@ -213,4 +229,5 @@ extern "C"
     {
         return pApp->loop();
     }
+
 }
