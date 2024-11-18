@@ -132,8 +132,8 @@ void App::loop()
                 
                 if(CALIBRATION_SEQUENCE_01_STARTED != dataOut.deviceStatus)
                 {
-                    if(stepper->isRunning())
-                    {
+                    // if(stepper->isRunning())
+                    // {
                         ErrorFlags error;
                         error.error = stepper->isErrorPresent();
                         // if(encoder->isMotorStalled())              // add motor driver based stall check here? or in ISR for DIAG0/1
@@ -146,7 +146,7 @@ void App::loop()
                             else if(error.flag.motorOvertempFlag)
                                 dataOut.motorDiagnostic = TEMPERATURE_LIMIT_EXCEEDED;
                         }
-                    }
+                    // }
                 }
             }
             // else

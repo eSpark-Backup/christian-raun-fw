@@ -22,6 +22,7 @@ class Tmc2130 : public Stepper
         float displacementRamp[rampSteps+1] = {0};
         float rampRPMArr[rampSteps+1] = {0};
         bool rpmSequenceStatus;
+        bool rampTmcSet = false;
         // volatile ErrorFlags errors;
 
         WorkerThread* worker;

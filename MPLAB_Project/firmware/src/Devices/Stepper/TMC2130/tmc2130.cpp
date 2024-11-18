@@ -55,6 +55,8 @@ bool Tmc2130::isRPMSequenceRunning() {
 }
 
 void Tmc2130::setRPMSequenceStatus(bool status) {
+    if(!status)
+        this->rampTmcSet = false;
     this->rpmSequenceStatus = status;            
 }
 
@@ -141,13 +143,19 @@ void Tmc2130::run(float rpm, direction_t dir)
     
     notifyObservers(rpm, dir);
 
-    worker->addTask([driver = this->driver, arg = (tStep)] {
-        uint32_t val = ((arg+10)>0xFFFFF) ? 0xFFFFF : (arg+10);
-        driver->TCOOLTHRS(val); 
-        val = ((arg-10)<0) ? 0 : (arg-10);
-        driver->TPWMTHRS(val);
-        driver->diag1_stall(true);
-    });
+    float temp = (true==isRPMSequenceRunning())?(TSTEP_CALC(rampRPMArr[rampSteps])):(tStep);
+    if(!rampTmcSet)
+    {
+        worker->addTask([driver = this->driver, arg = temp] {
+            uint32_t val = ((arg+10)>0xFFFFF) ? 0xFFFFF : (arg+10);
+            driver->TCOOLTHRS(val); 
+            val = ((arg-10)<0) ? 0 : (arg-10);
+            driver->TPWMTHRS(val);
+            driver->diag1_stall(true);
+        });
+    }
+    rampTmcSet = isRPMSequenceRunning();
+
     // worker->addTask([driver = this->driver, arg = true] { driver->diag1_stall(arg); });
 }
 
@@ -189,10 +197,12 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     break;
 
                 case CALIBRATION_SEQUENCE_01_STARTED:
-                    if (encoder->isMotorStalled())
+                    // if (encoder->isMotorStalled())
+                    if (isErrorPresent())
                     {
                         stop();
-                        out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
+                        if(motorErrors.flag.encoderStallFlag || motorErrors.flag.driverStallFlag)
+                            out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
 //                        encoder->setZeroOffset();
                     }
                     break;  

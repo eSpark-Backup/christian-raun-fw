@@ -107,13 +107,14 @@ float Tle5012b::calculateDisplacement(void)
     // displacement += (displacementCount - ZeroOffset);
     // return displacement;
 
-    static float lastAngle = 0.0f;
-    static float totalDisplacement = 0.0f;
+    static float lastAngle = 0.0f;  // Store the previous angle value
+    static float totalDisplacement = 0.0f;  // Total displacement with factor of 2 applied
 
     double currentAngle = 0.0f;
     getAngleValue(currentAngle);
 
-    float deltaAngle = currentAngle - lastAngle;
+    // Calculate the difference between current and last angle (inverted to flip direction)
+    float deltaAngle = lastAngle - currentAngle;  // Invert the reading by switching the subtraction
 
     // Handle crossing the 0-degree point (when transitioning between 359 -> 0 or 0 -> 359)
     if (deltaAngle > 180.0f) {
@@ -129,7 +130,7 @@ float Tle5012b::calculateDisplacement(void)
     lastAngle = currentAngle;
 
     // Return the total displacement with decimal values included
-    return totalDisplacement;
+    return totalDisplacement - ZeroOffset;
 }
 
 bool Tle5012b::isMotorStalled()
