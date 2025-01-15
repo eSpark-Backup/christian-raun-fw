@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="MAIN" Id="{c7f26d80-2f63-4716-b0e1-2efb0622d059}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	
+    fbDownload : FB_EcFoeLoad ;
+		
+	dwPass	: DWORD := 287454020; // 0x11223344
+	sNetId     : T_AmsNetId := '192.168.18.191.3.1' ;
+    nSlaveAddr : UINT := 1001;  
+	eMode      : E_EcFoeMode := eFoeMode_Write;
+	sPathName : STRING := 'D:\LAN9255Updated.bin';
+	
+    bLoad      : BOOL;
+    bBusy      : BOOL;
+    bError     : BOOL;
+    nErrID     : UDINT;
+    nBytesWritten : UDINT;
+    nPercent      : UDINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbDownload( bExecute := bLoad,
+		sNetId  := sNetId,
+		nSlaveAddr := nSlaveAddr,
+		dwPass  := dwPass,
+		sPathName  := sPathName, 
+        bBusy => bBusy,
+        bError => bError,
+        nErrId => nErrID,
+        cbLoad => nBytesWritten,
+        nProgress => nPercent );]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="6" Count="8" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

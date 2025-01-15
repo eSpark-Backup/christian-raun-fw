@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/.Embedded/MPLABXProjects/EtherCat-NewBoardTest-60RPM/src/main.cpp</file>
+            <file>file:/C:/.Embedded/MPLABXProjects/EtherCat-NewBoardTest-60RPM/src/config/default/driver/lan9255/drv_lan9255_ecat_util.h</file>
+            <file>file:/C:/.Embedded/MPLABXProjects/EtherCat-NewBoardTest-60RPM/src/Devices/Ethercat/Lan9255/Lan9255.cpp</file>
+            <file>file:/C:/.Embedded/MPLABXProjects/EtherCat-NewBoardTest-60RPM/src/app_lan9255.c</file>
+            <file>file:/C:/.Embedded/MPLABXProjects/EtherCat-NewBoardTest-60RPM/src/config/default/driver/lan9255/drv_lan9255_ecat_util.c</file>
+            <file>file:/C:/.Embedded/MPLABXProjects/EtherCat-NewBoardTest-60RPM/src/Devices/Ethercat/ethercat.hpp</file>
+            <file>file:/C:/.Embedded/MPLABXProjects/EtherCat-NewBoardTest-60RPM/src/config/default/peripheral/qspi/plib_qspi_spi.c</file>
+        </group>
+    </open-files>
+</project-private>
