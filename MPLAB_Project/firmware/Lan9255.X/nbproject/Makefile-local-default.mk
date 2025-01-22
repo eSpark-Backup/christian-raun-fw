@@ -34,5 +34,5 @@ MP_CPPC_DIR="C:\.toolchains\xc32\v4.45\bin"
 MP_AS_DIR="C:\.toolchains\xc32\v4.45\bin"
 MP_LD_DIR="C:\.toolchains\xc32\v4.45\bin"
 MP_AR_DIR="C:\.toolchains\xc32\v4.45\bin"
-CMSIS_DIR=C:/Program Files/Microchip/MPLABX/v6.20/packs/arm/CMSIS/5.4.0
 DFP_DIR=C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/LAN9255_DFP/1.3.20
+CMSIS_DIR=C:/Program Files/Microchip/MPLABX/v6.20/packs/arm/CMSIS/5.4.0
