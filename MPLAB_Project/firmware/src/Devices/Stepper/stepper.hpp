@@ -24,6 +24,7 @@ enum motorDiagnostic
     NO_ERROR,
     TEMPERATURE_LIMIT_EXCEEDED,
     MOTOR_STALLED,
+    INVALID_RAMP_SEQUENCE,
 };
 
 struct rampSettings
@@ -49,6 +50,8 @@ enum deviceStatus
     CALIBRATION_SEQUENCE_02_FAILED,
     CALIBRATION_SEQUENCE_02_SUCCESS,
     RAMP_SEQUENCE_COMPLETED,
+    RAMP_SEQUENCE_RUNNING,
+    RAMP_SEQUENCE_FAILED,
 };
 
 enum stepperAppModes
@@ -89,7 +92,7 @@ class Stepper
         virtual bool isRunning(void) { return false;}
         virtual void resetMaxToggleCount(void) {}
         virtual void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement = 0) {}
-        virtual void calculateRamp(rampSettings* rs) {}
+        virtual bool calculateRamp(rampSettings* rs) {  return true;   }
         void addObserver(Observer* observer)
         {
             observers.push_back(observer);

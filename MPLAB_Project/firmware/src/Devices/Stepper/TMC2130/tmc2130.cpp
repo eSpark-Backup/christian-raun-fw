@@ -9,17 +9,19 @@ void Tmc2130::setup(IEncoder* encoder, dataOutPacket* dataOut)
     PWMCallbackArgs* args = new PWMCallbackArgs;
     args->stepper = this;
     args->dataOut = dataOut;
+    
+    this->dataOut = dataOut;
 
     TC4_TimerCallbackRegister(pwm_callback, (uintptr_t) args);
     this->encoder = encoder;
 }
 
 bool Tmc2130::isRPMSequenceRunning() {
-    return rpmSequenceStatus;             
+    return rpmSequenceStatus;
 }
 
 void Tmc2130::setRPMSequenceStatus(bool status) {
-    this->rpmSequenceStatus = status;            
+    this->rpmSequenceStatus = status;
 }
 
 void Tmc2130::loop()
@@ -175,8 +177,10 @@ bool Tmc2130::isRunning(void)
     return (TC4_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
 }
 
-void Tmc2130::calculateRamp(rampSettings* rs)
+bool Tmc2130::calculateRamp(rampSettings* rs)
 {
+    bool isRampValid = true;
+    
     float requiredRotations = rs->displacement / displacementFactor;
     float requiredRPM = (requiredRotations / rs->time) * 60;
     float rampRPM = requiredRPM / rampSteps;
@@ -195,6 +199,17 @@ void Tmc2130::calculateRamp(rampSettings* rs)
     float requiredRotationsWithoutRamps = requiredDisplacementWithoutRamps / displacementFactor;
     float requiredRPMAfterWithoutRamps = (requiredRotationsWithoutRamps / timeWithoutRamps) * 60;
     rampRPMArr[rampSteps] = requiredRPMAfterWithoutRamps;
+    
+    for(int i = 0; i<=rampSteps; i++)
+    {
+        if((rampRPMArr[i] > 200) || (rampRPMArr[i] < 0))
+        {
+            this->dataOut->motorDiagnostic = INVALID_RAMP_SEQUENCE;
+            isRampValid = false;
+        }
+    }
+    
+    return isRampValid;
 }
 
 void Tmc2130::run(rampSettings* rs)
@@ -208,7 +223,9 @@ void Tmc2130::run(rampSettings* rs)
     if (0 == rs->displacement)
         return;
     
-    calculateRamp(rs);
+    if(!calculateRamp(rs))
+        return;
+    
     this->dir = rs->dir;
     run(true);
 }

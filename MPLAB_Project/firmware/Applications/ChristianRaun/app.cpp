@@ -89,12 +89,16 @@ void App::loop()
             {
                 dataOut.position = encoder->calculateDisplacement();
                 stopTime = millis();
+                if(stepper->isRPMSequenceRunning())
+                    dataOut.deviceStatus = RAMP_SEQUENCE_RUNNING;
+                else if(dataIn.mode == DISPLACEMENT)
+                    dataOut.deviceStatus = None;
             }
             else
             {
                 uint32_t elapsedTime = millis() - stopTime;
                 if (elapsedTime <= 2000U) {
-                    // Calculate displacement for 5 seconds after motor stopped
+                    // Calculate displacement for 2 seconds after motor stopped
                     dataOut.position = encoder->calculateDisplacement();
                 }
             }
@@ -123,6 +127,10 @@ void App::loop()
                     }
                 }
             }
+            else if(dataIn.mode == RAMP && dataOut.motorDiagnostic == INVALID_RAMP_SEQUENCE)
+            {
+                dataOut.deviceStatus = RAMP_SEQUENCE_FAILED;
+            }
             
             
             state = eTasks;
@@ -137,7 +145,7 @@ appState App::selectMode()
     switch(dataIn.mode) 
     {
         case DISPLACEMENT:
-           dataOut.deviceStatus = None;
+//           dataOut.deviceStatus = None;
            state = eStepper;
            break;
 

@@ -50,53 +50,25 @@ void Tle5012b::getAngleValue(double &angleValue)
 
 float Tle5012b::calculateDisplacement(void)
 {
-    double angle;
-    getAngleValue(angle);
-    angle = 360 - angle; // For testing. Reversed value is observed
-    direction_t direction = (direction_t)dir;
-    
-    float displacement = (float)((angle/360.0) * 2);
-    switch(direction)
-    {
-        case CLOCKWISE:
-            if (displacement > (float)1.5)
-            {
-                almostCompleteCW =true;
-            }
-            else if (displacement < (float)0.5)
-            {
-                if(almostCompleteCW)
-                {
-                    almostCompleteCW = false;
-                    displacementCount += 2;
-                }
-            }
-            
-            almostCompleteCCW = false;
-            break;
-            
-        case ANTICLOCKWISE:
-            if (displacement < (float)0.5)
-            {
-                almostCompleteCCW =true;
-            }
-            else if (displacement > (float)1.5)
-            {
-                if(almostCompleteCCW)
-                {
-                    almostCompleteCCW = false;
-                    displacementCount -= 2;
-                }
-            }
-            almostCompleteCW = false;
-            break;
-            
-        default:
-            break;
+    static float lastAngle = 0.0f;  
+    static float totalDisplacement = 0.0f;  
+
+    double currentAngle = 0.0f;
+    getAngleValue(currentAngle);
+
+    float deltaAngle = lastAngle - currentAngle; 
+
+    if (deltaAngle > 180.0f) {
+        deltaAngle -= 360.0f;  // Correct for the wraparound in CW direction
+    } else if (deltaAngle < -180.0f) {
+        deltaAngle += 360.0f;  // Correct for the wraparound in CCW direction
     }
 
-    displacement += (displacementCount - ZeroOffset);
-    return displacement;
+    totalDisplacement += (deltaAngle / 360.0f) * 2.0f;  
+
+    lastAngle = currentAngle;
+
+    return totalDisplacement - ZeroOffset;
 }
 
 bool Tle5012b::isMotorStalled()

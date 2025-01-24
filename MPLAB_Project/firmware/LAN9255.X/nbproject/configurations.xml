@@ -246,6 +246,32 @@
       <itemPath>../src/basicDef.h</itemPath>
       <itemPath>../src/app_lan9255.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="default.mhc" projectFiles="true">
+        <itemPath>../src/config/default/default.mhc/cmsis.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/eic.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/ethercat_apps_config.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/ethercat_lan9255.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/evsys.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/nvmctrl.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/qspi.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/sercom0.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/sercom4.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/tc0.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/tc2.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/tc4.yml</itemPath>
+      </logicalFolder>
+      <itemPath>Makefile</itemPath>
+      <itemPath>../src/config/default/pin_configurations.csv</itemPath>
+      <itemPath>../src/config/default/harmony-manifest-success.yml</itemPath>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -362,37 +388,11 @@
       <itemPath>../src/main.cpp</itemPath>
       <itemPath>../src/app_lan9255.c</itemPath>
     </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <logicalFolder name="f1" displayName="default.mhc" projectFiles="true">
-        <itemPath>../src/config/default/default.mhc/cmsis.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/core.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/eic.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/ethercat_apps_config.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/ethercat_lan9255.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/evsys.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/nvmctrl.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/qspi.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/sercom0.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/sercom4.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tc0.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tc2.yml</itemPath>
-        <itemPath>../src/config/default/default.mhc/tc4.yml</itemPath>
-      </logicalFolder>
-      <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/default/pin_configurations.csv</itemPath>
-      <itemPath>../src/config/default/harmony-manifest-success.yml</itemPath>
-    </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
-    <Elem>../../../Test_Project/firmware/src</Elem>
     <Elem>../Applications/ChristianRaun</Elem>
+    <Elem>../../../Test_Project/firmware/src</Elem>
     <Elem>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
@@ -403,14 +403,14 @@
         <targetDevice>LAN9255ZMX018</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>jlink</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <languageToolchainVersion>4.45</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="LAN9255_DFP" vendor="Microchip" version="1.1.7"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
+        <pack name="LAN9255_DFP" vendor="Microchip" version="1.1.7"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -432,9 +432,9 @@
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
-        <makeCustomizationPreStep>"../src/Version/fw_version_gen.sh" || exit 1</makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
-        <makeCustomizationPostStep>${MP_CC_DIR}/xc32-objcopy -I ihex -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.hex" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin"</makeCustomizationPostStep>
+        <makeCustomizationPreStep>${Sh} "../src/Version/fw_version_gen.sh"</makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep>${MP_CC_DIR}/xc32-objcopy -I ihex -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.elf" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin"</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
@@ -1141,11 +1141,15 @@
         <property key="codecoverage.enabled" value="Disable"/>
         <property key="codecoverage.enableoutputtofile" value="false"/>
         <property key="codecoverage.outputfile" value=""/>
+        <property key="communication.adaptivespeed" value="false"/>
         <property key="communication.autoselectspeed" value="true"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="lastid" value=""/>
         <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.bootflash" value="true"/>
@@ -1178,6 +1182,7 @@
         <property key="programoptions.eraseb4program" value="false"/>
         <property key="programoptions.preservebootflash" value="false"/>
         <property key="programoptions.preserveprogrammemory" value="false"/>
+        <property key="programoptions.preserveprogrammemory.ranges" value="0x0-0x3ffff"/>
         <property key="programoptions.preserveprogramrange.ranges" value="0x0-0x7ffff"/>
         <property key="programoptions.resetafterprogram" value="true"/>
         <property key="reset.scl" value="false"/>
@@ -1635,11 +1640,15 @@
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="arm.use_vtor" value="false"/>
         <property key="arm.vtor_adr" value="exception_table"/>
+        <property key="communication.adaptivespeed" value="false"/>
         <property key="communication.autoselectspeed" value="true"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
         <property key="lastid" value=""/>
         <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.bootflash" value="true"/>
@@ -1654,7 +1663,7 @@
         <property key="programoptions.eraseb4program" value="false"/>
         <property key="programoptions.preservebootflash" value="false"/>
         <property key="programoptions.preserveprogrammemory" value="false"/>
-        <property key="programoptions.preserveprogramrange.ranges" value="0x0-0x7ffff"/>
+        <property key="programoptions.preserveprogrammemory.ranges" value="0x0-0x3ffff"/>
         <property key="programoptions.resetafterprogram" value="true"/>
         <property key="script.has_reset" value="true"/>
         <property key="script.log_level" value="1"/>

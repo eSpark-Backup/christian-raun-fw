@@ -14,6 +14,7 @@
 class Tmc2130 : public Stepper
 {
     private:
+        dataOutPacket* dataOut;
         IEncoder* encoder;
         float displacementRamp[rampSteps+1] = {0};
         float rampRPMArr[rampSteps+1] = {0};
@@ -32,7 +33,7 @@ class Tmc2130 : public Stepper
         bool isRunning(void) override;
         void resetMaxToggleCount(void) override;
         void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement= 0) override;
-        void calculateRamp(rampSettings* rs) override;
+        bool calculateRamp(rampSettings* rs) override;
         
 };
 
