@@ -48,6 +48,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include "peripheral/nvmctrl/plib_nvmctrl.h"
 #include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/sercom/usart/plib_sercom0_usart.h"
@@ -70,6 +71,12 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
+
+/* Device Information */
+//#define DEVICE_NAME			 "LAN9255ZMX018"
+#define DEVICE_ARCH			 "CORTEX-M4"
+#define DEVICE_FAMILY		 "LAN9255"
+#define DEVICE_SERIES		 "LAN9255ZMX"
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 120000000

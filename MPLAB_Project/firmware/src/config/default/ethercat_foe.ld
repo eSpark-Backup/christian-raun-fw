@@ -65,17 +65,24 @@ ENTRY(__XC32_RESET_HANDLER_NAME)
 #  define ROM_ORIGIN 0x0
 #endif
 #ifndef ROM_LENGTH
-#  define ROM_LENGTH 0x20000
-#elif (ROM_LENGTH > 0x20000)
-#  error ROM_LENGTH is greater than the max size of 0x20000
+#  define ROM_LENGTH 0x80000
+#elif (ROM_LENGTH > 0x80000)
+#  error ROM_LENGTH is greater than the max size of 0x80000
 #endif
 #ifndef RAM_ORIGIN
 #  define RAM_ORIGIN 0x20000000
 #endif
 #ifndef RAM_LENGTH
-#  define RAM_LENGTH 0x20000
-#elif (RAM_LENGTH > 0x20000)
-#  error RAM_LENGTH is greater than the max size of 0x20000
+#  define RAM_LENGTH 0x40000
+#elif (RAM_LENGTH > 0x40000)
+#  error RAM_LENGTH is greater than the max size of 0x40000
+#endif
+
+#ifndef EEPROM_ORIGIN
+#  define EEPROM_ORIGIN 0x3E000
+#endif
+#ifndef EEPROM_LENGTH
+#  define EEPROM_LENGTH 0x2000
 #endif
   
 #ifndef TCM_ORIGIN
@@ -100,6 +107,7 @@ MEMORY
 {
   rom (LRX) : ORIGIN = ROM_ORIGIN, LENGTH = ROM_LENGTH
   ram (WX!R) : ORIGIN = RAM_ORIGIN, LENGTH = RAM_LENGTH
+  config_eeprom_mem (LRX) : ORIGIN = EEPROM_ORIGIN, LENGTH = EEPROM_LENGTH
   tcm (WX) : ORIGIN = TCM_ORIGIN, LENGTH = __XC32_TCM_LENGTH
   config_D0800080 : ORIGIN = 0xD0800080, LENGTH = 0x4
   config_D0800100 : ORIGIN = 0xD0800100, LENGTH = 0x4
@@ -148,6 +156,9 @@ SECTIONS
     .config_D0800080 : {
       KEEP(*(.config_D0800080))
     } > config_D0800080
+	.config_eeprom : {
+	  KEEP(*(.config_eeprom))
+	} > config_eeprom_mem
     .config_D0800100 : {
       KEEP(*(.config_D0800100))
     } > config_D0800100
