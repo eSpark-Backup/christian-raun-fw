@@ -4,13 +4,16 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>LAN9255</name>
-            <creation-uuid>a8cf35d5-05b3-4ef4-bfd7-e64c3b606444</creation-uuid>
+            <creation-uuid>73c81bc9-f408-4f97-80f7-0773dc09ad7d</creation-uuid>
             <make-project-type>0</make-project-type>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>../Applications</sourceRootElem>
                 <sourceRootElem>../src</sourceRootElem>
+                <sourceRootElem>../Applications/ChristianRaun</sourceRootElem>
+                <sourceRootElem>../../../Test_Project/firmware/src</sourceRootElem>
+                <sourceRootElem>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder</sourceRootElem>
+                <sourceRootElem>../Applications</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
