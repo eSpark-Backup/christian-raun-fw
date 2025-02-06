@@ -116,12 +116,12 @@
       </logicalFolder>
       <logicalFolder name="Libraries" displayName="Libraries" projectFiles="true">
         <logicalFolder name="print" displayName="print" projectFiles="true">
-          <itemPath>../src/Libraries/print/print.h</itemPath>
+          <itemPath>../src/Libraries/print/print.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="Worker_thread"
                        displayName="Worker_thread"
                        projectFiles="true">
-          <itemPath>../src/Libraries/Worker_thread/workerThread.cpp</itemPath>
+          <itemPath>../src/Libraries/Worker_thread/workerThread.hpp</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="packs" displayName="packs" projectFiles="true">
@@ -388,12 +388,12 @@
       </logicalFolder>
       <logicalFolder name="Libraries" displayName="Libraries" projectFiles="true">
         <logicalFolder name="print" displayName="print" projectFiles="true">
-          <itemPath>../src/Libraries/print/print.c</itemPath>
+          <itemPath>../src/Libraries/print/print.cpp</itemPath>
         </logicalFolder>
         <logicalFolder name="Worker_thread"
                        displayName="Worker_thread"
                        projectFiles="true">
-          <itemPath>../src/Libraries/Worker_thread/workerThread.hpp</itemPath>
+          <itemPath>../src/Libraries/Worker_thread/workerThread.cpp</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="slave_stack" displayName="slave_stack" projectFiles="true">
@@ -418,6 +418,8 @@
   <sourceRootList>
     <Elem>../src</Elem>
     <Elem>../Applications/ChristianRaun</Elem>
+    <Elem>../../../Test_Project/firmware/src</Elem>
+    <Elem>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -454,9 +456,9 @@
         </subordinates>
       </compileType>
       <makeCustomizationType>
-        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
-        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPreStep>sh "${ProjectDir}/../src/Version/fw_version_gen.sh"</makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>"${MP_CC_DIR}/xc32-objcopy" -I elf32-little -O binary "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.elf" "${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.bin</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
@@ -482,6 +484,7 @@
       <C32>
         <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -538,6 +541,7 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -577,6 +581,7 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value="-std=c++17"/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>
@@ -606,6 +611,7 @@
         <appendMe value="-std=c++17"/>
       </C32CPP>
       <C32Global>
+        <property key="appendMe" value=""/>
         <property key="common-include-directories" value=""/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="false"/>

@@ -5,8 +5,10 @@
 #include "../../src/Devices/Ethercat/Lan9255/Lan9255.hpp"
 #include "../../src/Devices/Timer/timer.hpp"
 #include "../../src/Version/firmware_version.h"
-#include "../../src/Libraries/print/print.h"
+#include "../../src/Libraries/print/print.hpp"
 //#include "../../src/Libraries/Worker_thread/workerThread.hpp"
+
+#define APP_PORT    0
 
 #define R_SENSE 0.075f // Match to your driver
                       // SilentStepStick series use 0.11
@@ -55,13 +57,14 @@ void App::setup()
     EIC_CallbackRegister(DIAG1_INTERRUPT_PIN, stallError, (uintptr_t)stepper);
     EIC_InterruptEnable(DIAG1_INTERRUPT_PIN);
     
+    ITM_Printf(APP_PORT, "Application setup complete.\n");
 }
 
 void App::loop()
 {      
     bool status;
     switch (state)
-    {                
+    {
         case eTasks:
             APP_Tasks();
             state = eModeSelection;
@@ -90,12 +93,14 @@ void App::loop()
                 rs.dir          = (direction_t) dataIn.direction;
                 stepper->run(&rs);
             }
+//            ITM_Printf(APP_PORT, "Executing Ramp sequence.\n");
             state = eSendData;
             break;
             
         case eStepper:
             steps = dataIn.displacement * STEPS_PER_MM;
             stepper->run(dataIn.rpm, (direction_t) dataIn.direction, steps);
+//            ITM_Printf(APP_PORT, "Executing Displacement sequence.\n");
             state = eSendData;
             break;
 
@@ -207,12 +212,18 @@ extern "C"
     {
         Tmc2130* driver = (Tmc2130*)context;
         driver->setOvertempFlag(true);
+        worker->addTask([] {
+            ITM_Printf(APP_PORT, "Temprature threshold exceeded.\n");
+        });
     }
     /* Diag1 Interrupt handler */
     void stallError(uintptr_t context)
     {
         Tmc2130* driver = (Tmc2130*)context;
         driver->setStallFlag(true);
+        worker->addTask([] {
+            ITM_Printf(APP_PORT, "Stall detected.\n");
+        });
     }
 
     App * create_App() // wrapper function

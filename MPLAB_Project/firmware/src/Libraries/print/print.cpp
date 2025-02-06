@@ -1,10 +1,14 @@
-#include "print.h"
+#include "print.hpp"
 #include <string.h>
 #include <stdarg.h>  // For va_list, va_start, va_end
 #include <stdio.h>   // For vsnprintf
 
 #define PRINT_BUFFER_SIZE 256
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
 void ITM_Printf(uint8_t port, const char *format, ...)
 {
     char buffer[PRINT_BUFFER_SIZE];  // Buffer to hold the formatted string
@@ -20,3 +24,7 @@ void ITM_Printf(uint8_t port, const char *format, ...)
         ITM_SendChar((uint32_t)*ptr, port);  // Send character via ITM
     }
 }
+    
+#ifdef __cplusplus
+}
+#endif

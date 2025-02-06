@@ -30,7 +30,7 @@ Pin Number,Pin ID,Custom Name,Function,Mode, Direction,Latch,Pull Up,Pull Down,D
 64,PA15,EIC_EXTINT1,EIC_EXTINT15,Digital,High Impedance,n/a,No,No,NORMAL
 67,PA16,DRV_MOSI,SERCOM1_PAD0,Digital,High Impedance,n/a,No,No,NORMAL
 68,PA17,DRV_SCK,SERCOM1_PAD1,Digital,High Impedance,n/a,No,No,NORMAL
-69,PA18,DRV_CS,GPIO,Digital,Out,Low,,,NORMAL
+69,PA18,DRV_CS,GPIO,Digital,Out,High,,,NORMAL
 73,PA19,DRV_MISO,SERCOM1_PAD3,Digital,High Impedance,n/a,No,No,NORMAL
 77,PB16,,Available,,,,,,NORMAL
 79,PB17,,Available,,,,,,NORMAL

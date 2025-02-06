@@ -1,9 +1,6 @@
 #include "TMCStepper.hpp"
 #include "TMC_MACROS.hpp"
 #include "definitions.h"
-//#include "peripheral/port/plib_port.h"
-//#include "peripheral/sercom/spi_master/plib_sercom_spi_master_common.h"
-//#include "peripheral/sercom/spi_master/plib_sercom1_spi_master.h"
 
 #include <stdint.h>
 #include <stddef.h>
@@ -12,6 +9,14 @@
 int8_t TMC2130Stepper::chain_length = 0;
 uint32_t TMC2130Stepper::spi_speed = 16000000/8;
 
+// callback function for setting tmc driver CS pin high on SPI transaction completion
+void SPI_Callback(uintptr_t context) {
+    TMC2130Stepper* instance = reinterpret_cast<TMC2130Stepper*>(context);
+    if (instance) {
+        instance->switchCSpin(true);
+    }
+}
+
 TMC2130Stepper::TMC2130Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS, int8_t link) :
   TMCStepper(RS),
   _pinCS(pinCS),
@@ -19,6 +24,7 @@ TMC2130Stepper::TMC2130Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS, int8_t 
   link_index(link)
   {
     defaults();
+    beginTransaction();
 
     if (link > chain_length)
       chain_length = link;
@@ -75,25 +81,26 @@ void TMC2130Stepper::switchCSpin(bool state) {
     if(state)
     {
         PORT_PinSet(_pinCS);
+        return;
     }
-    else
-    {
-        PORT_PinClear(_pinCS);
-    }
+    PORT_PinClear(_pinCS);
 }
 
 __attribute__((weak))
 void TMC2130Stepper::beginTransaction() {
-    SPI_TRANSFER_SETUP setup;
-        setup.clockFrequency = 2000000;
-        setup.clockPhase = SPI_CLOCK_PHASE_LEADING_EDGE;
-        setup.clockPolarity = SPI_CLOCK_POLARITY_IDLE_HIGH;
-        setup.dataBits = SPI_DATA_BITS_8;
-  if (TMC_SW_SPI == nullptr) {
-    SERCOM1_SPI_TransferSetup(&setup, 2000000);
-//    SPI.beginTransaction(SPISettings(spi_speed, MSBFIRST, SPI_MODE3));
-  }
+    // if (TMC_SW_SPI == nullptr) {
+        SPI_TRANSFER_SETUP setup = {
+            .clockFrequency = 2000000,
+            .clockPhase = SPI_CLOCK_PHASE_LEADING_EDGE,
+            .clockPolarity = SPI_CLOCK_POLARITY_IDLE_HIGH,
+            .dataBits = SPI_DATA_BITS_8,
+        };
+        SERCOM1_SPI_TransferSetup(&setup, setup.clockFrequency);
+        SERCOM1_SPI_CallbackRegister(SPI_Callback, reinterpret_cast<uintptr_t>(this));
+    //     SPI.beginTransaction(SPISettings(spi_speed, MSBFIRST, SPI_MODE3));
+    // }
 }
+
 __attribute__((weak))
 void TMC2130Stepper::endTransaction() {
   if (TMC_SW_SPI == nullptr) {
@@ -109,16 +116,23 @@ uint8_t TMC2130Stepper::transfer(uint8_t data) {
   }
   else {
     SERCOM1_SPI_WriteRead(&data, 1, &out, 1);
-      while(SERCOM1_SPI_IsBusy()){}
-//    out = SERCOM1_SPI_WriteRead((void*)&data, 1, (void*)&out, 1);
+    while(SERCOM1_SPI_IsBusy()){}
   }
   return out;
 }
 
+__attribute__((weak))
+bool TMC2130Stepper::transferDatagram() {
+    switchCSpin(false);
+    return SERCOM1_SPI_WriteRead(txData.data, txData.len(), rxData.data, rxData.len());
+}
+
 void TMC2130Stepper::transferEmptyBytes(const uint8_t n) {
-  for (uint8_t i = 0; i < n; i++) {
-    transfer(0x00);
-  }
+    switchCSpin(false);
+    for (uint8_t i = 0; i < n; i++) {
+      transfer(0x00);
+    }
+    switchCSpin(true);
 }
 
 __attribute__((weak))
@@ -126,11 +140,14 @@ uint32_t TMC2130Stepper::read(uint8_t addressByte) {
   uint32_t out = 0UL;
   int8_t i = 1;
 
-  switchCSpin(0);
-  beginTransaction();
-  transfer(addressByte);
-  // Clear SPI
-  transferEmptyBytes(4);
+  while(SERCOM1_SPI_IsBusy()){}
+//-------------------------------------------------------------------------
+  // switchCSpin(false);
+  // transfer(addressByte);
+  // // Clear SPI
+  // transferEmptyBytes(4);
+  // switchCSpin(true);
+//-------------------------------------------------------------------------
 
   // Shift the written data to the correct driver in chain
   // Default link_index = -1 and no shifting happens
@@ -145,45 +162,53 @@ uint32_t TMC2130Stepper::read(uint8_t addressByte) {
     i++;
   }
 
-  // ...and once more to MCU
-  status_response = transfer(addressByte); // Send the address byte again
-  out  = transfer(0x00);
-  out <<= 8;
-  out |= transfer(0x00);
-  out <<= 8;
-  out |= transfer(0x00);
-  out <<= 8;
-  out |= transfer(0x00);
+//-------------------------------------------------------------------------
+  txData.setParameters(addressByte, 0x00);
+  transferDatagram();
+  while(SERCOM1_SPI_IsBusy()){  }
+  transferDatagram();
+  while(SERCOM1_SPI_IsBusy()){  }
+
+//-------------------------------------------------------------------------
+  // switchCSpin(false);
+  // // ...and once more to MCU
+  // status_response = transfer(addressByte); // Send the address byte again
+  // out  = transfer(0x00);
+  // out <<= 8;
+  // out |= transfer(0x00);
+  // out <<= 8;
+  // out |= transfer(0x00);
+  // out <<= 8;
+  // out |= transfer(0x00);
+  // switchCSpin(true);
+//-------------------------------------------------------------------------
+
 
   endTransaction();
-  switchCSpin(1);
-  return out;
+  return rxData.getCorrectedBytes();
+  // return out;
 }
+
 
 __attribute__((weak))
 void TMC2130Stepper::write(uint8_t addressByte, uint32_t config) {
   addressByte |= TMC_WRITE;
   int8_t i = 1;
 
-  switchCSpin(0);
-  beginTransaction();
-  
-//  while(1){
-//  switchCSpin(0);
-//  txData[0] = addressByte;
-//  txData[1] = (config>>24);
-//  txData[2] = (config>>16);
-//  txData[3] = (config>>8);
-//  txData[4] = (config);
-//  SERCOM1_SPI_WriteRead(txData, 5, NULL, 0);
-//  while(SERCOM1_SPI_IsBusy()){}
-//  DRV_CS_Set();
-//  }
-  status_response = transfer(addressByte);
-  transfer(config>>24);
-  transfer(config>>16);
-  transfer(config>>8);
-  transfer(config);
+
+//-------------------------------------------------------------------------
+  while(SERCOM1_SPI_IsBusy()){  }
+  txData.setParameters(addressByte, config);
+  transferDatagram();
+//-------------------------------------------------------------------------
+  // switchCSpin(0);
+  // status_response = transfer(addressByte);
+  // transfer(config>>24);
+  // transfer(config>>16);
+  // transfer(config>>8);
+  // transfer(config);
+  // switchCSpin(1);
+//-------------------------------------------------------------------------
 
   // Shift the written data to the correct driver in chain
   // Default link_index = -1 and no shifting happens
@@ -192,8 +217,7 @@ void TMC2130Stepper::write(uint8_t addressByte, uint32_t config) {
     i++;
   }
 
-  endTransaction();
-  switchCSpin(1);
+  // endTransaction();
 }
 
 void TMC2130Stepper::begin() {

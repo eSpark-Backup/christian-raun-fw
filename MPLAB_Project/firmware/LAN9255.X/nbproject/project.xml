@@ -11,6 +11,8 @@
             <sourceRootList>
                 <sourceRootElem>../src</sourceRootElem>
                 <sourceRootElem>../Applications/ChristianRaun</sourceRootElem>
+                <sourceRootElem>../../../Test_Project/firmware/src</sourceRootElem>
+                <sourceRootElem>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
