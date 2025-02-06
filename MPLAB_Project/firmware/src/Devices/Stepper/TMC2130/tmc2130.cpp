@@ -1,6 +1,6 @@
 #include "tmc2130.hpp"
 #include "../../Encoder/TLE5012b/tle5012b.hpp"
-#include "../../../Libraries/print/print.h"
+#include "../../../Libraries/print/print.hpp"
 
 #define TIMER_RESOLUTION_NS 16.666666667e-9
 #define STALL_VALUE         -55              // A lower value gives a higher sensitivity,  range (-64  to  +64)
@@ -151,7 +151,7 @@ void Tmc2130::run(float rpm, direction_t dir)
             driver->TCOOLTHRS(val); 
             val = ((arg-10)<0) ? 0 : (arg-10);
             driver->TPWMTHRS(val);
-            driver->diag1_stall(true);
+            // driver->diag1_stall(true);
         });
     }
     rampTmcSet = isRPMSequenceRunning();
