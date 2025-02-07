@@ -3,7 +3,7 @@
 
 bool WorkerThread::addTask(Task task)
 {
-    if (tasks.size() >= 10) {
+    if (tasks.size() >= maxTasks) {
         // Vector is full
         return false;
     }
@@ -16,7 +16,10 @@ void WorkerThread::run()
     while (!tasks.empty()) {
         // Execute the first task (FIFO behavior)
         Task task = tasks.front();
-        task();
+        if(task)
+        {
+            task();
+        }
 
         // Remove the executed task from the front
         tasks.erase(tasks.begin());

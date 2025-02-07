@@ -19,4 +19,6 @@ class WorkerThread
     private:
         // std::queue<Task> tasks;  // Queue to store tasks
         std::vector<Task> tasks;  // Vector to store tasks
+
+        const size_t maxTasks = 10;
 };

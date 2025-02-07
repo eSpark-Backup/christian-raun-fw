@@ -16,6 +16,11 @@ volatile uint32_t toggleCounter=0;
 
 volatile ErrorFlags motorErrors;
 
+int map(int value, int in_min, int in_max, int out_min, int out_max)
+{
+    return ((value > in_max) || (value < in_min)) ? ((value > in_max) ? out_max : out_min) : (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacket* dataOut, WorkerThread* thread)
 {
     PWMCallbackArgs* args = new PWMCallbackArgs;
@@ -143,36 +148,56 @@ void Tmc2130::run(float rpm, direction_t dir)
     
     notifyObservers(rpm, dir);
 
-    float temp = (true==isRPMSequenceRunning())?(TSTEP_CALC(rampRPMArr[rampSteps])):(tStep);
-    if(!rampTmcSet)
-    {
-        worker->addTask([driver = this->driver, arg = temp] {
-            uint32_t val = ((arg+10)>0xFFFFF) ? 0xFFFFF : (arg+10);
-            driver->TCOOLTHRS(val); 
-            val = ((arg-10)<0) ? 0 : (arg-10);
-            driver->TPWMTHRS(val);
-            // driver->diag1_stall(true);
-        });
-    }
+    // float temp = (true==isRPMSequenceRunning())?(TSTEP_CALC(rampRPMArr[rampSteps])):(tStep);
+    // if(!rampTmcSet)
+    // {
+    //     worker->addTask([driver = this->driver, arg = temp] {
+    //         uint32_t val = ((arg+10)>0xFFFFF) ? 0xFFFFF : (arg+10);
+    //         driver->TCOOLTHRS(val); 
+    //         val = ((arg-10)<0) ? 0 : (arg-10);
+    //         driver->TPWMTHRS(val);
+    //         // driver->diag1_stall(true);
+    //     });
+    // }
+
+    int sgtVal = map(rpm, 0, 200, 20, -15);
+    // worker->addTask([driver = this->driver, arg1 = sgtVal, arg = tStep] {
+            // uint32_t val = ((arg+10)>0xFFFFF) ? 0xFFFFF : (arg+10);
+            // driver->TCOOLTHRS(val);
+            // val = ((arg-10)<0) ? 0 : (arg-10);
+            // driver->TPWMTHRS(val);
+            // driver->sgt(arg1);
+            // ITM_Printf(0, "Writing sgt value (%d).\n", arg1);
+    // });
+            // uint32_t val = ((tStep+10)>0xFFFFF) ? 0xFFFFF : (tStep+10);
+            // driver->TCOOLTHRS(val);
+            // val = ((tStep-10)<0) ? 0 : (tStep-10);
+            // driver->TPWMTHRS(val);
+            // driver->sgt(sgtVal);
+
+
     rampTmcSet = isRPMSequenceRunning();
+    driver->diag1_stall(true);
 
     // worker->addTask([driver = this->driver, arg = true] { driver->diag1_stall(arg); });
 }
 
 void Tmc2130::stop(void)
 {
-    uint32_t error;
-    if(toggleCounter != maxToggleCount)
-    {
-        error = toggleCounter - maxToggleCount;
-    }
-    toggleCounter = 0;
+    // uint32_t error;
+    // if(toggleCounter != maxToggleCount)
+    // {
+    //     error = toggleCounter - maxToggleCount;
+    // }
+    // toggleCounter = 0;
+    driver->diag1_stall(false);
     encoder->motorStopped();
     TCC1_PWMStop();
     TC4_TimerStop();
     TC4_Timer32bitPeriodSet(0);
 
-    worker->addTask([driver = this->driver, arg = false] { driver->diag1_stall(arg); });
+
+    // worker->addTask([driver = this->driver, arg = false] { driver->diag1_stall(arg); });
 
 }
 

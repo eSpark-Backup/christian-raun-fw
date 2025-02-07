@@ -6,7 +6,7 @@
             <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
             <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
             <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMCStepper/TMC2130Stepper.cpp</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/sercom/spi_master/plib_sercom1_spi_master.c</file>
+            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Encoder/TLE5012b/tle5012b.cpp</file>
         </group>
     </open-files>
 </project-private>
