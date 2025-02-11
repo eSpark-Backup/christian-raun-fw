@@ -6,17 +6,13 @@
 #include "../../src/Devices/Timer/timer.hpp"
 #include "../../src/Version/firmware_version.h"
 #include "../../src/Libraries/print/print.hpp"
-//#include "../../src/Libraries/Worker_thread/workerThread.hpp"
+#include "../../src/Libraries/Worker_thread/workerThread.hpp"
 
 #define APP_ITM_PORT    0
 
-#define R_SENSE 0.075f // Match to your driver
-                      // SilentStepStick series use 0.11
-                      // UltiMachine Einsy and Archim2 boards use 0.2
-                      // Panucatt BSD2660 uses 0.1
-                      // Watterott TMC5160 uses 0.075
-#define CS_PIN           DRV_CS_PIN // Chip select
-#define EN_PIN           DRV_EN_PIN // Chip select
+#define R_SENSE     0.075f          // Sensing resistor value
+#define CS_PIN      DRV_CS_PIN      // Chip select
+#define EN_PIN      DRV_EN_PIN      // Enable select
 
 TMC2160Stepper* stepperDriver;
 Stepper* stepper;
@@ -93,14 +89,12 @@ void App::loop()
                 rs.dir          = (direction_t) dataIn.direction;
                 stepper->run(&rs);
             }
-//            ITM_Printf(APP_ITM_PORT, "Executing Ramp sequence.\n");
             state = eSendData;
             break;
             
         case eStepper:
             steps = dataIn.displacement * STEPS_PER_MM;
             stepper->run(dataIn.rpm, (direction_t) dataIn.direction, steps);
-//            ITM_Printf(APP_ITM_PORT, "Executing Displacement sequence.\n");
             state = eSendData;
             break;
 
@@ -146,6 +140,8 @@ void App::loop()
                         {
                             stepper->stop();
                             stepper->setRPMSequenceStatus(false);
+                            // stepper->resetMaxToggleCount();
+                            stepper->resetRampCount();
                             if(error.flag.encoderStallFlag || error.flag.driverStallFlag)
                                 dataOut.motorDiagnostic = MOTOR_STALLED;
                             else if(error.flag.motorOvertempFlag)
@@ -164,7 +160,7 @@ void App::loop()
             break;        
     }
 
-     worker->run();
+    worker->run();
     
 }
 
@@ -222,7 +218,7 @@ extern "C"
         Tmc2130* driver = (Tmc2130*)context;
         driver->setStallFlag(true);
         worker->addTask([] {
-            ITM_Printf(APP_ITM_PORT, "Stall detected.\n");
+            ITM_Printf(APP_ITM_PORT, "Driver stall detected.\n");
         });
     }
 

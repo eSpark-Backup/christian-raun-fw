@@ -23,15 +23,19 @@ class Tmc2130 : public Stepper
         float rampRPMArr[rampSteps+1] = {0};
         bool rpmSequenceStatus;
         bool rampTmcSet = false;
+        uint32_t rampStepsCount = 0;
         // volatile ErrorFlags errors;
-
+        
         WorkerThread* worker;
-
+        
     public:
         TMC2160Stepper* driver;
 
         bool isRPMSequenceRunning(void) override;
         void setRPMSequenceStatus(bool status) override;
+        void incrementRampCount(void) override;
+        void resetRampCount(void) override;
+        uint32_t getRampCount(void) override;
         void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut, WorkerThread* thread) override;
         void loop(void) override;
         void run(rampSettings* rs) override;
@@ -40,6 +44,7 @@ class Tmc2130 : public Stepper
         void run(bool operationStart = false) override;
         void stop(void) override;
         bool isRunning(void) override;
+        void setStallDetection(bool flag)    override;
         void setStallFlag(uint8_t flag)    override;
         void setOvertempFlag(uint8_t flag) override;
         uint8_t isErrorPresent(void) override;
@@ -54,9 +59,11 @@ typedef struct {
     dataOutPacket* dataOut;
 } PWMCallbackArgs;
 
-void calculatePrescaler(float time, uint32_t* scaler, uint32_t* tc4Period);             // calculates prescaler and period of TC4 timer which turns off motor PWM
-void tc4PrescalerSet(uint32_t scaler);
-void tc4Callback(TC_TIMER_STATUS status, uintptr_t context);
-void pwmCallback(TC_TIMER_STATUS status, uintptr_t context);
+int8_t  map(int value, int in_min, int in_max, int out_min, int out_max);
+void    tc4PrescalerSet(uint32_t scaler);
+void    calculatePrescaler(float time, uint32_t* scaler, uint32_t* tc4Period);             // calculates prescaler and period of TC4 timer which turns off motor PWM
+int8_t  calculate_sgt(int rpm);
+void    tc4Callback(TC_TIMER_STATUS status, uintptr_t context);
+// void pwmCallback(TC_TIMER_STATUS status, uintptr_t context);
 
 #endif

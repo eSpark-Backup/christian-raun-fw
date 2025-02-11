@@ -1,3 +1,6 @@
+#ifndef WORKERTHREAD_H
+#define WORKERTHREAD_H
+
 #include <functional>
 #include <vector>
 
@@ -22,3 +25,5 @@ class WorkerThread
 
         const size_t maxTasks = 10;
 };
+
+#endif

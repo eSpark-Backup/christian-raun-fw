@@ -10,11 +10,28 @@ int8_t TMC2130Stepper::chain_length = 0;
 uint32_t TMC2130Stepper::spi_speed = 16000000/8;
 
 // callback function for setting tmc driver CS pin high on SPI transaction completion
-void SPI_Callback(uintptr_t context) {
-    TMC2130Stepper* instance = reinterpret_cast<TMC2130Stepper*>(context);
-    if (instance) {
-        instance->switchCSpin(true);
-    }
+void SPI_Callback(uintptr_t context)
+{
+  TMC2130Stepper* instance = reinterpret_cast<TMC2130Stepper*>(context);
+  if (instance)
+  {
+    instance->switchCSpin(true);
+  }
+
+  if(instance->stallCMDFlag == STALL_DETECTION_DISABLED)
+  {
+    TCC1_PWMStop();
+    TC4_TimerStop();
+    TC4_Timer32bitPeriodSet(0);
+    instance->stallCMDFlag = INAPPLICABLE;
+  }
+  else if(instance->stallCMDFlag == STALL_DETECTION_ENABLED)
+  {
+    // TC4_TimerStart();
+    // TCC1_PWMStart();
+
+    instance->stallCMDFlag = INAPPLICABLE;
+  }
 }
 
 TMC2130Stepper::TMC2130Stepper(PORT_PIN pinEN, PORT_PIN pinCS, float RS, int8_t link) :
@@ -123,7 +140,7 @@ uint8_t TMC2130Stepper::transfer(uint8_t data) {
 
 __attribute__((weak))
 bool TMC2130Stepper::transferDatagram() {
-    switchCSpin(false);
+    switchCSpin(false);         // set CS pin low here, CS pin will be toggled high in SPI callback context
     return SERCOM1_SPI_WriteRead(txData.data, txData.len(), rxData.data, rxData.len());
 }
 

@@ -31,8 +31,17 @@ extern "C" {
 #define TMCSTEPPER_VERSION 0x000703 // v0.7.3
 #define BUFFER_SIZE 16
 
-typedef union {
-    struct {
+enum Stall_Flags
+{
+    INAPPLICABLE=0,
+    STALL_DETECTION_ENABLED,
+    STALL_DETECTION_DISABLED,
+};
+
+typedef union
+{
+    struct
+	{
         uint8_t  addr_status;     // Access the first byte, address of register or status byte
         uint32_t packet; 		  // Access the remaining 4 bytes as a 32-bit integer
     };
@@ -42,10 +51,12 @@ typedef union {
 									// data[4]  - LSB byte
 
     // Method to manipulate and return the correct value of 'packet', interchange MSB and LSB bytes
-    uint32_t getCorrectedBytes() const {
+    uint32_t getCorrectedBytes() const
+	{
         return (data[1] << 24) | (data[2] << 16) | (data[3] << 8) | data[4];
     }
-    void setParameters(uint8_t inByte, uint32_t inWord) {
+    void setParameters(uint8_t inByte, uint32_t inWord)
+	{
 		addr_status = inByte;
 		// packet = inWord;
 		data[1] = (inWord >> 24) & 0xFF;
@@ -53,7 +64,8 @@ typedef union {
 		data[3] = (inWord >> 8) & 0xFF;
 		data[4] = (inWord) & 0xFF;
     }
-	uint8_t len() {
+	uint8_t len()
+	{
 		return sizeof(data);
 	}
 }SPI_40bit_Packet;
@@ -338,6 +350,7 @@ class TMC2130Stepper : public TMCStepper {
 		// Function aliases
 
 		uint8_t status_response;
+		Stall_Flags stallCMDFlag = INAPPLICABLE;
 
 	protected:
         // uint8_t rxData[BUFFER_SIZE];
