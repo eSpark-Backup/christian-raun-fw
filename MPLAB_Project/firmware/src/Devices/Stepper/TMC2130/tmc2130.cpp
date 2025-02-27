@@ -202,7 +202,7 @@ bool Tmc2130::calculateRamp(rampSettings* rs)
     
     for(int i = 0; i<=rampSteps; i++)
     {
-        if((rampRPMArr[i] > 200) || (rampRPMArr[i] < 0))
+        if((rampRPMArr[i] > maxRPM) || (rampRPMArr[i] < 0))
         {
             this->dataOut->motorDiagnostic = INVALID_RAMP_SEQUENCE;
             isRampValid = false;
@@ -240,9 +240,45 @@ void Tmc2130::run(bool operationStart)
     }
     maxToggleCount =0;
     static bool downCount = false;
-    uint32_t steps = displacementRamp[n] * STEPS_PER_MM;
+    uint32_t steps;
+
+    while(1)
+    {
+        steps = displacementRamp[n] * STEPS_PER_MM;
+
+        if(0 == steps)
+        {
+            uint32_t c = n;
+            if (downCount)
+            {
+                if (c == 0)
+                {
+                    steps = 1;
+                    break;
+                }
+                c--;
+            }
+            else
+            {
+                c++;
+            }
+
+            if(c>rampSteps)
+            {
+                break; 
+            }
+            else
+            {
+                n=c;
+            }
+
+            continue;
+        }
+        break;
+    }
     
     run(rampRPMArr[n], this->dir, steps);
+
     if(rampSteps == n)
     {
         downCount = true;
