@@ -240,41 +240,10 @@ void Tmc2130::run(bool operationStart)
     }
     maxToggleCount =0;
     static bool downCount = false;
-    uint32_t steps;
-
-    while(1)
+    uint32_t steps = displacementRamp[n] * STEPS_PER_MM;
+    if(steps == 0)
     {
-        steps = displacementRamp[n] * STEPS_PER_MM;
-
-        if(0 == steps)
-        {
-            uint32_t c = n;
-            if (downCount)
-            {
-                if (c == 0)
-                {
-                    steps = 1;
-                    break;
-                }
-                c--;
-            }
-            else
-            {
-                c++;
-            }
-
-            if(c>rampSteps)
-            {
-                break; 
-            }
-            else
-            {
-                n=c;
-            }
-
-            continue;
-        }
-        break;
+        steps = 1;
     }
     
     run(rampRPMArr[n], this->dir, steps);
