@@ -416,8 +416,8 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="LAN9255_DFP" vendor="Microchip" version="1.3.20"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
+        <pack name="LAN9255_DFP" vendor="Microchip" version="1.3.20"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>

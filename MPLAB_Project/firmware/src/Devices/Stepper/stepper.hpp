@@ -83,6 +83,9 @@ class Stepper
         virtual void setup(IEncoder* encoder, dataOutPacket* dataOut) {}
         virtual void setRPMSequenceStatus(bool status) {}
         virtual bool isRPMSequenceRunning(void) { return false; }
+        virtual void incrementRampCount(void) { }
+        virtual void resetRampCount(void) { }
+        virtual uint32_t getRampCount(void) { return 0; }
         virtual void loop(void) {}
         virtual void run(rampSettings* rs) {}
         virtual void run(float rpm, direction_t dir, uint32_t steps) {} 

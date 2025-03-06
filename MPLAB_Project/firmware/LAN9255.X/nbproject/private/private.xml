@@ -5,15 +5,7 @@
         <group>
             <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/Applications/ChristianRaun/app.cpp</file>
             <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/TMC2130/tmc2130.cpp</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/LAN9255_EtherCAT_Slave.c</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/ecatslv.c</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/main.cpp</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/peripheral/qspi/plib_qspi_spi.c</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/config/default/driver/lan9255/drv_lan9255_ecat_util.c</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/ecatcoe.c</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/mailbox.c</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/objdef.c</file>
-            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/slave_stack/coeappl.c</file>
+            <file>file:/D:/.Embedded/.GITHUB/ChristianRaun-FirmwareDevelopment/MPLAB_Project/firmware/src/Devices/Stepper/stepper.hpp</file>
         </group>
     </open-files>
 </project-private>

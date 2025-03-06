@@ -19,10 +19,14 @@ class Tmc2130 : public Stepper
         float displacementRamp[rampSteps+1] = {0};
         float rampRPMArr[rampSteps+1] = {0};
         bool rpmSequenceStatus = false;
+        uint32_t rampStepsCount = 0;
          
     public:       
         bool isRPMSequenceRunning(void) override;
         void setRPMSequenceStatus(bool status) override;
+        void incrementRampCount(void) override;
+        void resetRampCount(void) override;
+        uint32_t getRampCount(void) override;
         void setup(IEncoder* encoder, dataOutPacket* dataOut) override;
         void loop(void) override;
         void run(rampSettings* rs) override;

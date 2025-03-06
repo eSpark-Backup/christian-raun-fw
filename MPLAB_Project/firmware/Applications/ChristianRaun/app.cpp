@@ -163,6 +163,7 @@ appState App::selectMode()
 
         case ABORT_OPERATION:
             dataOut.motorDiagnostic = NO_ERROR;
+            dataOut.deviceStatus = None;
             stepper->stop();
             stepper->resetMaxToggleCount();
             stepper->setRPMSequenceStatus(false);

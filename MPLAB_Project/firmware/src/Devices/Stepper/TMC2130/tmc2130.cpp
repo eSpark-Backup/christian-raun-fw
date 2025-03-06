@@ -16,11 +16,17 @@ void Tmc2130::setup(IEncoder* encoder, dataOutPacket* dataOut)
     this->encoder = encoder;
 }
 
-bool Tmc2130::isRPMSequenceRunning() {
+bool Tmc2130::isRPMSequenceRunning()
+{
     return rpmSequenceStatus;
 }
 
-void Tmc2130::setRPMSequenceStatus(bool status) {
+void Tmc2130::setRPMSequenceStatus(bool status)
+{
+    if(!status)
+    {
+        this->resetRampCount();
+    }
     this->rpmSequenceStatus = status;
 }
 
@@ -76,6 +82,21 @@ void Tmc2130::stop(void)
 void Tmc2130::resetMaxToggleCount(void)
 {
     maxToggleCount = 0;
+}
+
+void Tmc2130::incrementRampCount()
+{
+    rampStepsCount++;
+}
+
+void Tmc2130::resetRampCount()
+{
+    rampStepsCount = 0;
+}
+
+uint32_t Tmc2130::getRampCount()
+{
+    return rampStepsCount;
 }
 
 void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement)
@@ -150,7 +171,6 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
 /* Timer Interrupt handler */
 void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
 { 
-    static uint32_t rampStepsCount = 0;
     PWMCallbackArgs* args = (PWMCallbackArgs*)context;
     Tmc2130* stepper = args->stepper;
     dataOutPacket* dataOut = args->dataOut;
@@ -161,10 +181,10 @@ void pwm_callback(TC_TIMER_STATUS status, uintptr_t context)
         if (!stepper->isRunning())
         {    
             stepper->run();
-            rampStepsCount++;
-            if(((rampSteps * 2)) == rampStepsCount )
+            stepper->incrementRampCount();
+            if(((rampSteps * 2)) == stepper->getRampCount() )
             {
-                rampStepsCount = 0;
+                stepper->resetRampCount();
                 stepper->setRPMSequenceStatus(false);
                 dataOut->deviceStatus = RAMP_SEQUENCE_COMPLETED;
             }

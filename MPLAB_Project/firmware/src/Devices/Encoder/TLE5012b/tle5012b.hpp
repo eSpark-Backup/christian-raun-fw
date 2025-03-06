@@ -15,7 +15,7 @@
 #define POW_2_15                    32768.0   //!< \brief values used to for final calculations of angle speed, revolutions, range and value
 #define POW_2_7                     128.0     //!< \brief
 #define ANGLE_360_VAL               360.0     //!< \brief
-#define STALL_DETECTION_MAX_TIME    0.4
+#define STALL_DETECTION_MAX_TIME    0.3
 
 class Tle5012b : public Encoder
 {
