@@ -2,32 +2,34 @@
 #include "../../Encoder/TLE5012b/tle5012b.hpp"
 #include "../../../Libraries/print/print.hpp"
 
+#define STEPPER_ITM_PORT    0
+
 #define TIMER_RESOLUTION_NS 16.666666667e-9
-#define STALL_VALUE         -55              // A lower value gives a higher sensitivity,  range (-64  to  +64)
-// #define STALL_VALUE         10
 
 #define FULLSTEP        256
 #define MICROSTEP       16
-#define VMAX(rpm)       (((rpm)/60.0) * (MICROSTEP * (360.0/1.8)) * (16777216.0/12000000.0))     // 2^24 = 16777216
-#define TSTEP_CALC(rpm) (((16777216.0/VMAX(rpm)) * (MICROSTEP/(double)FULLSTEP)))
+#define VALUE_24BIT     16777216.0      // 2^24 = 16777216
+#define CPU_FREQ        CPU_CLOCK_FREQUENCY
+#define VMAX(rpm)       (((rpm)/60.0) * (MICROSTEP * (360.0/1.8)) * (VALUE_24BIT/CPU_FREQ))
+#define TSTEP_CALC(rpm) (((VALUE_24BIT/VMAX(rpm)) * (MICROSTEP/(double)FULLSTEP)))
 
 volatile uint32_t maxToggleCount=0;
 volatile uint32_t toggleCounter=0;
 
 volatile ErrorFlags motorErrors;
 
-void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacket* dataOut, WorkerThread* thread)
+void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacket* dataOut)
 {
     PWMCallbackArgs* args = new PWMCallbackArgs;
     args->stepper = this;
     args->dataOut = dataOut;
     this->rpmSequenceStatus = false;
+    this->dataOut = dataOut;
 
     TC4_TimerCallbackRegister(tc4Callback, (uintptr_t) args);
     // TCC1_PWMCallbackRegister(pwmCallback, (uintptr_t) args);         // ISR getting triggerred wrong number of times
     this->encoder = encoder;
     this->driver = motorDriver;
-    this->worker = thread;
 
     motorErrors.error = 0;
     
@@ -39,11 +41,12 @@ void Tmc2130::setup(TMC2160Stepper* motorDriver, IEncoder* encoder, dataOutPacke
     driver->rms_current(1100);
     driver->en_pwm_mode(true);
     driver->pwm_autoscale(true);
+    driver->sfilt(false);
     driver->THIGH(0);
     driver->semin(5);
     driver->semax(2);
     driver->sedn(0b01);
-    // driver->sgt(STALL_VALUE);
+
     driver->diag0_otpw(true);
 }
 
@@ -65,7 +68,9 @@ void Tmc2130::run(rampSettings* rs)
     if (0 == rs->displacement)
         return;
     
-    calculateRamp(rs);
+    if(!calculateRamp(rs))
+        return;
+
     this->dir = rs->dir;
     run(true);
 }
@@ -124,6 +129,7 @@ void Tmc2130::run(float rpm, direction_t dir)
     // TCC1_PWMStop();
     // TC4_TimerStop();
 
+    
     uint32_t preScaler, tc4Period;
     uint32_t tStep = TSTEP_CALC(rpm);
     float frequency = toFrequency(rpm);
@@ -134,26 +140,22 @@ void Tmc2130::run(float rpm, direction_t dir)
     
     float completeTime = (maxToggleCount/frequency);
     calculatePrescaler(completeTime, &preScaler, &tc4Period);
-
+    
     tc4PrescalerSet(preScaler);
     TC4_Timer32bitPeriodSet(tc4Period);
-
+    
     TCC1_PWM24bitPeriodSet(periodPWM);
     TCC1_PWM24bitDutySet(TCC1_CHANNEL2,((periodPWM)/2));
-
+    
+    ITM_Printf(STEPPER_ITM_PORT, "Starting motor with RPM = %.2f(%d)\t", rpm, tStep);
+    
     TC4_TimerStart();
     TCC1_PWMStart();
 
-    if(rpm>50)
-    {
-        uint32_t val = ((tStep+20)>0xFFFFF) ? 0xFFFFF : (tStep+20);
-        driver->TCOOLTHRS(val);
-        val = ((tStep-20)<0) ? 0 : (tStep-20);
-        driver->TPWMTHRS(val);
-        driver->sgt(calculate_sgt(rpm));
-        // driver->diag1_stall(true);
-        setStallDetection(true);
-    }
+    int8_t sgtVal = calculate_sgt(rpm);
+    driver->sgt(sgtVal);
+    ITM_Printf(STEPPER_ITM_PORT, "Setting sgt val: %d.\n", sgtVal);
+    setStallDetection(true);
     
     notifyObservers(rpm, dir);
 
@@ -162,13 +164,13 @@ void Tmc2130::run(float rpm, direction_t dir)
 
 void Tmc2130::stop(void)
 {
+    TCC1_PWMStop();
+    TC4_TimerStop();
+    TC4_Timer32bitPeriodSet(0);
+
     setStallDetection(false);
     // driver->diag1_stall(false);
     encoder->motorStopped();
-
-    // TCC1_PWMStop();
-    // TC4_TimerStop();
-    // TC4_Timer32bitPeriodSet(0);
 }
 
 int8_t map(int value, int in_min, int in_max, int out_min, int out_max)
@@ -219,9 +221,9 @@ void calculatePrescaler(float time, uint32_t* scaler, uint32_t* period)
 
 int8_t calculate_sgt(int rpm)
 {
-    double RPM_min = 25.0;     // Lowest RPM
+    double RPM_min = 25.0;    // Lowest RPM
     double RPM_max = 200.0;   // Highest RPM
-    int S_min = -25;          // Sensitivity at high RPM (least sensitive)
+    int S_min = -15;          // Sensitivity at high RPM (least sensitive)
     int S_max = 64;           // Sensitivity at low RPM (most sensitive)
     double k = 3.5;           // Exponential decay rate (tune as needed)
     
@@ -229,22 +231,30 @@ int8_t calculate_sgt(int rpm)
     if (rpm < RPM_min) rpm = RPM_min;
     if (rpm > RPM_max) rpm = RPM_max;
 
-    // Normalized RPM range for exponential scaling
-    double normalizedRPM = (rpm - RPM_min) / (RPM_max - RPM_min);
+    double sensitivity;
 
-    // Compute sensitivity using exponential decay
-    double expTerm = std::exp(-k * normalizedRPM);
-    double sensitivity = S_min + (S_max - S_min) * expTerm;
+    if(rpm<150)
+    {
+        // Normalized RPM range for exponential scaling
+        double normalizedRPM = (rpm - RPM_min) / (RPM_max - RPM_min);
+    
+        // Compute sensitivity using exponential decay
+        double expTerm = std::exp(-k * normalizedRPM);
+        sensitivity = S_min + (S_max - S_min) * expTerm;
+    }
+    else
+    {
+
+    }
 
     // Convert to integer (rounding)
     return static_cast<int>(std::round(sensitivity));
     // return map(rpm, 0, 200, 20, -15);
 }
 
-void Tmc2130::calculateRamp(rampSettings* rs)
+bool Tmc2130::calculateRamp(rampSettings* rs)
 {
-    if (isRPMSequenceRunning())
-        return;
+    bool isRampValid = true;
         
     float requiredRotations = rs->displacement / displacementFactor;
     float requiredRPM = (requiredRotations / rs->time) * 60;
@@ -264,6 +274,33 @@ void Tmc2130::calculateRamp(rampSettings* rs)
     float requiredRotationsWithoutRamps = requiredDisplacementWithoutRamps / displacementFactor;
     float requiredRPMAfterWithoutRamps = (requiredRotationsWithoutRamps / timeWithoutRamps) * 60;
     rampRPMArr[rampSteps] = requiredRPMAfterWithoutRamps;
+
+    ITM_Printf(STEPPER_ITM_PORT, "Calculated ramp array.\n");
+    for(int i=0; i<=rampSteps; i++)
+    {
+        ITM_Printf(STEPPER_ITM_PORT, "rampRPMArr[%d]: %0.0f\tdisplacementRamp[%d]: %0.3f", i, rampRPMArr[i], i, displacementRamp[i]);
+        if((rampRPMArr[i] > maxRPM) || (rampRPMArr[i] < (minRPM-1)))
+        {
+            // isRampValid = false;
+            ITM_Printf(STEPPER_ITM_PORT, "\tInvalid rpm calculated.");
+            this->dataOut->motorDiagnostic = INVALID_RAMP_SEQUENCE;
+            isRampValid = false;
+        }
+        ITM_Printf(STEPPER_ITM_PORT, "\n");
+    }
+
+    if(isRampValid)
+    {
+        uint32_t val;
+        val = ((TSTEP_CALC(rampRPMArr[rampSteps-1]))>0x21C) ? 0x21C : (TSTEP_CALC(rampRPMArr[rampSteps-1]));
+        driver->TCOOLTHRS(val);
+        ITM_Printf(STEPPER_ITM_PORT, "TCOOLTHRS(val)\t %d\n", val);
+        val = ((TSTEP_CALC(rampRPMArr[rampSteps-1]-1))<0) ? 0 : (TSTEP_CALC(rampRPMArr[rampSteps-1]-1));
+        driver->THIGH(val);
+        ITM_Printf(STEPPER_ITM_PORT, "THIGH(val)\t %d\n", val);
+    }
+
+    return isRampValid;
 }
 
 /* Timer Interrupt handler */
@@ -297,7 +334,7 @@ void tc4Callback(TC_TIMER_STATUS status, uintptr_t context)
 //     PWMCallbackArgs* args = (PWMCallbackArgs*)context;
 //     Tmc2130* stepper = args->stepper;
 //     dataOutPacket* dataOut = args->dataOut;
-
+//
 //     // TC_TIMER_STATUS intFlag = (status & TCC_INTFLAG_OVF_Msk);
 //     // if(TCC_INTFLAG_OVF_Msk == intFlag)      // if callback is from OVF interrupt
 //     if(TCC_INTFLAG_MC2_Msk == status)      // if callback is from MC2 interrupt
@@ -323,13 +360,13 @@ void tc4Callback(TC_TIMER_STATUS status, uintptr_t context)
 bool Tmc2130::isRunning(void)
 {
     // return (TC4_REGS->COUNT16.TC_CTRLA & TC_CTRLA_ENABLE_Msk);
-    uint32_t state  = TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk;
-    if(state)
-    {
-        motorErrors.flag.encoderStallFlag = encoder->isMotorStalled();
-    }
-    // return (TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk);
-    return state;
+    // uint32_t state  = TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk;
+    // if(state)
+    // {
+    //     motorErrors.flag.encoderStallFlag = encoder->isMotorStalled();
+    // }
+    return (TCC1_REGS->TCC_CTRLA & TCC_CTRLA_ENABLE_Msk);
+    // return state;
 }
 
 bool Tmc2130::isRPMSequenceRunning() {
@@ -368,26 +405,45 @@ uint32_t Tmc2130::getRampCount()
     return rampStepsCount;
 }
 
-void Tmc2130::setStallFlag(uint8_t flag)
-{   
-    motorErrors.flag.driverStallFlag = flag & 0x01;
+void Tmc2130::setEncoderStallFlag(uint8_t flag)
+{
+    motorErrors.flag.encoderStallFlag = (flag) ? encoder->isMotorStalled() : flag & 0x01;
+    if(motorErrors.flag.encoderStallFlag)
+    {
+        ITM_Printf(STEPPER_ITM_PORT, "Encoder stall detected.\n");
+    }
+}
+
+void Tmc2130::setDriverStallFlag(uint8_t flag)
+{
+    motorErrors.flag.driverStallFlag = (flag) ? ((isRunning()) ? flag & 0x01 : 0) : (0);
+    if(motorErrors.flag.driverStallFlag)
+    {
+        ITM_Printf(STEPPER_ITM_PORT, "Driver stall detected.\n");
+    }
 }
 
 void Tmc2130::setOvertempFlag(uint8_t flag)
 {   
     motorErrors.flag.motorOvertempFlag = flag & 0x01;
+    if(motorErrors.flag.motorOvertempFlag)
+    {
+        ITM_Printf(STEPPER_ITM_PORT, "Temprature threshold exceeded.\n");
+    }
 }
 
 uint8_t Tmc2130::isErrorPresent(void)
-{   
+{
+    setEncoderStallFlag(1);
     uint8_t currentStatus = motorErrors.error;
     if(currentStatus)
     {
+        setEncoderStallFlag(0);
         setOvertempFlag(0);
-        setStallFlag(0);
+        setDriverStallFlag(0);
     }
     return currentStatus;
-    // return errors.error;
+    // return motorErrors.error;
 }
 
 void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement)
@@ -411,7 +467,9 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     {
                         stop();
                         if(motorErrors.flag.encoderStallFlag || motorErrors.flag.driverStallFlag)
-                        out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
+                        {
+                            out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
+                        }
                         // encoder->setZeroOffset();
                         break;  
                     }

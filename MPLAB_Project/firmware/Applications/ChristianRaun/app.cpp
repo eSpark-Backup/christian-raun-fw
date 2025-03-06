@@ -6,7 +6,6 @@
 #include "../../src/Devices/Timer/timer.hpp"
 #include "../../src/Version/firmware_version.h"
 #include "../../src/Libraries/print/print.hpp"
-#include "../../src/Libraries/Worker_thread/workerThread.hpp"
 
 #define APP_ITM_PORT    0
 
@@ -19,7 +18,6 @@ Stepper* stepper;
 Encoder* encoder; 
 Ethercat* ethercat;
 Timer* timer;
-WorkerThread* worker;
 
 uint32_t steps = 0;
 uint32_t stopTime = 0;
@@ -37,12 +35,11 @@ void App::setup()
     stepper = new Tmc2130;
     encoder = new Tle5012b;
     ethercat = new Lan9255;
-    worker = new WorkerThread;
     // timer = new Timer;
     
     timer->setup();
     encoder->setup();
-    stepper->setup(stepperDriver, encoder, &dataOut, worker);
+    stepper->setup(stepperDriver, encoder, &dataOut);
     stepper->addObserver(encoder);
     encoder->setZeroOffset();
     dataOut.diag3 = FIRMWARE_VERSION;
@@ -127,6 +124,7 @@ void App::loop()
                 {
                     stepper->stop();
                     stepper->setRPMSequenceStatus(false);
+                    ITM_Printf(APP_ITM_PORT, "Ethercat link down. Stopping motor operation.\n");
                 }
                 
                 if(CALIBRATION_SEQUENCE_01_STARTED != dataOut.deviceStatus)
@@ -150,18 +148,14 @@ void App::loop()
                     // }
                 }
             }
-            // else
-            // {
-            //     if(stepperDriver->diag1_stall())
-            //         stepperDriver->diag1_stall(false);
-            // }
+            else if(dataIn.mode == RAMP && dataOut.motorDiagnostic == INVALID_RAMP_SEQUENCE)
+            {
+                dataOut.deviceStatus = RAMP_SEQUENCE_FAILED;
+            }
             
             state = eTasks;
             break;        
     }
-
-    worker->run();
-    
 }
 
 appState App::selectMode()
@@ -188,6 +182,7 @@ appState App::selectMode()
 
         case ABORT_OPERATION:
             dataOut.motorDiagnostic = NO_ERROR;
+            dataOut.deviceStatus = None;
             stepper->stop();
             stepper->resetMaxToggleCount();
             stepper->setRPMSequenceStatus(false);
@@ -208,18 +203,12 @@ extern "C"
     {
         Tmc2130* driver = (Tmc2130*)context;
         driver->setOvertempFlag(true);
-        worker->addTask([] {
-            ITM_Printf(APP_ITM_PORT, "Temprature threshold exceeded.\n");
-        });
     }
     /* Diag1 Interrupt handler */
     void stallError(uintptr_t context)
     {
         Tmc2130* driver = (Tmc2130*)context;
-        driver->setStallFlag(true);
-        worker->addTask([] {
-            ITM_Printf(APP_ITM_PORT, "Driver stall detected.\n");
-        });
+        driver->setDriverStallFlag(true);
     }
 
     App * create_App() // wrapper function

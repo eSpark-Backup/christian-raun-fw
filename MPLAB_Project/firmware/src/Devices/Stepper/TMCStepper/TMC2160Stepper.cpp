@@ -59,7 +59,8 @@ void TMC2160Stepper::defaults() {
   //MSLUTSEL_register.sr = ???;
   //MSLUTSTART_register.start_sin = 0;
   //MSLUTSTART_register.start_sin90 = 247;
-  CHOPCONF_register.sr = 0x10410150;
+  CHOPCONF_register.sr = 0x14410153;
+  // CHOPCONF_register.sr = 0x10410150;
   PWMCONF_register.sr = 0xC40C001E;
   COOLCONF_register.sr = 0x001E8F04;
 }

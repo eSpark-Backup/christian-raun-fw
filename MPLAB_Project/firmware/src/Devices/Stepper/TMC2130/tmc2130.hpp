@@ -19,14 +19,14 @@ class Tmc2130 : public Stepper
 {
     private:
         IEncoder* encoder;
+        dataOutPacket* dataOut;
+    
         float displacementRamp[rampSteps+1] = {0};
         float rampRPMArr[rampSteps+1] = {0};
         bool rpmSequenceStatus;
         bool rampTmcSet = false;
         uint32_t rampStepsCount = 0;
         // volatile ErrorFlags errors;
-        
-        WorkerThread* worker;
         
     public:
         TMC2160Stepper* driver;
@@ -36,7 +36,7 @@ class Tmc2130 : public Stepper
         void incrementRampCount(void) override;
         void resetRampCount(void) override;
         uint32_t getRampCount(void) override;
-        void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut, WorkerThread* thread) override;
+        void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut) override;
         void loop(void) override;
         void run(rampSettings* rs) override;
         void run(float rpm, direction_t dir, uint32_t steps) override;
@@ -45,12 +45,13 @@ class Tmc2130 : public Stepper
         void stop(void) override;
         bool isRunning(void) override;
         void setStallDetection(bool flag)    override;
-        void setStallFlag(uint8_t flag)    override;
+        void setEncoderStallFlag(uint8_t flag)    override;
+        void setDriverStallFlag(uint8_t flag)    override;
         void setOvertempFlag(uint8_t flag) override;
         uint8_t isErrorPresent(void) override;
         void resetMaxToggleCount(void) override;
         void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement= 0) override;
-        void calculateRamp(rampSettings* rs) override;
+        bool calculateRamp(rampSettings* rs) override;
         
 };
 

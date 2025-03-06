@@ -20,9 +20,9 @@ void SPI_Callback(uintptr_t context)
 
   if(instance->stallCMDFlag == STALL_DETECTION_DISABLED)
   {
-    TCC1_PWMStop();
-    TC4_TimerStop();
-    TC4_Timer32bitPeriodSet(0);
+    // TCC1_PWMStop();
+    // TC4_TimerStop();
+    // TC4_Timer32bitPeriodSet(0);
     instance->stallCMDFlag = INAPPLICABLE;
   }
   else if(instance->stallCMDFlag == STALL_DETECTION_ENABLED)

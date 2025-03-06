@@ -13,6 +13,7 @@
                 <sourceRootElem>../Applications/ChristianRaun</sourceRootElem>
                 <sourceRootElem>../../../Test_Project/firmware/src</sourceRootElem>
                 <sourceRootElem>../../../EtherCAT_Stack_Cpp_Stepper/firmware/src/Devices/Encoder</sourceRootElem>
+                <sourceRootElem>../Applications</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

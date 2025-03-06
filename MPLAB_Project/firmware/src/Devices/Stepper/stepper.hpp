@@ -1,20 +1,25 @@
 #ifndef STEPPER
 #define STEPPER
 
-#include<stdint.h>
-#include "../../slave_stack/LAN9255_EtherCAT_Slave.h"
-#include "../Observer/observer.h"
-#include "../Encoder/Interface/IEncoder.hpp"
 #include "math.h"
 #include <vector>
 #include <algorithm>
+#include <stdint.h>
+#include "../../slave_stack/LAN9255_EtherCAT_Slave.h"
+#include "../Observer/observer.h"
+#include "../Encoder/Interface/IEncoder.hpp"
 #include "TMCStepper/TMCStepper.hpp"
-#include "../../Libraries/Worker_thread/workerThread.hpp"
+// #include "../../Libraries/Worker_thread/workerThread.hpp"
 
 class Encoder;
 
 #define DIAG0_INTERRUPT_PIN EIC_PIN_5
 #define DIAG1_INTERRUPT_PIN EIC_PIN_6
+
+#define STEPS_PER_REVOLUTION 3200 //if error otherwise 3200
+#define STEPS_PER_MM (STEPS_PER_REVOLUTION / 2)
+#define CALIBRATION_RPM 30.0f
+#define ROTATIONS_PER_SEC(rpm) (rpm/60.0f)
 
 typedef enum
 {
@@ -27,6 +32,7 @@ enum motorDiagnostic
     NO_ERROR,
     TEMPERATURE_LIMIT_EXCEEDED,
     MOTOR_STALLED,
+    INVALID_RAMP_SEQUENCE,
 };
 
 struct rampSettings
@@ -49,11 +55,6 @@ typedef union
     } flag;
 } ErrorFlags;
 
-#define STEPS_PER_REVOLUTION 3200 //if error otherwise 3200
-#define STEPS_PER_MM (STEPS_PER_REVOLUTION / 2)
-#define CALIBRATION_RPM 30.0f
-#define ROTATIONS_PER_SEC(rpm) (rpm/60.0f)
-
 enum deviceStatus 
 {
     None=0,
@@ -65,6 +66,7 @@ enum deviceStatus
     CALIBRATION_SEQUENCE_02_SUCCESS,
     RAMP_SEQUENCE_COMPLETED,
     RAMP_SEQUENCE_RUNNING,
+    RAMP_SEQUENCE_FAILED,
 };
 
 enum stepperAppModes
@@ -93,7 +95,7 @@ class Stepper
         }
     
     public: 
-        virtual void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut, WorkerThread* thread) {}
+        virtual void setup(TMC2160Stepper* driver, IEncoder* encoder, dataOutPacket* dataOut) {}
         virtual void setRPMSequenceStatus(bool status) {}
         virtual bool isRPMSequenceRunning(void) { return false; }
         virtual void incrementRampCount(void) { }
@@ -107,12 +109,13 @@ class Stepper
         virtual void stop(void) {}
         virtual bool isRunning(void) { return false;}
         virtual void setStallDetection(bool flag) {}
-        virtual void setStallFlag(uint8_t flag) {}
+        virtual void setEncoderStallFlag(uint8_t flag) {}
+        virtual void setDriverStallFlag(uint8_t flag) {}
         virtual void setOvertempFlag(uint8_t flag)  {}
         virtual uint8_t isErrorPresent(void) {   return 0; }
         virtual void resetMaxToggleCount(void) {}
         virtual void calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displacement = 0) {}
-        virtual void calculateRamp(rampSettings* rs) {}
+        virtual bool calculateRamp(rampSettings* rs) { return false;}
         void addObserver(Observer* observer)
         {
             observers.push_back(observer);

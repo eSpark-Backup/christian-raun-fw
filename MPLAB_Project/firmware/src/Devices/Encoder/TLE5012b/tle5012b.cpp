@@ -59,54 +59,6 @@ void Tle5012b::getAngleValue(double &angleValue)
 
 float Tle5012b::calculateDisplacement(void)
 {
-    // double angle;
-    // getAngleValue(angle);
-    // angle = 360 - angle; // For testing. Reversed value is observed
-    // direction_t direction = (direction_t)this->dir;
-    
-    // float displacement = (float)((angle/360.0) * 2);
-    // switch(direction)
-    // {
-    //     case CLOCKWISE:
-    //         if (displacement > (float)1.5)
-    //         {
-    //             almostCompleteCW =true;
-    //         }
-    //         else if (displacement < (float)0.5)
-    //         {
-    //             if(almostCompleteCW)
-    //             {
-    //                 almostCompleteCW = false;
-    //                 displacementCount += 2;
-    //             }
-    //         }
-            
-    //         almostCompleteCCW = false;
-    //         break;
-            
-    //     case ANTICLOCKWISE:
-    //         if (displacement < (float)0.5)
-    //         {
-    //             almostCompleteCCW =true;
-    //         }
-    //         else if (displacement > (float)1.5)
-    //         {
-    //             if(almostCompleteCCW)
-    //             {
-    //                 almostCompleteCCW = false;
-    //                 displacementCount -= 2;
-    //             }
-    //         }
-    //         almostCompleteCW = false;
-    //         break;
-            
-    //     default:
-    //         break;
-    // }
-
-    // displacement += (displacementCount - ZeroOffset);
-    // return displacement;
-
     static float lastAngle = 0.0f;  // Store the previous angle value
     static float totalDisplacement = 0.0f;  // Total displacement with factor of 2 applied
 
