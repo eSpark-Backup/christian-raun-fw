@@ -72,7 +72,6 @@ volatile BOOL	gFirmwareDownload_Finished = FALSE;
 
 dataInPacket dataIn = {0,0,0,0};
 dataOutPacket dataOut = {0,0,0,0,0};
-
 /*-----------------------------------------------------------------------------------------
 ------
 ------    application specific functions
@@ -620,7 +619,12 @@ UINT16 APPL_GenerateMapping(UINT16 *pInputSize,UINT16 *pOutputSize)
 *////////////////////////////////////////////////////////////////////////////////////////
 void APPL_InputMapping(UINT16* pData)
 {
-    MEMCPY(pData, &(Inputs0x6000.Position), sizeof(dataOutPacket));   
+    MEMCPY(pData, &(Inputs0x6000.Position), sizeof(dataOutPacket));
+// #if _WIN32
+//    #pragma message ("Warning: Implement input (Slave->Master) mapping")
+// #else
+//     #warning "Implement input (Slave->Master) mapping"
+// #endif
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -633,6 +637,11 @@ void APPL_InputMapping(UINT16* pData)
 void APPL_OutputMapping(UINT16* pData)
 {
     MEMCPY(&(Outputs0x7010.RPM), pData, sizeof(dataInPacket));
+// #if _WIN32
+//    #pragma message ("Warning: Implement output (Master->Slave) mapping")
+// #else
+//     #warning "Implement output (Master->Slave) mapping"
+// #endif
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -647,6 +656,11 @@ void APPL_Application(void)
     
     // Map Inputs
     MEMCPY(&(dataIn.rpm), &(Outputs0x7010.RPM), sizeof(dataInPacket));
+// #if _WIN32
+//    #pragma message ("Warning: Implement the slave application")
+// #else
+//     #warning "Implement the slave application"
+// #endif
 }
 
 #if EXPLICIT_DEVICE_ID
@@ -716,3 +730,4 @@ void main(void)
 }
 #endif //#if USE_DEFAULT_MAIN
 /** @} */
+

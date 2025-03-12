@@ -78,7 +78,7 @@ void __attribute__((optimize("-O1"), long_call, noreturn, used))Dummy_Handler(vo
 }
 
 /* MISRAC 2012 deviation block start */
-/* MISRA C-2012 Rule 8.6 deviated 101 times.  Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
+/* MISRA C-2012 Rule 8.6 deviated 102 times.  Deviation record ID -  H3_MISRAC_2012_R_8_6_DR_1 */
 /* Device vectors list dummy definition*/
 extern void SVCall_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PendSV_Handler             ( void ) __attribute__((weak, alias("Dummy_Handler")));
@@ -180,6 +180,7 @@ extern void AES_Handler                ( void ) __attribute__((weak, alias("Dumm
 extern void TRNG_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void ICM_Handler                ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void PUKCC_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
+extern void QSPI_Handler               ( void ) __attribute__((weak, alias("Dummy_Handler")));
 extern void SDHC0_Handler              ( void ) __attribute__((weak, alias("Dummy_Handler")));
 
 
@@ -324,7 +325,7 @@ const H3DeviceVectors exception_table=
     .pfnTRNG_Handler               = TRNG_Handler,
     .pfnICM_Handler                = ICM_Handler,
     .pfnPUKCC_Handler              = PUKCC_Handler,
-    .pfnQSPI_Handler               = QSPI_InterruptHandler,
+    .pfnQSPI_Handler               = QSPI_Handler,
     .pfnSDHC0_Handler              = SDHC0_Handler,
 
 

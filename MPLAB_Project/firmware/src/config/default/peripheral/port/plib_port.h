@@ -90,26 +90,29 @@
 #define UART_RX_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 5U)) & 0x01U)
 #define UART_RX_PIN                  PORT_PIN_PA05
 
-/*** Macros for QSPI_MOSI pin ***/
-#define QSPI_MOSI_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 8U)) & 0x01U)
-#define QSPI_MOSI_PIN                  PORT_PIN_PA08
+/*** Macros for QSPI_SIO0 pin ***/
+#define QSPI_SIO0_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 8U)) & 0x01U)
+#define QSPI_SIO0_PIN                  PORT_PIN_PA08
 
-/*** Macros for QSPI_MISO pin ***/
-#define QSPI_MISO_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 9U)) & 0x01U)
-#define QSPI_MISO_PIN                  PORT_PIN_PA09
+/*** Macros for QSPI_SIO1 pin ***/
+#define QSPI_SIO1_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 9U)) & 0x01U)
+#define QSPI_SIO1_PIN                  PORT_PIN_PA09
+
+/*** Macros for QSPI_SIO2 pin ***/
+#define QSPI_SIO2_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 10U)) & 0x01U)
+#define QSPI_SIO2_PIN                  PORT_PIN_PA10
+
+/*** Macros for QSPI_SIO3 pin ***/
+#define QSPI_SIO3_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 11U)) & 0x01U)
+#define QSPI_SIO3_PIN                  PORT_PIN_PA11
 
 /*** Macros for QSPI_SCK pin ***/
 #define QSPI_SCK_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 10U)) & 0x01U)
 #define QSPI_SCK_PIN                  PORT_PIN_PB10
 
-/*** Macros for SPI_CS pin ***/
-#define SPI_CS_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 11U))
-#define SPI_CS_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 11U))
-#define SPI_CS_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 11U))
-#define SPI_CS_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 11U))
-#define SPI_CS_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 11U))
-#define SPI_CS_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 11U)) & 0x01U)
-#define SPI_CS_PIN                  PORT_PIN_PB11
+/*** Macros for QSPI_CS pin ***/
+#define QSPI_CS_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 11U)) & 0x01U)
+#define QSPI_CS_PIN                  PORT_PIN_PB11
 
 /*** Macros for ENC_DATA0 pin ***/
 #define ENC_DATA0_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 12U)) & 0x01U)

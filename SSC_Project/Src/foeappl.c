@@ -59,6 +59,7 @@ V4.10 FOE 1-14: Filetransfer over FoE: Files can be read and stored to harddisk<
 #include "bootmode.h"
 
 
+/*ET9300 Project Handler :(#if TEST_APPLICATION) lines 64 to 66 deleted*/
 
 #include "applInterface.h"
 

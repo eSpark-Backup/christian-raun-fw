@@ -68,6 +68,7 @@ V5.01 : Start file change log
 #define    FOE_WAIT_FOR_LAST_DATA               6 /**< \brief Wait for last data state*/
 
 
+/*ET9300 Project Handler :(#if FC1100_HW) lines 71 to 73 deleted*/
 
 
 
@@ -87,6 +88,7 @@ typedef struct  MBX_STRUCT_PACKED_START
         UINT16        Password[2]; /**< \brief Password (used in Read request and Write request). 0 if unknown*/
         UINT16        PacketNo[2]; /**< \brief Packet number (used in DATA and ACK datagram)*/
         UINT16        ErrorCode[2]; /**< \brief Error code (used in ERR datagram)*/
+/*ET9300 Project Handler :(#if BIG_ENDIAN_16BIT) lines 94 to 97 deleted*/
         #define FOE_COMMAND_LOWWORD		0
         #define FOE_COMMAND_HIGHWORD	1
         struct MBX_STRUCT_PACKED_START
@@ -115,6 +117,7 @@ typedef struct MBX_STRUCT_PACKED_START
 TFOEMBX;
 
 
+/*ET9300 Project Handler :(#if FC1100_HW) lines 128 to 130 deleted*/
 
 
 /*---------------------------------------------

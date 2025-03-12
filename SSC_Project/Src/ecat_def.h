@@ -149,7 +149,7 @@ ESC_SUPPORT_ECAT_LED: This switch can be enabled if the connected ESC support Er
 /** 
 ESC_EEPROM_EMULATION: If this switch is set EEPROM emulation is supported. Not all ESC types support EEPROM emulation. See ESC datasheet for more information. */
 #ifndef ESC_EEPROM_EMULATION
-#define ESC_EEPROM_EMULATION                      1 //This define was already evaluated by ET9300 Project Handler(V. 1.5.3.0)!
+#define ESC_EEPROM_EMULATION                      0 //This define was already evaluated by ET9300 Project Handler(V. 1.5.3.0)!
 #endif
 
 /** 
@@ -413,7 +413,7 @@ STATIC_OBJECT_DIC: If this switch is set, the object dictionary is "build" stati
 /** 
 ESC_EEPROM_ACCESS_SUPPORT: If this switch is set the slave stack provides functions to access the EEPROM. */
 #ifndef ESC_EEPROM_ACCESS_SUPPORT
-#define ESC_EEPROM_ACCESS_SUPPORT                 0 //This define was already evaluated by ET9300 Project Handler(V. 1.5.3.0)!
+#define ESC_EEPROM_ACCESS_SUPPORT                 1 //This define was already evaluated by ET9300 Project Handler(V. 1.5.3.0)!
 #endif
 
 
@@ -933,7 +933,7 @@ DEVICE_NAME_LEN: Length of 'DEVICE_NAME' without '\0' */
 /** 
 DEVICE_HW_VERSION: Hardware version of the slave device (Object 0x1009) */
 #ifndef DEVICE_HW_VERSION
-#define DEVICE_HW_VERSION                         "1.0"
+#define DEVICE_HW_VERSION                         "4.0"
 #endif
 
 /** 

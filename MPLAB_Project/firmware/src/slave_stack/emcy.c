@@ -47,6 +47,7 @@ V4.10 EMCY 1: AlStatus comparison fixed
 #undef      _EMCY_
 /*remove definition of _EMCY_ (#ifdef is used in emcy.h)*/
 #include "ecatcoe.h"
+/*ET9300 Project Handler :(#if SOE_SUPPORTED) lines 53 to 55 deleted*/
 
 /*---------------------------------------------------------------------------------------
 ------
@@ -57,6 +58,7 @@ V4.10 EMCY 1: AlStatus comparison fixed
 const UINT16 MBXMEM acEmcyCoeHeader[4] = {COE_HEADER_SIZE + EMCY_SIZE, 0, SWAPWORD(MBX_TYPE_COE<<8), SWAPWORD(COESERVICE_EMERGENCY<<12)};
 #define    MAX_EMCY_SIZE    (SIZEOF(acEmcyCoeHeader)+SIZEOF(TEMCYMESSAGE))
 
+/*ET9300 Project Handler :(#if SOE_SUPPORTED) lines 68 to 74 deleted*/
 /*---------------------------------------------------------------------------------------
 ------
 ------    Functions
@@ -268,6 +270,7 @@ TEMCYMESSAGE EMCYMEM * EMCY_GetEmcyBuffer(void)
     TEMCYMESSAGE EMCYMEM* pEmcy = GetOutOfEmptyEmcyQueue();
 
 
+/*ET9300 Project Handler :(#if SOE_SUPPORTED) lines 288 to 291 deleted*/
 
     return pEmcy;
 }
@@ -286,6 +289,7 @@ UINT8 EMCY_SendEmergency( TEMCYMESSAGE EMCYMEM *pEmcy )
     ENTER_MBX_CRITICAL;
 
     if ( bSendMbxIsFull || ((nAlStatus & STATE_MASK) == STATE_INIT)
+/*ET9300 Project Handler :(#if !MAILBOX_QUEUE) lines 310 to 312 deleted*/
         )
     {
         /* send mailbox is full store the emergency message */
@@ -310,6 +314,7 @@ UINT8 EMCY_SendEmergency( TEMCYMESSAGE EMCYMEM *pEmcy )
 
     OBJTOMBXMEMCPY(psWriteMbx, acEmcyCoeHeader, SIZEOF(acEmcyCoeHeader));
     MBXMEMCPY(&psWriteMbx->Data[1], pEmcy, SIZEOF(TEMCYMESSAGE));
+/*ET9300 Project Handler :(#if SOE_SUPPORTED) lines 341 to 354 deleted*/
 
     // HBu 02.05.06: emergency buffer has to be put in the empty queue only
     //               if the sending was successful

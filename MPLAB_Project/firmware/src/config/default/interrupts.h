@@ -77,7 +77,6 @@ void TCC1_MC2_InterruptHandler (void);
 void TC0_TimerInterruptHandler (void);
 void TC2_TimerInterruptHandler (void);
 void TC4_TimerInterruptHandler (void);
-void QSPI_InterruptHandler (void);
 
 
 

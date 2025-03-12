@@ -50,6 +50,7 @@
 // *****************************************************************************
 
 #include <device.h>
+#include "../../peripheral/qspi/plib_qspi_common.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -60,57 +61,52 @@
 // DOM-IGNORE-END
 
 // *****************************************************************************
-// *****************************************************************************
-// Section: SPI peripheral Data Types
-// *****************************************************************************
-// *****************************************************************************
-
-typedef void (* DRV_LAN9255_SPI_PLIB_CALLBACK)( uintptr_t );
-
-typedef bool (* DRV_LAN9255_SPI_PLIB_WRITE_READ)(void*, size_t, void *, size_t);
-
-typedef bool (* DRV_LAN9255_SPI_PLIB_WRITE)(void*, size_t);
-
-typedef bool (* DRV_LAN9255_SPI_PLIB_READ)(void*, size_t);
-
-typedef bool (* DRV_LAN9255_SPI_PLIB_IS_BUSY)(void);
-
-typedef void (* DRV_LAN9255_SPI_PLIB_CALLBACK_REGISTER)(DRV_LAN9255_SPI_PLIB_CALLBACK, uintptr_t);
-
-// *****************************************************************************
-/* LAN9255 Driver SPI PLIB Interface Data
+/* LAN9255 Driver SQI PLIB Interface Data
 
   Summary:
-    Defines the data required to initialize the LAN9255 driver SPI PLIB Interface.
+    Defines the data required to initialize the LAN9255 driver SQI PLIB Interface.
 
   Description:
-    This data type defines the data required to initialize the LAN9252 driver SPI
+    This data type defines the data required to initialize the LAN9252 driver
     PLIB Interface.
 
   Remarks:
     None.
 */
 
+/* Pointer to write command to QSPI slave device. */
+typedef bool (*DRV_LAN9255_SQI_PLIB_CMD_WRITE)( qspi_command_xfer_t *qspi_command_xfer, uint32_t address );
+
+/* Pointer to read particular register of QSPI slave device. */
+typedef bool (*DRV_LAN9255_SQI_PLIB_REG_READ)( qspi_register_xfer_t *qspi_register_xfer, uint32_t *rx_data, uint8_t rx_data_length );
+
+/* Pointer to write to particular register of QSPI slave device. */
+typedef bool (*DRV_LAN9255_SQI_PLIB_REG_WRITE)( qspi_register_xfer_t *qspi_register_xfer, uint32_t *tx_data, uint8_t tx_data_length );
+
+/* Pointer to read from the specified address of the flash device. */
+typedef bool (*DRV_LAN9255_SQI_PLIB_MEM_READ)( qspi_memory_xfer_t *qspi_memory_xfer, uint32_t *rx_data, uint32_t rx_data_length, uint32_t address );
+
+/* Pointer to write to the specified address of the flash device. */
+typedef bool (*DRV_LAN9255_SQI_PLIB_MEM_WRITE)( qspi_memory_xfer_t *qspi_memory_xfer, uint32_t *tx_data, uint32_t tx_data_length, uint32_t address );
+
 typedef struct
 {
+    /* Pointer to write command to QSPI slave device. */
+    DRV_LAN9255_SQI_PLIB_CMD_WRITE sqiCommandWrite;
 
-    /* LAN9255 PLIB SPI writeRead API */
-    DRV_LAN9255_SPI_PLIB_WRITE_READ                spiWriteRead;
+    /* Pointer to read particular register of QSPI slave device. */
+    DRV_LAN9255_SQI_PLIB_REG_READ sqiRegisterRead;
 
-    /* LAN9255 PLIB SPI or SQI write API */
-    DRV_LAN9255_SPI_PLIB_WRITE                     spiWrite;
+    /* Pointer to write to particular register of QSPI slave device. */
+    DRV_LAN9255_SQI_PLIB_REG_WRITE sqiRegisterWrite;
 
-    /* LAN9255 PLIB SPI or SQI read API */
-    DRV_LAN9255_SPI_PLIB_READ                      spiRead;
+    /* Pointer to read from the specified address of the flash device. */
+    DRV_LAN9255_SQI_PLIB_MEM_READ sqiMemoryRead;
 
-    /* LAn9255 PLIB SPI or SQI Transfer status API */
-    DRV_LAN9255_SPI_PLIB_IS_BUSY                   spiIsBusy;
+    /* Pointer to write to the specified address of the flash device. */
+    DRV_LAN9255_SQI_PLIB_MEM_WRITE sqiMemoryWrite;
 
-    /* LAN9255 PLIB SPI or SQI callback register API */
-    DRV_LAN9255_SPI_PLIB_CALLBACK_REGISTER         spiCallbackRegister;
-
-} DRV_LAN9255_UTIL_SPI_PLIB_INTERFACE;
-
+} DRV_LAN9255_UTIL_SQI_PLIB_INTERFACE;
 // *****************************************************************************
 // *****************************************************************************
 // Section:Timer peripheral Data Types
@@ -164,9 +160,9 @@ typedef struct
 
 typedef struct
 {
-    /* Identifies the SPI PLIB API set to be used by the driver to access the
+	 /* Identifies the SQI PLIB API set to be used by the driver to access the
      * peripheral. */
-    const DRV_LAN9255_UTIL_SPI_PLIB_INTERFACE*      spiPlib;  
+    const DRV_LAN9255_UTIL_SQI_PLIB_INTERFACE*      sqiPlib; 
     /* Identifies the Timer PLIB API set to be used by the driver to access the
      * peripheral. */
     const DRV_LAN9255_UTIL_TMR_PLIB_INTERFACE*      timerPlib;

@@ -144,12 +144,14 @@ V4.00 APPL 6: The main function was split in MainInit and MainLoop
 #include "coeappl.h"
 
 
+/*ET9300 Project Handler :(#if DIAGNOSIS_SUPPORTED) lines 148 to 150 deleted*/
 
 #define _APPL_INTERFACE_ 1
 #include "applInterface.h"
 #undef _APPL_INTERFACE_
 
 /*ECATCHANGE_START(V5.13) CIA402 3*/
+/*ET9300 Project Handler :(#if CiA402_SAMPLE_APPLICATION #elif EL9800_APPLICATION #elif SAMPLE_APPLICATION #elif TEST_APPLICATION #elif SAMPLE_APPLICATION_INTERFACE #elif BOOTLOADER_SAMPLE) lines 157 to 170 deleted*/
 #include "LAN9255_EtherCAT_Slave.h"
 
 
@@ -160,6 +162,7 @@ V4.00 APPL 6: The main function was split in MainInit and MainLoop
 ------
 --------------------------------------------------------------------------------------*/
 
+#define MAX_CMD_RETIRES     10
 
 #ifndef ECAT_TIMER_INC_P_MS
 /**
@@ -171,6 +174,7 @@ V4.00 APPL 6: The main function was split in MainInit and MainLoop
 
 
 #define    MEASUREMENT_ACTIVE (((sSyncManOutPar.u16GetCycleTime & 0x1) == 0x1) || ((sSyncManInPar.u16GetCycleTime & 0x1) == 0x1))
+/*ET9300 Project Handler :(#elif MAX_PD_OUTPUT_SIZE > 0) lines 204 to 210 deleted*/
 
 /*-----------------------------------------------------------------------------------------
 ------
@@ -191,9 +195,7 @@ UINT32 u32MinCycleTimeValue; /** <\brief tmp value of the min cycle time during 
 
 
 
-UINT16 u16EepromStoreTimeoutCounter; /** <\brief contains the current timer value to store the EEPROM data*/
-
-UINT16 u16EepromStoreTimeoutValue; /** <\brief timeout in ms to store the EEPROM data*/
+/*ET9300 Project Handler :(#if ESC_EEPROM_EMULATION) lines 237 to 241 deleted*/
 
 
 UINT16             aPdOutputData[(MAX_PD_OUTPUT_SIZE>>1)];
@@ -201,6 +203,7 @@ UINT16           aPdInputData[(MAX_PD_INPUT_SIZE>>1)];
 
 /*variables are declared in ecatslv.c*/
     extern VARVOLATILE UINT32    u32dummy;
+/*ET9300 Project Handler :(#elif ESC_16BIT_ACCESS) lines 254 to 258 deleted*/
 
 BOOL bInitFinished = FALSE; /** < \brief indicates if the initialization is finished*/
 
@@ -221,6 +224,7 @@ void HandleCycleTimeMeasurement(void);
 /**
 \brief      This function will copies the inputs from the local memory to the ESC memory
 *////////////////////////////////////////////////////////////////////////////////////////
+/*ET9300 Project Handler :(#if _PIC18 && AL_EVENT_ENABLED) lines 284 to 288 deleted*/
 void PDO_InputMapping(void)
 {
 
@@ -291,6 +295,7 @@ void PDO_InputMapping(void)
 \brief    This function will copies the outputs from the ESC memory to the local memory.
         This function is only called in case of an SM2 (output process data) event.
 *////////////////////////////////////////////////////////////////////////////////////////
+/*ET9300 Project Handler :(#if _PIC18 && AL_EVENT_ENABLED) lines 371 to 375 deleted*/
 void PDO_OutputMapping(void)
 {
    UINT32 u32TimeValue = 0;
@@ -353,27 +358,11 @@ void ECAT_CheckTimer(void)
     /*The SyncManager watchdog is not supported, the local watchdog is used*/
     ECAT_CheckWatchdog();
 
+/*ET9300 Project Handler :(#if UC_SET_ECAT_LED) lines 451 to 453 deleted*/
 
     DC_CheckWatchdog();
 
-
-    if (u16EepromStoreTimeoutValue > 0)
-    {
-        u16EepromStoreTimeoutCounter++;
-
-        if (u16EepromStoreTimeoutValue <= u16EepromStoreTimeoutCounter)
-        {
-            u16EepromStoreTimeoutValue = 0;
-            u16EepromStoreTimeoutCounter = 0;
-
-            if (pAPPL_EEPROM_Store != NULL)
-            {
-                pAPPL_EEPROM_Store();
-            }
-
-        }
-    }
-
+/*ET9300 Project Handler :(#if ESC_EEPROM_EMULATION) lines 459 to 478 deleted*/
 
 
 /*ECATCHANGE_START(V5.13) */
@@ -395,6 +384,7 @@ void ECAT_CheckTimer(void)
     u32CheckForDcOverrunCnt++;
 
 
+/*ET9300 Project Handler :(#if TEST_APPLICATION && COE_SUPPORTED) lines 508 to 512 deleted*/
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -476,6 +466,7 @@ UINT32 GetSystemTimeDelay(UINT32 u32StartTime)
 
 /*ECATCHANGE_START(V5.13) ECAT1*/
 /*ECATCHANGE_END(V5.13) ECAT1*/
+/*ET9300 Project Handler :(#if _PIC18) lines 603 to 607 deleted*/
 void PDI_Isr(void)
 {
     /*ECATCHANGE_START(V5.13) ECAT1*/
@@ -513,6 +504,7 @@ void PDI_Isr(void)
 
             sSyncManInPar.u16SmEventMissedCounter = sSyncManOutPar.u16SmEventMissedCounter;
 
+/*ET9300 Project Handler :(#if COE_SUPPORTED #else) lines 654 to 659 deleted*/
 
 
         /* Outputs were updated, set flag for watchdog monitoring */
@@ -534,8 +526,10 @@ void PDI_Isr(void)
             /* Just acknowledge the process data event in the INIT,PreOP and SafeOP state */
             HW_EscReadDWordIsr(u32dummy,nEscAddrOutputData);
             HW_EscReadDWordIsr(u32dummy,(nEscAddrOutputData+nPdOutputSize-4));
+/*ET9300 Project Handler :(#elif ESC_16BIT_ACCESS) lines 685 to 691 deleted*/
         }
         }
+/*ET9300 Project Handler :(#elif MAX_PD_INPUT_SIZE > 0) lines 694 to 718 deleted*/
 
         /*
             Call ECAT_Application() in SM Sync mode
@@ -545,11 +539,14 @@ void PDI_Isr(void)
             /* The Application is synchronized to process data Sync Manager event*/
             ECAT_Application();
         }
+/*ET9300 Project Handler :(#elif MAX_PD_INPUT_SIZE > 0) lines 730 to 736 deleted*/
+/*ET9300 Project Handler :(#if COE_SUPPORTED #else) lines 737 to 744 deleted*/
 
 /*ECATCHANGE_START(V5.13) ECAT 5*/
     if ( (bEcatInputUpdateRunning == TRUE) && (nPdInputSize > 0)
 /*ECATCHANGE_END(V5.13) ECAT 5*/
        && ((sSyncManInPar.u16SyncType == SYNCTYPE_SM_SYNCHRON) || (sSyncManInPar.u16SyncType == SYNCTYPE_SM2_SYNCHRON))
+/*ET9300 Project Handler :(#if COE_SUPPORTED #else) lines 752 to 754 deleted*/
         )
     {
         /* EtherCAT slave is at least in SAFE-OPERATIONAL, update inputs */
@@ -571,7 +568,9 @@ void PDI_Isr(void)
       /* Acknowledge the process data event*/
             HW_EscReadDWordIsr(u32dummy,nEscAddrOutputData);
             HW_EscReadDWordIsr(u32dummy,(nEscAddrOutputData+nPdOutputSize-4));
+/*ET9300 Project Handler :(#elif ESC_16BIT_ACCESS) lines 783 to 789 deleted*/
     }
+/*ET9300 Project Handler :(#elif MAX_PD_INPUT_SIZE > 0) lines 791 to 811 deleted*/
     } //if(bEscIntEnabled)
 
       /*ECATCHANGE_START(V5.13) ECAT1*/
@@ -604,6 +603,7 @@ void Sync0_Isr(void)
 /*ECATCHANGE_START(V5.13) ECAT 6*/
         BOOL bCallInputMapping = FALSE;
 /*ECATCHANGE_END(V5.13) ECAT 6*/
+/*ET9300 Project Handler :(#if !AL_EVENT_ENABLED) lines 853 to 896 deleted*/
 
 /*ECATCHANGE_START(V5.13) ECAT 6*/
         if ((bEcatInputUpdateRunning == TRUE) && (LatchInputSync0Value > 0) && (nPdInputSize > 0))
@@ -635,6 +635,7 @@ void Sync0_Isr(void)
                    sSyncManInPar.u16SmEventMissedCounter = sSyncManInPar.u16SmEventMissedCounter + 3;
                }
 
+/*ET9300 Project Handler :(#if COE_SUPPORTED #else) lines 937 to 942 deleted*/
            } // if (u16SmSync0Counter > u16SmSync0Value)
 
            
@@ -659,6 +660,7 @@ void Sync0_Isr(void)
                  u16SmSync0Counter = 0;
 
                  sSyncManInPar.u16SmEventMissedCounter = 0;
+/*ET9300 Project Handler :(#if COE_SUPPORTED #else) lines 970 to 972 deleted*/
 
               }
            }
@@ -717,6 +719,7 @@ void Sync1_Isr(void)
         Set Run and Error Led depending on the Led state
 
 *////////////////////////////////////////////////////////////////////////////////////////
+/*ET9300 Project Handler :(#if UC_SET_ECAT_LED) lines 1041 to 1218 deleted*/
 /////////////////////////////////////////////////////////////////////////////////////////
 /**
  \param     pObjectDictionary   Pointer to application specific object dictionary.
@@ -738,12 +741,10 @@ UINT16 MainInit(void)
 
 
 /* Reset application function pointer*/
-pAPPL_EEPROM_Read = NULL;
-    pAPPL_EEPROM_Write = NULL;
-    pAPPL_EEPROM_Reload = NULL;
-    pAPPL_EEPROM_Store = NULL;
+/*ET9300 Project Handler :(#if ESC_EEPROM_EMULATION) lines 1240 to 1245 deleted*/
 
 
+/*ET9300 Project Handler :(#if EOE_SUPPORTED) lines 1248 to 1251 deleted*/
 
     pAPPL_FoeRead = NULL;
     pAPPL_FoeReadData = NULL;
@@ -763,7 +764,25 @@ pAPPL_EEPROM_Read = NULL;
     /* initialize the objects */
     COE_ObjInit();
 
+/*ET9300 Project Handler :(#if DIAGNOSIS_SUPPORTED) lines 1277 to 1280 deleted*/
 
+    /*Reset PDI Access*/
+    {
+    UINT32 eepromConfigControl = 0; //register (0x0500 : 0x0503) values
+
+    HW_EscReadDWord(eepromConfigControl,ESC_EEPROM_CONFIG_OFFSET);
+    eepromConfigControl = SWAPDWORD(eepromConfigControl);
+
+    if((eepromConfigControl & ESC_EEPROM_ASSIGN_TO_PDI_MASK) > 0)
+    {
+        /*Clear access register(0x0501.1)*/
+        eepromConfigControl &= ~ESC_EEPROM_LOCKED_BY_PDI_MASK;
+
+        eepromConfigControl = SWAPDWORD(eepromConfigControl);
+        HW_EscWriteDWord(eepromConfigControl,ESC_EEPROM_CONFIG_OFFSET);
+    }
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1299 to 1313 deleted*/
+    }
     /*indicate that the slave stack initialization finished*/
     bInitFinished = TRUE;
 
@@ -812,22 +831,7 @@ pAPPL_EEPROM_Read = NULL;
 
 
 
-    {
-        UINT32 TmpData = 0;
-        HW_EscReadDWord(TmpData, ESC_EEPROM_CONFIG_OFFSET);
-        TmpData = SWAPDWORD(TmpData);
-        //get bit6 of register 0x502
-        if ((TmpData & ESC_EEPROM_SUPPORTED_READBYTES_MASK) > 0)
-        {
-            //8Bytes EEPROM read access
-            EepromReadSize = 8;
-        }
-        else
-        {
-            //4Bytes EEPROM read access
-            EepromReadSize = 4;
-        }
-    }
+/*ET9300 Project Handler :(#if ESC_EEPROM_EMULATION) lines 1368 to 1391 deleted*/
 
 /*Application Init need to be called from the application layer*/
      return Error;
@@ -857,6 +861,7 @@ void MainLoop(void)
            DC-Mode:       bEscIntEnabled = TRUE, bDcSyncActive = TRUE */
         if (
             (!bEscIntEnabled || !bEcatFirstOutputsReceived)     /* SM-Synchronous, but not SM-event received */
+/*ET9300 Project Handler :(#if MAX_PD_OUTPUT_SIZE > 0 #else) lines 1422 to 1424 deleted*/
           && !bDcSyncActive                                               /* DC-Synchronous */
             )
         {
@@ -911,6 +916,7 @@ void MainLoop(void)
             ENABLE_ESC_INT();
         }
 
+/*ET9300 Project Handler :(#if !ECAT_TIMER_INT) lines 1495 to 1507 deleted*/
 
         if (u32CheckForDcOverrunCnt >= CHECK_DC_OVERRUN_IN_MS)
         {
@@ -924,6 +930,7 @@ void MainLoop(void)
        COE_Main();
        CheckIfEcatError();
 
+/*ET9300 Project Handler :(#if CiA402_SAMPLE_APPLICATION) lines 1527 to 1532 deleted*/
 
     if (pAPPL_MainLoop != NULL)
     {
@@ -937,6 +944,7 @@ void MainLoop(void)
  \brief    ECAT_Application (prev. SSC versions "COE_Application")
  this function calculates and the physical process signals and triggers the input mapping
 *////////////////////////////////////////////////////////////////////////////////////////
+/*ET9300 Project Handler :(#if _PIC18 && AL_EVENT_ENABLED) lines 1546 to 1550 deleted*/
 void ECAT_Application(void)
 {
 #if (MIN_PD_CYCLE_TIME == 0)
@@ -1012,198 +1020,267 @@ void ECAT_Application(void)
 #endif /* #if MIN_PD_CYCLE_TIME == 0 */
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ \param        wordaddress      WORD based address in the EEPROM to be read
+ \param        wordsize         size in WORD of EEPROM data to be read
+ \param        pData            buffer for EEPROM to be read or with EEPROM data to be written
+ \param        access           read (ESC_RD) or write (ESC_WR) access
 
-void EEPROM_CommandHandler(void)
+ \return     0 - success, > 0: error code
+
+ \brief        This function is called to read or write the EEPROM data, for BigEndian
+ \brief        Controller (switch BIG_ENDIAN_FORMAT set) the data has to be swapped outside
+ \brief        of this function)
+*////////////////////////////////////////////////////////////////////////////////////////
+
+UINT16 ESC_EepromAccess(UINT32 wordaddress, UINT16 wordsize, UINT16 MBXMEM *pData, UINT8 access)
 {
-   UINT16 Result = 0;
-    UINT32 EEPROMReg = 0; //Regvalue 0x500 - 0x5003
+    UINT16 i;
+    UINT8 u8TimeOut;
+    UINT16 u16RetErr = 0;
+    UINT16 u16WordOffset = 0;
+    UINT8 RetryCnt = MAX_CMD_RETIRES; //Maximum number of retries (evaluated in case of an Acknowledge Error)
 
-    HW_EscReadDWord(EEPROMReg,ESC_EEPROM_CONFIG_OFFSET);
-    EEPROMReg = SWAPDWORD(EEPROMReg);
+    VARVOLATILE UINT32 eepromConfigControl = 0; //register (0x0500 : 0x0503) values
 
-    if (EEPROMReg & ESC_EEPROM_BUSY_MASK) 
+    HW_EscReadDWord(eepromConfigControl,ESC_EEPROM_CONFIG_OFFSET);
+
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1672 to 1674 deleted*/
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1675 to 1687 deleted*/
+
+    if ( eepromConfigControl & ESC_EEPROM_ASSIGN_TO_PDI_MASK )
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1691 to 1693 deleted*/
     {
-        UINT32 cmd = EEPROMReg  & ESC_EEPROM_CMD_MASK;
-        UINT32 addr;
-        
-        
-        HW_EscReadDWord(addr,ESC_EEPROM_ADDRESS_OFFSET);
-        addr = SWAPDWORD(addr);
+        /* register 0x500.0 is set (should be written by the master before sending
+        the state transition request to PREOP),we have access to the EEPROM */
+        UINT16 step = 1; /* we write always only 1 word with one write access */
 
-        //Clear error bits (except the eeprom crc error)
-        EEPROMReg &= ~(ESC_EEPROM_ERROR_MASK & ~ESC_EEPROM_ERROR_CRC);
-        switch (cmd) {
-        case 0x00: //IDLE
-            break;
-        case ESC_EEPROM_CMD_READ_MASK:
+        if ( access == ESC_RD )
         {
-           if (pAPPL_EEPROM_Read != NULL)
-           {
-              Result = pAPPL_EEPROM_Read(addr);
-              if (Result > 0)
-              {
-                 //Set Error
-                 EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-              }
-           }
-           else
-           {
-
-              if (addr <= ESC_EEPROM_SIZE && (pEEPROM != NULL))
-              {
-                 UINT16 *pData = (UINT16 *)pEEPROM;
-                 HW_EscWrite((MEM_ADDR *)&pData[(addr)], ESC_EEPROM_DATA_OFFSET, EepromReadSize);
-              }
-              else
-              {
-                 //Set Error
-                 EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-              }
-           }
-        }
-        break;
-        case ESC_EEPROM_CMD_WRITE_MASK:
+            /* read access requested, we have to check if we read 2 (register 0x502.6=0)
+            or 4 words (register 0x502.6=1) with one access */
+            if ( eepromConfigControl & ESC_EEPROM_SUPPORTED_READBYTES_MASK )
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1705 to 1707 deleted*/
             {
-                 if (pAPPL_EEPROM_Write != NULL)
-                 {
-                    Result = pAPPL_EEPROM_Write(addr);
-                    if (Result > 0)
-                    {
-                       //Set Error
-                       EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-                    }
-                 }
-                 else
-                 {
-
-                    if (addr <= ESC_EEPROM_SIZE && (pEEPROM != NULL))
-                    {
-                       UINT16 *pData = (UINT16 *)pEEPROM;
-                       HW_EscRead((MEM_ADDR *)&pData[(addr)], ESC_EEPROM_DATA_OFFSET, EEPROM_WRITE_SIZE);
-                    }
-                    else
-                    {
-                       //Set Error
-                       EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-                    }
-                 }
-
-                 /* init the Store EEPROM timeout value (will be reset after the timer has expired)*/
-                 u16EepromStoreTimeoutValue = 1000;
-
-            }
-            break;
-        case ESC_EEPROM_CMD_RELOAD_MASK:
-            if (EepromReadSize == 8)
-            {
-                /* "full" EEPROM emulation ( 8Bytes EEPROM data) */
-                do
-                {
-                    if (addr > ESC_EEPROM_SIZE)
-                    {
-                        //Set Error
-                        EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-                        break;
-                    }
-                    else
-                    {
-                        if (pAPPL_EEPROM_Read != NULL)
-                        {
-                            Result = pAPPL_EEPROM_Read(addr);
-                            if (Result > 0)
-                            {
-                                //Set Error
-                                EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            if (addr <= ESC_EEPROM_SIZE && (pEEPROM != NULL))
-                            {
-                                UINT16 *pData = (UINT16 *)pEEPROM;
-                                HW_EscWrite((MEM_ADDR *)&pData[(addr)], ESC_EEPROM_DATA_OFFSET, EepromReadSize);
-                            }
-                            else
-                            {
-                                //Set Error
-                                EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-                                break;
-                            }
-                        }
-
-                        //Clear error bits
-                        EEPROMReg &= ~(ESC_EEPROM_ERROR_MASK);
-
-                        //ack current reload segment
-                        {
-                            UINT32 TmpData = SWAPDWORD(EEPROMReg);
-                            HW_EscWriteDWord(TmpData, ESC_EEPROM_CONFIG_OFFSET);
-                        }
-
-                        // read EEPROM control (to check if the reload is still pending)
-                        HW_EscReadDWord(EEPROMReg, ESC_EEPROM_CONFIG_OFFSET);
-                        EEPROMReg = SWAPDWORD(EEPROMReg);
-                        cmd = EEPROMReg  & ESC_EEPROM_CMD_MASK;
-
-                        HW_EscReadDWord(addr, ESC_EEPROM_ADDRESS_OFFSET);
-                        addr = SWAPDWORD(addr);
-                    }
-
-
-                } while (cmd == ESC_EEPROM_CMD_RELOAD_MASK);
+                step = 4; /* we get 4 words with one read access */
             }
             else
             {
-                /* The case is only called if the "small" EEPROM emulation (4 read bytes) is configured*/
+                step = 2; /* we get 2 words with one read access */
+            }
+        }
 
-                if (pAPPL_EEPROM_Reload != NULL)
+        /* first we have to lock the EEPROM access that we will not be interrupted by the master
+        by setting register 0x501.0 */
+        /*Clear access register(0x0501)*/
+        eepromConfigControl &= 0xFFFF00FF;
+
+        /*Set access rights to PDI*/
+        eepromConfigControl |= ESC_EEPROM_LOCKED_BY_PDI_MASK;
+
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1726 to 1728 deleted*/
+        HW_EscWriteDWord(eepromConfigControl,ESC_EEPROM_CONFIG_OFFSET);
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1730 to 1732 deleted*/
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1733 to 1739 deleted*/
+        for (i = 0; i < wordsize;)
+        {
+            /* we have to set the start address in register 0x504-0x507 */
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1743 to 1746 deleted*/
+            HW_EscWriteDWord(wordaddress, ESC_EEPROM_ADDRESS_OFFSET);
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1749 to 1751 deleted*/
+
+            if ( access == ESC_RD )
+            {
+                /* read access, we start the reading by setting 0x502.8
+                (will be reset automatically when reading is finished) */
+                eepromConfigControl &= ESC_EEPROM_CONFIG_MASK;
+                eepromConfigControl |= ESC_EEPROM_CMD_READ_MASK;
+
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1762 to 1764 deleted*/
+                HW_EscWriteDWord(eepromConfigControl,ESC_EEPROM_CONFIG_OFFSET);
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1766 to 1772 deleted*/
+            }
+            else
+            {
+                /* write access, we write the data in register 0x508-0x509 */
+                HW_EscWriteDWord(pData[i],ESC_EEPROM_DATA_OFFSET);
+
+                /* we start the writing by setting 0x502.9
+                (will be reset automatically when writing is finished) */
+                eepromConfigControl &= ESC_EEPROM_CONFIG_MASK;
+                eepromConfigControl |= ESC_EEPROM_CMD_WRITE_MASK;
+
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1785 to 1787 deleted*/
+                HW_EscWriteDWord(eepromConfigControl, ESC_EEPROM_CONFIG_OFFSET);
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1789 to 1798 deleted*/
+            }
+
+            do
+            {
+
+                /*Wait 100 cycles before reading EEPROM status*/
+                u8TimeOut = 100;
+                while (u8TimeOut > 0)
                 {
-                    Result = pAPPL_EEPROM_Reload();
-                    if (Result > 0)
+                    u8TimeOut--;
+                }
+                HW_EscReadDWord(eepromConfigControl, ESC_EEPROM_CONFIG_OFFSET);
+
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1813 to 1815 deleted*/
+            }
+            while ( eepromConfigControl & (ESC_EEPROM_BUSY_MASK));
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1818 to 1826 deleted*/
+
+            /* we have to check if the access was without errors */
+            HW_EscReadDWord(eepromConfigControl, ESC_EEPROM_CONFIG_OFFSET);
+
+/*ET9300 Project Handler :(#if BIG_ENDIAN_FORMAT) lines 1832 to 1834 deleted*/
+            if ( eepromConfigControl & ESC_EEPROM_ERROR_MASK )
+            {
+                if(!(eepromConfigControl & ESC_EEPROM_ERROR_CMD_ACK) && (RetryCnt != 0))
+                {
+                    /* Only abort if non Acknowledge Error occurs
+                       In case of an Acknowledge Error the operation should be repeated*/
+                    u16RetErr =  ALSTATUSCODE_EE_ERROR;
+                    break;
+                }
+            }
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1845 to 1861 deleted*/
+            else
+            {
+                if ( access == ESC_RD )
+                {
+                    UINT16 u16BytesToCopy = (step << 1);
+
+                    /* read access, get the data from register 0x508-0x50B(0x50F)*/
+                    if((u16WordOffset + step) > wordsize)
                     {
-                        //Set Error
-                        EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
+                        /*less than "step" words are left => copy only last required Bytes*/
+                        u16BytesToCopy = (wordsize - u16WordOffset) << 1;
                     }
-                    else
+
+                    HW_EscRead((MEM_ADDR *) &pData[i], ESC_EEPROM_DATA_OFFSET, u16BytesToCopy);
+                }
+            }
+
+            if(!(eepromConfigControl & ESC_EEPROM_ERROR_MASK))
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1881 to 1883 deleted*/
+            {
+                /* In case of Acknowledge Error repeat same operation, otherwise increment the address and proceed*/
+                wordaddress += step;
+                u16WordOffset +=step;
+                RetryCnt = MAX_CMD_RETIRES;
+
+                i += step;
+            }
+            else
+            {
+                RetryCnt --;
+                if(RetryCnt > 0)
+                {
+/*ECATCHANGE_START(V5.13) ECAT4*/
+                    /* Wait for 10ms until repeat EEPROM access */
+                    INT32 i32TimeoutTicks = (INT32)(ECAT_TIMER_INC_P_MS * 10);
+/*ECATCHANGE_END(V5.13) ECAT4*/
+                    UINT16 u16CurTimer = 0;
+                    UINT16 u16LastTimer = HW_GetTimer();
+                    UINT16 Delta = 0;
+
+                    /* Start wait loop */
+                    while(i32TimeoutTicks > 0)
                     {
-                        EEPROMReg &= ~ESC_EEPROM_ERROR_CRC;
+                        u16CurTimer = HW_GetTimer();
+
+                        if(u16LastTimer <= u16CurTimer)
+                        {
+                            Delta = (u16CurTimer - u16LastTimer);
+                        }
+                        else
+                        {
+                            /* 16bit overrun*/
+                            Delta = (0xFFFF - u16LastTimer) + u16CurTimer;
+                        }
+                        i32TimeoutTicks = i32TimeoutTicks - Delta;
+
+                        u16LastTimer = u16CurTimer;
                     }
                 }
                 else
                 {
-
-                    Result = HW_EepromReload();
-                    if (Result != 0 || (pEEPROM == NULL))
-                    {
-                        EEPROMReg |= ESC_EEPROM_ERROR_CRC;
-                    }
-                    else
-                    {
-                        //copy the configured station alias
-/* ECATCHANGE_START(V5.13) EEPROM1*/
-                        HW_EscWriteDWord(((UINT32 *)pEEPROM)[0x2], ESC_EEPROM_DATA_OFFSET);
-/* ECATCHANGE_END(V5.13) EEPROM1*/
-
-                        EEPROMReg &= ~ESC_EEPROM_ERROR_CRC;
-                    }
+                    /* Abort EEPROM access if max retires are reached*/
+                    u16RetErr =  ALSTATUSCODE_EE_ERROR;
+                    break;
                 }
             }
-         break;
-        default:
-            EEPROMReg |= ESC_EEPROM_ERROR_CMD_ACK;
-            break;
+        } //for-loop over all data
+    } // if EEPROM access is assigned to PDI
+    else
+    {
+        u16RetErr = ALSTATUSCODE_EE_NOACCESS;
+    }
+
+    /* clear EEPROM control register 0x500 */
+    eepromConfigControl = 0;
+
+    HW_EscWriteDWord(eepromConfigControl, ESC_EEPROM_CONFIG_OFFSET);
+/*ET9300 Project Handler :(#if ESC_32BIT_ACCESS #else) lines 1943 to 1947 deleted*/
+    return u16RetErr;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ \return     success : ALSTATUSCODE_WAITFORCOLDSTART
+            failed  : EEPROM ERRROR Code
+
+ \brief        This function recalculates the EEPROM CRC and writes the updated value to EEPROM.
+            After writing the ESC Config Area a device restart is required!
+ *////////////////////////////////////////////////////////////////////////////////////////
+UINT16 ESC_EepromWriteCRC(void)
+{
+    UINT16 u16Return = ALSTATUSCODE_UNSPECIFIEDERROR;
+    UINT16 EscCfgData[8];
+    UINT16 u16Crc = 0x00FF;
+    UINT16 i,j;
+
+    
+    u16Return = ESC_EepromAccess(0,7,(UINT16 *)EscCfgData,ESC_RD);
+    if(u16Return == 0)
+    {
+        UINT8 *pData = (UINT8 *)EscCfgData;
+
+        for(i = 0; i < 14; i++ )
+        {
+            u16Crc ^= pData[i];
+
+            for(j=0; j<8; j++ )
+            {
+                if( u16Crc & 0x80 )
+                {
+                    u16Crc = (u16Crc<<1) ^ 0x07;
+                }
+                else
+                {
+                    u16Crc <<= 1;
+                }
+            }
         }
 
-        /* reset the store eeprom timeout counter*/
-        u16EepromStoreTimeoutCounter = 0;
+        /*only low Byte shall be written*/
+        u16Crc &= 0x00FF;
 
+        /*write new calculated Crc to Esc Config area*/
+        u16Return = ESC_EepromAccess(7,1,&u16Crc,ESC_WR);
+        if(u16Return == 0)
         {
-        UINT32 TmpData = SWAPDWORD(EEPROMReg);
-        HW_EscWriteDWord(TmpData,ESC_EEPROM_CONFIG_OFFSET);
+            u16Return =  ALSTATUSCODE_WAITFORCOLDSTART;
         }
     }
+
+    return u16Return;
 }
+
+/*ET9300 Project Handler :(#if ESC_EEPROM_EMULATION) lines 2004 to 2224 deleted*/
 
 
 /** @} */

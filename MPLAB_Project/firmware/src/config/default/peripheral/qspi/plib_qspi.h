@@ -5,21 +5,20 @@ Interface definition of QSPI PLIB.
     Microchip Technology Inc.
 
  File Name:
-    plib_qspi_spi.h
+    plib_qspi.h
 
  Summary:
-    Interface definition of the Quad Serial Peripheral Interface Plib (QSPI)
-    when operating in SPI mode.
+    Interface definition of the Quad Serial Peripheral Interface Plib (QSPI).
 
  Description:
     This file defines the interface for the QSPI Plib.
     It allows user to setup QSPI and transfer data to and from slave devices
-    attached when in SPI mode.
+    attached.
 *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -42,8 +41,8 @@ Interface definition of QSPI PLIB.
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef PLIB_QSPI_SPI_H // Guards against multiple inclusion
-#define PLIB_QSPI_SPI_H
+#ifndef PLIB_QSPI_H // Guards against multiple inclusion
+#define PLIB_QSPI_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -77,19 +76,17 @@ Interface definition of QSPI PLIB.
 
 void QSPI_Initialize( void );
 
-bool QSPI_WriteRead (void* pTransmitData, size_t txSize, void* pReceiveData, size_t rxSize);
+void QSPI_EndTransfer( void );
 
-bool QSPI_Write(void* pTransmitData, size_t txSize);
+bool QSPI_CommandWrite( qspi_command_xfer_t *qspi_command_xfer, uint32_t address );
 
-bool QSPI_Read(void* pReceiveData, size_t rxSize);
+bool QSPI_RegisterRead( qspi_register_xfer_t *qspi_register_xfer, uint32_t *rx_data, uint8_t rx_data_length );
 
-bool QSPI_TransferSetup (QSPI_TRANSFER_SETUP * setup, uint32_t spiSourceClock );
+bool QSPI_RegisterWrite( qspi_register_xfer_t *qspi_register_xfer, uint32_t *tx_data, uint8_t tx_data_length );
 
-void QSPI_CallbackRegister (QSPI_CALLBACK callback, uintptr_t context);
+bool QSPI_MemoryRead( qspi_memory_xfer_t *qspi_memory_xfer, uint32_t *rx_data, uint32_t rx_data_length, uint32_t address );
 
-bool QSPI_IsBusy(void);
-
-bool QSPI_IsTransmitterBusy(void);
+bool QSPI_MemoryWrite( qspi_memory_xfer_t *qspi_memory_xfer, uint32_t *tx_data, uint32_t tx_data_length, uint32_t address );
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus // Provide C++ Compatibility
@@ -97,4 +94,4 @@ bool QSPI_IsTransmitterBusy(void);
 #endif
 // DOM-IGNORE-END
 
-#endif /* PLIB_QSPI_SPI_H */
+#endif /* PLIB_QSPI_H */

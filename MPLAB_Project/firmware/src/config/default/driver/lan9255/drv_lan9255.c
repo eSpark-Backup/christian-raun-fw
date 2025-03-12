@@ -1504,9 +1504,9 @@ void HW_EscReadMailbox(MEM_ADDR *pData, uint16_t Address, uint16_t Len)
 	HW_EscRead(pData, Address, Len);
 }
 
-#if !defined ETHERCAT_EEPROM_EMULATION_SUPPORT
-uint8_t HW_EepromReload ()
-{
-    return 0;
-}
-#endif
+// #if (ETHERCAT_EEPROM_EMULATION_SUPPORT == false)
+// uint8_t HW_EepromReload ()
+// {
+//     return 0;
+// }
+// #endif

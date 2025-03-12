@@ -63,7 +63,7 @@
 #include "peripheral/tc/plib_tc2.h"
 #include "peripheral/tc/plib_tc4.h"
 #include "peripheral/tcc/plib_tcc1.h"
-#include "peripheral/qspi/plib_qspi_spi.h"
+#include "peripheral/qspi/plib_qspi.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

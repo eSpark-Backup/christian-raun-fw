@@ -30,6 +30,7 @@ V5.01 : Start file change log
 #include "mailbox.h"
 
 #include "ecatcoe.h"
+/*ET9300 Project Handler :(#elif SOE_SUPPORTED) lines 33 to 37 deleted*/
 
 #ifndef _EMCY_H_
 #define _EMCY_H_
@@ -53,6 +54,7 @@ typedef struct MBX_STRUCT_PACKED_START
 {
     UINT16                      Code; /**< \brief Code of the emergency message*/
     UINT16                      RegData[3]; /**< \brief Emergency data*/
+/*ET9300 Project Handler :(#if BIG_ENDIAN_16BIT) lines 61 to 69 deleted*/
         #define    EMCY_OFFS_ERRORREGISTER     0 /**< \brief Error register offset within the emergency data*/
         #define    EMCY_MASK_ERRORREGISTER     0x00FF /**< \brief Error register mask within the emergency data*/
         #define    EMCY_SHIFT_ERRORREGISTER    0 /**< \brief Error register shift within the emergency data*/
@@ -71,6 +73,7 @@ TEMCY;
 /** \brief Emergency Message*/
 typedef struct MBX_STRUCT_PACKED_START
 {
+/*ET9300 Project Handler :(#if SOE_SUPPORTED) lines 89 to 91 deleted*/
     TEMCY                            Emcy; /**< \brief Emergency Info*/
 }MBX_STRUCT_PACKED_END
 TEMCYMESSAGE;
@@ -86,6 +89,7 @@ typedef struct
     TEMCYMESSAGE EMCYMEM *      pQueue[MAX_EMERGENCIES+1]; /**< \brief List of emergency messages*/
 } TEMCYQUEUE;
 
+/*ET9300 Project Handler :(#if !COE_SUPPORTED) lines 107 to 109 deleted*/
 
 
 #endif //_EMCY_H_

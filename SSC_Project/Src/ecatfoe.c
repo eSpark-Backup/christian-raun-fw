@@ -167,6 +167,7 @@ UINT8 FOE_ServiceInd(TFOEMBX MBXMEM * pFoeInd)
         {
             UINT32 u32CmdPacketNo = SWAPDWORD((((UINT32)pFoeInd->FoeHeader.Cmd.PacketNo[FOE_COMMAND_LOWWORD]) | ((UINT32)pFoeInd->FoeHeader.Cmd.PacketNo[FOE_COMMAND_HIGHWORD]) << 16));
 
+/*ET9300 Project Handler :(#if BIG_ENDIAN_16BIT) lines 170 to 172 deleted*/
             /* we are waiting for file data, service is correct */
             if ( u32CmdPacketNo == u32PacketNo )
             {
@@ -310,6 +311,7 @@ UINT8 FOE_ServiceInd(TFOEMBX MBXMEM * pFoeInd)
         /* the file transmission sequence is finished, we have to send nothing */
         u16FileAccessState = FOE_READY;
         APPL_FreeMailboxBuffer(pFoeInd);
+/*ET9300 Project Handler :(#if MAILBOX_QUEUE #else) lines 317 to 320 deleted*/
         return 0;
     }
     else

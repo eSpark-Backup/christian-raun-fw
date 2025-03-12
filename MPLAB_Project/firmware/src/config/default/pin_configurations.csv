@@ -14,12 +14,12 @@ Pin Number,Pin ID,Custom Name,Function,Mode, Direction,Latch,Pull Up,Pull Down,D
 27,PA05,UART_RX,SERCOM0_PAD1,Digital,High Impedance,n/a,No,No,NORMAL
 28,PA06,,Available,,,,,,NORMAL
 30,PA07,,Available,,,,,,NORMAL
-33,PA08,QSPI_MOSI,QSPI_DATA0,Digital,High Impedance,n/a,No,No,NORMAL
-34,PA09,QSPI_MISO,QSPI_DATA1,Digital,High Impedance,n/a,No,No,NORMAL
-35,PA10,,Available,,,,,,NORMAL
-36,PA11,,Available,,,,,,NORMAL
+33,PA08,QSPI_SIO0,QSPI_DATA0,Digital,High Impedance,n/a,No,No,NORMAL
+34,PA09,QSPI_SIO1,QSPI_DATA1,Digital,High Impedance,n/a,No,No,NORMAL
+35,PA10,QSPI_SIO2,QSPI_DATA2,Digital,High Impedance,n/a,No,No,NORMAL
+36,PA11,QSPI_SIO3,QSPI_DATA3,Digital,High Impedance,n/a,No,No,NORMAL
 40,PB10,QSPI_SCK,QSPI_SCK,Digital,High Impedance,n/a,No,No,NORMAL
-42,PB11,SPI_CS,GPIO,Digital,In/Out,Low,,,NORMAL
+42,PB11,QSPI_CS,QSPI_CS,Digital,In/Out,Low,,,NORMAL
 43,PB12,ENC_DATA0,SERCOM4_PAD0,Digital,Out,Low,,,NORMAL
 44,PB13,ENC_SCK,SERCOM4_PAD1,Digital,Out,Low,,,NORMAL
 46,PB14,ENC_CS,GPIO,Digital,Out,Low,,,NORMAL

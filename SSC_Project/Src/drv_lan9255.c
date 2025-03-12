@@ -328,26 +328,26 @@ uint16_t HW_GetALEventRegister(void)
 	    UINT32_VAL u32Val;
         u32Val.w[0] = 0;
         u32Val.w[1] = 0;
-	
+        
 	    PDI_Disable_Global_Interrupt();
 	
 	    MCHP_ESF_PDI_READ(ESC_AL_EVENT_OFFSET, (uint8_t*)&u32Val.Val, DWORD_LENGTH);
 	
 	    PDI_Restore_Global_Interrupt();
-        
+	
         if(gbALEvtOpEnabled)
 	    {
-	        return gEscALEvent.Word;
+            return gEscALEvent.Word;
 	    }
 	    else
 	    {
 	        return u32Val.w[0];
 	    }
-	
+		  
 	#else
 	
 	    UINT32_VAL u32Val;
-	
+        
         u32Val.w[0] = 0;
         u32Val.w[1] = 0;
 	    PDI_Disable_Global_Interrupt();
@@ -451,16 +451,16 @@ uint16_t HW_GetALEventRegister_Isr(void)
         u32Val.w[0] = 0;
         u32Val.w[1] = 0;
 	    MCHP_ESF_PDI_READ(ESC_AL_EVENT_OFFSET, (uint8_t*)&u32Val.Val, DWORD_LENGTH);
-        
+	
         if(gbALEvtOpEnabled)
 	    {
-	        return gEscALEvent.Word;
+            return gEscALEvent.Word;
 	    }
 	    else
 	    {
 	        return u32Val.w[0];
 	    }
-	
+		  
 	#else 
 	    UINT32_VAL u32Val;
         u32Val.w[0] = 0;
@@ -1504,7 +1504,7 @@ void HW_EscReadMailbox(MEM_ADDR *pData, uint16_t Address, uint16_t Len)
 	HW_EscRead(pData, Address, Len);
 }
 
-#if !defined ETHERCAT_EEPROM_EMULATION_SUPPORT
+#if (ETHERCAT_EEPROM_EMULATION_SUPPORT == false)
 uint8_t HW_EepromReload ()
 {
     return 0;

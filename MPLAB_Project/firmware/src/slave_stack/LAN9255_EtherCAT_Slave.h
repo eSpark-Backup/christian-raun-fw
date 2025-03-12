@@ -56,11 +56,13 @@ typedef struct {
 //include custom application object dictionary 
 #include "LAN9255_EtherCAT_SlaveObjects.h"
 
+
 #if defined(_LAN9255__ETHER_CAT__SLAVE_) && (_LAN9255__ETHER_CAT__SLAVE_ == 1)
     #define PROTO
 #else
     #define PROTO extern
 #endif
+
 
 PROTO void APPL_Application(void);
 #if EXPLICIT_DEVICE_ID
@@ -103,3 +105,4 @@ PROTO void APPL_OutputMapping(UINT16* pData);
 
 #undef PROTO
 /** @}*/
+

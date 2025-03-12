@@ -54,8 +54,6 @@
 /* This section lists the other files that are included in this file.
 */
 #include "definitions.h"
-//#include "ecat_def.h"
-//#include "slave_stack/ecat_def.h"
 #include "../../../../slave_stack/ecat_def.h"
 #include "drv_lan9255_definitions.h"
 
@@ -92,22 +90,21 @@
 /* EEPROM Emulation Feature can be enabled by uncommenting below macro for LAN9255*/
 #define ETHERCAT_EEPROM_EMULATION_SUPPORT               0
 
-#define ETHERCAT_COMM_PROTOCOL_SPI     1
+#define ETHERCAT_COMM_PROTOCOL_SQI     1
 
-/* EtherCAT SPI Direct mode enabled */
-#define ETHERCAT_SPI_DIRECT_MODE_ACCESS					1
-
+/* EtherCAT SQI Direct mode enabled */
+#define ETHERCAT_SQI_DIRECT_MODE_ACCESS					1
 
 #define MCHP_ESF_IS_PDI_FUNCTIONAL(pdata)		ECAT_Lan9255_IsPDIFunctional(pdata)
 
-/* SPI Direct mode Access */
-#define MCHP_ESF_PDI_WRITE(addr, pdata, len)            ECAT_Lan9255_SPIWrite (addr, pdata, len)
-#define MCHP_ESF_PDI_READ(addr, pdata, len)             ECAT_Lan9255_SPIRead (addr, pdata, len)
-#define MCHP_ESF_PDI_FASTREAD(addr, pdata, len)			ECAT_Lan9255_SPIFastRead (addr, pdata, len)
+
+/* SQI Direct mode Access */
+#define MCHP_ESF_PDI_WRITE(addr, pdata, len)            ECAT_LAN925x_SQIWrite (addr, pdata, len)
+#define MCHP_ESF_PDI_READ(addr, pdata, len)             ECAT_LAN925x_SQIRead (addr, pdata, len)
+#define MCHP_ESF_PDI_FASTREAD(addr, pdata, len)			
 #define MCHP_ESF_PDI_READ_PDRAM(pdata, addr, len)		
 #define MCHP_ESF_PDI_FASTREAD_PDRAM(pdata, addr, len)	
 #define MCHP_ESF_PDI_WRITE_PDRAM(pdata, addr, len)		
-
 
 
 /* Timer functions */
@@ -131,37 +128,6 @@
 #define PDI_Timer_Interrupt()                           ECAT_PDI_TimerInterrupt()
  
 // *****************************************************************************
-// *****************************************************************************
-// Section: Data Types
-// *****************************************************************************
-// *****************************************************************************
- // *****************************************************************************
-/* DRV_LAN9255 Util Transfer Status
-
- Summary:
-    Defines the data type for LAN9255 Driver Util transfer status.
-
- Description:
-    This will be used to indicate the current transfer status of the
-    LAN9255 driver operations.
-
- Remarks:
-    None.
-*/
-
-typedef enum
-{
-    /* Transfer is being processed */
-    DRV_LAN9255_UTIL_SPI_TRANSFER_STATUS_BUSY,
-
-    /* Transfer is successfully completed*/
-    DRV_LAN9255_UTIL_SPI_TRANSFER_STATUS_COMPLETED,
-
-    /* Transfer had error */
-    DRV_LAN9255_UTIL_SPI_TRANSFER_STATUS_ERROR
-
-} DRV_LAN9255_UTIL_SPI_TRANSFER_STATUS;       
-// *****************************************************************************
 /* LAN9255 Driver Utility Instance Object
 
   Summary:
@@ -178,12 +144,8 @@ typedef struct
 {
     /* Flag to indicate this object is in use  */
     bool                                   inUse;
-    /* SPI PLIB API list that will be used by the driver to access the hardware */
-    const DRV_LAN9255_UTIL_SPI_PLIB_INTERFACE 	*spiPlib;
-
-    /* SPI peripheral communication transfer status */
-    volatile DRV_LAN9255_UTIL_SPI_TRANSFER_STATUS       spiTransferStatus;
-	
+	/* SQI PLIB API list that will be used by the driver to access the hardware */
+	const DRV_LAN9255_UTIL_SQI_PLIB_INTERFACE 	*sqiPlib;
 	/* Timer PLIB API list that will be used by the driver to access the hardware */
     const DRV_LAN9255_UTIL_TMR_PLIB_INTERFACE	*timerPlib;
 	
@@ -193,7 +155,7 @@ typedef struct
 /* SPI/SQI Clock Period in nano seconds */
 #define CLK_PERIOD_1MHZ		(1000)
 
-#define DRV_LAN9255_BAUDRATE_PDI_FREQ       15
+#define DRV_LAN9255_BAUDRATE_PDI_FREQ       60
 
 /*
  * The Dummy cycles needed for read transaction introduced by two methods
@@ -364,8 +326,6 @@ typedef union {
 
 void    ECAT_SyncInterruptsInitialization(void);
 void    ECAT_Lan9255_IsPDIFunctional(uint8_t *pbyData);
-void    _ECAT_ChipSelectDisable(void);
-void    _ECAT_ChipSelectEnable(void);
 uint16_t	ECAT_PDI_TimerGet(void);
 void	ECAT_PDI_TimerClear(void);
 void    ECAT_PDI_TimerInterrupt(void);
@@ -376,9 +336,10 @@ void	ECAT_HWSetlED(uint8_t RunLed, uint8_t ErrLed);
 void	ECAT_Initialization(void);
 void    CRITICAL_SECTION_ENTER(void);
 void    CRITICAL_SECTION_LEAVE(void);
-void	ECAT_SPI_SetConfiguration(uint8_t *byDummyByteCnt);
-void    ECAT_SPI_SetCfg_dataInit(void);
-void    ECAT_SPI_DisableQuadMode(void);
+void	ECAT_SQI_SetConfiguration(uint8_t *byDummyByteCnt);
+void    ECAT_SQI_SetCfg_dataInit(void);
+void    ECAT_SQI_EnableQuadMode(void);
+void    ECAT_SQI_DisableQuadMode(void);
 // *****************************************************************************
 /* Function:
     void ECAT_Util_Initialize(const unsigned short int drvIndex,  const void * const init)
@@ -407,14 +368,8 @@ void    ECAT_SPI_DisableQuadMode(void);
 
 void ECAT_Util_Initialize(const unsigned short int drvIndex,  const void * const init);
 	/* Function Prototypes */
-	void ECAT_Lan9255_SPIWrite(uint16_t wAddr, uint8_t *pbyData, uint32_t dwLength);
-	void ECAT_Lan9255_SPIRead(uint16_t wAddr, uint8_t *pbydata, uint32_t dwLength);
-	void ECAT_Lan9255_SPIFastRead(uint16_t wAddr, uint8_t *pbyData, uint32_t dwLength);
-
-// User defined Function
-#define RST_CTL_REG 0x31F8
-void ECAT_LAN9253_RESET(void);
-
+	void    ECAT_LAN925x_SQIWrite(uint16_t u16Addr, uint8_t *pu8Data, uint32_t u32Length);
+	void    ECAT_LAN925x_SQIRead(uint16_t u16Addr, uint8_t *pu8data, uint32_t u32Length);
 #ifdef __cplusplus
 }
 #endif

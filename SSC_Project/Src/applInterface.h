@@ -14,7 +14,7 @@
 \author EthercatSSC@beckhoff.com
 \brief Definition of the application interface functions
 
-\version 5.13
+\version 5.13.1
 
 <br>Changes to version V5.12:<br>
 V5.13 COE4: update default entry name handling in case of 16Bit characters, add CoE Read/write indication functions<br>
@@ -43,10 +43,13 @@ V5.10.1 : Start file change log
 #include "esc.h"
 #include "ecatslv.h"
 #include "objdef.h"
+#include "coeappl.h"
 #include "ecatappl.h"
 
+/*ET9300 Project Handler :(#if DIAGNOSIS_SUPPORTED) lines 50 to 52 deleted*/
 
 
+/*ET9300 Project Handler :(#if EOE_SUPPORTED) lines 55 to 57 deleted*/
 
 #include "foeappl.h"
 
@@ -64,53 +67,10 @@ V5.10.1 : Start file change log
 ------
 -----------------------------------------------------------------------------------------*/
 
-/////////////////////////////////////////////////////////////////////////////////////////
-/**
- \return   0 if successful or greater 0 in case of an error
- 
- \param    wordaddr      Word address of the EEPROM data to be read
- 
- \brief    This function shall copy EEPROM data to the ESC EEPROM data register (0x508:0x50F/0x50B).
- \brief    The EEPROM data starting at the specified word address and the length specified in register 0x502.6
- \brief    The data shall be copied to the ESC EEPROM buffer (ESC offset 0x508)
- \brief	   The function pointer is reset in MainInit() so it shall be set afterwards
-*////////////////////////////////////////////////////////////////////////////////////////
-PROTO UINT16 (* pAPPL_EEPROM_Read)(UINT32 wordaddr);
-
-/////////////////////////////////////////////////////////////////////////////////////////
-/**
-\return   0 if successful or greater 0 in case of an error
-
-\param    wordaddr      Word address of the EEPROM data to be written
-
-\brief    This function shall copy data from the ESC EEPROM data register (0x508:0x50F/0x50B) to the EEPROM memory.
-\brief    The EEPROM data starting at the specified word address and the length specified with "EEPROM_WRITE_SIZE".
-\brief	   The function pointer is reset in MainInit() so it shall be set afterwards
-*////////////////////////////////////////////////////////////////////////////////////////
-PROTO UINT16(*pAPPL_EEPROM_Write)(UINT32 wordaddr);
-
-/////////////////////////////////////////////////////////////////////////////////////////
-/**
-\return   0 if successful or greater 0 in case of an error
-
-\brief    This function shall copy the EEPROM reload information to the ESC EEPROM data register (0x508:0x50F/0x50B).
-\brief    Read the ESC data sheet for the reload information (e.g. Beckhoff IPCore ESC Datasheet section II, clause 3.45.1)
-\brief	   The function pointer is reset in MainInit() so it shall be set afterwards
-*////////////////////////////////////////////////////////////////////////////////////////
-PROTO UINT16(*pAPPL_EEPROM_Reload)(void);
-
-/////////////////////////////////////////////////////////////////////////////////////////
-/**
-\brief    If EEPROM Emulation is enabled and the written data is not stored directly during 
-\brief    the EEPROM Write commands to the permanent memory this function can be used to store the EEPROM data.
-\brief    It is called 1000 ms after the last EEPROM access. Using this function shall only be used if it is 
-\brief    not possible to store the EEPROM data directly during the EEPROM write access.
-\brief	   The function pointer is reset in MainInit() so it shall be set afterwards
-*////////////////////////////////////////////////////////////////////////////////////////
-PROTO void(*pAPPL_EEPROM_Store)(void);
+/*ET9300 Project Handler :(#if ESC_EEPROM_EMULATION) lines 77 to 123 deleted*/
 
 
-
+/*ET9300 Project Handler :(#if EOE_SUPPORTED) lines 126 to 153 deleted*/
 
 
 
@@ -302,5 +262,6 @@ PROTO void MainLoop(void);
 PROTO void ECAT_StateChange(UINT8 alStatus, UINT16 alStatusCode);
 
 
+/*ET9300 Project Handler :(#if EOE_SUPPORTED) lines 349 to 362 deleted*/
 
 #undef PROTO

@@ -52,21 +52,6 @@
 // Section: Configuration Bits
 // ****************************************************************************
 // ****************************************************************************
-//#pragma config BOD33_DIS = SET
-//#pragma config BOD33USERLEVEL = 0x1cU
-//#pragma config BOD33_ACTION = RESET
-//#pragma config BOD33_HYST = 0x2U
-//#pragma config NVMCTRL_BOOTPROT = 0
-//#pragma config NVMCTRL_SEESBLK = 0x0U
-//#pragma config NVMCTRL_SEEPSZ = 0x0U
-//#pragma config RAMECC_ECCDIS = SET
-//#pragma config WDT_ENABLE = CLEAR
-//#pragma config WDT_ALWAYSON = CLEAR
-//#pragma config WDT_PER = CYC8192
-//#pragma config WDT_WINDOW = CYC8192
-//#pragma config WDT_EWOFFSET = CYC8192
-//#pragma config WDT_WEN = CLEAR
-//#pragma config NVMCTRL_REGION_LOCKS = 0xffffffffU
 
 
 
@@ -83,22 +68,21 @@
 // <editor-fold defaultstate="collapsed" desc="EtherCAT Main Initialization Data">
 
 /* SQI PLIB Interface Initialization for ethercat LAN driver */
-const DRV_LAN9255_UTIL_SPI_PLIB_INTERFACE drvLAN9255SpiPlibAPI = {
+const DRV_LAN9255_UTIL_SQI_PLIB_INTERFACE drvLAN9255SQIPlibAPI = {
+	/* SQI PLIB Command Write function */
+	.sqiCommandWrite = (DRV_LAN9255_SQI_PLIB_CMD_WRITE)QSPI_CommandWrite,
 
-	/* SPI PLIB WriteRead function */
-	.spiWriteRead = (DRV_LAN9255_SPI_PLIB_WRITE_READ)QSPI_WriteRead,
+	/* SQI PLIB Register Read function */
+	.sqiRegisterRead = (DRV_LAN9255_SQI_PLIB_REG_READ)QSPI_RegisterRead,
+	
+	/* SQI PLIB Register Write function */
+	.sqiRegisterWrite = (DRV_LAN9255_SQI_PLIB_REG_WRITE)QSPI_RegisterWrite,
 
-	/* SPI PLIB Write function */
-	.spiWrite = (DRV_LAN9255_SPI_PLIB_WRITE)QSPI_Write,
+	/* SQI PLIB Memory Read Transfer Status function */
+	.sqiMemoryRead = (DRV_LAN9255_SQI_PLIB_MEM_READ)QSPI_MemoryRead,
 
-	/* SPI PLIB Read function */
-	.spiRead = (DRV_LAN9255_SPI_PLIB_READ)QSPI_Read,
-
-	/* SPI PLIB Transfer Status function */
-	.spiIsBusy = (DRV_LAN9255_SPI_PLIB_IS_BUSY)QSPI_IsBusy,
-
-	/* SPI PLIB Callback Register */
-	.spiCallbackRegister = (DRV_LAN9255_SPI_PLIB_CALLBACK_REGISTER)QSPI_CallbackRegister,
+	/* SQI PLIB Callback Register */
+	.sqiMemoryWrite = (DRV_LAN9255_SQI_PLIB_MEM_WRITE)QSPI_MemoryWrite,
 };
 const DRV_LAN9255_UTIL_TMR_PLIB_INTERFACE drvLAN9255TimerPlibAPI = {
 
@@ -112,7 +96,7 @@ const DRV_LAN9255_UTIL_TMR_PLIB_INTERFACE drvLAN9255TimerPlibAPI = {
 /* LAN9255 Driver Initialization Data */
 const DRV_LAN9255_UTIL_INIT drvLAN9255InitData = {
 	/* SPI PLIB API  interface*/
-	.spiPlib = &drvLAN9255SpiPlibAPI,
+	.sqiPlib = &drvLAN9255SQIPlibAPI,
 	
 	/* Timer PLIB API Interface */
 	.timerPlib = &drvLAN9255TimerPlibAPI,
