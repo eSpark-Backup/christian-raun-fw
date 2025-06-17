@@ -462,15 +462,20 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     break;
                     
                 case CALIBRATION_SEQUENCE_01_STARTED:
-                    // if (encoder->isMotorStalled())
-                    if (isErrorPresent())
+                    ErrorFlags error;
+                    error.error = isErrorPresent();
+                    if (error.error)
                     {
                         stop();
-                        if(motorErrors.flag.encoderStallFlag || motorErrors.flag.driverStallFlag)
+                        if(error.flag.encoderStallFlag || error.flag.driverStallFlag)
                         {
                             out->deviceStatus = CALIBRATION_SEQUENCE_01_SUCCESS;
                         }
-                        // encoder->setZeroOffset();
+                        else
+                        {
+                            out->deviceStatus = CALIBRATION_SEQUENCE_01_FAILED;
+                        }
+                        encoder->setZeroOffset();
                         break;  
                     }
                         
