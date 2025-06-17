@@ -511,6 +511,7 @@ void Tmc2130::calibrate(stepperAppModes mode, dataOutPacket* out, uint32_t displ
                     }
                     break;
                 
+                case CALIBRATION_SEQUENCE_02_FAILED:
                 case CALIBRATION_SEQUENCE_02_SUCCESS:
                     break;
                 
